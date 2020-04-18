@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\about.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\data.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\faq.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\ios.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\releasenotes.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\startup.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\coordinate_systems.rst">
+      <Filter>Developer</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\custom_driver.rst">
+      <Filter>Developer</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\index.rst">
+      <Filter>Developer</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\maps.rst">
+      <Filter>Developer</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\qt_integration.rst">
+      <Filter>Developer</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\shader_composition.rst">
+      <Filter>Developer</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\utilities.rst">
+      <Filter>Developer</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\colorfilters.rst">
+      <Filter>References</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\earthfile.rst">
+      <Filter>References</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\envvars.rst">
+      <Filter>References</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\index.rst">
+      <Filter>References</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\symbology.rst">
+      <Filter>References</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\feature\index.rst">
+      <Filter>References\Drivers\Feature</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\feature\ogr.rst">
+      <Filter>References\Drivers\Feature</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\feature\tfs.rst">
+      <Filter>References\Drivers\Feature</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\feature\wfs.rst">
+      <Filter>References\Drivers\Feature</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\loaders\index.rst">
+      <Filter>References\Drivers\Loaders</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\feature_geom.rst">
+      <Filter>References\Drivers\Model</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\feature_model_shared_blocks.rst">
+      <Filter>References\Drivers\Model</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\feature_model_shared_props.rst">
+      <Filter>References\Drivers\Model</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\index.rst">
+      <Filter>References\Drivers\Model</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\simple.rst">
+      <Filter>References\Drivers\Model</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\terrain\index.rst">
+      <Filter>References\Drivers\Terrain</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\terrain\mp.rst">
+      <Filter>References\Drivers\Terrain</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\terrain\terrain_options_shared.rst">
+      <Filter>References\Drivers\Terrain</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\agglite.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\arcgis.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\debug.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\gdal.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\index.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\noise.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\osg.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\tilecache.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\tileservice.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\tms.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\vpb.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\wcs.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\wms.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\xyz.rst">
+      <Filter>References\Drivers\Tile</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\annotations.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\caching.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\earthfiles.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\elevation.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\features.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\imagery.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\index.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\maps.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\profile.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\spatialreference.rst">
+      <Filter>User</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\tools.rst">
+      <Filter>User</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Developer">
+      <UniqueIdentifier>{8B22B5AB-08B5-37CE-983A-62AB1F91460C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="References">
+      <UniqueIdentifier>{3E832A42-08C0-3261-A6B5-221383F6B2A3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="References\Drivers">
+      <UniqueIdentifier>{A773641E-2B78-3977-980F-55D110CABC29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="References\Drivers\Feature">
+      <UniqueIdentifier>{4D821E3C-F2DE-3C8E-BDDD-21B84A067DD9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="References\Drivers\Loaders">
+      <UniqueIdentifier>{345DE808-BD64-38BF-B204-D0F372BA644D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="References\Drivers\Model">
+      <UniqueIdentifier>{C1DDAC4A-33F7-372B-87D0-C0E14A9965E2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="References\Drivers\Terrain">
+      <UniqueIdentifier>{B139058E-3804-3DED-9176-6FC8E6716ADD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="References\Drivers\Tile">
+      <UniqueIdentifier>{F1CF3FDD-73B7-36F4-8424-FF513941250A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="User">
+      <UniqueIdentifier>{EF834543-EEE3-3552-A352-5ABCB7445388}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

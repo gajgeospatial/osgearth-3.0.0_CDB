@@ -1,0 +1,1467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vs2017_Debug|Win32">
+      <Configuration>vs2017_Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vs2017_Debug|x64">
+      <Configuration>vs2017_Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vs2017_Release|Win32">
+      <Configuration>vs2017_Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vs2017_Release|x64">
+      <Configuration>vs2017_Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0D6A88EC-E7C6-3F6D-85FB-7FDAFCC2CF92}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>osgEarth</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">osgEarthd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">osgEarthd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">osgEarthd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">osgEarthd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">.dll</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">osgEarth</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">osgEarth</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">osgEarth</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">osgEarth</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">.dll</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\frmts\vrt;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(GDAL_DIR)\apps;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR="Debug";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR=\"Debug\";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>tinyxmlSTL.lib;sqlite3.lib;geos.lib;libprotobufd.lib;ws2_32.lib;winmm.lib;wldap32.lib;psapi.lib;osgd.lib;osgUtild.lib;osgSimd.lib;osgDBd.lib;osgViewerd.lib;osgTextd.lib;osgGAd.lib;osgShadowd.lib;OpenThreadsd.lib;libcurl_imp.lib;gdal_i.lib;osgManipulatord.lib;opengl32.lib;glu32.lib;OpenThreadsd.lib;libcurl_imp.lib;gdal_i.lib;osgManipulatord.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\$(TINYXML_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(SQLITE3_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GEOS_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(OSG_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(CURL_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GDAL_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OutDir)osgEarthd.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\frmts\vrt;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(GDAL_DIR)\apps;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR="Debug";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR=\"Debug\";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>tinyxmlSTL.lib;sqlite3.lib;geos.lib;libprotobufd.lib;ws2_32.lib;winmm.lib;wldap32.lib;psapi.lib;osgd.lib;osgUtild.lib;osgSimd.lib;osgDBd.lib;osgViewerd.lib;osgTextd.lib;osgGAd.lib;osgShadowd.lib;OpenThreadsd.lib;libcurl_imp.lib;gdal_i.lib;osgManipulatord.lib;opengl32.lib;glu32.lib;OpenThreadsd.lib;libcurl_imp.lib;gdal_i.lib;osgManipulatord.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\$(TINYXML_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(SQLITE3_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GEOS_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(OSG_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(CURL_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GDAL_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OutDir)osgEarthd.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\frmts\vrt;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(GDAL_DIR)\apps;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR="Debug";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR=\"Debug\";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>tinyxmlSTL.lib;sqlite3.lib;geos.lib;libprotobufd.lib;ws2_32.lib;winmm.lib;wldap32.lib;psapi.lib;osgd.lib;osgUtild.lib;osgSimd.lib;osgDBd.lib;osgViewerd.lib;osgTextd.lib;osgGAd.lib;osgShadowd.lib;OpenThreadsd.lib;libcurl_imp.lib;gdal_i.lib;osgManipulatord.lib;opengl32.lib;glu32.lib;OpenThreadsd.lib;libcurl_imp.lib;gdal_i.lib;osgManipulatord.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\$(TINYXML_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(SQLITE3_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GEOS_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(OSG_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(CURL_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GDAL_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) </AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OutDir)osgEarthd.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\frmts\vrt;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(GDAL_DIR)\apps;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR="Debug";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR=\"Debug\";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>tinyxmlSTL.lib;sqlite3.lib;geos.lib;libprotobufd.lib;ws2_32.lib;winmm.lib;wldap32.lib;psapi.lib;osgd.lib;osgUtild.lib;osgSimd.lib;osgDBd.lib;osgViewerd.lib;osgTextd.lib;osgGAd.lib;osgShadowd.lib;OpenThreadsd.lib;libcurl_imp.lib;gdal_i.lib;osgManipulatord.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\$(TINYXML_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(SQLITE3_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GEOS_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(OSG_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(CURL_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GDAL_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) </AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OutDir)osgEarthd.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\frmts\vrt;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(GDAL_DIR)\apps;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR="Release";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR=\"Release\";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>tinyxmlSTL.lib;sqlite3.lib;geos.lib;libprotobuf.lib;ws2_32.lib;winmm.lib;wldap32.lib;psapi.lib;osg.lib;osgUtil.lib;osgSim.lib;osgDB.lib;osgViewer.lib;osgText.lib;osgGA.lib;osgShadow.lib;OpenThreads.lib;libcurl_imp.lib;gdal_i.lib;osgManipulator.lib;opengl32.lib;glu32.lib;OpenThreads.lib;libcurl_imp.lib;gdal_i.lib;osgManipulator.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\$(TINYXML_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(SQLITE3_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GEOS_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(OSG_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(CURL_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GDAL_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OutDir)osgEarth.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\frmts\vrt;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(GDAL_DIR)\apps;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR="Release";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR=\"Release\";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>tinyxmlSTL.lib;sqlite3.lib;geos.lib;libprotobuf.lib;ws2_32.lib;winmm.lib;wldap32.lib;psapi.lib;osg.lib;osgUtil.lib;osgSim.lib;osgDB.lib;osgViewer.lib;osgText.lib;osgGA.lib;osgShadow.lib;OpenThreads.lib;libcurl_imp.lib;gdal_i.lib;osgManipulator.lib;opengl32.lib;glu32.lib;OpenThreads.lib;libcurl_imp.lib;gdal_i.lib;osgManipulator.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\$(TINYXML_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(SQLITE3_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GEOS_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(OSG_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(CURL_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GDAL_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OutDir)osgEarth.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\frmts\vrt;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(GDAL_DIR)\apps;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR="Release";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR=\"Release\";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>tinyxmlSTL.lib;sqlite3.lib;geos.lib;libprotobuf.lib;ws2_32.lib;winmm.lib;wldap32.lib;psapi.lib;osg.lib;osgUtil.lib;osgSim.lib;osgDB.lib;osgViewer.lib;osgText.lib;osgGA.lib;osgShadow.lib;OpenThreads.lib;libcurl_imp.lib;gdal_i.lib;osgManipulator.lib;opengl32.lib;glu32.lib;OpenThreads.lib;libcurl_imp.lib;gdal_i.lib;osgManipulator.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\$(TINYXML_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(SQLITE3_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GEOS_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(OSG_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(CURL_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GDAL_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) </AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OutDir)osgEarth.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\frmts\vrt;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(GDAL_DIR)\apps;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR="Release";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;OSGEARTH_HAVE_MBTILES;OSGEARTH_LIBRARY;TIXML_USE_STL;CURL_STATICLIB;OSGEARTH_HAVE_SQLITE3;OSGEARTH_HAVE_GEOS;OSGEARTH_HAVE_MVT;CMAKE_INTDIR=\"Release\";osgEarth_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>..\..\build_include;..\..\..\..\GLCore;..\..\..\src;..\..\..\..\$(OSG_DIR)\include;..\..\..\..\$(OSG_DIR)\msvc\include;..\..\..\..\$(PROTOBUF_DIR)\src;.\;..\..\..\..\$(GDAL_DIR)\frmts;..\..\..\..\$(GDAL_DIR)\alg;..\..\..\..\$(GDAL_DIR)\gcore;..\..\..\..\$(GDAL_DIR)\port;..\..\..\..\$(GDAL_DIR)\ogr;..\..\..\..\$(GDAL_DIR)\ogr\ogrsf_frmts;..\..\..\..\$(CURL_DIR)\include;..\..\..\..\$(TINYXML_DIR);..\..\..\..\$(SQLITE3_DIR);..\..\..\..\$(GEOS_DIR)\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>tinyxmlSTL.lib;sqlite3.lib;geos.lib;libprotobuf.lib;ws2_32.lib;winmm.lib;wldap32.lib;psapi.lib;osg.lib;osgUtil.lib;osgSim.lib;osgDB.lib;osgViewer.lib;osgText.lib;osgGA.lib;osgShadow.lib;OpenThreads.lib;libcurl_imp.lib;gdal_i.lib;osgManipulator.lib;opengl32.lib;glu32.lib;OpenThreads.lib;libcurl_imp.lib;gdal_i.lib;osgManipulator.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\$(TINYXML_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(SQLITE3_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GEOS_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(OSG_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(CURL_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\..\..\$(GDAL_DIR)\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);$(SolutionDir)vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration);..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) </AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OutDir)osgEarth.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe --cpp_out .\ -I ..\..\..\src\osgEarth ..\..\..\src\osgEarth\vector_tile.proto
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule;..\..\..\src\osgEarth\vector_tile.proto;..\..\..\..\$(PROTOBUF_DIR)\msvc\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\protoc.exe;%(AdditionalInputs);</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.\vector_tile.pb.h;.\vector_tile.pb.cc</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating AutoGenShaders.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating AutoGenShaders.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">Generating AutoGenShaders.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\AutoGenShaders.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">.\AutoGenShaders.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\AutoGenShaders.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">.\AutoGenShaders.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating AutoGenShaders.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">Generating AutoGenShaders.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating AutoGenShaders.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">Generating AutoGenShaders.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\AutoGenShaders.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">.\AutoGenShaders.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\AutoGenShaders.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">.\AutoGenShaders.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Generating AutoGenShaders.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating AutoGenShaders.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.\AutoGenShaders.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.\AutoGenShaders.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Generating AutoGenShaders.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating AutoGenShaders.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule;..\..\..\src\osgEarth\CascadeDraping.glsl;..\..\..\src\osgEarth\ClipPlane.glsl;..\..\..\src\osgEarth\DepthOffset.glsl;..\..\..\src\osgEarth\Draping.glsl;..\..\..\src\osgEarth\GPUClamping.glsl;..\..\..\src\osgEarth\GPUClamping.lib.glsl;..\..\..\src\osgEarth\Instancing.glsl;..\..\..\src\osgEarth\LineDrawable.glsl;..\..\..\src\osgEarth\WireLines.glsl;..\..\..\src\osgEarth\PhongLighting.glsl;..\..\..\src\osgEarth\PointDrawable.glsl;..\..\..\src\osgEarth\Text.glsl;..\..\..\src\osgEarth\Text_legacy.glsl;..\..\..\src\osgEarth\ContourMap.glsl;..\..\..\src\osgEarth\GeodeticGraticule.glsl;..\..\..\src\osgEarth\LogDepthBuffer.glsl;..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl;..\..\..\src\osgEarth\ShadowCaster.glsl;..\..\..\src\osgEarth\SimpleOceanLayer.glsl;..\..\..\src\osgEarth\RTTPicker.glsl;..\..\..\src\osgEarth\Shaders.cpp.in;..\..\..\CMakeModules\ConfigureShaders.cmake.in;%(AdditionalInputs);</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.\AutoGenShaders.cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.\AutoGenShaders.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISServer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISTilePackage" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Bing" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Bounds" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Cache" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheEstimator" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheBin" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CachePolicy" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheSeed" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Callouts" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CameraUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Capabilities" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CesiumIon" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CascadeDrapingDecorator" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Clamping" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampableNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampingTechnique" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Color" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ColorFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Common" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Composite" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Config" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Containers" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Cube" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CullingUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DateTime" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DateTimeRange" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DecalLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DepthOffset" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapeableNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapingCullSet" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapingTechnique" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrawInstanced" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ECEF" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationLOD" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationPool" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationRanges" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationQuery" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EllipsoidIntersector" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Endian" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Export" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Extension" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FadeEffect" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FileUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GDAL" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GDALDEM" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoCommon" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoData" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geoid" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoMath" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoTransform" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryClamper" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GLSLChunker" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GLUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HeightFieldUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Horizon" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HorizonClipPlane" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HTTPClient" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageMosaic" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageToHeightFieldConverter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceCloud" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IntersectionPicker" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IOTypes" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\JoinPointsLinesFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\JsonUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LandCover" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LandCoverLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Layer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LayerReference" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LayerShader" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Lighting" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineDrawable" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineFunctor" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Locators" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LocalTangentPlane" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Map" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapCallback" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapInfo" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapModelChange" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapNodeObserver" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MaskLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MaskSource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Memory" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MemCache" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MetaTile" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Metrics" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MBTiles" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelSource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\NativeProgramAdapter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\NodeUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Notify" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\optional" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ObjectIndex" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OverlayDecorator" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PagedNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PatchLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PhongLightingEffect" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Picker" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PluginLoader" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointDrawable" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PowerlineLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PrimitiveIntersector" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Profile" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Progress" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Random" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Registry" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceReleaser" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Revisioning" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SceneGraphCallback" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayout" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutImpl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutDeclutter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutCallout" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Shaders" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderFactory" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderGenerator" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderLoader" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderMerger" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimplexNoise" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SpatialReference" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StateSetCache" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Status" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StringUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TDTiles" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TaskService" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Terrain" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEffect" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainOptions" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEngineNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEngineRequirements" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainResources" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileModel" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileModelFactory" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Tessellator" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ThreeDTilesLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileKey" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileHandler" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileRasterizer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TiledFeatureModelGraph" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TiledFeatureModelLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSourceElevationLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSourceImageLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileVisitor" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileCache" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TimeControl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TraversalData" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ThreadingUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TMS" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Units" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\URI" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Utils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Version" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VerticalDatum" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VideoLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Viewpoint" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VirtualProgram" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VisibleLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WMS" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XmlUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XYZ" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ActivityMonitorTool" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AutoClipPlaneHandler" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AutoScaleCallback" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AtlasBuilder" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClipSpace" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Controls" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ContourMap" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampCallback" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClusterNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DebugImageLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EarthManipulator" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Ephemeris" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExampleResources" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FlatteningLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Formatter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FractalElevationLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GARSGraticule" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticGraticule" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticLabelingEngine" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GraticuleLabelingEngine" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HTM" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LatLongFormatter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineOfSight" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LinearLineOfSight" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogarithmicDepthBuffer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeasureTool" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MGRSFormatter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MGRSGraticule" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MouseCoordsTool" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RadialLineOfSight" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RTTPicker" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Shadowing" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimpleOceanLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimplePager" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Sky" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SkyView" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StarData" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainProfile" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileIndex" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileIndexBuilder" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TFSPackager" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TMSBackFiller" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TopologyGraph" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\UTMGraticule" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\UTMLabelingEngine" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ViewFitter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AltitudeFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BufferFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BuildGeometryFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BuildTextFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CentroidFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ConvertTypeFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CropFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExtrudeGeometryFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Feature" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureCursor" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureDisplayLayout" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureElevationLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureImageLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureIndex" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureMaskLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelGraph" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelSource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureSource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureSourceIndexNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Filter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FilterContext" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryCompiler" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageToFeatureLayer" />
+    <ClCompile Include="..\..\..\src\osgEarth\InstanceCloud.cpp" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MVT" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OgrUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OGRFeatureSource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PolygonizeLines" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResampleFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScaleFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Session" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScatterFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Script" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScriptEngine" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScriptFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SubstituteModelFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TessellateOperator" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TextSymbolizer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TFS" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TransformFilter" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WireLines" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XYZFeatureSource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WFS" />
+    <ClInclude Include="..\..\..\src\osgEarth\AGG.h" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AltitudeSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BBoxSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BillboardResource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BillboardSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CoverageSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CssUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Expression" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExtrusionSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Fill" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geometry" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryFactory" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GEOS" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryRasterizer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IconResource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IconSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceResource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshConsolidator" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshFlattener" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshSubdivider" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelResource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PolygonSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Query" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RenderSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Resource" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceCache" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceLibrary" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Skins" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Stroke" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Style" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StyleSelector" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StyleSheet" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Symbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Tags" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TextSymbol" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationSettings" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationData" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationLayer" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationRegistry" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationUtils" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BboxDrawable" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CircleNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Draggers" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EllipseNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoPositionNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoPositionNodeAutoScaler" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LocalGeometryNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageOverlay" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageOverlayEditor" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LabelNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PlaceNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RectangleNode" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TrackNode" />
+    <ClInclude Include="..\..\..\src\osgEarth\rtree.h" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FileGDBFeatureSource" />
+    <ClInclude Include="..\..\build_include\osgEarth\BuildConfig.h" />
+    <ClInclude Include=".\vector_tile.pb.h" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geocoder" />
+    <ClCompile Include="..\..\..\src\osgEarth\ArcGISServer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ArcGISTilePackage.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Bing.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Bounds.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Cache.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CacheBin.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CacheEstimator.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CachePolicy.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CacheSeed.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Callouts.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CameraUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Capabilities.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CesiumIon.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CascadeDrapingDecorator.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Clamping.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ClampableNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ClampingTechnique.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Color.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ColorFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Composite.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Config.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Cube.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CullingUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DateTime.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DateTimeRange.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DecalLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DepthOffset.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DrapeableNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DrapingCullSet.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DrapingTechnique.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DrawInstanced.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ECEF.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ElevationLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ElevationLOD.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ElevationPool.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ElevationRanges.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ElevationQuery.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\EllipsoidIntersector.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Extension.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FadeEffect.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FileUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GDAL.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GDALDEM.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeoData.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Geoid.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeoMath.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeoTransform.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeometryClamper.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GLSLChunker.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GLUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\HeightFieldUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Horizon.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\HorizonClipPlane.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\HTTPClient.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ImageLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ImageMosaic.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ImageToHeightFieldConverter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ImageUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\IntersectionPicker.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\IOTypes.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\JoinPointsLinesFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\JsonUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LandCover.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LandCoverLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Layer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LayerShader.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Lighting.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LineDrawable.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Locators.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LocalTangentPlane.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Math.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Map.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MapCallback.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MapInfo.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MapNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MaskLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MaskSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MemCache.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Memory.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MetaTile.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Metrics.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MBTiles.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MimeTypes.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ModelLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ModelSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\NodeUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Notify.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ObjectIndex.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\OverlayDecorator.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PagedNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PatchLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PhongLightingEffect.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PointDrawable.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PowerlineLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PrimitiveIntersector.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Profile.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Progress.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Random.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Registry.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ResourceReleaser.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Revisioning.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\SceneGraphCallback.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ScreenSpaceLayout.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ShaderFactory.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ShaderGenerator.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ShaderLoader.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ShaderMerger.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ShaderUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\SimplexNoise.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\SpatialReference.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\StateSetCache.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Status.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\StringUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TaskService.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TDTiles.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Terrain.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TerrainOptions.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TerrainEngineNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TerrainResources.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TerrainTileModel.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TerrainTileModelFactory.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Tessellator.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Text.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ThreeDTilesLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TextureBufferSerializer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileKey.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileHandler.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileRasterizer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TiledFeatureModelGraph.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TiledFeatureModelLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileVisitor.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileSourceElevationLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileSourceImageLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileCache.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TimeControl.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TraversalData.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ThreadingUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TMS.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Units.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\URI.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Utils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Version.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\VerticalDatum.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\VideoLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Viewpoint.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\VirtualProgram.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\VisibleLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\WMS.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\XmlUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\XYZ.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ActivityMonitorTool.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AtlasBuilder.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AutoClipPlaneHandler.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ClampCallback.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ClipSpace.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ClusterNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Controls.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ContourMap.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\DebugImageLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\EarthManipulator.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Ephemeris.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ExampleResources.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FlatteningLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FractalElevationLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GARSGraticule.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeodeticGraticule.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeodeticLabelingEngine.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GraticuleLabelingEngine.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\HTM.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LatLongFormatter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LinearLineOfSight.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LogarithmicDepthBuffer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MeasureTool.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MGRSFormatter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MGRSGraticule.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MouseCoordsTool.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\RadialLineOfSight.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\RTTPicker.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Shadowing.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\SimpleOceanLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\SimplePager.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Sky.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\SkyView.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TerrainProfile.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileIndex.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TileIndexBuilder.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TFSPackager.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TMSBackFiller.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TopologyGraph.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\UTMGraticule.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\UTMLabelingEngine.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ViewFitter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AltitudeFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\BufferFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\BuildGeometryFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\BuildTextFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CentroidFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ConvertTypeFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CropFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ExtrudeGeometryFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Feature.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureCursor.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureDisplayLayout.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureElevationLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureImageLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureMaskLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureModelGraph.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureModelLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureModelSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureSourceIndexNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Filter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FilterContext.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeometryCompiler.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeometryUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ImageToFeatureLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MVT.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\OgrUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\OGRFeatureSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PolygonizeLines.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ResampleFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ScaleFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Session.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ScatterFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ScriptEngine.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ScriptFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\SubstituteModelFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TessellateOperator.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TextSymbolizer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TFS.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TransformFilter.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\WireLines.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\XYZFeatureSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\WFS.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AltitudeSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\BBoxSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\BillboardResource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\BillboardSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CoverageSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CssUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Expression.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ExtrusionSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Fill.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Geometry.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeometryFactory.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GEOS.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeometryRasterizer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\IconResource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\IconSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\InstanceResource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\InstanceSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LineSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MeshConsolidator.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MeshFlattener.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\MeshSubdivider.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ModelResource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ModelSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PointSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PolygonSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Query.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\RenderSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Resource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ResourceCache.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ResourceLibrary.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Skins.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Stroke.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Style.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\StyleSelector.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\StyleSheet.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Symbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TextSymbol.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AnnotationSettings.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AnnotationData.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AnnotationLayer.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AnnotationNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AnnotationRegistry.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\AnnotationUtils.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\BboxDrawable.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CircleNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\Draggers.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\EllipseNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FeatureNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeoPositionNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\GeoPositionNodeAutoScaler.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LocalGeometryNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ImageOverlay.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ImageOverlayEditor.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\LabelNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\RectangleNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\ModelNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\PlaceNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\TrackNode.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\FileGDBFeatureSource.cpp" />
+    <ClCompile Include=".\AutoGenShaders.cpp" />
+    <ClCompile Include=".\vector_tile.pb.cc" />
+    <ClCompile Include="..\..\..\src\osgEarth\Geocoder.cpp" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CascadeDraping.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClipPlane.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DepthOffset.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Draping.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GPUClamping.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GPUClamping.lib.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Instancing.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineDrawable.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WireLines.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PhongLighting.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointDrawable.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text_legacy.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ContourMap.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticGraticule.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogDepthBuffer.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogDepthBuffer.VertOnly.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShadowCaster.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimpleOceanLayer.glsl" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RTTPicker.glsl" />
+    <ClInclude Include="..\..\..\src\osgEarth\BuildConfig.h.in" />
+    <ClInclude Include="..\..\..\src\osgEarth\Shaders.cpp.in" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

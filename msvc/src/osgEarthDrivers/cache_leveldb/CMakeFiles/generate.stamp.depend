@@ -1,0 +1,3 @@
+# CMake generation dependency list for this directory.
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindLevelDB.cmake
+C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/cache_leveldb/CMakeLists.txt

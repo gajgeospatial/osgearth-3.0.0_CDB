@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{63483515-6498-3C0A-86CF-30DBD9E8C983}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\op3d_active\osgearth-3.0.0\msvc\build_include;C:\Development\op3d_active\GLCore;C:\Development\op3d_active\osgearth-3.0.0\src;C:\Development\op3d_active\OpenSceneGraph-3.6.5\include;C:\Development\op3d_active\OpenSceneGraph-3.6.5\msvc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\op3d_active\osgearth-3.0.0\msvc\build_include;C:\Development\op3d_active\GLCore;C:\Development\op3d_active\osgearth-3.0.0\src;C:\Development\op3d_active\OpenSceneGraph-3.6.5\include;C:\Development\op3d_active\OpenSceneGraph-3.6.5\msvc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\op3d_active\osgearth-3.0.0\msvc\build_include;C:\Development\op3d_active\GLCore;C:\Development\op3d_active\osgearth-3.0.0\src;C:\Development\op3d_active\OpenSceneGraph-3.6.5\include;C:\Development\op3d_active\OpenSceneGraph-3.6.5\msvc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Development\op3d_active\osgearth-3.0.0\msvc\build_include;C:\Development\op3d_active\GLCore;C:\Development\op3d_active\osgearth-3.0.0\src;C:\Development\op3d_active\OpenSceneGraph-3.6.5\include;C:\Development\op3d_active\OpenSceneGraph-3.6.5\msvc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/op3d_active/osgearth-3.0.0 -BC:/Development/op3d_active/osgearth-3.0.0/msvc --check-stamp-file C:/Development/op3d_active/osgearth-3.0.0/msvc/src/osgEarthDrivers/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/CMakeLists.txt;C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt;C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/op3d_active/osgearth-3.0.0 -BC:/Development/op3d_active/osgearth-3.0.0/msvc --check-stamp-file C:/Development/op3d_active/osgearth-3.0.0/msvc/src/osgEarthDrivers/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/CMakeLists.txt;C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt;C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/op3d_active/osgearth-3.0.0 -BC:/Development/op3d_active/osgearth-3.0.0/msvc --check-stamp-file C:/Development/op3d_active/osgearth-3.0.0/msvc/src/osgEarthDrivers/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/CMakeLists.txt;C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt;C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Development/op3d_active/osgearth-3.0.0 -BC:/Development/op3d_active/osgearth-3.0.0/msvc --check-stamp-file C:/Development/op3d_active/osgearth-3.0.0/msvc/src/osgEarthDrivers/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:/Development/op3d_active/osgearth-3.0.0/src/osgEarthDrivers/CMakeLists.txt;C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt;C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\ZERO_CHECK.vcxproj">
+      <Project>{00CF28B9-F80B-33E8-9BCC-CC75766BA8F5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\basis\osgdb_basis.vcxproj">
+      <Project>{486DA1F7-F4F2-3627-B3F5-8A9C8E557254}</Project>
+      <Name>osgdb_basis</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\earth\osgdb_earth.vcxproj">
+      <Project>{E3BF3BF2-05B7-37BD-94AA-1150D3A0BC95}</Project>
+      <Name>osgdb_earth</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\fastdxt\osgdb_fastdxt.vcxproj">
+      <Project>{1AD666AE-2DAB-3E26-A3FC-493B5212AF38}</Project>
+      <Name>osgdb_fastdxt</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\gltf\osgdb_gltf.vcxproj">
+      <Project>{D2C165B8-3C48-3E78-A610-9DC219043FEB}</Project>
+      <Name>osgdb_gltf</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\kml\osgdb_kml.vcxproj">
+      <Project>{ADB721C4-5BB0-39C9-B632-535AAA5F295F}</Project>
+      <Name>osgdb_kml</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\bumpmap\osgdb_osgearth_bumpmap.vcxproj">
+      <Project>{A5B86864-D052-3E2A-B8AE-8AA3D17493AE}</Project>
+      <Name>osgdb_osgearth_bumpmap</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\cache_filesystem\osgdb_osgearth_cache_filesystem.vcxproj">
+      <Project>{4213A193-AB90-3C37-8FB6-C3BFA8B7A166}</Project>
+      <Name>osgdb_osgearth_cache_filesystem</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\cache_rocksdb\osgdb_osgearth_cache_rocksdb.vcxproj">
+      <Project>{9F82A8CA-1BFF-3A3C-BC28-16864C752ACA}</Project>
+      <Name>osgdb_osgearth_cache_rocksdb</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\colorramp\osgdb_osgearth_colorramp.vcxproj">
+      <Project>{7F820E97-8117-3845-A40B-9C38461B644A}</Project>
+      <Name>osgdb_osgearth_colorramp</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\detail\osgdb_osgearth_detail.vcxproj">
+      <Project>{AED6492C-4B4F-303C-A10D-843AD794D955}</Project>
+      <Name>osgdb_osgearth_detail</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\engine_mp\osgdb_osgearth_engine_mp.vcxproj">
+      <Project>{64953E53-BF02-30C4-9355-39615425652C}</Project>
+      <Name>osgdb_osgearth_engine_mp</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\engine_rex\osgdb_osgearth_engine_rex.vcxproj">
+      <Project>{2BDF2625-4F64-336C-8EEA-395F880B4BBB}</Project>
+      <Name>osgdb_osgearth_engine_rex</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\featurefilter_intersect\osgdb_osgearth_featurefilter_intersect.vcxproj">
+      <Project>{70F74A4D-B372-342D-9A02-E7274044B463}</Project>
+      <Name>osgdb_osgearth_featurefilter_intersect</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\featurefilter_join\osgdb_osgearth_featurefilter_join.vcxproj">
+      <Project>{BA74EC7B-B0EB-3E08-AD93-985890B13649}</Project>
+      <Name>osgdb_osgearth_featurefilter_join</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\mapinspector\osgdb_osgearth_mapinspector.vcxproj">
+      <Project>{EF9F2CB6-8C87-3EC3-B968-27BD970D9FF6}</Project>
+      <Name>osgdb_osgearth_mapinspector</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\monitor\osgdb_osgearth_monitor.vcxproj">
+      <Project>{5CE7EF63-57D7-33BD-A43A-4246313232C8}</Project>
+      <Name>osgdb_osgearth_monitor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\script_engine_duktape\osgdb_osgearth_scriptengine_javascript.vcxproj">
+      <Project>{D7BAEE6B-3409-394F-B81A-6A8046F0241E}</Project>
+      <Name>osgdb_osgearth_scriptengine_javascript</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\sky_gl\osgdb_osgearth_sky_gl.vcxproj">
+      <Project>{D1D669AC-8FDE-3589-8570-D8EE02A74349}</Project>
+      <Name>osgdb_osgearth_sky_gl</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\sky_simple\osgdb_osgearth_sky_simple.vcxproj">
+      <Project>{BA4D8EDA-2B3A-38C5-A04B-570A5616249F}</Project>
+      <Name>osgdb_osgearth_sky_simple</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\terrainshader\osgdb_osgearth_terrainshader.vcxproj">
+      <Project>{EAB3DEA8-2BCB-3C5A-A2F2-D326FB5C6527}</Project>
+      <Name>osgdb_osgearth_terrainshader</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\vdatum_egm2008\osgdb_osgearth_vdatum_egm2008.vcxproj">
+      <Project>{D50EAE94-E037-3301-8AFB-CB14AEB8CB63}</Project>
+      <Name>osgdb_osgearth_vdatum_egm2008</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\vdatum_egm84\osgdb_osgearth_vdatum_egm84.vcxproj">
+      <Project>{A4924B34-6BD6-37D2-B81E-24BB4F7D97B0}</Project>
+      <Name>osgdb_osgearth_vdatum_egm84</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\vdatum_egm96\osgdb_osgearth_vdatum_egm96.vcxproj">
+      <Project>{0EC2AA46-034A-309A-B03A-68AC82D1F645}</Project>
+      <Name>osgdb_osgearth_vdatum_egm96</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\viewpoints\osgdb_osgearth_viewpoints.vcxproj">
+      <Project>{6E12495B-8009-3E0F-898E-1AD5F43EF570}</Project>
+      <Name>osgdb_osgearth_viewpoints</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\template\osgdb_template.vcxproj">
+      <Project>{D3128B78-8213-3B95-B2A6-89BF5CBA9BB7}</Project>
+      <Name>osgdb_template</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\webp\osgdb_webp.vcxproj">
+      <Project>{37904FEC-728C-3103-8FC2-603B2D02EAA8}</Project>
+      <Name>osgdb_webp</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\src\osgEarthDrivers\zip\osgdb_zip.vcxproj">
+      <Project>{850EA2D8-3D7D-366E-A7D7-18EC996F5BC9}</Project>
+      <Name>osgdb_zip</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

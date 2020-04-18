@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\applications\osgearth_boundarygen\BoundaryUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\applications\osgearth_boundarygen\VertexCollectionVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\applications\osgearth_boundarygen\boundarygen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\applications\osgearth_boundarygen\BoundaryUtil" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\applications\osgearth_boundarygen\VertexCollectionVisitor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C23C795C-8A75-3325-97E7-455879EA281C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

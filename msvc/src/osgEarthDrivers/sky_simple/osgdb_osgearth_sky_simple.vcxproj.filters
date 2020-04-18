@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\osgEarthDrivers\sky_simple\SimpleSkyExtension.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\src\osgEarthDrivers\sky_simple\SimpleSkyNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\AutoGenShaders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\osgEarthDrivers\sky_simple\SimpleSkyShaders.cpp.in">
+      <Filter>Template Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\1ddce7784bf2f9df006044aa5439dae9\AutoGenShaders.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSkyOptions">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSkyNode">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSkyShaders">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Atmosphere.frag.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Atmosphere.vert.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Ground.ONeil.frag.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Ground.ONeil.vert.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Moon.frag.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Moon.vert.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Stars.frag.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Stars.vert.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Stars.GLES.frag.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Stars.GLES.vert.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Sun.frag.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_simple\SimpleSky.Sun.vert.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{0385003E-09BB-33AC-BC7A-B364185382E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5CD8EA10-D5A8-33EE-9073-DA6F91FD0E72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader Files">
+      <UniqueIdentifier>{FC0923F1-3D0C-3AD9-B360-14464A61DF96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C23C795C-8A75-3325-97E7-455879EA281C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Template Files">
+      <UniqueIdentifier>{FF979A0E-D2F2-3395-A9B2-E221F67E1C8C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

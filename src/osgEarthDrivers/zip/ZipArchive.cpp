@@ -41,7 +41,7 @@ ZipArchive::~ZipArchive()
 }
 
 /** close the archive (on all threads) */
-void ZipArchive::close()
+void ZipArchive::close(bool forceall)
 {
     if ( _zipLoaded )
     {

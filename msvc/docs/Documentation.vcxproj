@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vs2017_Debug|Win32">
+      <Configuration>vs2017_Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vs2017_Debug|x64">
+      <Configuration>vs2017_Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vs2017_Release|Win32">
+      <Configuration>vs2017_Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="vs2017_Release|x64">
+      <Configuration>vs2017_Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AFDF80D6-0131-38C7-B357-2448E4BF7917}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>Documentation</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">$(ProjectName).dir\vc$(PlatformToolsetVersion)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\build_include;..\..\..\GLCore;..\..\src;..\..\..\$(OSG_DIR)\include;..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\build_include;..\..\..\GLCore;..\..\src;..\..\..\$(OSG_DIR)\include;..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\build_include;..\..\..\GLCore;..\..\src;..\..\..\$(OSG_DIR)\include;..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\build_include;..\..\..\GLCore;..\..\src;..\..\..\$(OSG_DIR)\include;..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\build_include;..\..\..\GLCore;..\..\src;..\..\..\$(OSG_DIR)\include;..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\build_include;..\..\..\GLCore;..\..\src;..\..\..\$(OSG_DIR)\include;..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\build_include;..\..\..\GLCore;..\..\src;..\..\..\$(OSG_DIR)\include;..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>..\build_include;..\..\..\GLCore;..\..\src;..\..\..\$(OSG_DIR)\include;..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\about.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\data.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\faq.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\ios.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\releasenotes.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\startup.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\coordinate_systems.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\custom_driver.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\maps.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\qt_integration.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\shader_composition.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\developer\utilities.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\colorfilters.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\earthfile.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\envvars.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\symbology.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\feature\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\feature\ogr.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\feature\tfs.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\feature\wfs.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\loaders\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\feature_geom.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\feature_model_shared_blocks.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\feature_model_shared_props.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\model\simple.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\terrain\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\terrain\mp.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\terrain\terrain_options_shared.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\agglite.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\arcgis.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\debug.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\gdal.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\noise.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\osg.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\tilecache.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\tileservice.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\tms.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\vpb.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\wcs.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\wms.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\references\drivers\tile\xyz.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\annotations.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\caching.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\earthfiles.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\elevation.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\features.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\imagery.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\index.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\maps.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\profile.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\spatialreference.rst" />
+    <None Include="C:\Development\op3d_active\osgearth-3.0.0\docs\source\user\tools.rst" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

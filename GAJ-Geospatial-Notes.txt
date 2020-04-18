@@ -1,0 +1,1 @@
+Install as OSGEARTH_DIR

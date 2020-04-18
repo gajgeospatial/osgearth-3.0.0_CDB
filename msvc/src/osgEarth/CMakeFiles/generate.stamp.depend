@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/ConfigureShaders.cmake.in
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/ModuleInstall.cmake
+C:/Development/op3d_active/osgearth-3.0.0/src/osgEarth/BuildConfig.h.in
+C:/Development/op3d_active/osgearth-3.0.0/src/osgEarth/CMakeLists.txt

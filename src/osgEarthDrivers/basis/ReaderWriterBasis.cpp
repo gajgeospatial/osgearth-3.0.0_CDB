@@ -25,7 +25,7 @@
 #include <osgDB/FileNameUtils>
 #include <osgDB/FileUtils>
 
-#include <basisu/transcoder/basisu_transcoder.h>
+#include <transcoder/basisu_transcoder.h>
 
 using namespace basisu;
 
@@ -116,8 +116,9 @@ public:
                 basist::basisu_image_level_info level_info;
                 transcoder.get_image_level_info(data, length, level_info, 0, levelIndex);
 
-                unsigned int bytesPerBlock = basist::basis_get_bytes_per_block(transcoder_texture_format);
-                unsigned int levelSize = bytesPerBlock * level_info.m_total_blocks;
+//				unsigned int bytesPerBlock = basist::basis_get_bytes_per_block(transcoder_texture_format);
+				unsigned int bytesPerBlock = basist::basis_get_bytes_per_block_or_pixel(transcoder_texture_format);
+				unsigned int levelSize = bytesPerBlock * level_info.m_total_blocks;
                 totalSize += levelSize;
             }
 

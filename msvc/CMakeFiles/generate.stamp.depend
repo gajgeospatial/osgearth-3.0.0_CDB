@@ -1,0 +1,49 @@
+# CMake generation dependency list for this directory.
+C:/Development/op3d_active/osgearth-3.0.0/CMakeLists.txt
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/CXX11.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindBASISU.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindDraco.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindGEOS.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindGLCORE.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindLibZip.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindOSG.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindSilverLining.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindSqlite3.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindTinyXML.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindTracy.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindTriton.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/FindWEBP.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/OsgEarthMacroUtils.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/oe_ios.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/oe_osx.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/oe_unix.cmake
+C:/Development/op3d_active/osgearth-3.0.0/CMakeModules/oe_win32.cmake
+C:/Development/op3d_active/osgearth-3.0.0/msvc/CMakeFiles/3.14.3/CMakeCCompiler.cmake
+C:/Development/op3d_active/osgearth-3.0.0/msvc/CMakeFiles/3.14.3/CMakeCXXCompiler.cmake
+C:/Development/op3d_active/osgearth-3.0.0/msvc/CMakeFiles/3.14.3/CMakeRCCompiler.cmake
+C:/Development/op3d_active/osgearth-3.0.0/msvc/CMakeFiles/3.14.3/CMakeSystem.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindCURL.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindGDAL.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindGLEW.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindOpenGL.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindProtobuf.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/SelectLibraryConfigurations.cmake

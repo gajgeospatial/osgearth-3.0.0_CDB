@@ -18,7 +18,7 @@ MACRO(DETECT_OSG_VERSION)
                 "Detected OSG_INCLUDE_DIR = ${OSG_INCLUDE_DIR}")
         endif()
 
-        set(_osg_Version_file "${OSG_INCLUDE_DIR}/osg/Version")
+        set(_osg_Version_file "${OSG_GEN_INCLUDE_DIR}/osg/Version")
         if("${OSG_INCLUDE_DIR}" MATCHES "\\.framework$" AND NOT EXISTS "${_osg_Version_file}")
             set(_osg_Version_file "${OSG_INCLUDE_DIR}/Headers/Version")
         endif()
