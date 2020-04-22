@@ -5,6 +5,7 @@
 
 #pragma import_defines(OE_GROUNDCOVER_COLOR_SAMPLER)
 #pragma import_defines(OE_GROUNDCOVER_COLOR_MATRIX)
+#pragma import_defines(OE_IS_SHADOW_CAMERA)
 #ifdef OE_GROUNDCOVER_COLOR_SAMPLER
 uniform sampler2D OE_GROUNDCOVER_COLOR_SAMPLER ;
 uniform mat4 OE_GROUNDCOVER_COLOR_MATRIX ;
@@ -32,15 +33,23 @@ void oe_GroundCover_FS(inout vec4 color)
         // modulate the texture
         color *= texture(oe_GroundCover_billboardTex, vec3(oe_GroundCover_texCoord, oe_GroundCover_atlasIndex));
     
+#ifdef OE_IS_SHADOW_CAMERA
+        if (color.a < oe_GroundCover_maxAlpha)
+        {
+            discard;
+        }
+#else
         if (oe_GroundCover_A2C == 1)
         {
             // https://medium.com/@bgolus/anti-aliased-alpha-test-the-esoteric-alpha-to-coverage-8b177335ae4f
-            color.a = (color.a - oe_GroundCover_maxAlpha) / max(fwidth(color.a), 0.0001) + 0.5;
+            // good for distant trees, but bad for top/side url blending - comment out for now
+            //color.a = (color.a - oe_GroundCover_maxAlpha) / max(fwidth(color.a), 0.0001) + 0.5;
         }
         else if (color.a < oe_GroundCover_maxAlpha)
         {
             discard;
         }
+#endif
     }
     else
     {

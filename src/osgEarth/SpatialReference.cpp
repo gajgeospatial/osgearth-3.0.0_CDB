@@ -198,7 +198,8 @@ SpatialReference::create(const Key& key)
     if (key.horizLower == "spherical-mercator" || 
         key.horizLower == "epsg:900913"        || 
         key.horizLower == "epsg:3785"          || 
-        key.horizLower == "epsg:102113")
+        key.horizLower == "epsg:102113"		   ||
+		key.horizLower == "epsg:3857")
     {
         // note the use of nadgrids=@null (see http://proj.maptools.org/faq.html)
         srs = createFromPROJ4(

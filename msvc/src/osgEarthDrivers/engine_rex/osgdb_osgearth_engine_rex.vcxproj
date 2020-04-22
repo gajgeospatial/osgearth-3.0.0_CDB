@@ -657,6 +657,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\CreateTileImplementation.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\DrawState.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\DrawTileCommand.cpp" />
+    <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\FrameClock.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\GeometryPool.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexTerrainEngineNode.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexTerrainEngineDriver.cpp" />
@@ -674,6 +675,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\Loader.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\Unloader.cpp" />
     <ClCompile Include=".\AutoGenShaders.cpp" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\FrameClock" />
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\Common" />
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\CreateTileImplementation" />
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\DrawState" />

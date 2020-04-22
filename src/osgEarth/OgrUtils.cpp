@@ -148,27 +148,17 @@ OgrUtils::createGeometry( OGRGeometryH geomHandle, bool rewindPolygons)
 {
     Geometry* output = 0L;
 
-    OGRwkbGeometryType wkbType = OGR_G_GetGeometryType( geomHandle );        
+    OGRwkbGeometryType wkbType = wkbFlatten(OGR_G_GetGeometryType( geomHandle ));        
 
     int numPoints, numGeoms;
 
     switch (wkbType)
     {
     case wkbPolygon:
-    case wkbPolygon25D:
-#ifdef GDAL_HAS_M_TYPES
-    case wkbPolygonM:
-    case wkbPolygonZM:
-#endif
         output = createPolygon(geomHandle, rewindPolygons);
         break;
 
     case wkbLineString:
-    case wkbLineString25D:
-#ifdef GDAL_HAS_M_TYPES
-    case wkbLineStringM:
-    case wkbLineStringZM:
-#endif
         numPoints = OGR_G_GetPointCount( geomHandle );
         output = new LineString( numPoints );
         populate( geomHandle, output, numPoints );
@@ -181,22 +171,12 @@ OgrUtils::createGeometry( OGRGeometryH geomHandle, bool rewindPolygons)
         break;
 
     case wkbPoint:
-    case wkbPoint25D:
-#ifdef GDAL_HAS_M_TYPES
-    case wkbPointM:
-    case wkbPointZM:
-#endif
         numPoints = OGR_G_GetPointCount( geomHandle );
         output = new Point( numPoints );
         populate( geomHandle, output, numPoints );
         break;
 
     case wkbMultiPoint:
-    case wkbMultiPoint25D:
-#ifdef GDAL_HAS_M_TYPES
-    case wkbMultiPointM:
-    case wkbMultiPointZM:
-#endif
         numGeoms = OGR_G_GetGeometryCount(geomHandle);
         output = new PointSet();
         for (int n = 0; n < numGeoms; n++)
@@ -211,28 +191,14 @@ OgrUtils::createGeometry( OGRGeometryH geomHandle, bool rewindPolygons)
         break;
 
 #ifdef GDAL_HAS_M_TYPES
-    case wkbTINZ:
     case wkbTIN:
-    case wkbTINM:
-    case wkbTINZM:
         output = createTIN(geomHandle);
         break;
 #endif
 
     case wkbGeometryCollection:
-    case wkbGeometryCollection25D:
     case wkbMultiLineString:
-    case wkbMultiLineString25D:
     case wkbMultiPolygon:
-    case wkbMultiPolygon25D:
-#ifdef GDAL_HAS_M_TYPES
-    case wkbGeometryCollectionM:
-    case wkbGeometryCollectionZM:
-    case wkbMultiLineStringM:
-    case wkbMultiLineStringZM:
-    case wkbMultiPolygonM:
-    case wkbMultiPolygonZM:
-#endif
         MultiGeometry* multi = new MultiGeometry();
         numGeoms = OGR_G_GetGeometryCount( geomHandle );
         for( int n=0; n<numGeoms; n++ )

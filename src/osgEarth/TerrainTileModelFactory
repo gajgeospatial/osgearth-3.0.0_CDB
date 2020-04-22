@@ -154,6 +154,7 @@ namespace osgEarth
             TerrainTileModel*            model,
             const Map*                   map,
             const TileKey&               key,
+            const TerrainEngineRequirements* requirements,
             const CreateTileManifest&    manifest,
             ProgressCallback*            progress);
 
@@ -161,6 +162,7 @@ namespace osgEarth
             TerrainTileModel*            model,
             const Map*                   map,
             const TileKey&               key,
+            const TerrainEngineRequirements* requirements,
             const CreateTileManifest&    manifest,
             ProgressCallback*            progress);
 
@@ -178,6 +180,7 @@ namespace osgEarth
         bool getOrCreateHeightField(
             const Map*                      map,
             const ElevationLayerVector&     layers,
+            int                             revision,
             const TileKey&                  key,
             ElevationSamplePolicy           samplePolicy,
             RasterInterpolation             interpolation,
@@ -227,7 +230,8 @@ namespace osgEarth
         typedef LRUCache<HFCacheKey, HFCacheValue> HFCache;
         HFCache _heightFieldCache;
         bool    _heightFieldCacheEnabled;
-        osg::ref_ptr<osg::Texture> _emptyTexture;
+        osg::ref_ptr<osg::Texture> _emptyColorTexture;
+        osg::ref_ptr<osg::Texture> _emptyLandCoverTexture;
     };
 }
 

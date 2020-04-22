@@ -45,9 +45,6 @@ using namespace osgEarth::Util;
 
 #define LC "[TileNode] "
 
-#define REPORT(name,timer) if(context->progress()) { \
-    context->progress()->stats()[name] += OE_GET_TIMER(timer); }
-
 namespace
 {
     // Scale and bias matrices, one for each TileKey quadrant.
@@ -211,11 +208,12 @@ TileNode::create(const TileKey& key, TileNode* parent, EngineContext* context)
         // (used for primitive functors, intersection, etc.)
         if (bindings[SamplerBinding::ELEVATION].isActive())
         {
-            const Sampler& elevation = _renderModel._sharedSamplers[SamplerBinding::ELEVATION];
-            if (elevation._texture.valid())
-            {
-                setElevationRaster(elevation._texture->getImage(0), elevation._matrix);
-            }
+            updateElevationRaster();
+            //const Sampler& elevation = _renderModel._sharedSamplers[SamplerBinding::ELEVATION];
+            //if (elevation._texture.valid())
+            //{
+            //    setElevationRaster(elevation._texture->getImage(0), elevation._matrix);
+            //}
         }
     }
 
@@ -244,37 +242,44 @@ TileNode::computeBound() const
 }
 
 bool
-TileNode::isDormant(const osg::FrameStamp* fs) const
+TileNode::isDormant() const
 {
     const unsigned minMinExpiryFrames = 3u;
-    osg::Timer_t now = osg::Timer::instance()->tick();
+    unsigned frame = _context->getClock()->getFrame();
+    double now = _context->getClock()->getTime();
 
     bool dormant = 
-           fs &&
-           fs->getFrameNumber() - _lastTraversalFrame > osg::maximum(options().minExpiryFrames().get(), minMinExpiryFrames) &&
-           now - _lastTraversalTime > options().minExpiryTime().get();
+        frame - _lastTraversalFrame > osg::maximum(options().minExpiryFrames().get(), minMinExpiryFrames) &&
+        now - _lastTraversalTime > options().minExpiryTime().get();
+
     return dormant;
 }
 
 bool
-TileNode::areSiblingsDormant(const osg::FrameStamp* fs) const
+TileNode::areSiblingsDormant() const
 {
     const TileNode* parent = getParentTile();
-    return parent ? parent->areSubTilesDormant(fs) : true;
+    return parent ? parent->areSubTilesDormant() : true;
 }
 
 void
 TileNode::setElevationRaster(const osg::Image* image, const osg::Matrixf& matrix)
 {
-    //if (image == 0L)
-    //{
-    //    OE_WARN << LC << "TileNode::setElevationRaster: image is NULL!\n";
-    //}
     if (image != getElevationRaster() || matrix != getElevationMatrix())
     {
         if ( _surface.valid() )
             _surface->setElevationRaster( image, matrix );
     }
+}
+
+void
+TileNode::updateElevationRaster()
+{
+    const Sampler& elev = _renderModel._sharedSamplers[SamplerBinding::ELEVATION];
+    if (elev._texture.valid())
+        setElevationRaster(elev._texture->getImage(0), elev._matrix);
+    else
+        setElevationRaster(NULL, osg::Matrixf::identity());
 }
 
 const osg::Image*
@@ -392,7 +397,7 @@ TileNode::cull_spy(TerrainCuller* culler)
     // and add any tile that's been "legitimately" culled (i.e. culled
     // by a non-spy traversal) in the last 2 frames. We use this
     // trick to spy on another camera.
-    unsigned frame = culler->getFrameStamp()->getFrameNumber();
+    unsigned frame = context->getClock()->getFrame();
 
     if ( frame - _surface->getLastFramePassedCull() < 2u)
     {
@@ -481,7 +486,6 @@ TileNode::cull(TerrainCuller* culler)
             {
                 OE_START_TIMER(createChildren);
                 createChildren( context );
-                REPORT("TileNode::createChildren", createChildren);
                 _childrenReady = true;
 
                 // This means that you cannot start loading data immediately; must wait a frame.
@@ -568,8 +572,8 @@ TileNode::traverse(osg::NodeVisitor& nv)
         TerrainCuller* culler = dynamic_cast<TerrainCuller*>(&nv);
 
         // update the timestamp so this tile doesn't become dormant.
-        _lastTraversalFrame.exchange(culler->getFrameStamp()->getFrameNumber());
-        _lastTraversalTime = culler->getFrameStamp()->getReferenceTime();
+        _lastTraversalFrame.exchange(_context->getClock()->getFrame());
+        _lastTraversalTime = _context->getClock()->getTime();
 
         if (!_empty)
         {
@@ -796,7 +800,8 @@ TileNode::merge(const TerrainTileModel* model, LoadTileData* request)
 
             _renderModel.setSharedSampler(SamplerBinding::ELEVATION, tex, revision);
 
-            setElevationRaster(tex->getImage(0), osg::Matrixf::identity());
+            //setElevationRaster(tex->getImage(0), osg::Matrixf::identity());
+            updateElevationRaster();
 
             newElevationData = true;
         }
@@ -808,6 +813,9 @@ TileNode::merge(const TerrainTileModel* model, LoadTileData* request)
             // We OWN elevation data, requested new data, and didn't get any.
             // That means it disappeared and we need to delete what we have.
             inheritSharedSampler(SamplerBinding::ELEVATION);
+
+            updateElevationRaster();
+
             newElevationData = true;
         }
     } 
@@ -1041,7 +1049,6 @@ TileNode::refreshInheritedData(TileNode* parent, const RenderBindings& bindings)
         // Inherit the samplers for this pass.
         if (myPass)
         {
-
             // Handle the main color:
             if (bindings[SamplerBinding::COLOR].isActive())
             {
@@ -1114,8 +1121,9 @@ TileNode::refreshInheritedData(TileNode* parent, const RenderBindings& bindings)
             // Update the local elevation raster cache (for culling and intersection testing).
             if (binding == SamplerBinding::ELEVATION)
             {
-                osg::Image* raster = mySampler._texture.valid() ? mySampler._texture->getImage(0) : NULL;
-                this->setElevationRaster(raster, mySampler._matrix);
+                //osg::Image* raster = mySampler._texture.valid() ? mySampler._texture->getImage(0) : NULL;
+                //this->setElevationRaster(raster, mySampler._matrix);
+                updateElevationRaster();
             }
         }
     }
@@ -1186,18 +1194,18 @@ TileNode::loadSync()
     osg::ref_ptr<LoadTileData> loadTileData = new LoadTileData(this, _context.get());
     loadTileData->setEnableCancelation(false);
     loadTileData->run(0L);
-    loadTileData->merge(0L);
+    loadTileData->merge();
 }
 
 bool
-TileNode::areSubTilesDormant(const osg::FrameStamp* fs) const
+TileNode::areSubTilesDormant() const
 {
     return
         getNumChildren() >= 4           &&
-        getSubTile(0)->isDormant( fs )  &&
-        getSubTile(1)->isDormant( fs )  &&
-        getSubTile(2)->isDormant( fs )  &&
-        getSubTile(3)->isDormant( fs );
+        getSubTile(0)->isDormant()  &&
+        getSubTile(1)->isDormant()  &&
+        getSubTile(2)->isDormant()  &&
+        getSubTile(3)->isDormant();
 }
 
 void

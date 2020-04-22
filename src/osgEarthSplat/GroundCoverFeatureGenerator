@@ -49,14 +49,20 @@ namespace osgEarth { namespace Splat
         //! Sets the groundcover layer from which to generate features (required)
         void setLayer(GroundCoverLayer* layer);
 
+        //! Adds a property name to store as a feature attribute
+        void addBillboardPropertyName(const std::string& name);
+
         //! Returns the status of the generator - call this to 
         //! see if there are any setup errors before calling getFeatures.
         const Status& getStatus() const;
 
-        //! Populate the output with groundcover positions
-        //! corresponding to the tile key.
-        void getFeatures(const TileKey& key, FeatureList& output) const;
-        //osg::ref_ptr<FeatureCursor> getFeatures(const TileKey& key) const;
+        //! Populate the output with groundcover positions corresponding to the tile key.
+        //! The key's LOD should match the GroundCoverLayer's LOD; otherwise no features
+        //! will result.
+        Status getFeatures(const TileKey& key, FeatureList& output) const;
+
+        //! Populate the output with groundcover positions within the extent.
+        Status getFeatures(const GeoExtent& extent, FeatureList& output) const;
         
     private:
         Status _status;
@@ -68,6 +74,7 @@ namespace osgEarth { namespace Splat
         osg::ref_ptr<LandCoverDictionary> _lcdict;
         osg::ref_ptr<osg::Texture> _noiseTexture;
         CreateTileManifest _manifest;
+        std::vector<std::string> _propNames;
 
         void initialize();
     };

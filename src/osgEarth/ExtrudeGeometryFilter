@@ -39,178 +39,213 @@ namespace osgEarth { namespace Util
     using namespace osgEarth;
 
     class ResourceLibrary;
+	class ExtrudeGeomGDALHelper
+	{
+	public:
+		ExtrudeGeomGDALHelper(std::string gdalimagename);
+		~ExtrudeGeomGDALHelper();
+		bool ImageOK(void);
+		bool LL2UV(osg::Vec3d Point, float &u, float &v);
+		void Add_Mat_Index(bool have_mat_index, std::string mat_index_name);
+		osg::StateSet * CreateSetState(const osgDB::Options* readOptions);
+		bool AddMat2SetState(osg::ref_ptr<osg::StateSet> &roofSetState, const osgDB::Options* readOptions);
+	private:
+		std::string _gdalimagename;
+		std::string _imagenamefortexture;
+		bool		_have_mat_index_data;
+		std::string _mat_index_name;
+		bool		_have_image_data;
+		int			_num_bands;
+		int			_RsizeX;
+		int			_RsizeY;
+		double		_adfGeoTransform[6];
+		double		_minX;
+		double		_maxY;
+		double		_maxX;
+		double		_minY;
+
+		void		Open_Image();
+		osg::Texture * CreateTexture(osg::Image *image);
+	};
 
     /**
      * Extrudes footprint geometry into 3D geometry
      */
-    class OSGEARTH_EXPORT ExtrudeGeometryFilter : public FeaturesToNodeFilter
-    {
-    public:
-        struct HeightCallback : public osg::Referenced
-        {
-            virtual float operator()( Feature* input, const FilterContext& cx ) =0;
-        };
+	class OSGEARTH_EXPORT ExtrudeGeometryFilter : public FeaturesToNodeFilter
+	{
+	public:
+		struct HeightCallback : public osg::Referenced
+		{
+			virtual float operator()(Feature* input, const FilterContext& cx) = 0;
+		};
 
-    public:
+	public:
 
-        /** Constructs a new filter that will extrude footprints */
-        ExtrudeGeometryFilter();
+		/** Constructs a new filter that will extrude footprints */
+		ExtrudeGeometryFilter();
 
-        virtual ~ExtrudeGeometryFilter() { }
+		virtual ~ExtrudeGeometryFilter() { }
 
-        /**
-         * Sets the style that will govern the geometry generation.
-         */
-        void setStyle( const Style& style );
+		/**
+		 * Sets the style that will govern the geometry generation.
+		 */
+		void setStyle(const Style& style);
 
-        /**
-         * Pushes a list of features through the filter.
-         */
-        osg::Node* push( FeatureList& input, FilterContext& context );
+		/**
+		 * Pushes a list of features through the filter.
+		 */
+		osg::Node* push(FeatureList& input, FilterContext& context);
 
-    public: // properties
+	public: // properties
 
-        /**
-         * Sets the maximum wall angle that doesn't require a new normal vector
-         */
-        void setWallAngleThreshold(float value) { _wallAngleThresh_deg = value; }
-        float getWallAngleThreshold() const { return _wallAngleThresh_deg; }
+		/**
+		 * Sets the maximum wall angle that doesn't require a new normal vector
+		 */
+		void setWallAngleThreshold(float value) { _wallAngleThresh_deg = value; }
+		float getWallAngleThreshold() const { return _wallAngleThresh_deg; }
 
-        /**
-         * Sets whether to render a bottom top. Useful for creating stencil volumes.
-         */
-        void setMakeStencilVolume( bool value ) { _makeStencilVolume = value; }
-        
-        /**
-         * Sets the expression to evaluate when setting a feature name.
-         * NOTE: setting this forces geometry-merging to OFF
-         */
-        void setFeatureNameExpr( const StringExpression& expr ) { _featureNameExpr = expr; }
-        const StringExpression& getFeatureNameExpr() const { return _featureNameExpr; }
+		/**
+		 * Sets whether to render a bottom top. Useful for creating stencil volumes.
+		 */
+		void setMakeStencilVolume(bool value) { _makeStencilVolume = value; }
 
-        /**
-         * Whether to merge geometry for better rendering performance
-         */
-        void setMergeGeometry(bool value) { _mergeGeometry = value; }
-        bool getMergeGeometry() const { return _mergeGeometry; }
+		/**
+		 * Sets the expression to evaluate when setting a feature name.
+		 * NOTE: setting this forces geometry-merging to OFF
+		 */
+		void setFeatureNameExpr(const StringExpression& expr) { _featureNameExpr = expr; }
+		const StringExpression& getFeatureNameExpr() const { return _featureNameExpr; }
+
+		/**
+		 * Whether to merge geometry for better rendering performance
+		 */
+		void setMergeGeometry(bool value) { _mergeGeometry = value; }
+		bool getMergeGeometry() const { return _mergeGeometry; }
 
 
-    protected:
+	protected:
 
-        // A Corner is one vertex in the source geometry, extrude from base to roof.
-        struct Corner
-        {
-            osg::Vec3d base, roof;
-            float      roofTexU, roofTexV;
-            double     offsetX;
-            float      wallTexHeightAdjusted;
-            bool       isFromSource;
-            float      cosAngle;
-            float      height;
-        };
-        typedef std::list<Corner> Corners; // use a list to prevent iterator invalidation
+		// A Corner is one vertex in the source geometry, extrude from base to roof.
+		struct Corner
+		{
+			osg::Vec3d base, roof;
+			float      roofTexU, roofTexV;
+			double     offsetX;
+			float      wallTexHeightAdjusted;
+			bool       isFromSource;
+			float      cosAngle;
+			float      height;
+		};
+		typedef std::list<Corner> Corners; // use a list to prevent iterator invalidation
 
-        // A Face joins to Corners.
-        struct Face
-        {
-            Corner left;
-            Corner right;
-            double widthM;
-        };
-        typedef std::vector<Face> Faces;
-        
-        // An Elevation is a series of related Faces.
-        struct Elevation
-        {
-            Faces  faces;
-            double texHeightAdjustedM;
+		// A Face joins to Corners.
+		struct Face
+		{
+			Corner left;
+			Corner right;
+			double widthM;
+		};
+		typedef std::vector<Face> Faces;
 
-            unsigned getNumPoints() const {
-                return faces.size() * 6;
-            }
-        };
-        typedef std::vector<Elevation> Elevations;
+		// An Elevation is a series of related Faces.
+		struct Elevation
+		{
+			Faces  faces;
+			double texHeightAdjustedM;
 
-        // A Structure is a collection of related Elevations.
-        struct Structure
-        {
-            Elevations elevations;
-            bool       isPolygon;
-            osg::Vec3d baseCentroid;
-            float      verticalOffset;
+			unsigned getNumPoints() const {
+				return faces.size() * 6;
+			}
+		};
+		typedef std::vector<Elevation> Elevations;
 
-            unsigned getNumPoints() const {
-                unsigned c = 0;
-                for(Elevations::const_iterator e = elevations.begin(); e != elevations.end(); ++e ) {
-                    c += e->getNumPoints();
-                }
-                return c;
-            }
-        };
+		// A Structure is a collection of related Elevations.
+		struct Structure
+		{
+			Elevations elevations;
+			bool       isPolygon;
+			osg::Vec3d baseCentroid;
+			float      verticalOffset;
 
-        // a set of geodes indexed by stateset pointer, for pre-sorting geodes based on 
-        // their texture usage
-        typedef std::map<osg::StateSet*, osg::ref_ptr<osg::Geode> > SortedGeodeMap;
-        SortedGeodeMap                 _geodes;
-        SortedGeodeMap                 _lineGroups;
-        osg::ref_ptr<osg::StateSet>    _noTextureStateSet;
+			unsigned getNumPoints() const {
+				unsigned c = 0;
+				for (Elevations::const_iterator e = elevations.begin(); e != elevations.end(); ++e) {
+					c += e->getNumPoints();
+				}
+				return c;
+			}
+		};
 
-        bool                           _mergeGeometry;
-        float                          _wallAngleThresh_deg;
-        float                          _cosWallAngleThresh;
-        StringExpression               _featureNameExpr;
-        osg::ref_ptr<HeightCallback>   _heightCallback;
-        optional<NumericExpression>    _heightExpr;
-        bool                           _makeStencilVolume;
+		// a set of geodes indexed by stateset pointer, for pre-sorting geodes based on 
+		// their texture usage
+		typedef std::map<osg::StateSet*, osg::ref_ptr<osg::Geode> > SortedGeodeMap;
+		SortedGeodeMap                 _geodes;
+		SortedGeodeMap                 _lineGroups;
+		osg::ref_ptr<osg::StateSet>    _noTextureStateSet;
 
-        Style                          _style;
-        bool                           _styleDirty;
-        bool                           _gpuClamping;
+		bool                           _mergeGeometry;
+		float                          _wallAngleThresh_deg;
+		float                          _cosWallAngleThresh;
+		StringExpression               _featureNameExpr;
+		osg::ref_ptr<HeightCallback>   _heightCallback;
+		optional<NumericExpression>    _heightExpr;
+		bool                           _makeStencilVolume;
 
-        osg::ref_ptr<const ExtrusionSymbol> _extrusionSymbol;
-        osg::ref_ptr<const PolygonSymbol>   _polySymbol;
-        osg::ref_ptr<const SkinSymbol>      _wallSkinSymbol;
-        osg::ref_ptr<const PolygonSymbol>   _wallPolygonSymbol;
-        osg::ref_ptr<const SkinSymbol>      _roofSkinSymbol;
-        osg::ref_ptr<const PolygonSymbol>   _roofPolygonSymbol;
-        osg::ref_ptr<const LineSymbol>      _outlineSymbol;
-        osg::ref_ptr<ResourceLibrary>       _wallResLib;
-        osg::ref_ptr<ResourceLibrary>       _roofResLib;
+		Style                          _style;
+		bool                           _styleDirty;
+		bool                           _gpuClamping;
 
-        void reset( const FilterContext& context );
-        
-        void addDrawable( 
-            osg::Drawable*       drawable, 
-            osg::StateSet*       stateSet, 
-            const std::string&   name,
-            Feature*             feature,
-            FeatureIndexBuilder* index);
-        
-        bool process( 
-            FeatureList&     input,
-            FilterContext&   context );
-        
-        bool buildStructure(const Geometry*         input,
-                            double                  height,
-                            bool                    flatten,
-                            float                   verticalOffset,
-                            const SkinResource*     wallSkin,
-                            const SkinResource*     roofSkin,
-                            Structure&              out_structure,
-                            FilterContext&          cx );
+		osg::ref_ptr<const ExtrusionSymbol> _extrusionSymbol;
+		osg::ref_ptr<const PolygonSymbol>   _polySymbol;
+		osg::ref_ptr<const SkinSymbol>      _wallSkinSymbol;
+		osg::ref_ptr<const PolygonSymbol>   _wallPolygonSymbol;
+		osg::ref_ptr<const SkinSymbol>      _roofSkinSymbol;
+		osg::ref_ptr<const PolygonSymbol>   _roofPolygonSymbol;
+		osg::ref_ptr<const LineSymbol>      _outlineSymbol;
+		osg::ref_ptr<ResourceLibrary>       _wallResLib;
+		osg::ref_ptr<ResourceLibrary>       _roofResLib;
 
-        bool buildWallGeometry(const Structure&     structure,
-                               osg::Geometry*       walls,
-                               const osg::Vec4&     wallColor,
-                               const osg::Vec4&     wallBaseColor,
-                               const SkinResource*  wallSkin);
+		void reset(const FilterContext& context);
 
-        bool buildRoofGeometry(const Structure&     structure,
-                               osg::Geometry*       roof,
-                               const osg::Vec4&     roofColor,
-                               const SkinResource*  roofSkin);
+		void addDrawable(
+			osg::Drawable*       drawable,
+			osg::StateSet*       stateSet,
+			const std::string&   name,
+			Feature*             feature,
+			FeatureIndexBuilder* index);
 
-        osg::Drawable* buildOutlineGeometry(const Structure& structure);
+		bool process(
+			FeatureList&     input,
+			FilterContext&   context);
+
+		bool buildStructure(const Geometry*         input,
+			double                  height,
+			bool                    flatten,
+			float                   verticalOffset,
+			const SkinResource*     wallSkin,
+			const SkinResource*     roofSkin,
+			Structure&              out_structure,
+			FilterContext&          cx,
+			bool					have_roof_image,
+			std::string				roof_image_name,
+			bool					roof_image_has_mat_index,
+			std::string				roof_mat_index_name,
+			ExtrudeGeomGDALHelper * RoofHelper);
+
+		bool buildWallGeometry(const Structure&     structure,
+			osg::Geometry*       walls,
+			const osg::Vec4&     wallColor,
+			const osg::Vec4&     wallBaseColor,
+			const SkinResource*  wallSkin);
+
+		bool buildRoofGeometry(const Structure&     structure,
+			osg::Geometry*       roof,
+			const osg::Vec4&     roofColor,
+			const SkinResource*  roofSkin,
+			const bool			have_roof_image,
+			const bool			have_roof_mat_index);
+
+		osg::Drawable* buildOutlineGeometry(const Structure&  structure);
     };
 } }
 

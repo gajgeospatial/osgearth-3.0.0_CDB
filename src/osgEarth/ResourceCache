@@ -50,7 +50,9 @@ namespace osgEarth { namespace Util
          */
         bool getOrCreateStateSet(SkinResource* skin, osg::ref_ptr<osg::StateSet>& output, const osgDB::Options* readOptions);
 
-        /**
+		bool getOrCreateMatStateSet(SkinResource* skin, osg::ref_ptr<osg::StateSet>& output, const osgDB::Options* readOptions);
+
+		/**
          * Get the statistics collected from the skin cache.
          */
         const CacheStats getSkinStats() const { return _skinCache.getStats(); }
@@ -61,8 +63,8 @@ namespace osgEarth { namespace Util
          * @param output Result goes here.
          */
         bool getOrCreateInstanceNode( InstanceResource* instance, osg::ref_ptr<osg::Node>& output, const osgDB::Options* readOptions );
-        bool cloneOrCreateInstanceNode( InstanceResource* instance, osg::ref_ptr<osg::Node>& output, const osgDB::Options* readOptions );
-
+        bool cloneOrCreateInstanceNode( InstanceResource* instance, osg::ref_ptr<osg::Node>& output, const osgDB::Options* readOptions, osgDB::Archive* ar = NULL);
+	
         const CacheStats getInstanceStats() const { return _instanceCache.getStats(); }
 
         /**

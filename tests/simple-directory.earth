@@ -1,0 +1,11 @@
+<!-- 
+osgEarth Sample - GDAL
+Demonstrates the simplest possible use of the GDAL layer to load a GeoTIFF image.
+-->
+
+<map>
+    <GDALImage name="N35W84 GeoTIFF">
+        <url>G:/Source/N35W84_Data/002_Imagery</url>
+        <extensions>tif</extensions>
+    </GDALImage>
+</map>

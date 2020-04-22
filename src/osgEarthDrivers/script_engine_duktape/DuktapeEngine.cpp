@@ -192,7 +192,8 @@ namespace
                         duk_put_prop_string(ctx, props_i, a->first.c_str()); // [global] [feature] [properties]
                     }
                 }
-                duk_put_prop_string(ctx, feature_i, "properties"); // [global] [feature]
+				duk_put_prop_string(ctx, feature_i, "properties"); // [global] [feature]
+//				duk_put_prop_string(ctx, feature_i, "attributes"); // [global] [feature]
 
                 duk_idx_t geometry_i = duk_push_object(ctx);  // [global] [feature] [geometry]
                 {

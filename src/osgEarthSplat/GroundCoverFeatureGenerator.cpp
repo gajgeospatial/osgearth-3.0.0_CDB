@@ -65,6 +65,7 @@ namespace
         float width;
         float height;
         float sizeVariation;
+        Config billboardConfig;
     };
 
     typedef std::vector<BillboardLUTEntry> BillboardLUT;
@@ -90,6 +91,8 @@ namespace
                     BillboardLUTEntry entry;
                     if (bb->_symbol.valid())
                     {
+                        entry.billboardConfig = bb->_symbol->getConfig();
+                        OE_INFO << entry.billboardConfig.toJSON(false) << std::endl;
                         entry.width = bb->_symbol->width().get();
                         entry.height = bb->_symbol->height().get();
                         entry.sizeVariation = bb->_symbol->sizeVariation().get();
@@ -140,6 +143,12 @@ GroundCoverFeatureGenerator::setLayer(GroundCoverLayer* layer)
 {
     _gclayer = layer;
     initialize();
+}
+
+void
+GroundCoverFeatureGenerator::addBillboardPropertyName(const std::string& name)
+{
+    _propNames.push_back(name);
 }
 
 const Status&
@@ -245,33 +254,57 @@ GroundCoverFeatureGenerator::initialize()
     _status.set(Status::NoError);
 }
 
-void
+Status
+GroundCoverFeatureGenerator::getFeatures(const GeoExtent& extent, FeatureList& output) const
+{
+    if (!_map.valid() || _map->getProfile()==NULL)
+        return Status(Status::ConfigurationError, "No map, or profile not set");
+
+    if (!_gclayer.valid())
+        return Status(Status::ConfigurationError, "No GroundCoverLayer");
+
+    if (extent.isInvalid())
+        return Status(Status::ConfigurationError, "Invalid extent");
+
+    std::vector<TileKey> keys;
+    _map->getProfile()->getIntersectingTiles(extent, _gclayer->getLOD(), keys);
+    if (keys.empty())
+        return Status(Status::AssertionFailure, "No keys intersect extent");
+    
+    for(std::vector<TileKey>::const_iterator i = keys.begin();
+        i != keys.end();
+        ++i)
+    {
+        Status s = getFeatures(*i, output);
+
+        if (s.isError())
+            return s;
+    }
+
+    return Status::NoError;
+}
+
+Status
 GroundCoverFeatureGenerator::getFeatures(const TileKey& key, FeatureList& output) const
 {
+    if (key.getLOD() != _gclayer->getLOD())
+        return Status(Status::ConfigurationError, "TileKey LOD does not match GroundCoverLayer LOD");
+
     osg::Vec4f landCover, mask, elev;
 
     // Populate the model, falling back on lower-LOD keys as necessary
     osg::ref_ptr<TerrainTileModel> model = _factory->createStandaloneTileModel(_map.get(), key, _manifest, NULL, NULL);
     if (!model.valid())
-    {
-        OE_INFO << LC << "createStandaloneTileModel returned NULL for " << key.str() << std::endl;
-        return;
-    }
+        return Status::NoError;
 
     // for now, default to zone 0
     Zone* zone = _gclayer->getZones()[0].get();
     if (!zone)
-    {
-        OE_INFO << LC << "getZones returned NULL for " << key.str() << std::endl;
-        return;
-    }
+        return Status("No zones found in GroundCoverLayer");
 
     GroundCover* groundcover = zone->getGroundCover();
     if (!groundcover)
-    {
-        OE_INFO << LC << "getGroundCover returned NULL for " << key.str() << std::endl;
-        return;
-    }
+        return Status("No groundcover data found in zone");
 
     // noise sampler:
     ImageUtils::PixelReader sampleNoise;
@@ -298,11 +331,13 @@ GroundCoverFeatureGenerator::getFeatures(const TileKey& key, FeatureList& output
         if (!lcTex)
         {
             // TODO: how to handle this?
-            OE_WARN << "No land cover texture for " << key.str() << std::endl;
-            return;
+            //return Status(Status::AssertionFailure, "No landcover texture available");
         }
-        osg::RefMatrixf* r = model->getLandCoverTextureMatrix();
-        if (r) lcMat = *r;
+        else
+        {
+            osg::RefMatrixf* r = model->getLandCoverTextureMatrix();
+            if (r) lcMat = *r;
+        }
     }
     ImageUtils::PixelReader lcSampler;
     lcSampler.setTexture(lcTex);
@@ -436,15 +471,29 @@ GroundCoverFeatureGenerator::getFeatures(const TileKey& key, FeatureList& output
         if (biome)
         {
             BillboardLUT& bblut = biomeLUT[biome];
-            unsigned index = (unsigned)clamp(noise[NOISE_RANDOM], 0.0, 0.9999999) * (float)(bblut.size());
+            unsigned index = (unsigned)(clamp(noise[NOISE_RANDOM], 0.0, 0.9999999) * (float)(bblut.size()));
             BillboardLUTEntry& bb = bblut[index];
             float sizeScale = bb.sizeVariation * (noise[NOISE_RANDOM_2] * 2.0 - 1.0);
             float width = bb.width + bb.width*sizeScale;
             float height = bb.height + bb.height*sizeScale;
             feature->set("width", width);
             feature->set("height", height);
+
+            // Store any pass-thru properties
+            for(std::vector<std::string>::const_iterator i = _propNames.begin();
+                i != _propNames.end(); 
+                ++i)
+            {
+                std::string value = bb.billboardConfig.value(*i);
+                if (!value.empty())
+                {
+                    feature->set(*i, value);
+                }
+            }
         }
 
         output.push_back(feature.get());
     }
+
+    return Status::NoError;
 }

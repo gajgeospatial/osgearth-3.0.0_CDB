@@ -898,6 +898,15 @@
     <ClCompile Include="..\..\..\src\osgEarth\Geocoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\CDB_TileLib\CDB_Tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\osgEarth\GlobalModelManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\osgEarth\InstanceBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\osgEarth\AGG.h">
@@ -1950,6 +1959,18 @@
     </None>
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RTTPicker.glsl">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\..\src\ogc\ogc_IE">
+      <Filter>Headers</Filter>
+    </None>
+    <None Include="..\..\..\src\CDB_TileLib\CDB_Tile">
+      <Filter>Headers</Filter>
+    </None>
+    <None Include="..\..\..\src\osgEarth\GlobalModelManager">
+      <Filter>Headers</Filter>
+    </None>
+    <None Include="..\..\..\src\osgEarth\InstanceBuilder">
+      <Filter>Headers</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

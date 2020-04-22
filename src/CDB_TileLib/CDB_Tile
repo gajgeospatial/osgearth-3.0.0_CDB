@@ -1,0 +1,622 @@
+#pragma once
+// Copyright (c) 2016-2017 Visual Awareness Technologies and Consulting Inc, St Petersburg FL
+// This file is based on the Common Database (CDB) Specification for USSOCOM
+// Version 3.0 – October 2008
+
+// CDB_Tile is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// CDB_Tile is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+
+// You should have received a copy of the GNU Lesser General Public License
+// along with CDB_Tile.  If not, see <http://www.gnu.org/licenses/>.
+
+// 2015 GAJ Geospatial Enterprises, Orlando FL
+// Modified for General Incorporation of Common Database (CDB) support within osgEarth
+//
+#include <ogc/ogc_IE>
+#if defined(_MSC_VER)
+#pragma warning( disable : 4251 )
+#endif
+
+#include <cdbGlobals/cdbGlobals>
+#include <sstream>
+#include <iomanip>
+#include <vector>
+#include <osgEarth/TileSource>
+
+
+#include <gdal_priv.h>
+#include <ogr_core.h>
+#include <ogrsf_frmts.h>
+#include <ogr_attrind.h>
+#include <ogr_spatialref.h>
+#include <osgDB/Archive>
+#include <osgEarth/XmlUtils>
+#include <cdbGlobals/ModelFeatureDefs>
+#include <osgEarth/Feature>
+
+namespace osgEarth {
+	namespace CDBTile
+	{
+
+		using namespace std;
+
+#ifdef _MSC_VER
+#if _MSC_VER < 1800
+#define round osg::round
+#endif
+#endif
+
+		//This is based on the global profile in CDBTileSource
+#define MAXNLODNUM 5
+
+
+		typedef enum
+		{
+			None = 0,
+			Partial = 1,
+			Full = 2,
+			NotSet = 3,
+		}Image_Contrib;
+
+
+		typedef enum
+		{
+			Created = 0,
+			Opened = 1,
+			Loaded = 2
+		}CDB_Tile_Status;
+
+
+		struct CDB_GDAL_Access
+		{
+			GDALDataset *		poDataset;
+			GDALDataset *		soDataset;
+			GDALDataset *		so2Dataset;
+			GDALRasterBand *	RedBand;
+			GDALRasterBand *	GreenBand;
+			GDALRasterBand *	BlueBand;
+			GDALDriver *		poDriver;
+			GDALDriver *		so2Driver;
+			double				adfGeoTransform[6];
+			unsigned char *		reddata;
+			unsigned char *		greendata;
+			unsigned char *		bluedata;
+			unsigned char *		lightmapdatar;
+			unsigned char *		lightmapdatag;
+			unsigned char *		lightmapdatab;
+			unsigned char *		materialdata;
+			unsigned char *		materialmaskdata;
+			float *				elevationdata;
+			float *				subord_elevationdata;
+			CDB_GDAL_Access() : poDataset(NULL), RedBand(NULL), GreenBand(NULL), BlueBand(NULL), reddata(NULL),
+				greendata(NULL), bluedata(NULL), elevationdata(NULL), poDriver(NULL), subord_elevationdata(NULL),
+				soDataset(NULL), lightmapdatar(NULL), materialdata(NULL), so2Dataset(NULL), so2Driver(NULL),
+				lightmapdatag(NULL), lightmapdatab(NULL), materialmaskdata(NULL)
+			{
+			}
+		};
+
+		struct CDB_GDAL_Drivers
+		{
+			bool			cdb_drivers_initialized;
+			GDALDriver *	cdb_JP2Driver;
+			GDALDriver *	cdb_GTIFFDriver;
+			GDALDriver *	cdb_HFADriver;
+			GDALDriver *	cdb_ShapefileDriver;
+			GDALDriver *	cdb_GeoPackageDriver;
+			CDB_GDAL_Drivers() : cdb_drivers_initialized(false), cdb_JP2Driver(NULL), cdb_GTIFFDriver(NULL), cdb_HFADriver(NULL), cdb_ShapefileDriver(NULL),
+				cdb_GeoPackageDriver(NULL)
+			{
+			}
+		};
+
+
+
+		struct CDB_Tile_Pixels
+		{
+			int		pixX;
+			int		pixY;
+			int		bands;
+			GDALDataType pixType;
+			coord2d degPerPix;
+			CDB_Tile_Pixels() : pixX(1024), pixY(1024), bands(3), pixType(GDT_Byte)
+			{
+			}
+		};
+
+		struct CDB_ModelFeature_Set
+		{
+			std::vector<OGRFeature *> FeatureSet;
+			int	curFeature;
+
+			CDB_ModelFeature_Set() : curFeature(-1)
+			{
+			}
+
+			~CDB_ModelFeature_Set()
+			{
+				Clear_Features();
+			}
+
+			void Reset(void)
+			{
+				curFeature = -1;
+			}
+
+			OGRFeature * GetNextFeature(void)
+			{
+				++curFeature;
+				if (curFeature < FeatureSet.size())
+				{
+					return FeatureSet[curFeature];
+				}
+				else
+					return NULL;
+			}
+
+			void DestroyCurFeature(void)
+			{
+				if (curFeature < FeatureSet.size())
+				{
+					OGRFeature::DestroyFeature(FeatureSet[curFeature]);
+					FeatureSet[curFeature] = NULL;
+				}
+			}
+
+			void Clear_Features(void)
+			{
+				for each(OGRFeature *f in FeatureSet)
+				{
+					if (f)
+					{
+						OGRFeature::DestroyFeature(f);
+						f = NULL;
+					}
+				}
+				FeatureSet.clear();
+			}
+
+			void AddFeature(OGRFeature *f)
+			{
+				FeatureSet.push_back(f);
+			}
+
+			bool LoadFeatureSet(OGRLayer * poLayer)
+			{
+				poLayer->ResetReading();
+				OGRFeature * poFeature = NULL;
+				while ((poFeature = poLayer->GetNextFeature()) != NULL)
+				{
+					FeatureSet.push_back(poFeature);
+				}
+				return FeatureSet.size() > 0;
+			}
+
+			size_t Size(void)
+			{
+				return FeatureSet.size();
+			}
+		};
+
+		struct CDB_Model_Tile_Set
+		{
+			std::string			ModelWorkingName;
+			std::string			ModelGeometryName;
+			std::string			ModelTextureName;
+			std::string			ModelDbfName;
+			std::string			PrimaryLayerName;
+			std::string			ClassLayerName;
+			GDALDataset *		PrimaryTileOgr;
+			GDALDataset *		ClassTileOgr;
+			OGRLayer *			PrimaryLayer;
+			bool				ModelWorkingNameExists;
+			bool				ModelGeometryNameExists;
+			bool				ModelTextureNameExists;
+			bool				ModelDbfNameExists;
+			CDB_Model_RuntimeMap clsMap;
+			osgDB::Archive::FileNameList archiveFileList;
+			CDB_ModelFeature_Set FeatureSet;
+#ifdef _DEBUG
+			CDB_ModelFeature_Set DebugFeatureSet;
+#endif
+
+			CDB_Model_Tile_Set() : ModelWorkingName(""), ModelGeometryName(""), ModelTextureName(""), ModelDbfName(""), ModelWorkingNameExists(false),
+				ModelGeometryNameExists(false), ModelTextureNameExists(false), ModelDbfNameExists(false), PrimaryTileOgr(NULL), ClassTileOgr(NULL), PrimaryLayer(NULL)
+			{
+				clsMap.clear();
+			}
+
+			void Clear_Class_Map()
+			{
+				clsMap.clear();
+			}
+
+		};
+		typedef CDB_Model_Tile_Set * CDB_Model_Tile_SetP;
+		typedef std::vector<CDB_Model_Tile_Set> CDB_Model_Tile_SetV;
+		typedef std::vector<CDB_Model_Tile_SetP> CDB_Model_Tile_SetPV;
+
+		struct CDB_GT_Model_Tile_Selector
+		{
+			std::string		TilePrimaryShapeName;
+			std::string		PrimaryLayerName;
+			std::string		TileSecondaryShapeName;
+			std::string		ClassLayerName;
+			GDALDataset *	PrimaryTileOgr;
+			GDALDataset *	ClassTileOgr;
+			OGRLayer *		PrimaryLayer;
+			bool			PrimaryExists;
+			bool			ClassExists;
+			int				RealSel;
+			CDB_Model_RuntimeMap clsMap;
+			CDB_ModelFeature_Set FeatureSet;
+#ifdef _DEBUG
+			CDB_ModelFeature_Set DebugFeatureSet;
+#endif
+			CDB_GT_Model_Tile_Selector() : TilePrimaryShapeName(""), TileSecondaryShapeName(""), PrimaryExists(false),
+				ClassExists(false), PrimaryLayerName(""), PrimaryTileOgr(NULL), ClassTileOgr(NULL), PrimaryLayer(NULL), RealSel(0)
+			{
+				clsMap.clear();
+			}
+
+			void Clear_Clas_Map()
+			{
+				clsMap.clear();
+			}
+
+		};
+		typedef CDB_GT_Model_Tile_Selector * CDB_GT_Model_Tile_SelectorP;
+		typedef std::vector<CDB_GT_Model_Tile_Selector> CDB_GT_Tile_SelectorV;
+		typedef std::vector<CDB_GT_Model_Tile_SelectorP> CDB_GT_Tile_SelectorPV;
+
+		struct CDB_Model_Code_Struct
+		{
+			std::string	code;
+			std::string	label;
+			std::vector<CDB_Model_Code_Struct> subCodes;
+			CDB_Model_Code_Struct() : code(""), label("")
+			{
+			}
+			CDB_Model_Code_Struct(std::string sCode, std::string sLabel) : code(sCode), label(sLabel)
+			{
+			}
+
+		};
+
+		class CDB_Tile;
+		typedef CDB_Tile * CDB_TileP;
+		typedef vector<CDB_TileP> CDB_TilePV;
+
+
+		class OSGEARTH_EXPORT CDB_Tile
+		{
+		public:
+			CDB_Tile(std::string cdbRootDir, std::string cdbCacheDir, CDB_Tile_Type TileType, std::string dataset, CDB_Tile_Extent *TileExtent, bool lightmap, bool material, bool material_mask, int NLod = 0, bool DataFromGlobal = false);
+
+			virtual ~CDB_Tile();
+
+			std::string FileName(int sel = -1);
+
+			int Realsel(int sel);
+
+			int CDB_LOD_Num(void);
+
+			bool Build_Cache_Tile(bool save_cache);
+
+			bool Build_Earth_Tile(void);
+
+			bool Tile_Exists(int sel = -1);
+
+			bool Has_Mask_Data(void);
+
+			bool Has_Material_Data(void);
+
+			bool Subordinate_Exists(void);
+
+			bool Subordinate2_Exsits(void);
+
+			void Set_Subordinate(bool value);
+
+			double West(void);
+
+			double East(void);
+
+			double North(void);
+
+			double South(void);
+
+			bool Load_Tile(void);
+
+			coord2d LL2Pix(coord2d LLPoint);
+
+			bool Get_Image_Pixel(coord2d ImPix, unsigned char &RedPix, unsigned char &GreenPix, unsigned char &BluePix);
+
+			bool Get_Lightmap_Pixel(coord2d ImPix, unsigned char &RedPix, unsigned char &GreenPix, unsigned char &BluePix);
+
+			bool Get_Material_Pixel(coord2d ImPix, unsigned char &MatPix);
+
+			bool Get_Mask_Pixel(coord2d ImPix, unsigned char &MaskPix);
+
+			bool Get_Elevation_Pixel(coord2d ImPix, float &ElevationPix);
+
+			bool Get_Subordinate_Elevation_Pixel(coord2d ImPix, float &ElevationPix);
+
+			void Free_Resources(void);
+
+			osg::Image* Image_From_Tile(void);
+
+			osg::HeightField* HeightField_From_Tile(void);
+
+			bool Init_Model_Tile(int sel);
+
+			bool Init_Map_Tile(void);
+
+			OGRFeature * Next_Valid_Feature(int sel, bool inflated, std::string &ModelKeyName, std::string &FullModelName,
+				std::string &ArchiveFileName, bool &Model_in_Archive);
+
+			bool DestroyCurrentFeature(int sel);
+
+			bool Set_SpatialFilter_Extent(CDB_Tile_Extent &SpatialExtent);
+
+			bool Model_Geometry_Name(std::string &GeometryName, unsigned int pos = 0);
+
+			bool Model_Texture_Directory(std::string &TextureDir);
+
+			bool Model_Texture_Archive(std::string &TextureArchive, unsigned int pos = 0);
+
+			std::string Model_HeaderName(void);
+
+			std::string Model_ZipDir(void);
+
+			std::string Model_KeyNameFromArchiveName(const std::string &ArchiveFileName, std::string &Header);
+
+			int Model_Sel_Count(void);
+
+			CDB_Model_Runtime_Class Current_Feature_Class_Data(void);
+
+			osgDB::Archive::FileNameList * Model_Archive_List(unsigned int pos = 0);
+
+			OGRLayer * Map_Tile_Layer(std::string LayerName);
+
+			GDALDataset * Map_Tile_Dataset(void);
+
+			void Enable_Materials(bool value, bool value2);
+
+			void Enable_LightMap(bool value);
+
+			std::string Subordinate_Name(void);
+
+			std::string Subordinate2_Name(void);
+
+			void Set_DataFromGlobal(bool value);
+
+			bool DataFromGlobal(void);
+
+			static bool Get_BaseMap_Files(std::string rootDir, CDB_Tile_Extent &Extent, std::vector<std::string> &files);
+
+			static double Get_Lon_Step(double Latitude);
+
+			static bool Initialize_Tile_Drivers(std::string &ErrorMsg);
+
+			static void Disable_Bathyemtry(bool value);
+
+
+			static bool validate_tile_name(std::string &filename);
+
+			static void Set_LOD0_GS_Stack(bool value);
+
+			static void Set_LOD0_GT_Stack(bool value);
+
+			static void Set_Verbose(bool value);
+
+			static CDB_Tile_Extent Actual_Extent_For_Tile(CDB_Tile_Extent &TileExtent);
+
+			static int LodNumFromExtent(CDB_Tile_Extent &Tile_Extent);
+
+			static __int64 Get_TileKeyValue(std::string FileName);
+
+		private:
+			std::string				m_cdbRootDir;
+			std::string				m_cdbCacheDir;
+			CDB_Tile_Extent			m_TileExtent;
+			Image_Contrib			m_ImageContent_Status;
+			CDB_Tile_Status			m_Tile_Status;
+			std::string				m_FileName;
+			std::string				m_LayerName;
+			std::string				m_DataSet;
+			std::string				m_SubordinateName;
+			std::string				m_SubordinateName2;
+			std::string				m_lat_str;
+			std::string				m_lon_str;
+			std::string				m_lod_str;
+			std::string				m_uref_str;
+			std::string				m_rref_str;
+
+			CDB_Tile_Type			m_TileType;
+			bool					m_FileExists;
+			CDB_Tile_Pixels			m_Pixels;
+			int						m_CDB_LOD_Num;
+			CDB_GDAL_Access			m_GDAL;
+			bool					m_Subordinate_Exists;
+			bool					m_Subordinate2_Exists;
+			bool					m_Subordinate_Tile;
+			CDB_Model_Tile_SetV		m_ModelSet;
+			CDB_GT_Tile_SelectorV	m_GTModelSet;
+			CDB_Tile_Extent			m_SpatialRectExtent;
+			bool					m_Use_Spatial_Rect;
+			bool					m_Have_MaterialMaskData;
+			bool					m_Have_MaterialData;
+			bool					m_EnableLightMap;
+			bool					m_EnableMaterials;
+			bool					m_EnableMaterialMask;
+			bool					m_DataFromGlobal;
+			CDB_Model_Runtime_Class m_CurFeatureClass;
+			GDALDataset *			m_GlobalDataset;
+			ModelOgrTileP			m_GlobalTile;
+			GBLConnectionType		m_Globalcontype;
+			bool					m_HaveDataDictionary;
+
+
+			osgDB::Archive::FileNameList m_GTGeomerty_archiveFileList;
+
+			int GetPathComponents(std::string& lat_str, std::string& lon_str, std::string& lod_str,
+				std::string& uref_str, std::string& rref_str);
+
+			void Allocate_Buffers(void);
+
+			void Free_Buffers(void);
+
+			void Close_Dataset(void);
+
+			bool Open_Tile(void);
+
+			bool Open_GS_Model_Tile(void);
+
+			bool Open_GT_Model_Tile(void);
+
+			void Close_GT_Model_Tile(void);
+
+			void Close_GS_Model_Tile(void);
+
+			bool Read(void);
+
+			bool Save(void);
+
+			bool Write(void);
+
+			void Fill_Tile(void);
+
+			Image_Contrib Get_Contribution(CDB_Tile_Extent &TileExtent);
+
+			Image_Contrib Image_Is_Inside_Tile(CDB_Tile_Extent &TileExtent);
+
+			bool Point_is_Inside_Tile(coord2d &Point, CDB_Tile_Extent &TileExtent);
+
+			void Build_From_Tiles(CDB_TilePV *Tiles, bool from_scratch = false);
+
+			std::string Xml_Name(std::string Name);
+
+			std::string Set_FileType(std::string Name, std::string type);
+
+			bool Init_GS_Model_Tile(unsigned int pos = 0);
+
+			bool Init_GT_Model_Tile(int sel);
+
+			bool Load_Class_Map(OGRLayer * poLayer, CDB_Model_RuntimeMap &clsMap);
+
+			int Find_Field_Index(OGRFeatureDefn *poFDefn, std::string fieldname, OGRFieldType Type);
+
+			bool Load_Archive(std::string ArchiveName, osgDB::Archive::FileNameList &archiveFileList);
+
+			bool Build_GS_Stack(void);
+
+			bool Build_GT_Stack(void);
+
+			std::string archive_validate_modelname(osgDB::Archive::FileNameList &archiveFileList, std::string &filename);
+
+			std::string Model_KeyName(std::string &FACC_value, std::string &FSC_Value, std::string &BaseFileName);
+
+			std::string GeoTypical_FullFileName(std::string &BaseFileName);
+
+			std::string Model_FullFileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName);
+
+			std::string Model_FileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName);
+
+			OGRFeature * Next_Valid_Geospecific_Feature(bool inflated, std::string &ModelKeyName, std::string &FullModelName, std::string &ArchiveFileName,
+				bool  &Model_in_Archive, unsigned int pos = 0);
+
+			OGRFeature * Next_Valid_GeoTypical_Feature(int sel, std::string &ModelKeyName, std::string &ModelFullName, std::string &ArchiveFileName, bool &Model_in_Archive);
+
+			bool DestroyCurrent_Geospecific_Feature(int sel);
+
+			bool DestroyCurrent_GeoTypical_Feature(int sel);
+
+			std::string Model_TextureDir(void);
+
+			bool Open_GP_Map_Tile(void);
+
+
+		};
+
+		class OSGEARTH_EXPORT OGR_File
+		{
+		public:
+			OGR_File(std::string FileName, std::string Driver);
+			OGR_File();
+			virtual ~OGR_File();
+			bool SetName_and_Driver(std::string Name, std::string Driver);
+			bool Exists(void);
+			GDALDataset * Open_Output(void);
+			GDALDataset * Open_Input(std::string FileName = "");
+			OGRLayer *	  Get_Or_Create_Layer(std::string LayerName, osgEarth::Feature * f);
+			bool		  Add_Feature_to_Layer(OGRLayer *oLayer, osgEarth::Feature * f);
+			bool		  Close_File(void);
+			bool		  Set_Inst_Layer(std::string LayerName);
+			bool		  Set_Class_Layer(std::string LayerName);
+			OGRSpatialReference * Inst_Spatial_Reference();
+			bool		  Get_Inst_Envelope(OGREnvelope &env);
+			bool		  Load_Class(void);
+			void		  Set_GeoTyp_Process(bool value);
+			OGRFeature *  Next_Valid_Feature(std::string &ModelKeyName, std::string &FullModelName);
+
+			static OGR_File *	  GetInstance(void);
+		private:
+			std::string				m_FileName;
+			std::string				m_Driver;
+			GDALDataset *			m_PODataset;
+			OGRLayer *				m_InstLayer;
+			OGRLayer *				m_ClassLayer;
+			OGRSpatialReference *	m_oSRS;
+			bool					m_FileExists;
+			bool					m_OutputIsShape;
+			bool					m_InputIsShape;
+			bool					m_GeoTyp_Proc;
+			GIntBig					m_FID;
+
+			CDB_Model_RuntimeMap	m_GS_ClassMap;
+
+			GDALDataset *			Open_Output_File(std::string FileName, bool FileExists);
+			void					Set_oSRS(void);
+			OGRLayer *				Get_Or_Create_Layer(GDALDataset *poDS, std::string LayerName, osgEarth::Feature * f);
+			bool					Set_Layer_Fields(osgEarth::Feature * f, OGRLayer * poLayer);
+			bool					Check_Layer_Fields(osgEarth::Feature * f, OGRLayer * poLayer);
+			int						Find_Field_Index(OGRFeatureDefn *poFDefn, std::string fieldname, OGRFieldType Type);
+
+		};
+
+		class OSGEARTH_EXPORT CDB_Data_Dictionary
+		{
+		public:
+			CDB_Data_Dictionary(void);
+			virtual ~CDB_Data_Dictionary(void);
+			bool Init_Feature_Data_Dictionary(std::string CDB_Root_Dir);
+			bool Is_Initialized(void);
+			bool SelectFACC(std::string FACC, std::string & CategoryLabel, std::string & SubCodeLabel, std::string & FeatureTypeLabel);
+
+
+			static CDB_Data_Dictionary *	  GetInstance(void);
+
+
+		private:
+			osgEarth::XmlDocument * m_dataDictDoc;
+			osgEarth::XmlDocument * m_dataDictData;
+			std::vector<CDB_Model_Code_Struct> m_BaseCategories;
+			bool m_IsInitialized;
+
+			bool Get_Model_Base_Catagory_List(std::vector<CDB_Model_Code_Struct> &files);
+
+			bool Get_Model_Sub_Catagory_List(osgEarth::XmlElement * catElement, CDB_Model_Code_Struct& subCats);
+
+			bool Get_Model_Sub_Code_List(osgEarth::XmlElement * subCodeElement, CDB_Model_Code_Struct& subCodes);
+			void ClearMaps(void);
+
+		};
+	}
+}

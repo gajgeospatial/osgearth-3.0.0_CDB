@@ -94,8 +94,11 @@ FeatureSourceIndexNode::~FeatureSourceIndexNode()
     {
         // must copy and clear the original list first to dereference the RefIDPair instances.
         std::set<FeatureID> fidsToRemove;
-        fidsToRemove.insert(KeyIter<FIDMap>(_fids.begin()), KeyIter<FIDMap>(_fids.end()));
-        _fids.clear();
+		for each (std::pair<FeatureID, osg::ref_ptr<RefIDPair>> fid in _fids)
+		{
+			fidsToRemove.insert(fid.first);
+		}
+		_fids.clear();
 
         OE_DEBUG << LC << "Removing " << fidsToRemove.size() << " fids\n";
         _index->removeFIDs( fidsToRemove.begin(), fidsToRemove.end() );

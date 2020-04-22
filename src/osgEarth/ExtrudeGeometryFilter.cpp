@@ -41,8 +41,25 @@
 #include <osgUtil/Simplifier>
 #include <osg/LineWidth>
 #include <osg/PolygonOffset>
+#include <osg/FrontFace>
+#include <osg/CullFace>
+#include <osg/ValueObject>
+
+#include <osgDB/ReadFile>
+
+#include <gdal_priv.h>
+#include <gdalwarper.h>
+#include <ogr_core.h>
+#include <ogrsf_frmts.h>
 
 #define LC "[ExtrudeGeometryFilter] "
+
+#define GEOTRSFRM_TOPLEFT_X            0
+#define GEOTRSFRM_WE_RES               1
+#define GEOTRSFRM_ROTATION_PARAM1      2
+#define GEOTRSFRM_TOPLEFT_Y            3
+#define GEOTRSFRM_ROTATION_PARAM2      4
+#define GEOTRSFRM_NS_RES               5
 
 using namespace osgEarth;
 
@@ -208,11 +225,16 @@ ExtrudeGeometryFilter::buildStructure(const Geometry*         input,
                                       const SkinResource*     wallSkin,
                                       const SkinResource*     roofSkin,
                                       Structure&              structure,
-                                      FilterContext&          cx )
+                                      FilterContext&          cx,
+									  bool					  have_roof_image,
+									  std::string			  roof_image_name,
+									  bool					  roof_image_has_mat_index,
+									  std::string			  roof_mat_index_name,
+									  ExtrudeGeomGDALHelper * RoofHelper)
 {
-    bool  makeECEF                 = false;
-    const SpatialReference* srs    = 0L;
-    const SpatialReference* mapSRS = 0L;
+    bool makeECEF = false;
+    osg::ref_ptr<const SpatialReference> srs;
+    osg::ref_ptr<const SpatialReference> mapSRS;
 
     if ( cx.isGeoreferenced() )
     {
@@ -260,7 +282,11 @@ ExtrudeGeometryFilter::buildStructure(const Geometry*         input,
 
     osg::Vec2d c = input->getBounds().center2d();
     osg::Vec3d centroid(c.x(), c.y(), minLoc.z());
-    transformAndLocalize(centroid, srs, structure.baseCentroid, mapSRS, _world2local, makeECEF );
+
+    if (srs.valid() && mapSRS.valid())
+    {
+        transformAndLocalize(centroid, srs.get(), structure.baseCentroid, mapSRS.get(), _world2local, makeECEF );
+    }
 
     // apply the height offsets
     //height    -= heightOffset;
@@ -287,7 +313,7 @@ ExtrudeGeometryFilter::buildStructure(const Geometry*         input,
             roofProjSRS = SpatialReference::create("spherical-mercator");
             if ( roofProjSRS.valid() )
             {
-                roofBounds.transform( srs, roofProjSRS.get() );
+                roofBounds.transform( srs.get(), roofProjSRS.get() );
                 osg::ref_ptr<Geometry> projectedInput = input->clone();
                 srs->transform( projectedInput->asVector(), roofProjSRS.get() );
                 roofRotation = getApparentRotation( projectedInput.get() );
@@ -364,7 +390,15 @@ ExtrudeGeometryFilter::buildStructure(const Geometry*         input,
             }
             
             // figure out the rooftop texture coords before doing any transformation:
-            if ( roofSkin && srs )
+			if (have_roof_image)
+			{
+				//calc uv from roof_image_name
+				if (RoofHelper->ImageOK())
+				{
+					RoofHelper->LL2UV(corner->roof, corner->roofTexU, corner->roofTexV);
+				}
+			}
+            else if ( roofSkin && srs )
             {
                 double xr, yr;
 
@@ -386,10 +420,10 @@ ExtrudeGeometryFilter::buildStructure(const Geometry*         input,
             }
 
             // transform into target SRS.
-            if (srs)
+            if (srs.valid() && mapSRS.valid())
             {
-                transformAndLocalize( corner->base, srs, corner->base, mapSRS, _world2local, makeECEF );
-                transformAndLocalize( corner->roof, srs, corner->roof, mapSRS, _world2local, makeECEF );
+                transformAndLocalize( corner->base, srs.get(), corner->base, mapSRS.get(), _world2local, makeECEF );
+                transformAndLocalize( corner->roof, srs.get(), corner->roof, mapSRS.get(), _world2local, makeECEF );
             }
 
             // cache the length for later use.
@@ -560,7 +594,19 @@ ExtrudeGeometryFilter::buildWallGeometry(const Structure&     structure,
     { 
         tex = new osg::Vec3Array( numWallVerts );
         walls->setTexCoordArray( 0, tex );
-    }
+		if (wallSkin->materialURI().isSet())
+		{
+			walls->setTexCoordArray(1, tex);
+		}
+		if (wallSkin->SurfaceMaterialCode().isSet())
+		{
+			__int16 surface = (short)wallSkin->SurfaceMaterialCode().value();
+			__int16 fid = 180; //General Building
+			walls->setUserValue("<UA:SMC>", surface);
+			walls->setUserValue("<UA:FID>", fid);
+//			static osg::ref_ptr<osg::CullFace> cullFace = new osg::CullFace(osg::CullFace::BACK);
+		}
+	}
 
     osg::Vec4Array* colors = 0L;
     if ( useColor )
@@ -675,11 +721,16 @@ ExtrudeGeometryFilter::buildWallGeometry(const Structure&     structure,
                 (*tex)[vertptr+4].set( texRoofR.x(), texRoofR.y(), layer );
                 (*tex)[vertptr+5].set( texRoofL.x(), texRoofL.y(), layer );
             }
-
+#if 0
             for(int i=0; i<6; ++i)
             {
                 de->addElement( vertptr+i );
             }
+#endif
+			for (int i = 5; i >= 0; --i)
+			{
+				de->addElement(vertptr + i);
+			}
         }
     }
     
@@ -688,10 +739,26 @@ ExtrudeGeometryFilter::buildWallGeometry(const Structure&     structure,
 
     // TODO: reconsider this, given the new Structure setup
     // it won't actual smooth corners since we don't have shared edges.
-    osgUtil::SmoothingVisitor::smooth(
+	//GAJ Normals comming out reversed
+
+	walls->getOrCreateStateSet()->setAttributeAndModes(new osg::FrontFace(osg::FrontFace::COUNTER_CLOCKWISE), osg::StateAttribute::ON);
+//	walls->getOrCreateStateSet()->setAttributeAndModes(new osg::CullFace(osg::CullFace::BACK), osg::StateAttribute::ON);
+	
+	osgUtil::SmoothingVisitor::smooth(
         *walls,
         osg::DegreesToRadians(_wallAngleThresh_deg) );
 
+	osg::Array* normal = walls->getNormalArray();
+	int size = normal->getNumElements();
+	osg::Vec3Array * v3d = dynamic_cast <osg::Vec3Array*>(normal);
+#if 0
+	for (int i = 0; i < size; ++i)
+	{
+		(*v3d)[i][0] *= -1.0;
+		(*v3d)[i][1] *= -1.0;
+		(*v3d)[i][2] *= -1.0;
+	}
+#endif
     return madeGeom;
 }
 
@@ -700,7 +767,9 @@ bool
 ExtrudeGeometryFilter::buildRoofGeometry(const Structure&     structure,
                                          osg::Geometry*       roof,
                                          const osg::Vec4&     roofColor,
-                                         const SkinResource*  roofSkin)
+                                         const SkinResource*  roofSkin,
+										 const bool			  have_roof_image,
+										 const bool			  have_roof_mat_index)
 {    
     osg::Vec3Array* verts = new osg::Vec3Array();
     roof->setVertexArray( verts );
@@ -709,12 +778,25 @@ ExtrudeGeometryFilter::buildRoofGeometry(const Structure&     structure,
     roof->setColorArray( color );
 
     osg::Vec3Array* tex = 0L;
-    if ( roofSkin )
+    if ( roofSkin || have_roof_image)
     {
         tex = new osg::Vec3Array();
         roof->setTexCoordArray(0, tex);
+		if ((roofSkin && roofSkin->materialURI().isSet()) || have_roof_mat_index)
+		{
+			roof->setTexCoordArray(1, tex);
+		}
     }
-
+	if (roofSkin)
+	{
+		if (roofSkin->SurfaceMaterialCode().isSet())
+		{
+			__int16 surface = (short)roofSkin->SurfaceMaterialCode().value();
+			__int16 fid = 180; //General Building
+			roof->setUserValue("<UA:SMC>", surface);
+			roof->setUserValue("<UA:FID>", fid);
+		}
+	}
     osg::Vec4Array* anchors = 0L;    
     if ( _gpuClamping )
     {
@@ -992,6 +1074,9 @@ ExtrudeGeometryFilter::addDrawable(osg::Drawable*       drawable,
 bool
 ExtrudeGeometryFilter::process( FeatureList& features, FilterContext& context )
 {
+#ifdef _DEBUG
+	int fubar = 0;
+#endif
     for( FeatureList::iterator f = features.begin(); f != features.end(); ++f )
     {
         Feature* input = f->get();
@@ -1016,6 +1101,32 @@ ExtrudeGeometryFilter::process( FeatureList& features, FilterContext& context )
         if (input->getGeometry() == 0L)
             continue;
 
+		bool roofTextureIsFromImage = false;
+		std::string roofTextureImageName = "";
+		bool roofTextureHasMatIndex = false;
+		std::string roofTextureMatIndexName = "";
+		ExtrudeGeomGDALHelper * RoofHelper = NULL;
+		if (input->hasAttr("UseNameAsRoofTexture") && input->hasAttr("teximagename"))
+		{
+			if (input->getString("UseNameAsRoofTexture") == "true")
+			{
+				roofTextureImageName = input->getString("teximagename");
+				roofTextureIsFromImage = true;
+				if (input->hasAttr("MatIndexUrl"))
+				{
+					roofTextureHasMatIndex = true;
+					roofTextureMatIndexName = input->getString("MatIndexUrl");
+				}
+			}
+		}
+		if (roofTextureIsFromImage)
+		{
+			RoofHelper = new ExtrudeGeomGDALHelper(roofTextureImageName);
+			if (roofTextureHasMatIndex)
+			{
+				RoofHelper->Add_Mat_Index(roofTextureHasMatIndex, roofTextureMatIndexName);
+			}
+		}
         // iterator over the parts.
         GeometryIterator iter( input->getGeometry(), false );
         while( iter.hasMore() )
@@ -1077,6 +1188,12 @@ ExtrudeGeometryFilter::process( FeatureList& features, FilterContext& context )
                     SkinSymbol querySymbol( *_wallSkinSymbol.get() );
                     querySymbol.objectHeight() = fabs(height);
                     wallSkin = _wallResLib->getSkin( &querySymbol, wallRand, context.getDBOptions() );
+#ifdef _DEBUG
+					if (!wallSkin)
+					{
+						++fubar;
+					}
+#endif
                 }
 
                 else
@@ -1087,21 +1204,24 @@ ExtrudeGeometryFilter::process( FeatureList& features, FilterContext& context )
 
             // calculate the rooftop texture:
             SkinResource* roofSkin = 0L;
-            if ( _roofSkinSymbol.valid() )
-            {
-                unsigned int roofRand = f->get()->getFID() + (_roofSkinSymbol.valid() ? *_roofSkinSymbol->randomSeed() : 0);
-
-                if ( _roofResLib.valid() )
+			if (!roofTextureIsFromImage)
+			{
+                if ( _roofSkinSymbol.valid() )
                 {
-                    SkinSymbol querySymbol( *_roofSkinSymbol.get() );
-                    roofSkin = _roofResLib->getSkin( &querySymbol, roofRand, context.getDBOptions() );
-                }
+                    unsigned int roofRand = f->get()->getFID() + (_roofSkinSymbol.valid() ? *_roofSkinSymbol->randomSeed() : 0);
 
-                else
-                {
-                    //TODO: simple single texture?
+                    if ( _roofResLib.valid() )
+                    {
+                        SkinSymbol querySymbol( *_roofSkinSymbol.get() );
+                        roofSkin = _roofResLib->getSkin( &querySymbol, roofRand, context.getDBOptions() );
+                    }
+
+                    else
+                    {
+                        //TODO: simple single texture?
+                    }
                 }
-            }
+			}
 
             float verticalOffset = (float)input->getDouble("__oe_verticalOffset", 0.0);
 
@@ -1116,7 +1236,13 @@ ExtrudeGeometryFilter::process( FeatureList& features, FilterContext& context )
                 wallSkin,
                 roofSkin,
                 structure,
-                context);
+                context,
+				roofTextureIsFromImage,
+			    roofTextureImageName,
+			    roofTextureHasMatIndex,
+			    roofTextureMatIndexName,
+				RoofHelper
+			);
 
             // Create the walls.
             if ( walls.valid() )
@@ -1143,7 +1269,12 @@ ExtrudeGeometryFilter::process( FeatureList& features, FilterContext& context )
                 {
                     // Get a stateset for the individual wall stateset
                     context.resourceCache()->getOrCreateStateSet(wallSkin, wallStateSet, context.getDBOptions());
-                }
+					wallStateSet->setAttributeAndModes(new osg::CullFace(osg::CullFace::BACK), osg::StateAttribute::ON);
+					if (wallSkin->materialURI().isSet())
+					{
+						context.resourceCache()->getOrCreateMatStateSet(wallSkin, wallStateSet, context.getDBOptions());
+					}
+				}
             }
 
             // tessellate and add the roofs if necessary:
@@ -1155,12 +1286,22 @@ ExtrudeGeometryFilter::process( FeatureList& features, FilterContext& context )
                     roofColor = _roofPolygonSymbol->fill()->color();
                 }
 
-                buildRoofGeometry(structure, rooflines.get(), roofColor, roofSkin);
-
-                if ( roofSkin )
+                buildRoofGeometry(structure, rooflines.get(), roofColor, roofSkin, roofTextureIsFromImage, roofTextureHasMatIndex);
+				if (roofTextureIsFromImage)
+				{
+					roofStateSet = RoofHelper->CreateSetState(context.getDBOptions());
+					roofStateSet->setAttributeAndModes(new osg::CullFace(osg::CullFace::BACK), osg::StateAttribute::ON);
+					if (roofTextureHasMatIndex)
+						RoofHelper->AddMat2SetState(roofStateSet, context.getDBOptions());
+				}
+				else if ( roofSkin )
                 {
                     // Get a stateset for the individual roof skin
                     context.resourceCache()->getOrCreateStateSet(roofSkin, roofStateSet, context.getDBOptions());
+					if (roofSkin->materialURI().isSet())
+					{
+						context.resourceCache()->getOrCreateMatStateSet(roofSkin, roofStateSet, context.getDBOptions());
+					}
                 }
             }
 
@@ -1205,6 +1346,8 @@ ExtrudeGeometryFilter::process( FeatureList& features, FilterContext& context )
                 addDrawable( outlines.get(), 0L, name, input, index );
             }
         }
+		if (RoofHelper)
+			delete RoofHelper;
     }
 
     return true;
@@ -1304,4 +1447,153 @@ ExtrudeGeometryFilter::push( FeatureList& input, FilterContext& context )
     }
 
     return group;
+}
+
+ExtrudeGeomGDALHelper::ExtrudeGeomGDALHelper(std::string gdalimagename) : _gdalimagename(gdalimagename), _have_image_data(false), _num_bands(0), _RsizeX(0), _RsizeY(0),
+																		 _minX(0.0), _maxY(0.0), _maxX(0.0), _minY(0.0), _imagenamefortexture(""), _have_mat_index_data(false),
+																		 _mat_index_name("")
+{
+	Open_Image();
+}
+
+ExtrudeGeomGDALHelper::~ExtrudeGeomGDALHelper()
+{
+
+}
+
+void ExtrudeGeomGDALHelper::Open_Image()
+{
+	GDALDataset *poDataset;
+	poDataset = (GDALDataset *)GDALOpen(_gdalimagename.c_str(), GA_ReadOnly);
+	if (poDataset == NULL)
+		return;
+
+	OGRSpatialReference  *hSRS = new OGRSpatialReference();
+	char		      *pszProjection;
+
+	pszProjection = (char *)GDALGetProjectionRef(poDataset);
+	if (pszProjection == NULL)
+	{
+		GDALClose(poDataset);
+		return;
+	}
+
+	hSRS->importFromWkt(&pszProjection);
+	if (!hSRS->IsGeographic())
+	{
+		delete hSRS;
+		GDALClose(poDataset);
+	}
+
+	_num_bands = poDataset->GetRasterCount();
+	_RsizeX = poDataset->GetRasterXSize();
+	_RsizeY = poDataset->GetRasterYSize();
+
+	GDALGetGeoTransform(poDataset, _adfGeoTransform);
+	//Could add transform checks here
+	_minX = _adfGeoTransform[GEOTRSFRM_TOPLEFT_X];
+	_maxY = _adfGeoTransform[GEOTRSFRM_TOPLEFT_Y];
+	_maxX = _minX + (double)_RsizeX * _adfGeoTransform[GEOTRSFRM_WE_RES];
+	_minY = _maxY + (double)_RsizeY * _adfGeoTransform[GEOTRSFRM_NS_RES];
+
+	int pos = _gdalimagename.find(".tif");
+	if (pos != std::string::npos)
+	{
+		_imagenamefortexture = _gdalimagename.substr(0, pos);
+		_imagenamefortexture += ".rgb";
+	}
+
+	GDALClose(poDataset);
+	delete hSRS;
+
+	_have_image_data = true;
+
+	return;
+}
+
+bool ExtrudeGeomGDALHelper::ImageOK(void)
+{
+	return _have_image_data;
+}
+
+bool ExtrudeGeomGDALHelper::LL2UV(osg::Vec3d Point, float &u, float &v)
+{
+	if (_have_image_data)
+	{
+		double xRel = Point.x() - _minX;
+		double yRel = _maxY - Point.y();
+		float Pixx = xRel / _adfGeoTransform[GEOTRSFRM_WE_RES];
+		float Pixy = yRel / abs(_adfGeoTransform[GEOTRSFRM_NS_RES]);
+		u = Pixx / (float)_RsizeX;
+		v = 1.0 - (Pixy / (float)_RsizeY);
+		return true;
+	}
+	else
+		return false;
+}
+
+void ExtrudeGeomGDALHelper::Add_Mat_Index(bool have_mat_index, std::string mat_index_name)
+{
+	_have_mat_index_data = have_mat_index;
+	_mat_index_name = mat_index_name;
+}
+
+osg::StateSet * ExtrudeGeomGDALHelper::CreateSetState(const osgDB::Options* readOptions)
+{
+
+	osg::StateSet * TextureState = NULL;
+	osg::ref_ptr<osg::Image> image = osgDB::readImageFile(_imagenamefortexture, readOptions);
+	if (image)
+	{
+		TextureState = new osg::StateSet();
+		osg::Texture * tex = CreateTexture(image);
+		if (tex)
+		{
+			TextureState->setTextureAttributeAndModes(0, tex, osg::StateAttribute::ON);
+		}
+	}
+	return TextureState;
+}
+
+osg::Texture * ExtrudeGeomGDALHelper::CreateTexture(osg::Image *image)
+{
+	if (!image) return 0L;
+
+	osg::Texture* tex;
+
+	tex = new osg::Texture2D(image);
+	tex->setWrap(osg::Texture::WRAP_S, osg::Texture::REPEAT);
+	tex->setWrap(osg::Texture::WRAP_T, osg::Texture::REPEAT);
+
+	tex->setFilter(osg::Texture::MIN_FILTER, osg::Texture::LINEAR_MIPMAP_LINEAR);
+	tex->setFilter(osg::Texture::MAG_FILTER, osg::Texture::LINEAR);
+
+	// skin textures are likely to be shared, paged, etc. so keep them in memory.
+	tex->setUnRefImageDataAfterApply(false);
+
+	// don't resize them, let it be
+	tex->setResizeNonPowerOfTwoHint(false);
+
+	return tex;
+
+}
+
+bool ExtrudeGeomGDALHelper::AddMat2SetState(osg::ref_ptr<osg::StateSet> &roofSetState, const osgDB::Options* readOptions)
+{
+	bool valid = false;
+	if (_have_mat_index_data)
+	{
+		osg::ref_ptr<osg::Image> image = osgDB::readImageFile(_mat_index_name, readOptions);
+		if (image)
+		{
+			osg::Texture * tex = CreateTexture(image);
+			if (tex)
+			{
+				int ntx = roofSetState->getNumTextureModeLists();
+				roofSetState->setTextureAttributeAndModes(ntx, tex, osg::StateAttribute::ON);
+				valid = true;
+			}
+		}
+	}
+	return valid;
 }
