@@ -914,23 +914,12 @@ FeatureModelGraph::load(
         {
 			// Construct a tile key that will be used to query the source for this tile.
 			int invertedTileY;
-			if (_options.layout().isSet() && (_options.layout()->profiletileing() == true))
-			{
-				invertedTileY = tileY;
-			}
-			else
-			{
-#if 1			
-				// Construct a tile key that will be used to query the source for this tile.
-				// The Tilekey x, y, z that is computed in FeatureModelGraph uses a lower left origin,
-				// osgEarth tilekeys use a lower left so we need to invert it.
-				unsigned int w, h;
-				featureProfile->getTilingProfile()->getNumTiles(lod, w, h);
-				invertedTileY = h - tileY - 1;
-#else
-				invertedTileY = tileY;
-#endif
-			}			
+			// Construct a tile key that will be used to query the source for this tile.
+			// The Tilekey x, y, z that is computed in FeatureModelGraph uses a lower left origin,
+			// osgEarth tilekeys use a lower left so we need to invert it.
+			unsigned int w, h;
+			featureProfile->getTilingProfile()->getNumTiles(lod, w, h);
+			invertedTileY = h - tileY - 1;
 			GeoExtent tileExtent;
 			TileKey key(lod, tileX, invertedTileY, featureProfile->getTilingProfile());
 			if (_options.layout().isSet() && (_options.layout()->profiletileing() == true))

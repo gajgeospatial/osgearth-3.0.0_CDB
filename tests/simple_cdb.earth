@@ -1,0 +1,27 @@
+<!-- 
+osgEarth Sample - GDAL
+Demonstrates the simplest possible use of the GDAL layer to load a GeoTIFF image.
+-->
+
+<map>
+    <GDALImage name="GeoPackage Image">
+        <root_dir>E:\CDB_Datasets\LosAngeles_CDB</root_dir>
+        <limits>-119,34,-118,35</limits>
+        <subdataset>Imagery_S001_T001</subdataset>
+    </GDALImage>
+    <GDALElevation name="GeoPackage Image">
+        <root_dir>E:\CDB_Datasets\LosAngeles_CDB</root_dir>
+        <limits>-119,34,-118,35</limits>
+        <subdataset>Elevation_S001_T001</subdataset>
+    </GDALElevation>
+    <viewpoints>
+        <viewpoint name="Rainier">
+            <heading>17.33521725357022</heading>
+            <height>2462.60273069609</height>
+            <lat>34.0506</lat>
+            <long>-118.206</long>
+            <pitch>-21.29241356548601</pitch>
+            <range>8457.75258864516</range>
+        </viewpoint>
+    </viewpoints>
+</map>

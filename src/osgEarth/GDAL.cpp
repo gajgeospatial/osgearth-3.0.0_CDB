@@ -74,6 +74,7 @@ using namespace osgEarth::GDAL;
 
 //GDAL VRT api is only available after 1.5.0
 #include <gdal_vrt.h>
+#include <CDB_TileLib/CDB_Tile>
 
 #define GEOTRSFRM_TOPLEFT_X            0
 #define GEOTRSFRM_WE_RES               1
@@ -246,6 +247,366 @@ namespace osgEarth { namespace GDAL
 
         return hDstDS;
     }
+
+	// "build_vrt()" is adapted from the gdalbuildvrt application. Following is
+	// the copyright notice from the source. The original code can be found at
+	// http://trac.osgeo.org/gdal/browser/trunk/gdal/apps/gdalbuildvrt.cpp
+
+	/******************************************************************************
+	 * Copyright (c) 2007, Even Rouault
+	 *
+	 * Permission is hereby granted, free of charge, to any person obtaining a
+	 * copy of this software and associated documentation files (the "Software"),
+	 * to deal in the Software without restriction, including without limitation
+	 * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+	 * and/or sell copies of the Software, and to permit persons to whom the
+	 * Software is furnished to do so, subject to the following conditions:
+	 *
+	 * The above copyright notice and this permission notice shall be included
+	 * in all copies or substantial portions of the Software.
+	 *
+	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+	 * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+	 * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+	 * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+	 * DEALINGS IN THE SOFTWARE.
+	 ****************************************************************************/
+	GDALDatasetH build_vrt(std::vector<std::string> &files, ResolutionStrategy resolutionStrategy, std::string table)
+	{
+		GDAL_SCOPED_LOCK;
+
+		char* projectionRef = NULL;
+		int nBands = 0;
+		BandProperty* bandProperties = NULL;
+		double minX = 0, minY = 0, maxX = 0, maxY = 0;
+		int i, j;
+		double we_res = 0;
+		double ns_res = 0;
+		int rasterXSize;
+		int rasterYSize;
+		int nCount = 0;
+		int bFirst = TRUE;
+		VRTDatasetH hVRTDS = NULL;
+
+		int nInputFiles = files.size();
+
+		DatasetProperty* psDatasetProperties =
+			(DatasetProperty*)CPLMalloc(nInputFiles * sizeof(DatasetProperty));
+
+		char * ilayer = NULL;
+		char *papszOptions[3];
+		bool openwithoptions = false;
+		if (!table.empty())
+		{
+			std::string OpTablestr = "TABLE=" + table;
+			ilayer = new char[OpTablestr.length() + 1];
+			strncpy_s(ilayer, OpTablestr.length() + 1, OpTablestr.c_str(), OpTablestr.length());
+			ilayer[OpTablestr.length()] = 0;
+			papszOptions[0] = ilayer;
+			papszOptions[1] = NULL;
+			papszOptions[2] = NULL;
+			openwithoptions = true;
+		}
+#ifdef _DEBUG
+		int fopenCount = 0;
+#endif
+		for (i = 0; i < nInputFiles; i++)
+		{
+			const char* dsFileName = files[i].c_str();
+
+			GDALTermProgress(1.0 * (i + 1) / nInputFiles, NULL, NULL);
+			GDALDatasetH hDS;
+			if (!openwithoptions)
+			{
+				hDS = GDALOpen(dsFileName, GA_ReadOnly);
+			}
+			else
+			{
+				hDS = GDALOpenEx(dsFileName, GA_ReadOnly, NULL, papszOptions, NULL);
+			}
+			psDatasetProperties[i].isFileOK = FALSE;
+
+			if (hDS)
+			{
+#ifdef _DEBUG
+				++fopenCount;
+#endif
+				const char* proj = GDALGetProjectionRef(hDS);
+				if (!proj || strlen(proj) == 0)
+				{
+					std::string prjLocation = osgDB::getNameLessExtension(std::string(dsFileName)) + std::string(".prj");
+					ReadResult r = URI(prjLocation).readString();
+					if (r.succeeded())
+					{
+						proj = CPLStrdup(r.getString().c_str());
+					}
+				}
+
+				GDALGetGeoTransform(hDS, psDatasetProperties[i].adfGeoTransform);
+				if (psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_ROTATION_PARAM1] != 0 ||
+					psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_ROTATION_PARAM2] != 0)
+				{
+					fprintf(stderr, "GDAL Driver does not support rotated geo transforms. Skipping %s\n",
+						dsFileName);
+					GDALClose(hDS);
+					continue;
+				}
+				if (psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_NS_RES] >= 0)
+				{
+					fprintf(stderr, "GDAL Driver does not support positive NS resolution. Skipping %s\n",
+						dsFileName);
+					GDALClose(hDS);
+					continue;
+				}
+				psDatasetProperties[i].nRasterXSize = GDALGetRasterXSize(hDS);
+				psDatasetProperties[i].nRasterYSize = GDALGetRasterYSize(hDS);
+				double product_minX = psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_TOPLEFT_X];
+				double product_maxY = psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_TOPLEFT_Y];
+				double product_maxX = product_minX +
+					GDALGetRasterXSize(hDS) * psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_WE_RES];
+				double product_minY = product_maxY +
+					GDALGetRasterYSize(hDS) * psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_NS_RES];
+
+				GDALGetBlockSize(GDALGetRasterBand(hDS, 1),
+					&psDatasetProperties[i].nBlockXSize,
+					&psDatasetProperties[i].nBlockYSize);
+
+				if (bFirst)
+				{
+					if (proj)
+						projectionRef = CPLStrdup(proj);
+					minX = product_minX;
+					minY = product_minY;
+					maxX = product_maxX;
+					maxY = product_maxY;
+					nBands = GDALGetRasterCount(hDS);
+					bandProperties = (BandProperty*)CPLMalloc(nBands * sizeof(BandProperty));
+					for (j = 0; j < nBands; j++)
+					{
+						GDALRasterBandH hRasterBand = GDALGetRasterBand(hDS, j + 1);
+						bandProperties[j].colorInterpretation = GDALGetRasterColorInterpretation(hRasterBand);
+						bandProperties[j].dataType = GDALGetRasterDataType(hRasterBand);
+						if (bandProperties[j].colorInterpretation == GCI_PaletteIndex)
+						{
+							bandProperties[j].colorTable = GDALGetRasterColorTable(hRasterBand);
+							if (bandProperties[j].colorTable)
+							{
+								bandProperties[j].colorTable = GDALCloneColorTable(bandProperties[j].colorTable);
+							}
+						}
+						else
+							bandProperties[j].colorTable = 0;
+						bandProperties[j].noDataValue = GDALGetRasterNoDataValue(hRasterBand, &bandProperties[j].bHasNoData);
+					}
+				}
+				else
+				{
+					if ((proj != NULL && projectionRef == NULL) ||
+						(proj == NULL && projectionRef != NULL) ||
+						(proj != NULL && projectionRef != NULL && EQUAL(proj, projectionRef) == FALSE))
+					{
+						fprintf(stderr, "gdalbuildvrt does not support heterogenous projection. Skipping %s\n", dsFileName);
+						GDALClose(hDS);
+						continue;
+					}
+					int _nBands = GDALGetRasterCount(hDS);
+					if (nBands != _nBands)
+					{
+						fprintf(stderr, "gdalbuildvrt does not support heterogenous band numbers. Skipping %s\n",
+							dsFileName);
+						GDALClose(hDS);
+						continue;
+					}
+					for (j = 0; j < nBands; j++)
+					{
+						GDALRasterBandH hRasterBand = GDALGetRasterBand(hDS, j + 1);
+						if (bandProperties[j].colorInterpretation != GDALGetRasterColorInterpretation(hRasterBand) ||
+							bandProperties[j].dataType != GDALGetRasterDataType(hRasterBand))
+						{
+							fprintf(stderr, "gdalbuildvrt does not support heterogenous band characteristics. Skipping %s\n",
+								dsFileName);
+							GDALClose(hDS);
+						}
+						if (bandProperties[j].colorTable)
+						{
+							GDALColorTableH colorTable = GDALGetRasterColorTable(hRasterBand);
+							if (colorTable == NULL ||
+								GDALGetColorEntryCount(colorTable) != GDALGetColorEntryCount(bandProperties[j].colorTable))
+							{
+								fprintf(stderr, "gdalbuildvrt does not support heterogenous band characteristics. Skipping %s\n",
+									dsFileName);
+								GDALClose(hDS);
+								break;
+							}
+							/* We should check that the palette are the same too ! */
+						}
+					}
+					if (j != nBands)
+						continue;
+					if (product_minX < minX) minX = product_minX;
+					if (product_minY < minY) minY = product_minY;
+					if (product_maxX > maxX) maxX = product_maxX;
+					if (product_maxY > maxY) maxY = product_maxY;
+				}
+				if (resolutionStrategy == AVERAGE_RESOLUTION)
+				{
+					we_res += psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_WE_RES];
+					ns_res += psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_NS_RES];
+				}
+				else
+				{
+					if (bFirst)
+					{
+						we_res = psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_WE_RES];
+						ns_res = psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_NS_RES];
+					}
+					else if (resolutionStrategy == HIGHEST_RESOLUTION)
+					{
+						we_res = MIN(we_res, psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_WE_RES]);
+						/* Yes : as ns_res is negative, the highest resolution is the max value */
+						ns_res = MAX(ns_res, psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_NS_RES]);
+					}
+					else
+					{
+						we_res = MAX(we_res, psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_WE_RES]);
+						/* Yes : as ns_res is negative, the lowest resolution is the min value */
+						ns_res = MIN(ns_res, psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_NS_RES]);
+					}
+				}
+
+				psDatasetProperties[i].isFileOK = 1;
+				nCount++;
+				bFirst = FALSE;
+				GDALClose(hDS);
+			}
+			else
+			{
+				fprintf(stderr, "Warning : can't open %s. Skipping it\n", dsFileName);
+			}
+		}
+
+		if (nCount == 0)
+			goto end;
+
+		if (resolutionStrategy == AVERAGE_RESOLUTION)
+		{
+			we_res /= nCount;
+			ns_res /= nCount;
+		}
+
+		rasterXSize = (int)(0.5 + (maxX - minX) / we_res);
+		rasterYSize = (int)(0.5 + (maxY - minY) / -ns_res);
+
+		hVRTDS = VRTCreate(rasterXSize, rasterYSize);
+
+		if (projectionRef)
+		{
+			//OE_NOTICE << "Setting projection to " << projectionRef << std::endl;
+			GDALSetProjection(hVRTDS, projectionRef);
+		}
+
+		double adfGeoTransform[6];
+		adfGeoTransform[GEOTRSFRM_TOPLEFT_X] = minX;
+		adfGeoTransform[GEOTRSFRM_WE_RES] = we_res;
+		adfGeoTransform[GEOTRSFRM_ROTATION_PARAM1] = 0;
+		adfGeoTransform[GEOTRSFRM_TOPLEFT_Y] = maxY;
+		adfGeoTransform[GEOTRSFRM_ROTATION_PARAM2] = 0;
+		adfGeoTransform[GEOTRSFRM_NS_RES] = ns_res;
+		GDALSetGeoTransform(hVRTDS, adfGeoTransform);
+
+		for (j = 0; j < nBands; j++)
+		{
+			GDALRasterBandH hBand;
+			GDALAddBand(hVRTDS, bandProperties[j].dataType, NULL);
+			hBand = GDALGetRasterBand(hVRTDS, j + 1);
+			GDALSetRasterColorInterpretation(hBand, bandProperties[j].colorInterpretation);
+			if (bandProperties[j].colorInterpretation == GCI_PaletteIndex)
+			{
+				GDALSetRasterColorTable(hBand, bandProperties[j].colorTable);
+			}
+			if (bandProperties[j].bHasNoData)
+				GDALSetRasterNoDataValue(hBand, bandProperties[j].noDataValue);
+		}
+
+		for (i = 0; i < nInputFiles; i++)
+		{
+			if (psDatasetProperties[i].isFileOK == 0)
+				continue;
+			const char* dsFileName = files[i].c_str();
+
+			bool isProxy = true;
+
+#if GDAL_VERSION_1_6_OR_NEWER
+
+			//Use a proxy dataset if possible.  This helps with huge amount of files to keep the # of handles down
+			GDALProxyPoolDataset * hDS = new GDALProxyPoolDataset(dsFileName,
+				psDatasetProperties[i].nRasterXSize,
+				psDatasetProperties[i].nRasterYSize,
+				GA_ReadOnly, TRUE, projectionRef,
+				psDatasetProperties[i].adfGeoTransform);
+			if (openwithoptions)
+				hDS->SetOpenOptions(papszOptions);
+
+			for (j = 0; j < nBands; j++)
+			{
+				hDS->AddSrcBandDescription(bandProperties[j].dataType,
+					psDatasetProperties[i].nBlockXSize,
+					psDatasetProperties[i].nBlockYSize);
+			}
+			isProxy = true;
+//			OE_DEBUG << LC << "Using GDALProxyPoolDatasetH" << std::endl;
+
+#else // !GDAL_VERSION_1_6_OR_NEWER
+
+			OE_DEBUG << LC << "Using GDALDataset, no proxy support enabled" << std::endl;
+			//Just open the dataset
+			GDALDatasetH hDS = (GDALDatasetH)GDALOpen(dsFileName, GA_ReadOnly);
+			isProxy = false;
+
+#endif
+
+			int xoffset = (int)
+				(0.5 + (psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_TOPLEFT_X] - minX) / we_res);
+			int yoffset = (int)
+				(0.5 + (maxY - psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_TOPLEFT_Y]) / -ns_res);
+			int dest_width = (int)
+				(0.5 + psDatasetProperties[i].nRasterXSize * psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_WE_RES] / we_res);
+			int dest_height = (int)
+				(0.5 + psDatasetProperties[i].nRasterYSize * psDatasetProperties[i].adfGeoTransform[GEOTRSFRM_NS_RES] / ns_res);
+
+			for (j = 0; j < nBands; j++)
+			{
+				VRTSourcedRasterBandH hVRTBand = (VRTSourcedRasterBandH)GDALGetRasterBand(hVRTDS, j + 1);
+
+				/* Place the raster band at the right position in the VRT */
+				VRTAddSimpleSource(hVRTBand, GDALGetRasterBand((GDALDatasetH)hDS, j + 1),
+					0, 0,
+					psDatasetProperties[i].nRasterXSize,
+					psDatasetProperties[i].nRasterYSize,
+					xoffset, yoffset,
+					dest_width, dest_height, "near",
+					VRT_NODATA_UNSET);
+			}
+			//Only dereference if it is a proxy dataset
+			if (isProxy)
+			{
+				GDALDereferenceDataset(hDS);
+			}
+		}
+	end:
+		if (ilayer)
+			delete ilayer;
+		CPLFree(psDatasetProperties);
+		for (j = 0; j < nBands; j++)
+		{
+			GDALDestroyColorTable(bandProperties[j].colorTable);
+		}
+		CPLFree(bandProperties);
+		CPLFree(projectionRef);
+		return hVRTDS;
+	}
 
     /**
      * Gets the GeoExtent of the given filename.
@@ -479,14 +840,22 @@ GDAL::Driver::open(const std::string& name,
 
     if (useExternalDataset == false &&
         (!gdalOptions().url().isSet() || gdalOptions().url()->empty()) &&
-        (!gdalOptions().connection().isSet() || gdalOptions().connection()->empty()))
+        (!gdalOptions().connection().isSet() || gdalOptions().connection()->empty()) &&
+		(!gdalOptions().root_dir().isSet() || !gdalOptions().limits_str().isSet()))
     {
         return Status::Error(Status::ConfigurationError, "No URL, directory, or connection string specified");
     }
 
     // source connection:
     std::string source;
+	std::string source_table = "";
     bool isFile = true;
+	bool isCDB = false;
+	double	min_lon,
+			max_lon,
+			min_lat,
+			max_lat;
+	bool	limits_valid = false;
 
     if (gdalOptions().url().isSet())
     {
@@ -505,7 +874,20 @@ GDAL::Driver::open(const std::string& name,
         source = gdalOptions().connection().get();
         isFile = false;
     }
-
+	else if (gdalOptions().root_dir().isSet() && gdalOptions().limits_str().isSet())
+	{
+		source = *gdalOptions().root_dir();
+		isFile = false;
+		isCDB = true;
+		if (gdalOptions().subDataSet().isSet())
+			source_table = *gdalOptions().subDataSet();
+		std::string cdbLimits = *gdalOptions().limits_str();
+		int count = sscanf(cdbLimits.c_str(), "%lf,%lf,%lf,%lf", &min_lon, &min_lat, &max_lon, &max_lat);
+		if (count == 4)
+			limits_valid = true;
+		else
+			return Status::Error(Status::ConfigurationError, "Limits for CDB BaseMap tiles are invalid");
+	}
     if (useExternalDataset == false)
     {
         std::string input;
@@ -527,28 +909,81 @@ GDAL::Driver::open(const std::string& name,
             if (!found.empty())
                 input = found;
         }
+		std::vector<std::string> files;
+		if (isCDB && limits_valid)
+		{
+			CDB_Tile_Extent extent_to_load;
+			extent_to_load.West = min_lon;
+			extent_to_load.East = max_lon;
+			extent_to_load.North = max_lat;
+			extent_to_load.South = min_lat;
+			osgEarth::CDBTile::CDB_Tile::Get_BaseMap_Files(source, extent_to_load, files);
+			if (files.size() == 1)
+				input = files[0];
+		}
+		if (files.size() > 1)
+		{
+			osg::Timer_t startTime = osg::Timer::instance()->tick();
+			_srcDS = (GDALDataset*)build_vrt(files, HIGHEST_RESOLUTION, source_table);
+			osg::Timer_t endTime = osg::Timer::instance()->tick();
+			OE_INFO << LC << INDENT << "Built VRT in " << osg::Timer::instance()->delta_s(startTime, endTime) << " s" << std::endl;
+			if (!_srcDS)
+			{
+				return Status::Error("Failed to build VRT from input datasets");
+			}
+		}
+		else
+		{
+			std::string subDataset = "";
+			int subdatasetNum = -1;
+			bool subdatasetOpen = false;
+			if (gdalOptions().subDataSet().isSet())
+			{
+				subDataset = *gdalOptions().subDataSet();
+				if (subDataset.find_first_not_of("0123456789") == std::string::npos)
+				{
+					subdatasetNum = atoi(subDataset.c_str());
+				}
+				else
+				{
+					std::string OpTablestr = "TABLE=" + subDataset;
+					char * ilayer = new char[OpTablestr.length() + 1];
+					strncpy_s(ilayer, OpTablestr.length() + 1, OpTablestr.c_str(), OpTablestr.length());
+					ilayer[OpTablestr.length()] = 0;
+					char *papszOptions[2];
+					papszOptions[0] = ilayer;
+					papszOptions[1] = NULL;
+					_srcDS = (GDALDataset *)GDALOpenEx(input.c_str(), GA_ReadOnly, NULL, papszOptions, NULL);
+					if (_srcDS)
+						subdatasetOpen = true;
+					delete ilayer;
+				}
+			}
 
-        // Create the source dataset:
-        _srcDS = (GDALDataset*)GDALOpen(input.c_str(), GA_ReadOnly);
-        if (_srcDS)
-        {
-            char **subDatasets = _srcDS->GetMetadata("SUBDATASETS");
-            int numSubDatasets = CSLCount(subDatasets);
-            //OE_NOTICE << "There are " << numSubDatasets << " in this file " << std::endl;
+			if (!subdatasetOpen)
+			{
+				// Create the source dataset:
+				_srcDS = (GDALDataset*)GDALOpen(input.c_str(), GA_ReadOnly);
+				if (_srcDS)
+				{
+					char **subDatasets = _srcDS->GetMetadata("SUBDATASETS");
+					int numSubDatasets = CSLCount(subDatasets);
+					//OE_NOTICE << "There are " << numSubDatasets << " in this file " << std::endl;
 
-            if (numSubDatasets > 0)
-            {
-                int subDataset = gdalOptions().subDataSet().isSet() ? *gdalOptions().subDataSet() : 1;
-                if (subDataset < 1 || subDataset > numSubDatasets) subDataset = 1;
-                std::stringstream buf;
-                buf << "SUBDATASET_" << subDataset << "_NAME";
-                char *pszSubdatasetName = CPLStrdup(CSLFetchNameValue(subDatasets, buf.str().c_str()));
-                GDALClose(_srcDS);
-                _srcDS = (GDALDataset*)GDALOpen(pszSubdatasetName, GA_ReadOnly);
-                CPLFree(pszSubdatasetName);
-            }
-        }
+					if (numSubDatasets > 0)
+					{
+						if (subdatasetNum < 1 || subdatasetNum > numSubDatasets) subdatasetNum = 1;
+						std::stringstream buf;
+						buf << "SUBDATASET_" << subdatasetNum << "_NAME";
+						char *pszSubdatasetName = CPLStrdup(CSLFetchNameValue(subDatasets, buf.str().c_str()));
+						GDALClose(_srcDS);
+						_srcDS = (GDALDataset*)GDALOpen(pszSubdatasetName, GA_ReadOnly);
+						CPLFree(pszSubdatasetName);
 
+					}
+				}
+			}
+		}
         if (!_srcDS)
         {
             return Status::Error(Status::ResourceUnavailable, Stringify() << "Failed to open " << input);
@@ -1710,6 +2145,8 @@ GDAL::Options::readFrom(const Config& conf)
     conf.get("subdataset", _subDataSet);
     conf.get("use_vrt", _useVRT);
     conf.get("warp_profile", _warpProfile);
+	conf.get("root_dir", _root_dir);
+	conf.get("limits", _limits_str);
     conf.get("interpolation", "nearest", _interpolation, osgEarth::INTERP_NEAREST);
     conf.get("interpolation", "average", _interpolation, osgEarth::INTERP_AVERAGE);
     conf.get("interpolation", "bilinear", _interpolation, osgEarth::INTERP_BILINEAR);
@@ -1724,7 +2161,9 @@ GDAL::Options::writeTo(Config& conf) const
     conf.set("connection", _connection);
     conf.set("subdataset", _subDataSet);
     conf.set("warp_profile", _warpProfile);
-    conf.set("use_vrt", _useVRT);
+	conf.set("root_dir", _root_dir);
+	conf.set("limits", _limits_str);
+	conf.set("use_vrt", _useVRT);
     conf.set("interpolation", "nearest", _interpolation, osgEarth::INTERP_NEAREST);
     conf.set("interpolation", "average", _interpolation, osgEarth::INTERP_AVERAGE);
     conf.set("interpolation", "bilinear", _interpolation, osgEarth::INTERP_BILINEAR);
@@ -1754,7 +2193,9 @@ REGISTER_OSGEARTH_LAYER(gdalimage, GDALImageLayer);
 
 OE_LAYER_PROPERTY_IMPL(GDALImageLayer, URI, URL, url);
 OE_LAYER_PROPERTY_IMPL(GDALImageLayer, std::string, Connection, connection);
-OE_LAYER_PROPERTY_IMPL(GDALImageLayer, unsigned, SubDataSet, subDataSet);
+OE_LAYER_PROPERTY_IMPL(GDALImageLayer, std::string, SubDataSet, subDataSet);
+OE_LAYER_PROPERTY_IMPL(GDALImageLayer, std::string, RootDir, root_dir);
+OE_LAYER_PROPERTY_IMPL(GDALImageLayer, std::string, LimitsStr, limits_str);
 OE_LAYER_PROPERTY_IMPL(GDALImageLayer, ProfileOptions, WarpProfile, warpProfile);
 OE_LAYER_PROPERTY_IMPL(GDALImageLayer, RasterInterpolation, Interpolation, interpolation);
 
@@ -1860,7 +2301,7 @@ REGISTER_OSGEARTH_LAYER(gdalelevation, GDALElevationLayer);
 
 OE_LAYER_PROPERTY_IMPL(GDALElevationLayer, URI, URL, url);
 OE_LAYER_PROPERTY_IMPL(GDALElevationLayer, std::string, Connection, connection);
-OE_LAYER_PROPERTY_IMPL(GDALElevationLayer, unsigned, SubDataSet, subDataSet);
+OE_LAYER_PROPERTY_IMPL(GDALElevationLayer, std::string, SubDataSet, subDataSet);
 OE_LAYER_PROPERTY_IMPL(GDALElevationLayer, ProfileOptions, WarpProfile, warpProfile);
 OE_LAYER_PROPERTY_IMPL(GDALElevationLayer, RasterInterpolation, Interpolation, interpolation);
 OE_LAYER_PROPERTY_IMPL(GDALElevationLayer, bool, UseVRT, useVRT);

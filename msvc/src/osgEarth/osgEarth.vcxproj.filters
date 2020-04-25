@@ -907,6 +907,9 @@
     <ClCompile Include="..\..\..\src\osgEarth\InstanceBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\osgEarth\CDBFeatureSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\osgEarth\AGG.h">
@@ -1970,6 +1973,9 @@
       <Filter>Headers</Filter>
     </None>
     <None Include="..\..\..\src\osgEarth\InstanceBuilder">
+      <Filter>Headers</Filter>
+    </None>
+    <None Include="..\..\..\src\osgEarth\CDBFeatureSource">
       <Filter>Headers</Filter>
     </None>
   </ItemGroup>

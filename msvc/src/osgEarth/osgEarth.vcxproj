@@ -816,6 +816,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <None Include="..\..\..\src\CDB_TileLib\CDB_Tile" />
     <None Include="..\..\..\src\ogc\ogc_IE" />
+    <None Include="..\..\..\src\osgEarth\CDBFeatureSource" />
     <None Include="..\..\..\src\osgEarth\GlobalModelManager" />
     <None Include="..\..\..\src\osgEarth\InstanceBuilder" />
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISServer" />
@@ -1060,6 +1061,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryUtils" />
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageToFeatureLayer" />
     <ClCompile Include="..\..\..\src\CDB_TileLib\CDB_Tile.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CDBFeatureSource.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\GlobalModelManager.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\InstanceBuilder.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\InstanceCloud.cpp" />

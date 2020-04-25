@@ -66,9 +66,11 @@ namespace osgEarth { namespace GDAL
         Options(const ConfigOptions& input);
         OE_OPTION(URI, url);
         OE_OPTION(std::string, connection);
-        OE_OPTION(unsigned, subDataSet);
+        OE_OPTION(std::string, subDataSet);
         OE_OPTION(RasterInterpolation, interpolation);
         OE_OPTION(ProfileOptions, warpProfile);
+		OE_OPTION(std::string, root_dir);
+		OE_OPTION(std::string, limits_str);
         OE_OPTION(bool, useVRT);
 
         void readFrom(const Config& conf);
@@ -192,8 +194,8 @@ namespace osgEarth
         const std::string& getConnection() const;
 
         //! GDAL sub-dataset index (optional)
-        void setSubDataSet(const unsigned& value);
-        const unsigned& getSubDataSet() const;
+        void setSubDataSet(const std::string& value);
+        const std::string& getSubDataSet() const;
 
         //! Forced profile for reprojection (still need this?)
         void setWarpProfile(const ProfileOptions& value);
@@ -206,6 +208,12 @@ namespace osgEarth
         //! Use the new VRT read approach
         void setUseVRT(const bool &value);
         const bool& getUseVRT() const;
+
+		void setRootDir(const std::string& value);
+		const std::string& getRootDir() const;
+
+		void setLimitsStr(const std::string& value);
+		const std::string& getLimitsStr() const;
 
         //! User-supplied external dataset
         void setExternalDataset(GDAL::ExternalDataset* value);
@@ -259,8 +267,8 @@ namespace osgEarth
         const std::string& getConnection() const;
 
         //! GDAL sub-dataset index (optional)
-        void setSubDataSet(const unsigned& value);
-        const unsigned& getSubDataSet() const;
+        void setSubDataSet(const std::string& value);
+        const std::string& getSubDataSet() const;
 
         //! Forced profile for reprojection (still need this?)
         void setWarpProfile(const ProfileOptions& value);
@@ -270,7 +278,13 @@ namespace osgEarth
         void setInterpolation(const RasterInterpolation& value);
         const RasterInterpolation& getInterpolation() const;
 
-        //! User-supplied external dataset
+		void setRootDir(std::string& value);
+		const std::string& getRootDir() const;
+
+		void setLimitsStr(const std::string& value);
+		const std::string& getLimitsStr() const;
+
+		//! User-supplied external dataset
         void setExternalDataset(GDAL::ExternalDataset* value);
         GDAL::ExternalDataset* getExtenalDataset() const;
 

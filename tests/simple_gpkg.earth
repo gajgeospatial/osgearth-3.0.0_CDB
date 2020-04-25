@@ -1,0 +1,81 @@
+<!-- 
+osgEarth Sample - GDAL
+Demonstrates the simplest possible use of the GDAL layer to load a GeoTIFF image.
+-->
+
+<map>
+    <GDALImage name="GeoPackage Image">
+        <url>G:\OtherCDB\LosAngeles_GPKG\Tiles\N34\W119\901_VectorBase\L03\U0\N34W119_D901_S001_T001_L03_U0_R6.gpkg</url>
+        <subdataset>Imagery_S001_T001</subdataset>
+    </GDALImage>
+    <GDALElevation name="GeoPackage Image">
+        <url>G:\OtherCDB\LosAngeles_GPKG\Tiles\N34\W119\901_VectorBase\L03\U0\N34W119_D901_S001_T001_L03_U0_R6.gpkg</url>
+        <subdataset>Elevation_S001_T001</subdataset>
+    </GDALElevation>
+    <FeatureModel name="CDBGeoSpecificFeatures">
+        <CDBFeatures name="GeoSpecific">
+            <filename>G:\OtherCDB\LosAngeles_GPKG\Tiles\N34\W119\901_VectorBase\L03\U0\N34W119_D901_S001_T001_L03_U0_R6.gpkg</filename>
+            <limits>-118.25,34,-118.125,34.125</limits>
+            <min_level>0</min_level>
+            <max_level>10</max_level>
+            <inflated>false</inflated>
+            <gs_lod0_full_stack>true</gs_lod0_full_stack>
+            <no_second_ref>true</no_second_ref>
+            <abszinm>true</abszinm>
+            <verbose>true</verbose>
+        </CDBFeatures>
+        <layout>
+            <tile_size_factor>1</tile_size_factor>
+            <profile_tiling>true</profile_tiling>
+        </layout>
+        <styles>
+          <style type="text/css">
+        GeoSpecific { 
+           model: "C:\ProgramData\Visual Awareness Technologies and Consulting Inc\vatc-geospatial-data\red_flag.osg.25.scale"; 
+         altitude-clamping:  none;
+          render-depth-test:  true;
+          }</style>
+        </styles>
+        <lighting>true</lighting>
+    </FeatureModel>
+    <FeatureModel name="CDBGeoTypicalFeatures">
+        <CDBFeatures name="GeoTypical">
+            <filename>G:\OtherCDB\LosAngeles_GPKG\Tiles\N34\W119\901_VectorBase\L03\U0\N34W119_D901_S001_T001_L03_U0_R6.gpkg</filename>
+            <limits>-118.25,34,-118.125,34.125</limits>
+            <tilesize>1024</tilesize>
+            <min_level>2</min_level>
+            <max_level>10</max_level>
+            <inflated>true</inflated>
+            <geotypical>true</geotypical>
+            <gt_lod0_full_stack>true</gt_lod0_full_stack>
+            <no_second_ref>true</no_second_ref>
+            <abszinm>true</abszinm>
+            <verbose>true</verbose>
+        </CDBFeatures>
+        <layout>
+            <tile_size_factor>1</tile_size_factor>
+            <profile_tiling>true</profile_tiling>
+        </layout>
+        <styles>
+            <style type="text/css">
+              GeoTypical {
+              model: "C:\ProgramData\Visual Awareness Technologies and Consulting Inc\vatc-geospatial-data\red_flag.osg.25.scale";
+              altitude-clamping:  none;
+              render-depth-test:  true;
+              }
+            </style>
+        </styles>
+        <lighting>true</lighting>
+    </FeatureModel>
+
+  <viewpoints>
+        <viewpoint name="Rainier">
+            <heading>17.33521725357022</heading>
+            <height>2462.60273069609</height>
+            <lat>34.0506</lat>
+            <long>-118.206</long>
+            <pitch>-21.29241356548601</pitch>
+            <range>8457.75258864516</range>
+        </viewpoint>
+    </viewpoints>
+</map>

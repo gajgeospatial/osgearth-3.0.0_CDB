@@ -1,0 +1,176 @@
+/* -*-c++-*- */
+/* osgEarth - Geospatial SDK for OpenSceneGraph
+ * Copyright 2020 Pelican Mapping
+ * http://osgearth.org
+ *
+ * osgEarth is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ */
+#ifndef OSGEARTH_FEATURES_CDB_FEATURESOURCE_LAYER
+#define OSGEARTH_FEATURES_CDB_FEATURESOURCE_LAYER
+
+#include <osgEarth/FeatureSource>
+#include <CDB_TileLib/CDB_Tile>
+#include <ogc/ogc_IE>
+
+namespace osgEarth
+{
+    /**
+     * FeatureSource that reads feature tiles from a parameterized "XYZ" source.
+     */
+    class OSGEARTH_EXPORT CDBFeatureSource : public FeatureSource
+    {
+    public:
+        class OSGEARTH_EXPORT Options : public FeatureSource::Options {
+        public:
+            META_LayerOptions(osgEarth, Options, FeatureSource::Options);
+            OE_OPTION(std::string, rootDir);
+            OE_OPTION(std::string, FileName);
+			OE_OPTION(std::string, DevFileName);
+			OE_OPTION(std::string, Limits);
+			OE_OPTION(std::string, EditLimits);
+#ifdef _DO_GPKG_TESTS
+			OE_OPTION(std::string, OGC_IE_Test);
+#endif
+            OE_OPTION(int, minLevel);
+			OE_OPTION(int, maxLevel);
+			OE_OPTION(bool, inflated);
+			OE_OPTION(bool, geoTypical);
+			OE_OPTION(bool, GS_uses_GTtex);
+			OE_OPTION(bool, Edit_Support);
+			OE_OPTION(bool, No_Second_Ref);
+			OE_OPTION(bool, GT_LOD0_FullStack);
+			OE_OPTION(bool, GS_LOD0_FullStack);
+			OE_OPTION(bool, Verbose);
+			OE_OPTION(bool, Enable_Subord_Material);
+			OE_OPTION(bool, ABS_Z_in_M);
+			virtual Config getConfig() const;
+        private:
+            void fromConfig(const Config& conf);
+        };
+
+    public:
+        META_Layer(osgEarth, CDBFeatureSource, Options, FeatureSource, cdbfeatures);
+
+        //! Location of the resource
+        void setrootDir(const std::string& value);
+        const std::string& getrootDir() const;
+
+		void setFileName(const std::string& value);
+		const std::string& getFileName() const;
+
+		void setDevFileName(const std::string& value);
+		const std::string& getDevFileName() const;
+
+		void setLimits(const std::string& value);
+		const std::string& getLimits() const;
+
+		void setEditLimits(const std::string& value);
+		const std::string& getEditLimits() const;
+
+#ifdef _DO_GPKG_TESTS
+		void setOGC_IE_Test(const std::string& value);
+		const std::string& getOGC_IE_Test() const;
+#endif
+		//! Minimum level of detail to access
+        void setMinLevel(const int& value);
+        const int& getMinLevel() const;
+
+        //! Maximum level of detail to access
+        void setMaxLevel(const int& value);
+        const int& getMaxLevel() const;
+
+		void setinflated(const bool& value);
+		const bool& getinflated() const;
+
+		void setgeoTypical(const bool& value);
+		const bool& getgeoTypical() const;
+
+		void setGS_uses_GTtex(const bool& value);
+		const bool& getGS_uses_GTtex() const;
+
+		void setEdit_Support(const bool& value);
+		const bool& getEdit_Support() const;
+
+		void setNo_Second_Ref(const bool& value);
+		const bool& getNo_Second_Ref() const;
+
+		void setGT_LOD0_FullStack(const bool& value);
+		const bool& getGT_LOD0_FullStack() const;
+
+		void setGS_LOD0_FullStack(const bool& value);
+		const bool& getGS_LOD0_FullStack() const;
+
+		void setVerbose(const bool& value);
+		const bool& getVerbose() const;
+
+		void setEnable_Subord_Material(const bool& value);
+		const bool& getEnable_Subord_Material() const;
+
+		void setABS_Z_in_M(const bool& value);
+		const bool& getABS_Z_in_M() const;
+
+	public: // Layer
+
+        virtual Status openImplementation();
+
+    protected:
+
+        virtual void init();
+
+    public: // FeatureLayer
+
+        virtual FeatureCursor* createFeatureCursor(const Query& query, ProgressCallback* progress);        
+        
+        virtual const FeatureSchema& getSchema() const { return _schema; }
+
+    protected:
+
+        virtual ~CDBFeatureSource() { }
+
+    private:
+        FeatureSchema					_schema;
+		bool							_CDB_inflated;
+		bool							_CDB_geoTypical;
+		bool							_CDB_GS_uses_GTtex;
+		bool							_CDB_No_Second_Ref;
+		bool							_CDB_Edit_Support;
+		bool							_GS_LOD0_FullStack;
+		bool							_GT_LOD0_FullStack;
+		bool							_BE_Verbose;
+		bool							_M_Contains_ABS_Z;
+		bool							_UsingFileInput;
+		int								_CDBLodNum;
+		std::string						_rootString;
+		std::string						_FileName;
+		std::string						_cacheDir;
+		std::string						_dataSet;
+		std::string						_GTGeomemtryTableName;
+		std::string						_GTTextureTableName;
+		int								_cur_Feature_Cnt;
+		bool							_Materials;
+		bool							_HaveEditLimits;
+		CDB_Tile_Extent					_Edit_Tile_Extent;
+
+		bool getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const std::string& buffer, FeatureList& features, int sel);
+		bool find_PreInstance(std::string &ModelKeyName, std::string &ModelReferenceName, bool &instanced, int &LOD);
+		bool find_UnRefInstance(std::string &ModelKeyName, std::string &ModelZipFile, std::string &ArchiveFileName, std::string &TextureZipFile, bool &instance);
+		bool validate_name(std::string &filename);
+		CDB_Tile_Extent merge_extents(CDB_Tile_Extent baseextent, CDB_Tile_Extent tileextent);
+
+	};
+} // namespace osgEarth
+
+OSGEARTH_SPECIALIZE_CONFIG(osgEarth::CDBFeatureSource::Options);
+
+#endif // OSGEARTH_FEATURES_CDB_FEATURESOURCE_LAYER
