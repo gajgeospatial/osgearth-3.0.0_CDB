@@ -1,0 +1,281 @@
+/* -*-c++-*- */
+/* osgEarth - Geospatial SDK for OpenSceneGraph
+ * Copyright 2020 Pelican Mapping
+ * http://osgearth.org
+ *
+ * osgEarth is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ */
+
+#ifndef OSGEARTH_CDB_H
+#define OSGEARTH_CDB_H
+
+#include <osgEarth/Common>
+#include <osgEarth/ImageLayer>
+#include <osgEarth/ElevationLayer>
+#include <osgEarth/URI>
+#include <OpenThreads/Atomic>
+#include <CDB_TileLib/CDB_Tile>
+
+/**
+ * CDB layers. These are general purpose tiled layers that conform
+ * to the OGC CDB Standard 
+ */
+
+//! CDB namespace contains support classes used to the Layers
+namespace osgEarth { namespace CDB
+{
+    /**
+     * Underlying CDB driver that does the actual I/O
+     */
+    class OSGEARTH_EXPORT Driver
+    {
+    public:
+		Status open(bool &UseCache, std::string &rootDir, std::string &cacheDir, std::string &_dataSet, bool &Be_Verbose,
+			        bool &LightMap, bool &Materials, bool &MaterialMask);
+
+		ReadResult read(
+					const CDB_Tile_Type tiletype,
+					const TileKey& key,
+					ProgressCallback* progress) const;
+
+		GeoHeightField readElevation(
+					const CDB_Tile_Type tiletype,
+					const TileKey& key,
+					ProgressCallback* progress) const;
+
+    protected:
+		bool			_UseCache;
+		std::string	    _rootDir;
+		std::string	    _cacheDir;
+		std::string	    _dataSet;
+		bool			_Be_Verbose;
+		bool			_LightMap;
+		bool			_Materials;
+		bool			_MaterialMask;
+	};
+
+    // Internal serialization options
+    class OSGEARTH_EXPORT CDBImageLayerOptions : public ImageLayer::Options
+    {
+    public:
+        META_LayerOptions(osgEarth, CDBImageLayerOptions, ImageLayer::Options);
+        OE_OPTION(std::string, rootDir);
+		OE_OPTION(std::string, cacheDir);
+		OE_OPTION(std::string, Limits);
+		OE_OPTION(int, MaxCDBLevel);
+		OE_OPTION(int, NumNegLODs);
+		OE_OPTION(bool, Verbose);
+		OE_OPTION(bool, DisableBathemetry);
+		OE_OPTION(bool, Enable_Subord_Light);
+		OE_OPTION(bool, Enable_Subord_Material);
+		OE_OPTION(bool, Enable_Subord_MaterialMask);
+        static Config getMetadata();
+        virtual Config getConfig() const;
+    private:
+        void fromConfig(const Config& conf);
+    };
+
+    // Internal serialization options
+    class OSGEARTH_EXPORT CDBElevationLayerOptions : public ElevationLayer::Options
+    {
+    public:
+        META_LayerOptions(osgEarth, CDBElevationLayerOptions, ElevationLayer::Options);
+		OE_OPTION(std::string, rootDir);
+		OE_OPTION(std::string, cacheDir);
+		OE_OPTION(std::string, Limits);
+		OE_OPTION(int, MaxCDBLevel);
+		OE_OPTION(int, NumNegLODs);
+		OE_OPTION(bool, DisableBathemetry);
+		OE_OPTION(bool, Verbose);
+		static Config getMetadata();
+        virtual Config getConfig() const;
+    private:
+        void fromConfig(const Config& conf);
+    };
+} }
+
+
+namespace osgEarth
+{
+    /**
+     * Image layer connected to a generic, raw tile service and accesible
+     * via a URL template.
+     *
+     * The template pattern will vary depending on the structure of the data source.
+     * Here is an example URL:
+     *
+     *    http://[abc].tile.openstreetmap.org/{z}/{x}/{y}.png
+     *
+     * {z} is the level of detail. {x} and {y} are the tile indices at that
+     * level of detail. The [] delimiters indicate a URL "rotation"; for each
+     * subsequent request, one and only one of the characters inside the []
+     * will be used.
+     *
+     * XYZ accesses a "raw" data source and reads no metadata. Thus you must
+     * expressly provide a geospatial Profile by calling setProfile() on the
+     * layer before opening it or adding it to the Map. For example, for the
+     * pattern above you might want a spherical mercator profile:
+     *
+     *    layer->setProfile( Profile::create("spherical-mercator") );
+     */
+    class OSGEARTH_EXPORT CDBImageLayer : public ImageLayer
+    {
+    public: // serialization
+        typedef CDB::CDBImageLayerOptions Options;
+
+    public:
+        META_Layer(osgEarth, CDBImageLayer, Options, ImageLayer, CDBImage);
+
+    public:
+        //! CDB Root Directory
+        void setrootDir(const std::string& value);
+        const std::string& getrootDir() const;
+
+		//! CDB cache Directory (low res CDB levels; this is separate from the osgEarth cache)
+		void setcacheDir(const std::string& value);
+		const std::string& getcacheDir() const;
+
+		//! Visulaization Limits
+		void setLimits(const std::string& value);
+		const std::string& getLimits() const;
+
+		//Maximum CDB Level
+		void setMaxCDBLevel(const int& value);
+		const int& getMaxCDBLevel() const;
+
+		//Number of Negitive CDB LODs to process
+		void setNumNegLODs(const int& value);
+		const int& getNumNegLODs() const;
+
+		//! Enable or Disable Verbose output
+		void setVerbose(const bool& value);
+		const bool& getVerbose() const;
+
+		//! Disable inclusion of Bathometry into Elevation Level
+		void setDisableBathemetry(const bool& value);
+		const bool& getDisableBathemetry() const;
+
+		//! Enable or Disable Subordinate LightMap output
+		void setEnable_Subord_Light(const bool& value);
+		const bool& getEnable_Subord_Light() const;
+
+		//! Enable or Disable Subordinate Material output
+		void setEnable_Subord_Material(const bool& value);
+		const bool& getEnable_Subord_Material() const;
+
+		//! Enable or Disable Subordinate use of Mask in Material output
+		void setEnable_Subord_MaterialMask(const bool& value);
+		const bool& getEnable_Subord_MaterialMask() const;
+
+    public: // Layer
+        
+        //! Establishes a connection to the TMS repository
+        virtual Status openImplementation();
+
+        //! Creates a raster image for the given tile key
+        virtual GeoImage createImageImplementation(const TileKey& key, ProgressCallback* progress) const;
+		// Create a hight field from the raster information
+		GeoHeightField createHeightFieldImplementation(const TileKey& key, ProgressCallback* progress) const;
+    protected: // Layer
+
+        //! Called by constructors
+        virtual void init();
+
+    protected:
+
+        //! Destructor
+        virtual ~CDBImageLayer() { }
+
+    private:
+        CDB::Driver _driver;
+		bool			_UseCache;
+		std::string	    _rootDir;
+		std::string	    _cacheDir;
+		std::string	    _dataSet;
+		int			    _tileSize;
+		bool			_Be_Verbose;
+		bool			_LightMap;
+		bool			_Materials;
+		bool			_MaterialMask;
+	};
+
+
+    /**
+     * Elevation layer connected to a TMS (Tile Map Service) facility
+     */
+    class OSGEARTH_EXPORT CDBElevationLayer : public ElevationLayer
+    {
+    public:
+        typedef CDB::CDBElevationLayerOptions Options;
+
+    public:
+        META_Layer(osgEarth, CDBElevationLayer, Options, ElevationLayer, CDBElevation);
+        
+		//! CDB Root Directory
+		void setrootDir(const std::string& value);
+		const std::string& getrootDir() const;
+
+		//! CDB cache Directory (low res CDB levels; this is separate from the osgEarth cache)
+		void setcacheDir(const std::string& value);
+		const std::string& getcacheDir() const;
+
+		//! Visulaization Limits
+		void setLimits(const std::string& value);
+		const std::string& getLimits() const;
+
+		//Maximum CDB Level
+		void setMaxCDBLevel(const int& value);
+		const int& getMaxCDBLevel() const;
+
+		//Number of Negitive CDB LODs to process
+		void setNumNegLODs(const int& value);
+		const int& getNumNegLODs() const;
+
+		//! Disable inclusion of Bathometry into Elevation Level
+		void setDisableBathemetry(const bool& value);
+		const bool& getDisableBathemetry() const;
+
+		//! Enable or Disable Verbose output
+		void setVerbose(const bool& value);
+		const bool& getVerbose() const;
+
+
+    public: // Layer
+        
+        //! Establishes a connection to the TMS repository
+        virtual Status openImplementation();
+
+        //! Creates a heightfield for the given tile key
+        virtual GeoHeightField createHeightFieldImplementation(const TileKey& key, ProgressCallback* progress) const;
+
+    protected: // Layer
+
+        //! Called by constructors
+        virtual void init();
+
+    protected:
+
+        //! Destructor
+        virtual ~CDBElevationLayer() { }
+
+    private:
+        osg::ref_ptr<CDBImageLayer> _imageLayer;
+    };
+
+} // namespace osgEarth
+
+OSGEARTH_SPECIALIZE_CONFIG(osgEarth::CDBImageLayer::Options);
+OSGEARTH_SPECIALIZE_CONFIG(osgEarth::CDBElevationLayer::Options);
+
+#endif // OSGEARTH_CDB_H

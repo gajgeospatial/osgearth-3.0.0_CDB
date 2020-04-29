@@ -145,6 +145,8 @@ CDBFeatureSource::openImplementation()
         return parent;
 
     Profile* CDBFeatureProfile = 0L;
+	std::string ErrorMsg;
+	osgEarth::CDBTile::CDB_Tile::Initialize_Tile_Drivers(ErrorMsg);
 
     if (!options().minLevel().isSet() || !options().maxLevel().isSet())
     {
@@ -469,77 +471,78 @@ CDBFeatureSource::createFeatureCursor(const Query& query, ProgressCallback* prog
 
 	FeatureList features;
 	bool have_a_file = false;
-	if (Files2check > 0)
+
+	while (FilesChecked < Files2check)
 	{
 		base = mainTile->FileName(FilesChecked);
 
 		// check the blacklist:
+		bool blacklisted = false;
 		if (Registry::instance()->isBlacklisted(base))
 		{
-			Files2check = 0;
+			blacklisted = true;
 			if (_BE_Verbose)
 			{
 				OSG_WARN << "Tile " << base << " is blacklisted" << std::endl;
 			}
 		}
-	}
-
-	while (FilesChecked < Files2check)
-	{
-		bool have_file = mainTile->Init_Model_Tile(FilesChecked);
-
-		OE_DEBUG << query.tileKey().get().str() << "=" << base << std::endl;
-
-		if (have_file)
+		if (!blacklisted)
 		{
-			if (_BE_Verbose)
-			{
-				if (_CDB_geoTypical)
-				{
-					OSG_WARN << "Feature tile loding GeoTypical Tile " << base << std::endl;
-					if (subtile)
-					{
-						OSG_WARN << "Subtile: North " << tileExtent.North << " South " << tileExtent.South << " East " <<
-							tileExtent.East << " West " << tileExtent.West << std::endl;
-					}
-					else if (_UsingFileInput)
-					{
-						OSG_WARN << "ThisTile: North " << tileExtent.North << " South " << tileExtent.South << " East " <<
-							tileExtent.East << " West " << tileExtent.West << std::endl;
-					}
-				}
-				else
-				{
-					OSG_WARN << "Feature tile loding GeoSpecific Tile " << base << std::endl;
-					if (subtile)
-					{
-						OSG_WARN << "Subtile: North " << tileExtent.North << " South " << tileExtent.South << " East " <<
-							tileExtent.East << " West " << tileExtent.West << std::endl;
-					}
-					else if (_UsingFileInput)
-					{
-						OSG_WARN << "ThisTile: North " << tileExtent.North << " South " << tileExtent.South << " East " <<
-							tileExtent.East << " West " << tileExtent.West << std::endl;
-					}
-				}
-			}
-			bool fileOk = getFeatures(mainTile, base, features, FilesChecked);
-			if (fileOk)
+			bool have_file = mainTile->Init_Model_Tile(FilesChecked);
+
+			OE_DEBUG << query.tileKey().get().str() << "=" << base << std::endl;
+
+			if (have_file)
 			{
 				if (_BE_Verbose)
 				{
-					OSG_WARN << "File " << base << " has " << features.size() << " Features" << std::endl;
+					if (_CDB_geoTypical)
+					{
+						OSG_WARN << "Feature tile loding GeoTypical Tile " << base << std::endl;
+						if (subtile)
+						{
+							OSG_WARN << "Subtile: North " << tileExtent.North << " South " << tileExtent.South << " East " <<
+								tileExtent.East << " West " << tileExtent.West << std::endl;
+						}
+						else if (_UsingFileInput)
+						{
+							OSG_WARN << "ThisTile: North " << tileExtent.North << " South " << tileExtent.South << " East " <<
+								tileExtent.East << " West " << tileExtent.West << std::endl;
+						}
+					}
+					else
+					{
+						OSG_WARN << "Feature tile loding GeoSpecific Tile " << base << std::endl;
+						if (subtile)
+						{
+							OSG_WARN << "Subtile: North " << tileExtent.North << " South " << tileExtent.South << " East " <<
+								tileExtent.East << " West " << tileExtent.West << std::endl;
+						}
+						else if (_UsingFileInput)
+						{
+							OSG_WARN << "ThisTile: North " << tileExtent.North << " South " << tileExtent.South << " East " <<
+								tileExtent.East << " West " << tileExtent.West << std::endl;
+						}
+					}
 				}
-				OE_INFO << LC << "Features " << features.size() << base << std::endl;
-				have_a_file = true;
-			}
+				bool fileOk = getFeatures(mainTile, base, features, FilesChecked);
+				if (fileOk)
+				{
+					if (_BE_Verbose)
+					{
+						OSG_WARN << "File " << base << " has " << features.size() << " Features" << std::endl;
+					}
+					OE_INFO << LC << "Features " << features.size() << base << std::endl;
+					have_a_file = true;
+				}
 
-			if (fileOk)
-				dataOK = true;
-			else
-			{
-				if (!_UsingFileInput)
-					Registry::instance()->blacklist(base);
+				if (fileOk)
+					dataOK = true;
+				else
+				{
+					if (!_UsingFileInput)
+						Registry::instance()->blacklist(base);
+				}
 			}
 		}
 		++FilesChecked;

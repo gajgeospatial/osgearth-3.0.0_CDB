@@ -2,7 +2,7 @@
 
 set(source_dir      "../../../src/osgEarth")
 set(bin_dir         "./")
-set(glsl_files      "CascadeDraping.glsl;ClipPlane.glsl;DepthOffset.glsl;Draping.glsl;GPUClamping.glsl;GPUClamping.lib.glsl;Instancing.glsl;LineDrawable.glsl;WireLines.glsl;PhongLighting.glsl;PointDrawable.glsl;Text.glsl;Text_legacy.glsl;ContourMap.glsl;GeodeticGraticule.glsl;LogDepthBuffer.glsl;LogDepthBuffer.VertOnly.glsl;ShadowCaster.glsl;SimpleOceanLayer.glsl;RTTPicker.glsl")
+set(glsl_files      "CascadeDraping.glsl;ClipPlane.glsl;DepthOffset.glsl;Draping.glsl;GPUClamping.glsl;GPUClamping.lib.glsl;Instancing.glsl;LineDrawable.glsl;WireLines.glsl;PhongLighting.glsl;PointDrawable.glsl;Text.glsl;Text_legacy.glsl;ContourMap.glsl;GeodeticGraticule.glsl;LogDepthBuffer.glsl;LogDepthBuffer.VertOnly.glsl;ShadowCaster.glsl;SimpleOceanLayer.glsl;RTTPicker.glsl;WindLayer.CS.glsl;")
 set(template_file   "Shaders.cpp.in")
 set(output_cpp_file "./AutoGenShaders.cpp")
 
