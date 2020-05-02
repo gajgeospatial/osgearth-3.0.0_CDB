@@ -275,7 +275,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\build_include;..\..\..\..\..\GLCore;..\..\..\..\src;..\..\..\..\..\$(OSG_DIR)\include;..\..\..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\build_include;..\..\..\..\..\GLCore;..\..\..\..\src;..\..\..\..\..\$(OSG_DIR)\include;..\..\..\..\..\$(OSG_DIR)\msvc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
