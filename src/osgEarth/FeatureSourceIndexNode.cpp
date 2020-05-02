@@ -149,7 +149,6 @@ void
 FeatureSourceIndexNode::setFIDMap(const FeatureSourceIndexNode::FIDMap& fids)
 {
     _fids = fids;
-    //todo
 }
 
 namespace

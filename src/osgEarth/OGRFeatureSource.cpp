@@ -783,7 +783,7 @@ OGRFeatureSource::buildSpatialIndex()
 }
 
 FeatureCursor*
-OGRFeatureSource::createFeatureCursor(const Query& query, ProgressCallback* progress)
+OGRFeatureSource::createFeatureCursorImplementation(const Query& query, ProgressCallback* progress)
 {
     if (_geometry.valid())
     {

@@ -820,6 +820,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <None Include="..\..\..\src\osgEarth\CDBFeatureSource" />
     <None Include="..\..\..\src\osgEarth\GlobalModelManager" />
     <None Include="..\..\..\src\osgEarth\InstanceBuilder" />
+    <None Include="..\..\..\src\osgEarth\NetworkMonitor" />
     <None Include="..\..\..\src\osgEarth\WindLayer" />
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISServer" />
     <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISTilePackage" />
@@ -1237,6 +1238,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\..\src\osgEarth\MimeTypes.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\ModelLayer.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\ModelSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\NetworkMonitor.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\NodeUtils.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\Notify.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\ObjectIndex.cpp" />

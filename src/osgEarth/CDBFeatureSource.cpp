@@ -400,7 +400,7 @@ CDBFeatureSource::init()
 
 
 FeatureCursor*
-CDBFeatureSource::createFeatureCursor(const Query& query, ProgressCallback* progress)
+CDBFeatureSource::createFeatureCursorImplementation(const Query& query, ProgressCallback* progress)
 {
 	FeatureCursor* result = 0L;
 	_cur_Feature_Cnt = 0;
