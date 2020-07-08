@@ -730,7 +730,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule">
+    <CustomBuild Include="..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">Running cpp protocol buffer compiler on vector_tile.proto</Message>
@@ -942,7 +942,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule">
+    <CustomBuild Include="..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
@@ -950,7 +950,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -959,7 +959,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -968,7 +968,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -977,7 +977,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -986,7 +986,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -995,7 +995,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1028,7 +1028,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1037,7 +1037,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1046,7 +1046,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1055,7 +1055,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1064,7 +1064,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1073,7 +1073,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1102,7 +1102,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1111,7 +1111,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1128,7 +1128,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1137,7 +1137,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -1162,337 +1162,337 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <None Include="..\..\..\src\osgEarth\InstanceBuilder" />
     <None Include="..\..\..\src\osgEarth\NetworkMonitor" />
     <None Include="..\..\..\src\osgEarth\WindLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISServer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISTilePackage" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Bing" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Bounds" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Cache" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheEstimator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheBin" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CachePolicy" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheSeed" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Callouts" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CameraUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Capabilities" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CesiumIon" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CascadeDrapingDecorator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Clamping" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampableNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampingTechnique" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Color" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ColorFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Common" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Composite" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Config" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Containers" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Cube" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CullingUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DateTime" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DateTimeRange" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DecalLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DepthOffset" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapeableNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapingCullSet" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapingTechnique" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrawInstanced" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ECEF" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationLOD" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationPool" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationRanges" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationQuery" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EllipsoidIntersector" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Endian" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Export" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Extension" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FadeEffect" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FileUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GDAL" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GDALDEM" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoCommon" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoData" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geoid" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoMath" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoTransform" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryClamper" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GLSLChunker" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GLUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HeightFieldUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Horizon" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HorizonClipPlane" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HTTPClient" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageMosaic" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageToHeightFieldConverter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceCloud" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IntersectionPicker" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IOTypes" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\JoinPointsLinesFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\JsonUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LandCover" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LandCoverLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Layer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LayerReference" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LayerShader" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Lighting" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineDrawable" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineFunctor" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Locators" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LocalTangentPlane" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Map" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapCallback" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapInfo" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapModelChange" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapNodeObserver" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MaskLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MaskSource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Memory" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MemCache" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MetaTile" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Metrics" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MBTiles" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelSource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\NativeProgramAdapter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\NodeUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Notify" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\optional" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ObjectIndex" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OverlayDecorator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PagedNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PatchLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PhongLightingEffect" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Picker" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PluginLoader" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointDrawable" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PowerlineLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PrimitiveIntersector" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Profile" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Progress" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Random" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Registry" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceReleaser" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Revisioning" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SceneGraphCallback" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayout" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutImpl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutDeclutter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutCallout" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Shaders" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderFactory" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderGenerator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderLoader" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderMerger" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimplexNoise" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SpatialReference" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StateSetCache" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Status" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StringUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TDTiles" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TaskService" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Terrain" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEffect" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainOptions" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEngineNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEngineRequirements" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainResources" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileModel" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileModelFactory" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Tessellator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ThreeDTilesLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileKey" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileHandler" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileRasterizer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TiledFeatureModelGraph" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TiledFeatureModelLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSourceElevationLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSourceImageLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileVisitor" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileCache" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TimeControl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TraversalData" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ThreadingUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TMS" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Units" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\URI" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Utils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Version" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VerticalDatum" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VideoLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Viewpoint" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VirtualProgram" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VisibleLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WMS" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XmlUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XYZ" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ActivityMonitorTool" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AutoClipPlaneHandler" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AutoScaleCallback" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AtlasBuilder" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClipSpace" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Controls" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ContourMap" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampCallback" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClusterNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DebugImageLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EarthManipulator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Ephemeris" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExampleResources" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FlatteningLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Formatter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FractalElevationLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GARSGraticule" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticGraticule" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticLabelingEngine" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GraticuleLabelingEngine" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HTM" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LatLongFormatter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineOfSight" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LinearLineOfSight" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogarithmicDepthBuffer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeasureTool" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MGRSFormatter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MGRSGraticule" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MouseCoordsTool" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RadialLineOfSight" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RTTPicker" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Shadowing" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimpleOceanLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimplePager" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Sky" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SkyView" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StarData" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainProfile" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileIndex" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileIndexBuilder" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TFSPackager" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TMSBackFiller" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TopologyGraph" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\UTMGraticule" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\UTMLabelingEngine" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ViewFitter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AltitudeFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BufferFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BuildGeometryFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BuildTextFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CentroidFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ConvertTypeFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CropFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExtrudeGeometryFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Feature" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureCursor" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureDisplayLayout" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureElevationLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureImageLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureIndex" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureMaskLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelGraph" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelSource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureSource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureSourceIndexNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Filter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FilterContext" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryCompiler" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageToFeatureLayer" />
+    <None Include="..\..\..\src\osgEarth\ArcGISServer" />
+    <None Include="..\..\..\src\osgEarth\ArcGISTilePackage" />
+    <None Include="..\..\..\src\osgEarth\Bing" />
+    <None Include="..\..\..\src\osgEarth\Bounds" />
+    <None Include="..\..\..\src\osgEarth\Cache" />
+    <None Include="..\..\..\src\osgEarth\CacheEstimator" />
+    <None Include="..\..\..\src\osgEarth\CacheBin" />
+    <None Include="..\..\..\src\osgEarth\CachePolicy" />
+    <None Include="..\..\..\src\osgEarth\CacheSeed" />
+    <None Include="..\..\..\src\osgEarth\Callouts" />
+    <None Include="..\..\..\src\osgEarth\CameraUtils" />
+    <None Include="..\..\..\src\osgEarth\Capabilities" />
+    <None Include="..\..\..\src\osgEarth\CesiumIon" />
+    <None Include="..\..\..\src\osgEarth\CascadeDrapingDecorator" />
+    <None Include="..\..\..\src\osgEarth\Clamping" />
+    <None Include="..\..\..\src\osgEarth\ClampableNode" />
+    <None Include="..\..\..\src\osgEarth\ClampingTechnique" />
+    <None Include="..\..\..\src\osgEarth\Color" />
+    <None Include="..\..\..\src\osgEarth\ColorFilter" />
+    <None Include="..\..\..\src\osgEarth\Common" />
+    <None Include="..\..\..\src\osgEarth\Composite" />
+    <None Include="..\..\..\src\osgEarth\Config" />
+    <None Include="..\..\..\src\osgEarth\Containers" />
+    <None Include="..\..\..\src\osgEarth\Cube" />
+    <None Include="..\..\..\src\osgEarth\CullingUtils" />
+    <None Include="..\..\..\src\osgEarth\DateTime" />
+    <None Include="..\..\..\src\osgEarth\DateTimeRange" />
+    <None Include="..\..\..\src\osgEarth\DecalLayer" />
+    <None Include="..\..\..\src\osgEarth\DepthOffset" />
+    <None Include="..\..\..\src\osgEarth\DrapeableNode" />
+    <None Include="..\..\..\src\osgEarth\DrapingCullSet" />
+    <None Include="..\..\..\src\osgEarth\DrapingTechnique" />
+    <None Include="..\..\..\src\osgEarth\DrawInstanced" />
+    <None Include="..\..\..\src\osgEarth\ECEF" />
+    <None Include="..\..\..\src\osgEarth\ElevationLayer" />
+    <None Include="..\..\..\src\osgEarth\ElevationLOD" />
+    <None Include="..\..\..\src\osgEarth\ElevationPool" />
+    <None Include="..\..\..\src\osgEarth\ElevationRanges" />
+    <None Include="..\..\..\src\osgEarth\ElevationQuery" />
+    <None Include="..\..\..\src\osgEarth\EllipsoidIntersector" />
+    <None Include="..\..\..\src\osgEarth\Endian" />
+    <None Include="..\..\..\src\osgEarth\Export" />
+    <None Include="..\..\..\src\osgEarth\Extension" />
+    <None Include="..\..\..\src\osgEarth\FadeEffect" />
+    <None Include="..\..\..\src\osgEarth\FileUtils" />
+    <None Include="..\..\..\src\osgEarth\GDAL" />
+    <None Include="..\..\..\src\osgEarth\GDALDEM" />
+    <None Include="..\..\..\src\osgEarth\GeoCommon" />
+    <None Include="..\..\..\src\osgEarth\GeoData" />
+    <None Include="..\..\..\src\osgEarth\Geoid" />
+    <None Include="..\..\..\src\osgEarth\GeoMath" />
+    <None Include="..\..\..\src\osgEarth\GeoTransform" />
+    <None Include="..\..\..\src\osgEarth\GeometryClamper" />
+    <None Include="..\..\..\src\osgEarth\GLSLChunker" />
+    <None Include="..\..\..\src\osgEarth\GLUtils" />
+    <None Include="..\..\..\src\osgEarth\HeightFieldUtils" />
+    <None Include="..\..\..\src\osgEarth\Horizon" />
+    <None Include="..\..\..\src\osgEarth\HorizonClipPlane" />
+    <None Include="..\..\..\src\osgEarth\HTTPClient" />
+    <None Include="..\..\..\src\osgEarth\ImageLayer" />
+    <None Include="..\..\..\src\osgEarth\ImageMosaic" />
+    <None Include="..\..\..\src\osgEarth\ImageToHeightFieldConverter" />
+    <None Include="..\..\..\src\osgEarth\ImageUtils" />
+    <None Include="..\..\..\src\osgEarth\InstanceCloud" />
+    <None Include="..\..\..\src\osgEarth\IntersectionPicker" />
+    <None Include="..\..\..\src\osgEarth\IOTypes" />
+    <None Include="..\..\..\src\osgEarth\JoinPointsLinesFilter" />
+    <None Include="..\..\..\src\osgEarth\JsonUtils" />
+    <None Include="..\..\..\src\osgEarth\LandCover" />
+    <None Include="..\..\..\src\osgEarth\LandCoverLayer" />
+    <None Include="..\..\..\src\osgEarth\Layer" />
+    <None Include="..\..\..\src\osgEarth\LayerReference" />
+    <None Include="..\..\..\src\osgEarth\LayerShader" />
+    <None Include="..\..\..\src\osgEarth\Lighting" />
+    <None Include="..\..\..\src\osgEarth\LineDrawable" />
+    <None Include="..\..\..\src\osgEarth\LineFunctor" />
+    <None Include="..\..\..\src\osgEarth\Locators" />
+    <None Include="..\..\..\src\osgEarth\LocalTangentPlane" />
+    <None Include="..\..\..\src\osgEarth\Map" />
+    <None Include="..\..\..\src\osgEarth\MapCallback" />
+    <None Include="..\..\..\src\osgEarth\MapInfo" />
+    <None Include="..\..\..\src\osgEarth\MapModelChange" />
+    <None Include="..\..\..\src\osgEarth\MapNode" />
+    <None Include="..\..\..\src\osgEarth\MapNodeObserver" />
+    <None Include="..\..\..\src\osgEarth\MaskLayer" />
+    <None Include="..\..\..\src\osgEarth\MaskSource" />
+    <None Include="..\..\..\src\osgEarth\Memory" />
+    <None Include="..\..\..\src\osgEarth\MemCache" />
+    <None Include="..\..\..\src\osgEarth\MetaTile" />
+    <None Include="..\..\..\src\osgEarth\Metrics" />
+    <None Include="..\..\..\src\osgEarth\MBTiles" />
+    <None Include="..\..\..\src\osgEarth\ModelLayer" />
+    <None Include="..\..\..\src\osgEarth\ModelSource" />
+    <None Include="..\..\..\src\osgEarth\NativeProgramAdapter" />
+    <None Include="..\..\..\src\osgEarth\NodeUtils" />
+    <None Include="..\..\..\src\osgEarth\Notify" />
+    <None Include="..\..\..\src\osgEarth\optional" />
+    <None Include="..\..\..\src\osgEarth\ObjectIndex" />
+    <None Include="..\..\..\src\osgEarth\OverlayDecorator" />
+    <None Include="..\..\..\src\osgEarth\PagedNode" />
+    <None Include="..\..\..\src\osgEarth\PatchLayer" />
+    <None Include="..\..\..\src\osgEarth\PhongLightingEffect" />
+    <None Include="..\..\..\src\osgEarth\Picker" />
+    <None Include="..\..\..\src\osgEarth\PluginLoader" />
+    <None Include="..\..\..\src\osgEarth\PointDrawable" />
+    <None Include="..\..\..\src\osgEarth\PowerlineLayer" />
+    <None Include="..\..\..\src\osgEarth\PrimitiveIntersector" />
+    <None Include="..\..\..\src\osgEarth\Profile" />
+    <None Include="..\..\..\src\osgEarth\Progress" />
+    <None Include="..\..\..\src\osgEarth\Random" />
+    <None Include="..\..\..\src\osgEarth\Registry" />
+    <None Include="..\..\..\src\osgEarth\ResourceReleaser" />
+    <None Include="..\..\..\src\osgEarth\Revisioning" />
+    <None Include="..\..\..\src\osgEarth\SceneGraphCallback" />
+    <None Include="..\..\..\src\osgEarth\ScreenSpaceLayout" />
+    <None Include="..\..\..\src\osgEarth\ScreenSpaceLayoutImpl" />
+    <None Include="..\..\..\src\osgEarth\ScreenSpaceLayoutDeclutter" />
+    <None Include="..\..\..\src\osgEarth\ScreenSpaceLayoutCallout" />
+    <None Include="..\..\..\src\osgEarth\Shaders" />
+    <None Include="..\..\..\src\osgEarth\ShaderFactory" />
+    <None Include="..\..\..\src\osgEarth\ShaderGenerator" />
+    <None Include="..\..\..\src\osgEarth\ShaderLoader" />
+    <None Include="..\..\..\src\osgEarth\ShaderMerger" />
+    <None Include="..\..\..\src\osgEarth\ShaderUtils" />
+    <None Include="..\..\..\src\osgEarth\SimplexNoise" />
+    <None Include="..\..\..\src\osgEarth\SpatialReference" />
+    <None Include="..\..\..\src\osgEarth\StateSetCache" />
+    <None Include="..\..\..\src\osgEarth\Status" />
+    <None Include="..\..\..\src\osgEarth\StringUtils" />
+    <None Include="..\..\..\src\osgEarth\TDTiles" />
+    <None Include="..\..\..\src\osgEarth\TaskService" />
+    <None Include="..\..\..\src\osgEarth\Terrain" />
+    <None Include="..\..\..\src\osgEarth\TerrainEffect" />
+    <None Include="..\..\..\src\osgEarth\TerrainOptions" />
+    <None Include="..\..\..\src\osgEarth\TerrainEngineNode" />
+    <None Include="..\..\..\src\osgEarth\TerrainEngineRequirements" />
+    <None Include="..\..\..\src\osgEarth\TerrainResources" />
+    <None Include="..\..\..\src\osgEarth\TerrainTileModel" />
+    <None Include="..\..\..\src\osgEarth\TerrainTileModelFactory" />
+    <None Include="..\..\..\src\osgEarth\TerrainTileNode" />
+    <None Include="..\..\..\src\osgEarth\Tessellator" />
+    <None Include="..\..\..\src\osgEarth\Text" />
+    <None Include="..\..\..\src\osgEarth\ThreeDTilesLayer" />
+    <None Include="..\..\..\src\osgEarth\TileKey" />
+    <None Include="..\..\..\src\osgEarth\TileLayer" />
+    <None Include="..\..\..\src\osgEarth\TileHandler" />
+    <None Include="..\..\..\src\osgEarth\TileRasterizer" />
+    <None Include="..\..\..\src\osgEarth\TiledFeatureModelGraph" />
+    <None Include="..\..\..\src\osgEarth\TiledFeatureModelLayer" />
+    <None Include="..\..\..\src\osgEarth\TileSource" />
+    <None Include="..\..\..\src\osgEarth\TileSourceElevationLayer" />
+    <None Include="..\..\..\src\osgEarth\TileSourceImageLayer" />
+    <None Include="..\..\..\src\osgEarth\TileVisitor" />
+    <None Include="..\..\..\src\osgEarth\TileCache" />
+    <None Include="..\..\..\src\osgEarth\TimeControl" />
+    <None Include="..\..\..\src\osgEarth\TraversalData" />
+    <None Include="..\..\..\src\osgEarth\ThreadingUtils" />
+    <None Include="..\..\..\src\osgEarth\TMS" />
+    <None Include="..\..\..\src\osgEarth\Units" />
+    <None Include="..\..\..\src\osgEarth\URI" />
+    <None Include="..\..\..\src\osgEarth\Utils" />
+    <None Include="..\..\..\src\osgEarth\Version" />
+    <None Include="..\..\..\src\osgEarth\VerticalDatum" />
+    <None Include="..\..\..\src\osgEarth\VideoLayer" />
+    <None Include="..\..\..\src\osgEarth\Viewpoint" />
+    <None Include="..\..\..\src\osgEarth\VirtualProgram" />
+    <None Include="..\..\..\src\osgEarth\VisibleLayer" />
+    <None Include="..\..\..\src\osgEarth\WMS" />
+    <None Include="..\..\..\src\osgEarth\XmlUtils" />
+    <None Include="..\..\..\src\osgEarth\XYZ" />
+    <None Include="..\..\..\src\osgEarth\ActivityMonitorTool" />
+    <None Include="..\..\..\src\osgEarth\AutoClipPlaneHandler" />
+    <None Include="..\..\..\src\osgEarth\AutoScaleCallback" />
+    <None Include="..\..\..\src\osgEarth\AtlasBuilder" />
+    <None Include="..\..\..\src\osgEarth\ClipSpace" />
+    <None Include="..\..\..\src\osgEarth\Controls" />
+    <None Include="..\..\..\src\osgEarth\ContourMap" />
+    <None Include="..\..\..\src\osgEarth\ClampCallback" />
+    <None Include="..\..\..\src\osgEarth\ClusterNode" />
+    <None Include="..\..\..\src\osgEarth\DebugImageLayer" />
+    <None Include="..\..\..\src\osgEarth\EarthManipulator" />
+    <None Include="..\..\..\src\osgEarth\Ephemeris" />
+    <None Include="..\..\..\src\osgEarth\ExampleResources" />
+    <None Include="..\..\..\src\osgEarth\FlatteningLayer" />
+    <None Include="..\..\..\src\osgEarth\Formatter" />
+    <None Include="..\..\..\src\osgEarth\FractalElevationLayer" />
+    <None Include="..\..\..\src\osgEarth\GARSGraticule" />
+    <None Include="..\..\..\src\osgEarth\GeodeticGraticule" />
+    <None Include="..\..\..\src\osgEarth\GeodeticLabelingEngine" />
+    <None Include="..\..\..\src\osgEarth\GraticuleLabelingEngine" />
+    <None Include="..\..\..\src\osgEarth\HTM" />
+    <None Include="..\..\..\src\osgEarth\LatLongFormatter" />
+    <None Include="..\..\..\src\osgEarth\LineOfSight" />
+    <None Include="..\..\..\src\osgEarth\LinearLineOfSight" />
+    <None Include="..\..\..\src\osgEarth\LogarithmicDepthBuffer" />
+    <None Include="..\..\..\src\osgEarth\MeasureTool" />
+    <None Include="..\..\..\src\osgEarth\MGRSFormatter" />
+    <None Include="..\..\..\src\osgEarth\MGRSGraticule" />
+    <None Include="..\..\..\src\osgEarth\MouseCoordsTool" />
+    <None Include="..\..\..\src\osgEarth\RadialLineOfSight" />
+    <None Include="..\..\..\src\osgEarth\RTTPicker" />
+    <None Include="..\..\..\src\osgEarth\Shadowing" />
+    <None Include="..\..\..\src\osgEarth\SimpleOceanLayer" />
+    <None Include="..\..\..\src\osgEarth\SimplePager" />
+    <None Include="..\..\..\src\osgEarth\Sky" />
+    <None Include="..\..\..\src\osgEarth\SkyView" />
+    <None Include="..\..\..\src\osgEarth\StarData" />
+    <None Include="..\..\..\src\osgEarth\TerrainProfile" />
+    <None Include="..\..\..\src\osgEarth\TileIndex" />
+    <None Include="..\..\..\src\osgEarth\TileIndexBuilder" />
+    <None Include="..\..\..\src\osgEarth\TFSPackager" />
+    <None Include="..\..\..\src\osgEarth\TMSBackFiller" />
+    <None Include="..\..\..\src\osgEarth\TopologyGraph" />
+    <None Include="..\..\..\src\osgEarth\UTMGraticule" />
+    <None Include="..\..\..\src\osgEarth\UTMLabelingEngine" />
+    <None Include="..\..\..\src\osgEarth\ViewFitter" />
+    <None Include="..\..\..\src\osgEarth\AltitudeFilter" />
+    <None Include="..\..\..\src\osgEarth\BufferFilter" />
+    <None Include="..\..\..\src\osgEarth\BuildGeometryFilter" />
+    <None Include="..\..\..\src\osgEarth\BuildTextFilter" />
+    <None Include="..\..\..\src\osgEarth\CentroidFilter" />
+    <None Include="..\..\..\src\osgEarth\ConvertTypeFilter" />
+    <None Include="..\..\..\src\osgEarth\CropFilter" />
+    <None Include="..\..\..\src\osgEarth\ExtrudeGeometryFilter" />
+    <None Include="..\..\..\src\osgEarth\Feature" />
+    <None Include="..\..\..\src\osgEarth\FeatureCursor" />
+    <None Include="..\..\..\src\osgEarth\FeatureDisplayLayout" />
+    <None Include="..\..\..\src\osgEarth\FeatureElevationLayer" />
+    <None Include="..\..\..\src\osgEarth\FeatureImageLayer" />
+    <None Include="..\..\..\src\osgEarth\FeatureIndex" />
+    <None Include="..\..\..\src\osgEarth\FeatureMaskLayer" />
+    <None Include="..\..\..\src\osgEarth\FeatureModelGraph" />
+    <None Include="..\..\..\src\osgEarth\FeatureModelLayer" />
+    <None Include="..\..\..\src\osgEarth\FeatureModelSource" />
+    <None Include="..\..\..\src\osgEarth\FeatureSource" />
+    <None Include="..\..\..\src\osgEarth\FeatureSourceIndexNode" />
+    <None Include="..\..\..\src\osgEarth\Filter" />
+    <None Include="..\..\..\src\osgEarth\FilterContext" />
+    <None Include="..\..\..\src\osgEarth\GeometryCompiler" />
+    <None Include="..\..\..\src\osgEarth\GeometryUtils" />
+    <None Include="..\..\..\src\osgEarth\ImageToFeatureLayer" />
     <ClCompile Include="..\..\..\src\CDB_TileLib\CDB_Tile.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\CDB.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\CDBFeatureSource.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\GlobalModelManager.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\InstanceBuilder.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\InstanceCloud.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MVT" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OgrUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OGRFeatureSource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PolygonizeLines" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResampleFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScaleFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Session" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScatterFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Script" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScriptEngine" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScriptFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SubstituteModelFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TessellateOperator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TextSymbolizer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TFS" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TransformFilter" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WireLines" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XYZFeatureSource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WFS" />
+    <None Include="..\..\..\src\osgEarth\MVT" />
+    <None Include="..\..\..\src\osgEarth\OgrUtils" />
+    <None Include="..\..\..\src\osgEarth\OGRFeatureSource" />
+    <None Include="..\..\..\src\osgEarth\PolygonizeLines" />
+    <None Include="..\..\..\src\osgEarth\ResampleFilter" />
+    <None Include="..\..\..\src\osgEarth\ScaleFilter" />
+    <None Include="..\..\..\src\osgEarth\Session" />
+    <None Include="..\..\..\src\osgEarth\ScatterFilter" />
+    <None Include="..\..\..\src\osgEarth\Script" />
+    <None Include="..\..\..\src\osgEarth\ScriptEngine" />
+    <None Include="..\..\..\src\osgEarth\ScriptFilter" />
+    <None Include="..\..\..\src\osgEarth\SubstituteModelFilter" />
+    <None Include="..\..\..\src\osgEarth\TessellateOperator" />
+    <None Include="..\..\..\src\osgEarth\TextSymbolizer" />
+    <None Include="..\..\..\src\osgEarth\TFS" />
+    <None Include="..\..\..\src\osgEarth\TransformFilter" />
+    <None Include="..\..\..\src\osgEarth\WireLines" />
+    <None Include="..\..\..\src\osgEarth\XYZFeatureSource" />
+    <None Include="..\..\..\src\osgEarth\WFS" />
     <ClInclude Include="..\..\..\src\osgEarth\AGG.h" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AltitudeSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BBoxSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BillboardResource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BillboardSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CoverageSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CssUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Expression" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExtrusionSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Fill" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geometry" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryFactory" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GEOS" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryRasterizer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IconResource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IconSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceResource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshConsolidator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshFlattener" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshSubdivider" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelResource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PolygonSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Query" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RenderSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Resource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceCache" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceLibrary" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Skins" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Stroke" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Style" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StyleSelector" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StyleSheet" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Symbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Tags" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TextSymbol" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationSettings" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationData" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationRegistry" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationUtils" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BboxDrawable" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CircleNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Draggers" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EllipseNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoPositionNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoPositionNodeAutoScaler" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LocalGeometryNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageOverlay" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageOverlayEditor" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LabelNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PlaceNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RectangleNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TrackNode" />
+    <None Include="..\..\..\src\osgEarth\AltitudeSymbol" />
+    <None Include="..\..\..\src\osgEarth\BBoxSymbol" />
+    <None Include="..\..\..\src\osgEarth\BillboardResource" />
+    <None Include="..\..\..\src\osgEarth\BillboardSymbol" />
+    <None Include="..\..\..\src\osgEarth\CoverageSymbol" />
+    <None Include="..\..\..\src\osgEarth\CssUtils" />
+    <None Include="..\..\..\src\osgEarth\Expression" />
+    <None Include="..\..\..\src\osgEarth\ExtrusionSymbol" />
+    <None Include="..\..\..\src\osgEarth\Fill" />
+    <None Include="..\..\..\src\osgEarth\Geometry" />
+    <None Include="..\..\..\src\osgEarth\GeometryFactory" />
+    <None Include="..\..\..\src\osgEarth\GEOS" />
+    <None Include="..\..\..\src\osgEarth\GeometryRasterizer" />
+    <None Include="..\..\..\src\osgEarth\IconResource" />
+    <None Include="..\..\..\src\osgEarth\IconSymbol" />
+    <None Include="..\..\..\src\osgEarth\InstanceResource" />
+    <None Include="..\..\..\src\osgEarth\InstanceSymbol" />
+    <None Include="..\..\..\src\osgEarth\LineSymbol" />
+    <None Include="..\..\..\src\osgEarth\MeshConsolidator" />
+    <None Include="..\..\..\src\osgEarth\MeshFlattener" />
+    <None Include="..\..\..\src\osgEarth\MeshSubdivider" />
+    <None Include="..\..\..\src\osgEarth\ModelResource" />
+    <None Include="..\..\..\src\osgEarth\ModelSymbol" />
+    <None Include="..\..\..\src\osgEarth\PointSymbol" />
+    <None Include="..\..\..\src\osgEarth\PolygonSymbol" />
+    <None Include="..\..\..\src\osgEarth\Query" />
+    <None Include="..\..\..\src\osgEarth\RenderSymbol" />
+    <None Include="..\..\..\src\osgEarth\Resource" />
+    <None Include="..\..\..\src\osgEarth\ResourceCache" />
+    <None Include="..\..\..\src\osgEarth\ResourceLibrary" />
+    <None Include="..\..\..\src\osgEarth\Skins" />
+    <None Include="..\..\..\src\osgEarth\Stroke" />
+    <None Include="..\..\..\src\osgEarth\Style" />
+    <None Include="..\..\..\src\osgEarth\StyleSelector" />
+    <None Include="..\..\..\src\osgEarth\StyleSheet" />
+    <None Include="..\..\..\src\osgEarth\Symbol" />
+    <None Include="..\..\..\src\osgEarth\Tags" />
+    <None Include="..\..\..\src\osgEarth\TextSymbol" />
+    <None Include="..\..\..\src\osgEarth\AnnotationSettings" />
+    <None Include="..\..\..\src\osgEarth\AnnotationData" />
+    <None Include="..\..\..\src\osgEarth\AnnotationLayer" />
+    <None Include="..\..\..\src\osgEarth\AnnotationNode" />
+    <None Include="..\..\..\src\osgEarth\AnnotationRegistry" />
+    <None Include="..\..\..\src\osgEarth\AnnotationUtils" />
+    <None Include="..\..\..\src\osgEarth\BboxDrawable" />
+    <None Include="..\..\..\src\osgEarth\CircleNode" />
+    <None Include="..\..\..\src\osgEarth\Draggers" />
+    <None Include="..\..\..\src\osgEarth\EllipseNode" />
+    <None Include="..\..\..\src\osgEarth\FeatureNode" />
+    <None Include="..\..\..\src\osgEarth\GeoPositionNode" />
+    <None Include="..\..\..\src\osgEarth\GeoPositionNodeAutoScaler" />
+    <None Include="..\..\..\src\osgEarth\LocalGeometryNode" />
+    <None Include="..\..\..\src\osgEarth\ImageOverlay" />
+    <None Include="..\..\..\src\osgEarth\ImageOverlayEditor" />
+    <None Include="..\..\..\src\osgEarth\LabelNode" />
+    <None Include="..\..\..\src\osgEarth\ModelNode" />
+    <None Include="..\..\..\src\osgEarth\PlaceNode" />
+    <None Include="..\..\..\src\osgEarth\RectangleNode" />
+    <None Include="..\..\..\src\osgEarth\TrackNode" />
     <ClInclude Include="..\..\..\src\osgEarth\rtree.h" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FileGDBFeatureSource" />
+    <None Include="..\..\..\src\osgEarth\FileGDBFeatureSource" />
     <ClInclude Include="..\..\build_include\osgEarth\BuildConfig.h" />
     <ClInclude Include=".\vector_tile.pb.h" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geocoder" />
+    <None Include="..\..\..\src\osgEarth\Geocoder" />
     <ClCompile Include="..\..\..\src\osgEarth\ArcGISServer.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\ArcGISTilePackage.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\Bing.cpp" />
@@ -1793,26 +1793,26 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include=".\AutoGenShaders.cpp" />
     <ClCompile Include=".\vector_tile.pb.cc" />
     <ClCompile Include="..\..\..\src\osgEarth\Geocoder.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CascadeDraping.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClipPlane.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DepthOffset.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Draping.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GPUClamping.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GPUClamping.lib.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Instancing.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineDrawable.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WireLines.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PhongLighting.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointDrawable.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text_legacy.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ContourMap.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticGraticule.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogDepthBuffer.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogDepthBuffer.VertOnly.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShadowCaster.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimpleOceanLayer.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RTTPicker.glsl" />
+    <None Include="..\..\..\src\osgEarth\CascadeDraping.glsl" />
+    <None Include="..\..\..\src\osgEarth\ClipPlane.glsl" />
+    <None Include="..\..\..\src\osgEarth\DepthOffset.glsl" />
+    <None Include="..\..\..\src\osgEarth\Draping.glsl" />
+    <None Include="..\..\..\src\osgEarth\GPUClamping.glsl" />
+    <None Include="..\..\..\src\osgEarth\GPUClamping.lib.glsl" />
+    <None Include="..\..\..\src\osgEarth\Instancing.glsl" />
+    <None Include="..\..\..\src\osgEarth\LineDrawable.glsl" />
+    <None Include="..\..\..\src\osgEarth\WireLines.glsl" />
+    <None Include="..\..\..\src\osgEarth\PhongLighting.glsl" />
+    <None Include="..\..\..\src\osgEarth\PointDrawable.glsl" />
+    <None Include="..\..\..\src\osgEarth\Text.glsl" />
+    <None Include="..\..\..\src\osgEarth\Text_legacy.glsl" />
+    <None Include="..\..\..\src\osgEarth\ContourMap.glsl" />
+    <None Include="..\..\..\src\osgEarth\GeodeticGraticule.glsl" />
+    <None Include="..\..\..\src\osgEarth\LogDepthBuffer.glsl" />
+    <None Include="..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl" />
+    <None Include="..\..\..\src\osgEarth\ShadowCaster.glsl" />
+    <None Include="..\..\..\src\osgEarth\SimpleOceanLayer.glsl" />
+    <None Include="..\..\..\src\osgEarth\RTTPicker.glsl" />
     <ClInclude Include="..\..\..\src\osgEarth\BuildConfig.h.in" />
     <ClInclude Include="..\..\..\src\osgEarth\Shaders.cpp.in" />
   </ItemGroup>

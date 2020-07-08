@@ -733,8 +733,8 @@
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\sky_gl\GLSkyDriver.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\sky_gl\GLSkyNode.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\sky_gl\GLSkyExtension.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_gl\GLSkyOptions" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_gl\GLSkyNode" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\sky_gl\GLSkyOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\sky_gl\GLSkyNode" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">

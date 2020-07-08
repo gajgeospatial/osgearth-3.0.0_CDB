@@ -733,8 +733,8 @@
     <ClCompile Include="..\..\..\..\src\applications\osgearth_boundarygen\BoundaryUtil.cpp" />
     <ClCompile Include="..\..\..\..\src\applications\osgearth_boundarygen\VertexCollectionVisitor.cpp" />
     <ClCompile Include="..\..\..\..\src\applications\osgearth_boundarygen\boundarygen.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\applications\osgearth_boundarygen\BoundaryUtil" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\applications\osgearth_boundarygen\VertexCollectionVisitor" />
+    <None Include="..\..\..\..\src\applications\osgearth_boundarygen\BoundaryUtil" />
+    <None Include="..\..\..\..\src\applications\osgearth_boundarygen\VertexCollectionVisitor" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">

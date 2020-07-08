@@ -752,8 +752,8 @@
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\script_engine_duktape\DuktapeEngine.cpp" />
     <ClInclude Include="..\..\..\..\src\osgEarthDrivers\script_engine_duktape\duktape.h" />
     <ClInclude Include="..\..\..\..\src\osgEarthDrivers\script_engine_duktape\duk_config.h" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\script_engine_duktape\DuktapeEngine" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\script_engine_duktape\JSGeometry" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\script_engine_duktape\DuktapeEngine" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\script_engine_duktape\JSGeometry" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">

@@ -730,7 +730,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\bac48c5d603557fac23a2cb5b3431739\AutoGenShaders.cpp.rule">
+    <CustomBuild Include="..\..\..\CMakeFiles\bac48c5d603557fac23a2cb5b3431739\AutoGenShaders.cpp.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
@@ -738,7 +738,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -747,7 +747,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -756,7 +756,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -765,7 +765,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -774,7 +774,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -783,7 +783,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -816,7 +816,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -825,7 +825,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -834,7 +834,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -843,7 +843,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -852,7 +852,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -861,7 +861,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -890,7 +890,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -899,7 +899,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -916,7 +916,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -925,7 +925,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -946,12 +946,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\detail\DetailExtension.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\detail\DetailTerrainEffect.cpp" />
     <ClCompile Include=".\AutoGenShaders.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\DetailExtension" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\DetailOptions" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\DetailTerrainEffect" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\DetailShaders" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\Detail.vert.view.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\Detail.frag.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\DetailExtension" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\DetailOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\DetailTerrainEffect" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\DetailShaders" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\Detail.vert.view.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\Detail.frag.glsl" />
     <ClInclude Include="..\..\..\..\src\osgEarthDrivers\detail\DetailShaders.cpp.in" />
   </ItemGroup>
   <ItemGroup>

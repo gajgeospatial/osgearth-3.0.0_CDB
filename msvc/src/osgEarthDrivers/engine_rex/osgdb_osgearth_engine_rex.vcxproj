@@ -730,7 +730,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\5004f722b644f1d3e6e827b5426f6dbd\AutoGenShaders.cpp.rule">
+    <CustomBuild Include="..\..\..\CMakeFiles\5004f722b644f1d3e6e827b5426f6dbd\AutoGenShaders.cpp.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
@@ -738,7 +738,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -747,7 +747,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -756,7 +756,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -765,7 +765,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -774,7 +774,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -783,7 +783,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -816,7 +816,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -825,7 +825,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -834,7 +834,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -843,7 +843,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -852,7 +852,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -861,7 +861,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -890,7 +890,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -899,7 +899,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -916,7 +916,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -925,7 +925,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -964,36 +964,36 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\engine_rex\Unloader.cpp" />
     <ClCompile Include=".\AutoGenShaders.cpp" />
     <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\FrameClock" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\Common" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\CreateTileImplementation" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\DrawState" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\DrawTileCommand" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\GeometryPool" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\Shaders" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexTerrainEngineNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\LayerDrawable" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\LoadTileData" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\MaskGenerator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RenderBindings" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\SurfaceNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\TerrainCuller" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\TerrainRenderData" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\TileDrawable" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\TileRenderModel" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\EngineContext" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\TileNode" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\TileNodeRegistry" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\Loader" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\Unloader" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\SelectionInfo" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexEngine.vert.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexEngine.elevation.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexEngine.gs.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexEngine.ImageLayer.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexEngine.NormalMap.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexEngine.Morphing.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexEngine.Tessellation.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_rex\RexEngine.SDK.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\Common" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\CreateTileImplementation" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\DrawState" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\DrawTileCommand" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\GeometryPool" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\Shaders" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexTerrainEngineNode" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\LayerDrawable" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\LoadTileData" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\MaskGenerator" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RenderBindings" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\SurfaceNode" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\TerrainCuller" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\TerrainRenderData" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\TileDrawable" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\TileRenderModel" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\EngineContext" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\TileNode" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\TileNodeRegistry" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\Loader" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\Unloader" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\SelectionInfo" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexEngine.vert.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexEngine.elevation.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexEngine.gs.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexEngine.ImageLayer.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexEngine.NormalMap.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexEngine.Morphing.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexEngine.Tessellation.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_rex\RexEngine.SDK.glsl" />
     <ClInclude Include="..\..\..\..\src\osgEarthDrivers\engine_rex\Shaders.cpp.in" />
   </ItemGroup>
   <ItemGroup>

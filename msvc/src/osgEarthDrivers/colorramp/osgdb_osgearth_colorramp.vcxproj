@@ -731,7 +731,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\colorramp\ColorRampTileSource.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\colorramp\ColorRampOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\colorramp\ColorRampOptions" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">

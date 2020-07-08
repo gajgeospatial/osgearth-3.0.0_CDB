@@ -730,7 +730,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\bad3e52a89510f5689f91fcec346cda3\AutoGenShaders.cpp.rule">
+    <CustomBuild Include="..\..\CMakeFiles\bad3e52a89510f5689f91fcec346cda3\AutoGenShaders.cpp.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">Generating AutoGenShaders.cpp</Message>
@@ -738,7 +738,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -747,7 +747,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -756,7 +756,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -765,7 +765,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -774,7 +774,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -783,7 +783,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -816,7 +816,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -825,7 +825,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -834,7 +834,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -843,7 +843,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -852,7 +852,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -861,7 +861,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -890,7 +890,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -899,7 +899,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -916,7 +916,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Generating AutoGenShaders.cpp</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating AutoGenShaders.cpp</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -925,7 +925,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -P .\ConfigureShaders.cmake
+cmake -P .\ConfigureShaders.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -942,22 +942,22 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Coverage" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Export" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GrassLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCover" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCoverFeatureGenerator" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCoverFeatureSource" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCoverLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\NoiseTextureFactory" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\RoadSurfaceLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\SplatCoverageLegend" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\SplatCatalog" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\SplatOptions" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\SplatShaders" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\SplatLayer" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Surface" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Zone" />
+    <None Include="..\..\..\src\osgEarthSplat\Coverage" />
+    <None Include="..\..\..\src\osgEarthSplat\Export" />
+    <None Include="..\..\..\src\osgEarthSplat\GrassLayer" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCover" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCoverFeatureGenerator" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCoverFeatureSource" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCoverLayer" />
+    <None Include="..\..\..\src\osgEarthSplat\NoiseTextureFactory" />
+    <None Include="..\..\..\src\osgEarthSplat\RoadSurfaceLayer" />
+    <None Include="..\..\..\src\osgEarthSplat\SplatCoverageLegend" />
+    <None Include="..\..\..\src\osgEarthSplat\SplatCatalog" />
+    <None Include="..\..\..\src\osgEarthSplat\SplatOptions" />
+    <None Include="..\..\..\src\osgEarthSplat\SplatShaders" />
+    <None Include="..\..\..\src\osgEarthSplat\SplatLayer" />
+    <None Include="..\..\..\src\osgEarthSplat\Surface" />
+    <None Include="..\..\..\src\osgEarthSplat\Zone" />
     <ClCompile Include="..\..\..\src\osgEarthSplat\Coverage.cpp" />
     <ClCompile Include="..\..\..\src\osgEarthSplat\GrassLayer.cpp" />
     <ClCompile Include="..\..\..\src\osgEarthSplat\GroundCover.cpp" />
@@ -972,18 +972,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\..\src\osgEarthSplat\Surface.cpp" />
     <ClCompile Include="..\..\..\src\osgEarthSplat\Zone.cpp" />
     <ClCompile Include=".\AutoGenShaders.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Splat.types.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Splat.Noise.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Splat.vert.model.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Splat.vert.view.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Splat.frag.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Splat.util.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\Grass.VS.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCover.VS.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCover.TCS.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCover.TES.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCover.GS.glsl" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthSplat\GroundCover.FS.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\Splat.types.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\Splat.Noise.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\Splat.vert.model.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\Splat.vert.view.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\Splat.frag.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\Splat.util.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\Grass.VS.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCover.VS.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCover.TCS.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCover.TES.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCover.GS.glsl" />
+    <None Include="..\..\..\src\osgEarthSplat\GroundCover.FS.glsl" />
     <ClInclude Include="..\..\..\src\osgEarthSplat\SplatShaders.cpp.in" />
   </ItemGroup>
   <ItemGroup>

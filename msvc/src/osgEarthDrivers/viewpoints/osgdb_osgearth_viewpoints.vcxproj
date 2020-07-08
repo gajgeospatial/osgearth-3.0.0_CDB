@@ -732,7 +732,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\viewpoints\ViewpointsPlugin.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\viewpoints\ViewpointsExtension.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\viewpoints\ViewpointsExtension" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\viewpoints\ViewpointsExtension" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">

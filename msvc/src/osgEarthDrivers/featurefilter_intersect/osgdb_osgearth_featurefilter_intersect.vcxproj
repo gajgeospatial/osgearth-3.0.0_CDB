@@ -731,7 +731,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\featurefilter_intersect\IntersectFeatureFilter.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\featurefilter_intersect\IntersectFeatureFilterOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\featurefilter_intersect\IntersectFeatureFilterOptions" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">

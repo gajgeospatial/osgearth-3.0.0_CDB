@@ -733,8 +733,8 @@
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\monitor\MonitorPlugin.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\monitor\MonitorExtension.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\monitor\MonitorUI.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\monitor\MonitorExtension" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\monitor\MonitorUI" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\monitor\MonitorExtension" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\monitor\MonitorUI" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">

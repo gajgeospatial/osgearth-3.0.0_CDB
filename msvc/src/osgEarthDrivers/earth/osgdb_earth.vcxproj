@@ -733,7 +733,7 @@
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\earth\ReaderWriterOsgEarth.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\earth\EarthFileSerializer1.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\earth\EarthFileSerializer2.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\earth\EarthFileSerializer" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\earth\EarthFileSerializer" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">

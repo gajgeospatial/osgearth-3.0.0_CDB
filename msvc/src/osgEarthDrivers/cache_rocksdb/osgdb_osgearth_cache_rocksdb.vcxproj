@@ -733,10 +733,10 @@
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCache.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheBin.cpp" />
     <ClCompile Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheDriver.cpp" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheOptions" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\cache_rocksdb\RocksDBCache" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheBin" />
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\cache_rocksdb\Tracker" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCache" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheBin" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\Tracker" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\osgEarth\osgEarth.vcxproj">
