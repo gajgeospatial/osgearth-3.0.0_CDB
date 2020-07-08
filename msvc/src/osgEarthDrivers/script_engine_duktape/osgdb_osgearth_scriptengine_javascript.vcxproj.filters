@@ -20,12 +20,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\script_engine_duktape\DuktapeEngine">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\script_engine_duktape\JSGeometry">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\script_engine_duktape\DuktapeEngine" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\script_engine_duktape\JSGeometry" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

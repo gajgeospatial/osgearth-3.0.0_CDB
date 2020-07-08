@@ -9,12 +9,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\mapinspector\MapInspectorExtension">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\mapinspector\MapInspectorUI">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\mapinspector\MapInspectorExtension" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\mapinspector\MapInspectorUI" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

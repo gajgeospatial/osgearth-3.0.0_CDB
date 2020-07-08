@@ -9,9 +9,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\viewpoints\ViewpointsExtension">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\viewpoints\ViewpointsExtension" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

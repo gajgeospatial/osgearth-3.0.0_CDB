@@ -941,1037 +941,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule">
-      <Filter>CMake Rules</Filter>
-    </CustomBuild>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule">
-      <Filter>CMake Rules</Filter>
-    </CustomBuild>
+    <CustomBuild Include="..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\vector_tile.pb.h.rule" />
+    <CustomBuild Include="..\..\CMakeFiles\6d49483c9787b4cfd21ba379fded946c\AutoGenShaders.cpp.rule" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISServer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ArcGISTilePackage">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Bing">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Bounds">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Cache">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheEstimator">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheBin">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CachePolicy">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CacheSeed">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Callouts">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CameraUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Capabilities">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CesiumIon">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CascadeDrapingDecorator">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Clamping">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampableNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampingTechnique">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Color">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ColorFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Common">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Composite">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Config">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Containers">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Cube">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CullingUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DateTime">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DateTimeRange">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DecalLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DepthOffset">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapeableNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapingCullSet">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrapingTechnique">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DrawInstanced">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ECEF">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationLOD">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationPool">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationRanges">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ElevationQuery">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EllipsoidIntersector">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Endian">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Export">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Extension">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FadeEffect">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FileUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GDAL">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GDALDEM">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoCommon">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoData">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geoid">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoMath">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoTransform">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryClamper">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GLSLChunker">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GLUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HeightFieldUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Horizon">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HorizonClipPlane">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HTTPClient">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageMosaic">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageToHeightFieldConverter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceCloud">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IntersectionPicker">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IOTypes">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\JoinPointsLinesFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\JsonUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LandCover">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LandCoverLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Layer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LayerReference">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LayerShader">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Lighting">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineDrawable">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineFunctor">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Locators">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LocalTangentPlane">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Map">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapCallback">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapInfo">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapModelChange">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MapNodeObserver">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MaskLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MaskSource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Memory">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MemCache">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MetaTile">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Metrics">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MBTiles">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelSource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\NativeProgramAdapter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\NodeUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Notify">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\optional">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ObjectIndex">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OverlayDecorator">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PagedNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PatchLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PhongLightingEffect">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Picker">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PluginLoader">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointDrawable">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PowerlineLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PrimitiveIntersector">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Profile">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Progress">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Random">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Registry">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceReleaser">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Revisioning">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SceneGraphCallback">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayout">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutImpl">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutDeclutter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScreenSpaceLayoutCallout">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Shaders">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderFactory">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderGenerator">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderLoader">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderMerger">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShaderUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimplexNoise">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SpatialReference">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StateSetCache">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Status">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StringUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TDTiles">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TaskService">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Terrain">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEffect">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainOptions">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEngineNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainEngineRequirements">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainResources">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileModel">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileModelFactory">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainTileNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Tessellator">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ThreeDTilesLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileKey">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileHandler">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileRasterizer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TiledFeatureModelGraph">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TiledFeatureModelLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSourceElevationLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileSourceImageLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileVisitor">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileCache">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TimeControl">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TraversalData">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ThreadingUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TMS">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Units">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\URI">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Utils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Version">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VerticalDatum">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VideoLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Viewpoint">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VirtualProgram">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\VisibleLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WMS">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XmlUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XYZ">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ActivityMonitorTool">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AutoClipPlaneHandler">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AutoScaleCallback">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AtlasBuilder">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClipSpace">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Controls">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ContourMap">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClampCallback">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClusterNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DebugImageLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EarthManipulator">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Ephemeris">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExampleResources">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FlatteningLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Formatter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FractalElevationLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GARSGraticule">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticGraticule">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticLabelingEngine">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GraticuleLabelingEngine">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\HTM">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LatLongFormatter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineOfSight">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LinearLineOfSight">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogarithmicDepthBuffer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeasureTool">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MGRSFormatter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MGRSGraticule">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MouseCoordsTool">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RadialLineOfSight">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RTTPicker">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Shadowing">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimpleOceanLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimplePager">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Sky">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SkyView">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StarData">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TerrainProfile">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileIndex">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TileIndexBuilder">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TFSPackager">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TMSBackFiller">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TopologyGraph">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\UTMGraticule">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\UTMLabelingEngine">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ViewFitter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AltitudeFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BufferFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BuildGeometryFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BuildTextFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CentroidFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ConvertTypeFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CropFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExtrudeGeometryFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Feature">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureCursor">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureDisplayLayout">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureElevationLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureImageLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureIndex">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureMaskLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelGraph">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureModelSource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureSource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureSourceIndexNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Filter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FilterContext">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryCompiler">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageToFeatureLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MVT">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OgrUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\OGRFeatureSource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PolygonizeLines">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResampleFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScaleFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Session">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScatterFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Script">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScriptEngine">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ScriptFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SubstituteModelFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TessellateOperator">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TextSymbolizer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TFS">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TransformFilter">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WireLines">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\XYZFeatureSource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WFS">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AltitudeSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BBoxSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BillboardResource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BillboardSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CoverageSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CssUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Expression">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ExtrusionSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Fill">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geometry">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryFactory">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GEOS">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeometryRasterizer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IconResource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\IconSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceResource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\InstanceSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshConsolidator">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshFlattener">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\MeshSubdivider">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelResource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PolygonSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Query">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RenderSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Resource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceCache">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ResourceLibrary">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Skins">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Stroke">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Style">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StyleSelector">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\StyleSheet">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Symbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Tags">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TextSymbol">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationSettings">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationData">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationLayer">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationRegistry">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\AnnotationUtils">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\BboxDrawable">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CircleNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Draggers">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\EllipseNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FeatureNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoPositionNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeoPositionNodeAutoScaler">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LocalGeometryNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageOverlay">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ImageOverlayEditor">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LabelNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ModelNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PlaceNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RectangleNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\TrackNode">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\FileGDBFeatureSource">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Geocoder">
-      <Filter>Headers</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\CascadeDraping.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ClipPlane.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\DepthOffset.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Draping.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GPUClamping.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GPUClamping.lib.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Instancing.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LineDrawable.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\WireLines.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PhongLighting.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\PointDrawable.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\Text_legacy.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ContourMap.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\GeodeticGraticule.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogDepthBuffer.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\LogDepthBuffer.VertOnly.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\ShadowCaster.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\SimpleOceanLayer.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarth\RTTPicker.glsl">
-      <Filter>Shaders</Filter>
-    </None>
     <None Include="..\..\..\src\ogc\ogc_IE">
       <Filter>Headers</Filter>
     </None>
@@ -1996,6 +969,347 @@
     <None Include="..\..\..\src\osgEarth\NetworkMonitor">
       <Filter>Headers</Filter>
     </None>
+    <None Include="..\..\..\src\osgEarth\ArcGISServer" />
+    <None Include="..\..\..\src\osgEarth\ArcGISTilePackage" />
+    <None Include="..\..\..\src\osgEarth\Bing" />
+    <None Include="..\..\..\src\osgEarth\Bounds" />
+    <None Include="..\..\..\src\osgEarth\Cache" />
+    <None Include="..\..\..\src\osgEarth\CacheEstimator" />
+    <None Include="..\..\..\src\osgEarth\CacheBin" />
+    <None Include="..\..\..\src\osgEarth\CachePolicy" />
+    <None Include="..\..\..\src\osgEarth\CacheSeed" />
+    <None Include="..\..\..\src\osgEarth\Callouts" />
+    <None Include="..\..\..\src\osgEarth\CameraUtils" />
+    <None Include="..\..\..\src\osgEarth\Capabilities" />
+    <None Include="..\..\..\src\osgEarth\CesiumIon" />
+    <None Include="..\..\..\src\osgEarth\CascadeDrapingDecorator" />
+    <None Include="..\..\..\src\osgEarth\Clamping" />
+    <None Include="..\..\..\src\osgEarth\ClampableNode" />
+    <None Include="..\..\..\src\osgEarth\ClampingTechnique" />
+    <None Include="..\..\..\src\osgEarth\Color" />
+    <None Include="..\..\..\src\osgEarth\ColorFilter" />
+    <None Include="..\..\..\src\osgEarth\Common" />
+    <None Include="..\..\..\src\osgEarth\Composite" />
+    <None Include="..\..\..\src\osgEarth\Config" />
+    <None Include="..\..\..\src\osgEarth\Containers" />
+    <None Include="..\..\..\src\osgEarth\Cube" />
+    <None Include="..\..\..\src\osgEarth\CullingUtils" />
+    <None Include="..\..\..\src\osgEarth\DateTime" />
+    <None Include="..\..\..\src\osgEarth\DateTimeRange" />
+    <None Include="..\..\..\src\osgEarth\DecalLayer" />
+    <None Include="..\..\..\src\osgEarth\DepthOffset" />
+    <None Include="..\..\..\src\osgEarth\DrapeableNode" />
+    <None Include="..\..\..\src\osgEarth\DrapingCullSet" />
+    <None Include="..\..\..\src\osgEarth\DrapingTechnique" />
+    <None Include="..\..\..\src\osgEarth\DrawInstanced" />
+    <None Include="..\..\..\src\osgEarth\ECEF" />
+    <None Include="..\..\..\src\osgEarth\ElevationLayer" />
+    <None Include="..\..\..\src\osgEarth\ElevationLOD" />
+    <None Include="..\..\..\src\osgEarth\ElevationPool" />
+    <None Include="..\..\..\src\osgEarth\ElevationRanges" />
+    <None Include="..\..\..\src\osgEarth\ElevationQuery" />
+    <None Include="..\..\..\src\osgEarth\EllipsoidIntersector" />
+    <None Include="..\..\..\src\osgEarth\Endian" />
+    <None Include="..\..\..\src\osgEarth\Export" />
+    <None Include="..\..\..\src\osgEarth\Extension" />
+    <None Include="..\..\..\src\osgEarth\FadeEffect" />
+    <None Include="..\..\..\src\osgEarth\FileUtils" />
+    <None Include="..\..\..\src\osgEarth\GDAL" />
+    <None Include="..\..\..\src\osgEarth\GDALDEM" />
+    <None Include="..\..\..\src\osgEarth\GeoCommon" />
+    <None Include="..\..\..\src\osgEarth\GeoData" />
+    <None Include="..\..\..\src\osgEarth\Geoid" />
+    <None Include="..\..\..\src\osgEarth\GeoMath" />
+    <None Include="..\..\..\src\osgEarth\GeoTransform" />
+    <None Include="..\..\..\src\osgEarth\GeometryClamper" />
+    <None Include="..\..\..\src\osgEarth\GLSLChunker" />
+    <None Include="..\..\..\src\osgEarth\GLUtils" />
+    <None Include="..\..\..\src\osgEarth\HeightFieldUtils" />
+    <None Include="..\..\..\src\osgEarth\Horizon" />
+    <None Include="..\..\..\src\osgEarth\HorizonClipPlane" />
+    <None Include="..\..\..\src\osgEarth\HTTPClient" />
+    <None Include="..\..\..\src\osgEarth\ImageLayer" />
+    <None Include="..\..\..\src\osgEarth\ImageMosaic" />
+    <None Include="..\..\..\src\osgEarth\ImageToHeightFieldConverter" />
+    <None Include="..\..\..\src\osgEarth\ImageUtils" />
+    <None Include="..\..\..\src\osgEarth\InstanceCloud" />
+    <None Include="..\..\..\src\osgEarth\IntersectionPicker" />
+    <None Include="..\..\..\src\osgEarth\IOTypes" />
+    <None Include="..\..\..\src\osgEarth\JoinPointsLinesFilter" />
+    <None Include="..\..\..\src\osgEarth\JsonUtils" />
+    <None Include="..\..\..\src\osgEarth\LandCover" />
+    <None Include="..\..\..\src\osgEarth\LandCoverLayer" />
+    <None Include="..\..\..\src\osgEarth\Layer" />
+    <None Include="..\..\..\src\osgEarth\LayerReference" />
+    <None Include="..\..\..\src\osgEarth\LayerShader" />
+    <None Include="..\..\..\src\osgEarth\Lighting" />
+    <None Include="..\..\..\src\osgEarth\LineDrawable" />
+    <None Include="..\..\..\src\osgEarth\LineFunctor" />
+    <None Include="..\..\..\src\osgEarth\Locators" />
+    <None Include="..\..\..\src\osgEarth\LocalTangentPlane" />
+    <None Include="..\..\..\src\osgEarth\Map" />
+    <None Include="..\..\..\src\osgEarth\MapCallback" />
+    <None Include="..\..\..\src\osgEarth\MapInfo" />
+    <None Include="..\..\..\src\osgEarth\MapModelChange" />
+    <None Include="..\..\..\src\osgEarth\MapNode" />
+    <None Include="..\..\..\src\osgEarth\MapNodeObserver" />
+    <None Include="..\..\..\src\osgEarth\MaskLayer" />
+    <None Include="..\..\..\src\osgEarth\MaskSource" />
+    <None Include="..\..\..\src\osgEarth\Memory" />
+    <None Include="..\..\..\src\osgEarth\MemCache" />
+    <None Include="..\..\..\src\osgEarth\MetaTile" />
+    <None Include="..\..\..\src\osgEarth\Metrics" />
+    <None Include="..\..\..\src\osgEarth\MBTiles" />
+    <None Include="..\..\..\src\osgEarth\ModelLayer" />
+    <None Include="..\..\..\src\osgEarth\ModelSource" />
+    <None Include="..\..\..\src\osgEarth\NativeProgramAdapter" />
+    <None Include="..\..\..\src\osgEarth\NodeUtils" />
+    <None Include="..\..\..\src\osgEarth\Notify" />
+    <None Include="..\..\..\src\osgEarth\optional" />
+    <None Include="..\..\..\src\osgEarth\ObjectIndex" />
+    <None Include="..\..\..\src\osgEarth\OverlayDecorator" />
+    <None Include="..\..\..\src\osgEarth\PagedNode" />
+    <None Include="..\..\..\src\osgEarth\PatchLayer" />
+    <None Include="..\..\..\src\osgEarth\PhongLightingEffect" />
+    <None Include="..\..\..\src\osgEarth\Picker" />
+    <None Include="..\..\..\src\osgEarth\PluginLoader" />
+    <None Include="..\..\..\src\osgEarth\PointDrawable" />
+    <None Include="..\..\..\src\osgEarth\PowerlineLayer" />
+    <None Include="..\..\..\src\osgEarth\PrimitiveIntersector" />
+    <None Include="..\..\..\src\osgEarth\Profile" />
+    <None Include="..\..\..\src\osgEarth\Progress" />
+    <None Include="..\..\..\src\osgEarth\Random" />
+    <None Include="..\..\..\src\osgEarth\Registry" />
+    <None Include="..\..\..\src\osgEarth\ResourceReleaser" />
+    <None Include="..\..\..\src\osgEarth\Revisioning" />
+    <None Include="..\..\..\src\osgEarth\SceneGraphCallback" />
+    <None Include="..\..\..\src\osgEarth\ScreenSpaceLayout" />
+    <None Include="..\..\..\src\osgEarth\ScreenSpaceLayoutImpl" />
+    <None Include="..\..\..\src\osgEarth\ScreenSpaceLayoutDeclutter" />
+    <None Include="..\..\..\src\osgEarth\ScreenSpaceLayoutCallout" />
+    <None Include="..\..\..\src\osgEarth\Shaders" />
+    <None Include="..\..\..\src\osgEarth\ShaderFactory" />
+    <None Include="..\..\..\src\osgEarth\ShaderGenerator" />
+    <None Include="..\..\..\src\osgEarth\ShaderLoader" />
+    <None Include="..\..\..\src\osgEarth\ShaderMerger" />
+    <None Include="..\..\..\src\osgEarth\ShaderUtils" />
+    <None Include="..\..\..\src\osgEarth\SimplexNoise" />
+    <None Include="..\..\..\src\osgEarth\SpatialReference" />
+    <None Include="..\..\..\src\osgEarth\StateSetCache" />
+    <None Include="..\..\..\src\osgEarth\Status" />
+    <None Include="..\..\..\src\osgEarth\StringUtils" />
+    <None Include="..\..\..\src\osgEarth\TDTiles" />
+    <None Include="..\..\..\src\osgEarth\TaskService" />
+    <None Include="..\..\..\src\osgEarth\Terrain" />
+    <None Include="..\..\..\src\osgEarth\TerrainEffect" />
+    <None Include="..\..\..\src\osgEarth\TerrainOptions" />
+    <None Include="..\..\..\src\osgEarth\TerrainEngineNode" />
+    <None Include="..\..\..\src\osgEarth\TerrainEngineRequirements" />
+    <None Include="..\..\..\src\osgEarth\TerrainResources" />
+    <None Include="..\..\..\src\osgEarth\TerrainTileModel" />
+    <None Include="..\..\..\src\osgEarth\TerrainTileModelFactory" />
+    <None Include="..\..\..\src\osgEarth\TerrainTileNode" />
+    <None Include="..\..\..\src\osgEarth\Tessellator" />
+    <None Include="..\..\..\src\osgEarth\Text" />
+    <None Include="..\..\..\src\osgEarth\ThreeDTilesLayer" />
+    <None Include="..\..\..\src\osgEarth\TileKey" />
+    <None Include="..\..\..\src\osgEarth\TileLayer" />
+    <None Include="..\..\..\src\osgEarth\TileHandler" />
+    <None Include="..\..\..\src\osgEarth\TileRasterizer" />
+    <None Include="..\..\..\src\osgEarth\TiledFeatureModelGraph" />
+    <None Include="..\..\..\src\osgEarth\TiledFeatureModelLayer" />
+    <None Include="..\..\..\src\osgEarth\TileSource" />
+    <None Include="..\..\..\src\osgEarth\TileSourceElevationLayer" />
+    <None Include="..\..\..\src\osgEarth\TileSourceImageLayer" />
+    <None Include="..\..\..\src\osgEarth\TileVisitor" />
+    <None Include="..\..\..\src\osgEarth\TileCache" />
+    <None Include="..\..\..\src\osgEarth\TimeControl" />
+    <None Include="..\..\..\src\osgEarth\TraversalData" />
+    <None Include="..\..\..\src\osgEarth\ThreadingUtils" />
+    <None Include="..\..\..\src\osgEarth\TMS" />
+    <None Include="..\..\..\src\osgEarth\Units" />
+    <None Include="..\..\..\src\osgEarth\URI" />
+    <None Include="..\..\..\src\osgEarth\Utils" />
+    <None Include="..\..\..\src\osgEarth\Version" />
+    <None Include="..\..\..\src\osgEarth\VerticalDatum" />
+    <None Include="..\..\..\src\osgEarth\VideoLayer" />
+    <None Include="..\..\..\src\osgEarth\Viewpoint" />
+    <None Include="..\..\..\src\osgEarth\VirtualProgram" />
+    <None Include="..\..\..\src\osgEarth\VisibleLayer" />
+    <None Include="..\..\..\src\osgEarth\WMS" />
+    <None Include="..\..\..\src\osgEarth\XmlUtils" />
+    <None Include="..\..\..\src\osgEarth\XYZ" />
+    <None Include="..\..\..\src\osgEarth\ActivityMonitorTool" />
+    <None Include="..\..\..\src\osgEarth\AutoClipPlaneHandler" />
+    <None Include="..\..\..\src\osgEarth\AutoScaleCallback" />
+    <None Include="..\..\..\src\osgEarth\AtlasBuilder" />
+    <None Include="..\..\..\src\osgEarth\ClipSpace" />
+    <None Include="..\..\..\src\osgEarth\Controls" />
+    <None Include="..\..\..\src\osgEarth\ContourMap" />
+    <None Include="..\..\..\src\osgEarth\ClampCallback" />
+    <None Include="..\..\..\src\osgEarth\ClusterNode" />
+    <None Include="..\..\..\src\osgEarth\DebugImageLayer" />
+    <None Include="..\..\..\src\osgEarth\EarthManipulator" />
+    <None Include="..\..\..\src\osgEarth\Ephemeris" />
+    <None Include="..\..\..\src\osgEarth\ExampleResources" />
+    <None Include="..\..\..\src\osgEarth\FlatteningLayer" />
+    <None Include="..\..\..\src\osgEarth\Formatter" />
+    <None Include="..\..\..\src\osgEarth\FractalElevationLayer" />
+    <None Include="..\..\..\src\osgEarth\GARSGraticule" />
+    <None Include="..\..\..\src\osgEarth\GeodeticGraticule" />
+    <None Include="..\..\..\src\osgEarth\GeodeticLabelingEngine" />
+    <None Include="..\..\..\src\osgEarth\GraticuleLabelingEngine" />
+    <None Include="..\..\..\src\osgEarth\HTM" />
+    <None Include="..\..\..\src\osgEarth\LatLongFormatter" />
+    <None Include="..\..\..\src\osgEarth\LineOfSight" />
+    <None Include="..\..\..\src\osgEarth\LinearLineOfSight" />
+    <None Include="..\..\..\src\osgEarth\LogarithmicDepthBuffer" />
+    <None Include="..\..\..\src\osgEarth\MeasureTool" />
+    <None Include="..\..\..\src\osgEarth\MGRSFormatter" />
+    <None Include="..\..\..\src\osgEarth\MGRSGraticule" />
+    <None Include="..\..\..\src\osgEarth\MouseCoordsTool" />
+    <None Include="..\..\..\src\osgEarth\RadialLineOfSight" />
+    <None Include="..\..\..\src\osgEarth\RTTPicker" />
+    <None Include="..\..\..\src\osgEarth\Shadowing" />
+    <None Include="..\..\..\src\osgEarth\SimpleOceanLayer" />
+    <None Include="..\..\..\src\osgEarth\SimplePager" />
+    <None Include="..\..\..\src\osgEarth\Sky" />
+    <None Include="..\..\..\src\osgEarth\SkyView" />
+    <None Include="..\..\..\src\osgEarth\StarData" />
+    <None Include="..\..\..\src\osgEarth\TerrainProfile" />
+    <None Include="..\..\..\src\osgEarth\TileIndex" />
+    <None Include="..\..\..\src\osgEarth\TileIndexBuilder" />
+    <None Include="..\..\..\src\osgEarth\TFSPackager" />
+    <None Include="..\..\..\src\osgEarth\TMSBackFiller" />
+    <None Include="..\..\..\src\osgEarth\TopologyGraph" />
+    <None Include="..\..\..\src\osgEarth\UTMGraticule" />
+    <None Include="..\..\..\src\osgEarth\UTMLabelingEngine" />
+    <None Include="..\..\..\src\osgEarth\ViewFitter" />
+    <None Include="..\..\..\src\osgEarth\AltitudeFilter" />
+    <None Include="..\..\..\src\osgEarth\BufferFilter" />
+    <None Include="..\..\..\src\osgEarth\BuildGeometryFilter" />
+    <None Include="..\..\..\src\osgEarth\BuildTextFilter" />
+    <None Include="..\..\..\src\osgEarth\CentroidFilter" />
+    <None Include="..\..\..\src\osgEarth\ConvertTypeFilter" />
+    <None Include="..\..\..\src\osgEarth\CropFilter" />
+    <None Include="..\..\..\src\osgEarth\ExtrudeGeometryFilter" />
+    <None Include="..\..\..\src\osgEarth\Feature" />
+    <None Include="..\..\..\src\osgEarth\FeatureCursor" />
+    <None Include="..\..\..\src\osgEarth\FeatureDisplayLayout" />
+    <None Include="..\..\..\src\osgEarth\FeatureElevationLayer" />
+    <None Include="..\..\..\src\osgEarth\FeatureImageLayer" />
+    <None Include="..\..\..\src\osgEarth\FeatureIndex" />
+    <None Include="..\..\..\src\osgEarth\FeatureMaskLayer" />
+    <None Include="..\..\..\src\osgEarth\FeatureModelGraph" />
+    <None Include="..\..\..\src\osgEarth\FeatureModelLayer" />
+    <None Include="..\..\..\src\osgEarth\FeatureModelSource" />
+    <None Include="..\..\..\src\osgEarth\FeatureSource" />
+    <None Include="..\..\..\src\osgEarth\FeatureSourceIndexNode" />
+    <None Include="..\..\..\src\osgEarth\Filter" />
+    <None Include="..\..\..\src\osgEarth\FilterContext" />
+    <None Include="..\..\..\src\osgEarth\GeometryCompiler" />
+    <None Include="..\..\..\src\osgEarth\GeometryUtils" />
+    <None Include="..\..\..\src\osgEarth\ImageToFeatureLayer" />
+    <None Include="..\..\..\src\osgEarth\MVT" />
+    <None Include="..\..\..\src\osgEarth\OgrUtils" />
+    <None Include="..\..\..\src\osgEarth\OGRFeatureSource" />
+    <None Include="..\..\..\src\osgEarth\PolygonizeLines" />
+    <None Include="..\..\..\src\osgEarth\ResampleFilter" />
+    <None Include="..\..\..\src\osgEarth\ScaleFilter" />
+    <None Include="..\..\..\src\osgEarth\Session" />
+    <None Include="..\..\..\src\osgEarth\ScatterFilter" />
+    <None Include="..\..\..\src\osgEarth\Script" />
+    <None Include="..\..\..\src\osgEarth\ScriptEngine" />
+    <None Include="..\..\..\src\osgEarth\ScriptFilter" />
+    <None Include="..\..\..\src\osgEarth\SubstituteModelFilter" />
+    <None Include="..\..\..\src\osgEarth\TessellateOperator" />
+    <None Include="..\..\..\src\osgEarth\TextSymbolizer" />
+    <None Include="..\..\..\src\osgEarth\TFS" />
+    <None Include="..\..\..\src\osgEarth\TransformFilter" />
+    <None Include="..\..\..\src\osgEarth\WireLines" />
+    <None Include="..\..\..\src\osgEarth\XYZFeatureSource" />
+    <None Include="..\..\..\src\osgEarth\WFS" />
+    <None Include="..\..\..\src\osgEarth\AltitudeSymbol" />
+    <None Include="..\..\..\src\osgEarth\BBoxSymbol" />
+    <None Include="..\..\..\src\osgEarth\BillboardResource" />
+    <None Include="..\..\..\src\osgEarth\BillboardSymbol" />
+    <None Include="..\..\..\src\osgEarth\CoverageSymbol" />
+    <None Include="..\..\..\src\osgEarth\CssUtils" />
+    <None Include="..\..\..\src\osgEarth\Expression" />
+    <None Include="..\..\..\src\osgEarth\ExtrusionSymbol" />
+    <None Include="..\..\..\src\osgEarth\Fill" />
+    <None Include="..\..\..\src\osgEarth\Geometry" />
+    <None Include="..\..\..\src\osgEarth\GeometryFactory" />
+    <None Include="..\..\..\src\osgEarth\GEOS" />
+    <None Include="..\..\..\src\osgEarth\GeometryRasterizer" />
+    <None Include="..\..\..\src\osgEarth\IconResource" />
+    <None Include="..\..\..\src\osgEarth\IconSymbol" />
+    <None Include="..\..\..\src\osgEarth\InstanceResource" />
+    <None Include="..\..\..\src\osgEarth\InstanceSymbol" />
+    <None Include="..\..\..\src\osgEarth\LineSymbol" />
+    <None Include="..\..\..\src\osgEarth\MeshConsolidator" />
+    <None Include="..\..\..\src\osgEarth\MeshFlattener" />
+    <None Include="..\..\..\src\osgEarth\MeshSubdivider" />
+    <None Include="..\..\..\src\osgEarth\ModelResource" />
+    <None Include="..\..\..\src\osgEarth\ModelSymbol" />
+    <None Include="..\..\..\src\osgEarth\PointSymbol" />
+    <None Include="..\..\..\src\osgEarth\PolygonSymbol" />
+    <None Include="..\..\..\src\osgEarth\Query" />
+    <None Include="..\..\..\src\osgEarth\RenderSymbol" />
+    <None Include="..\..\..\src\osgEarth\Resource" />
+    <None Include="..\..\..\src\osgEarth\ResourceCache" />
+    <None Include="..\..\..\src\osgEarth\ResourceLibrary" />
+    <None Include="..\..\..\src\osgEarth\Skins" />
+    <None Include="..\..\..\src\osgEarth\Stroke" />
+    <None Include="..\..\..\src\osgEarth\Style" />
+    <None Include="..\..\..\src\osgEarth\StyleSelector" />
+    <None Include="..\..\..\src\osgEarth\StyleSheet" />
+    <None Include="..\..\..\src\osgEarth\Symbol" />
+    <None Include="..\..\..\src\osgEarth\Tags" />
+    <None Include="..\..\..\src\osgEarth\TextSymbol" />
+    <None Include="..\..\..\src\osgEarth\AnnotationSettings" />
+    <None Include="..\..\..\src\osgEarth\AnnotationData" />
+    <None Include="..\..\..\src\osgEarth\AnnotationLayer" />
+    <None Include="..\..\..\src\osgEarth\AnnotationNode" />
+    <None Include="..\..\..\src\osgEarth\AnnotationRegistry" />
+    <None Include="..\..\..\src\osgEarth\AnnotationUtils" />
+    <None Include="..\..\..\src\osgEarth\BboxDrawable" />
+    <None Include="..\..\..\src\osgEarth\CircleNode" />
+    <None Include="..\..\..\src\osgEarth\Draggers" />
+    <None Include="..\..\..\src\osgEarth\EllipseNode" />
+    <None Include="..\..\..\src\osgEarth\FeatureNode" />
+    <None Include="..\..\..\src\osgEarth\GeoPositionNode" />
+    <None Include="..\..\..\src\osgEarth\GeoPositionNodeAutoScaler" />
+    <None Include="..\..\..\src\osgEarth\LocalGeometryNode" />
+    <None Include="..\..\..\src\osgEarth\ImageOverlay" />
+    <None Include="..\..\..\src\osgEarth\ImageOverlayEditor" />
+    <None Include="..\..\..\src\osgEarth\LabelNode" />
+    <None Include="..\..\..\src\osgEarth\ModelNode" />
+    <None Include="..\..\..\src\osgEarth\PlaceNode" />
+    <None Include="..\..\..\src\osgEarth\RectangleNode" />
+    <None Include="..\..\..\src\osgEarth\TrackNode" />
+    <None Include="..\..\..\src\osgEarth\FileGDBFeatureSource" />
+    <None Include="..\..\..\src\osgEarth\Geocoder" />
+    <None Include="..\..\..\src\osgEarth\CascadeDraping.glsl" />
+    <None Include="..\..\..\src\osgEarth\ClipPlane.glsl" />
+    <None Include="..\..\..\src\osgEarth\DepthOffset.glsl" />
+    <None Include="..\..\..\src\osgEarth\Draping.glsl" />
+    <None Include="..\..\..\src\osgEarth\GPUClamping.glsl" />
+    <None Include="..\..\..\src\osgEarth\GPUClamping.lib.glsl" />
+    <None Include="..\..\..\src\osgEarth\Instancing.glsl" />
+    <None Include="..\..\..\src\osgEarth\LineDrawable.glsl" />
+    <None Include="..\..\..\src\osgEarth\WireLines.glsl" />
+    <None Include="..\..\..\src\osgEarth\PhongLighting.glsl" />
+    <None Include="..\..\..\src\osgEarth\PointDrawable.glsl" />
+    <None Include="..\..\..\src\osgEarth\Text.glsl" />
+    <None Include="..\..\..\src\osgEarth\Text_legacy.glsl" />
+    <None Include="..\..\..\src\osgEarth\ContourMap.glsl" />
+    <None Include="..\..\..\src\osgEarth\GeodeticGraticule.glsl" />
+    <None Include="..\..\..\src\osgEarth\LogDepthBuffer.glsl" />
+    <None Include="..\..\..\src\osgEarth\LogDepthBuffer.VertOnly.glsl" />
+    <None Include="..\..\..\src\osgEarth\ShadowCaster.glsl" />
+    <None Include="..\..\..\src\osgEarth\SimpleOceanLayer.glsl" />
+    <None Include="..\..\..\src\osgEarth\RTTPicker.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">

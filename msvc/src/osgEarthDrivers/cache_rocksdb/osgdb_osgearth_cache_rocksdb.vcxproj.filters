@@ -12,18 +12,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheOptions">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\cache_rocksdb\RocksDBCache">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheBin">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\cache_rocksdb\Tracker">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCache" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\RocksDBCacheBin" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\cache_rocksdb\Tracker" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

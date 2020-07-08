@@ -6,9 +6,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\featurefilter_intersect\IntersectFeatureFilterOptions">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\featurefilter_intersect\IntersectFeatureFilterOptions" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

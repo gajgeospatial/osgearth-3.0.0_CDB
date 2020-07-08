@@ -9,7 +9,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\applications\osgearth_skyview\SkyManipulator" />
+    <None Include="..\..\..\..\src\applications\osgearth_skyview\SkyManipulator" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">

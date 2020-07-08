@@ -12,9 +12,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\earth\EarthFileSerializer">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\earth\EarthFileSerializer" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

@@ -6,9 +6,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\colorramp\ColorRampOptions">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\colorramp\ColorRampOptions" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

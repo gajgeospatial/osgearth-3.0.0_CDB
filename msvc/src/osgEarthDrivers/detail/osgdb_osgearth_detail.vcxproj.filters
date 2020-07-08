@@ -20,29 +20,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\bac48c5d603557fac23a2cb5b3431739\AutoGenShaders.cpp.rule">
-      <Filter>CMake Rules</Filter>
-    </CustomBuild>
+    <CustomBuild Include="..\..\..\CMakeFiles\bac48c5d603557fac23a2cb5b3431739\AutoGenShaders.cpp.rule" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\DetailExtension">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\DetailOptions">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\DetailTerrainEffect">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\DetailShaders">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\Detail.vert.view.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\detail\Detail.frag.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\DetailExtension" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\DetailOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\DetailTerrainEffect" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\DetailShaders" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\Detail.vert.view.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\detail\Detail.frag.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">

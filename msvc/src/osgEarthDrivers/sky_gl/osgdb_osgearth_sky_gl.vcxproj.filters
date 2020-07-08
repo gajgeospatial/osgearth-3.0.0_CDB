@@ -12,12 +12,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_gl\GLSkyOptions">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\sky_gl\GLSkyNode">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\sky_gl\GLSkyOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\sky_gl\GLSkyNode" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

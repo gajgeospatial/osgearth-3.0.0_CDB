@@ -6,12 +6,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\terrainshader\TerrainShaderExtension">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\terrainshader\TerrainShaderOptions">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\terrainshader\TerrainShaderExtension" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\terrainshader\TerrainShaderOptions" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

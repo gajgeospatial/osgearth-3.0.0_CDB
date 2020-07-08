@@ -95,105 +95,39 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KMLOptions">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KMLReader">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Common">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Container">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Document">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Feature">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Folder">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Geometry">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_GroundOverlay">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_IconStyle">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_LabelStyle">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_LinearRing">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_LineString">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_LineStyle">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Model">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_MultiGeometry">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_NetworkLink">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_NetworkLinkControl">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Object">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Overlay">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Placemark">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_PhotoOverlay">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Point">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Polygon">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_PolyStyle">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Root">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Schema">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_ScreenOverlay">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_Style">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_StyleMap">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KML_StyleSelector">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\kml\KMZArchive">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KMLOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KMLReader" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Common" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Container" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Document" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Feature" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Folder" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Geometry" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_GroundOverlay" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_IconStyle" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_LabelStyle" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_LinearRing" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_LineString" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_LineStyle" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Model" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_MultiGeometry" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_NetworkLink" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_NetworkLinkControl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Object" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Overlay" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Placemark" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_PhotoOverlay" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Point" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Polygon" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_PolyStyle" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Root" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Schema" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_ScreenOverlay" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_Style" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_StyleMap" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KML_StyleSelector" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\kml\KMZArchive" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

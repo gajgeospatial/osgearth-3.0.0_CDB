@@ -17,35 +17,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\c684c3284dfb800a13b078955b38937a\AutoGenShaders.cpp.rule">
-      <Filter>CMake Rules</Filter>
-    </CustomBuild>
+    <CustomBuild Include="..\..\..\CMakeFiles\c684c3284dfb800a13b078955b38937a\AutoGenShaders.cpp.rule" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\bumpmap\BumpMapExtension">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\bumpmap\BumpMapOptions">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\bumpmap\BumpMapTerrainEffect">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\bumpmap\BumpMapShaders">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\bumpmap\BumpMap.vert.view.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\bumpmap\BumpMap.frag.simple.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\bumpmap\BumpMap.frag.progressive.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\bumpmap\BumpMap.frag.common.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\bumpmap\BumpMapExtension" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\bumpmap\BumpMapOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\bumpmap\BumpMapTerrainEffect" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\bumpmap\BumpMapShaders" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\bumpmap\BumpMap.vert.view.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\bumpmap\BumpMap.frag.simple.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\bumpmap\BumpMap.frag.progressive.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\bumpmap\BumpMap.frag.common.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">

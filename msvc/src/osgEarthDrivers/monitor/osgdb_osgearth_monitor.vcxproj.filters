@@ -12,12 +12,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\monitor\MonitorExtension">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\monitor\MonitorUI">
-      <Filter>Header Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\monitor\MonitorExtension" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\monitor\MonitorUI" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

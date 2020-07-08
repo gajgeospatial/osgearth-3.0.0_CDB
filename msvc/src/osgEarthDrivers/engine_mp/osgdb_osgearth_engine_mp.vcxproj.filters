@@ -56,83 +56,33 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Development\op3d_active\osgearth-3.0.0\msvc\CMakeFiles\16418f0abd241be5edf1918b07b85feb\AutoGenShaders.cpp.rule">
-      <Filter>CMake Rules</Filter>
-    </CustomBuild>
+    <CustomBuild Include="..\..\..\CMakeFiles\16418f0abd241be5edf1918b07b85feb\AutoGenShaders.cpp.rule" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\Common">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\DynamicLODScaleCallback">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\HeightFieldCache">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\FileLocationCallback">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\KeyNodeFactory">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MapFrame">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPGeometry">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPShaders">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPTerrainEngineNode">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPTerrainEngineOptions">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\SingleKeyNodeFactory">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\TerrainNode">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\TileGroup">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\TileModel">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\TileModelCompiler">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\TileNode">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\TileNodeRegistry">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\TileModelFactory">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\TilePagedLOD">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPEngine.vert.model.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPEngine.vert.view.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPEngine.frag.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPEngine.NormalMap.vert.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
-    <None Include="C:\Development\op3d_active\osgearth-3.0.0\src\osgEarthDrivers\engine_mp\MPEngine.NormalMap.frag.glsl">
-      <Filter>Shader Files</Filter>
-    </None>
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\Common" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\DynamicLODScaleCallback" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\HeightFieldCache" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\FileLocationCallback" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\KeyNodeFactory" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MapFrame" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPGeometry" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPShaders" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPTerrainEngineNode" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPTerrainEngineOptions" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\SingleKeyNodeFactory" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\TerrainNode" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\TileGroup" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\TileModel" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\TileModelCompiler" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\TileNode" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\TileNodeRegistry" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\TileModelFactory" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\TilePagedLOD" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPEngine.vert.model.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPEngine.vert.view.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPEngine.frag.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPEngine.NormalMap.vert.glsl" />
+    <None Include="..\..\..\..\src\osgEarthDrivers\engine_mp\MPEngine.NormalMap.frag.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
