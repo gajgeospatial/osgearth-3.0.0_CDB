@@ -1,0 +1,69 @@
+<WCS_GDAL>
+  <ServiceURL>https://elevation.nationalmap.gov/arcgis/services/3DEPElevation/ImageServer/WCSServer?</ServiceURL>
+  <CoverageName>DEP3Elevation</CoverageName>
+  <CoverageOffering>
+    <description>DEP3Elevation</description>
+    <name>DEP3Elevation</name>
+    <label>DEP3Elevation</label>
+    <lonLatEnvelope srsName="urn:ogc:def:crs:OGC:1.3:CRS84">
+      <pos dimension="2">-179.999988541186866 -15.0016632448225025</pos>
+      <pos dimension="2">179.999992721291534 84.0016785721327182</pos>
+    </lonLatEnvelope>
+    <domainSet>
+      <spatialDomain>
+        <Envelope srsName="EPSG:3857">
+          <pos dimension="2">-20037507.0672000013 -1689391.82336018607</pos>
+          <pos dimension="2">20037507.5325271226 18809001.9719000012</pos>
+        </Envelope>
+        <RectifiedGrid srsName="EPSG:3857" dimension="2">
+          <limits>
+            <GridEnvelope>
+              <low>0 0</low>
+              <high>40075014 20498393</high>
+            </GridEnvelope>
+          </limits>
+          <axisName>Raster_Pixel_Columns(X-axis)</axisName>
+          <axisName>Raster_Pixel_Rows(Y-axis)</axisName>
+          <origin>
+            <pos>-20037506.5672000051 18809001.4719000049</pos>
+          </origin>
+          <offsetVector dimension="2">0.999999990011909534 0</offsetVector>
+          <offsetVector dimension="2">0 -0.999999990011909534</offsetVector>
+        </RectifiedGrid>
+      </spatialDomain>
+    </domainSet>
+    <rangeSet>
+      <RangeSet>
+        <name>RangeSet_1</name>
+        <label>DEP3Elevation RangeSet</label>
+        <axisDescription>
+          <AxisDescription>
+            <name>Band</name>
+            <label>Band Numbers</label>
+            <values>
+              <singleValue>1</singleValue>
+            </values>
+          </AxisDescription>
+        </axisDescription>
+      </RangeSet>
+    </rangeSet>
+    <supportedCRSs>
+      <requestResponseCRSs>EPSG:4326</requestResponseCRSs>
+      <requestResponseCRSs>EPSG:3857</requestResponseCRSs>
+      <nativeCRSs>EPSG:3857</nativeCRSs>
+    </supportedCRSs>
+    <supportedFormats nativeFormat="GeoTIFF">
+      <formats>GeoTIFF</formats>
+      <formats>HDF</formats>
+    </supportedFormats>
+    <supportedInterpolations default="nearest neighbor">
+      <interpolationMethod>nearest neighbor</interpolationMethod>
+      <interpolationMethod>bilinear</interpolationMethod>
+      <interpolationMethod>bicubic</interpolationMethod>
+    </supportedInterpolations>
+  </CoverageOffering>
+  <PreferredFormat>GeoTIFF</PreferredFormat>
+  <BandIdentifier>Band</BandIdentifier>
+  <BandCount>1</BandCount>
+  <BandType>Float32</BandType>
+</WCS_GDAL>
