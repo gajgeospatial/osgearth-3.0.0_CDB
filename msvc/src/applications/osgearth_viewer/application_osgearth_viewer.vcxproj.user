@@ -5,7 +5,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">
-    <LocalDebuggerCommandArguments>--verbose --window 50 50 900 900 --sky --coords --dd  "C:\Earthfiles\test.earth"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--verbose --window 50 50 900 900 --sky --coords --dd  "C:\Earthfiles\WMS_GDALWCS.earth"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">

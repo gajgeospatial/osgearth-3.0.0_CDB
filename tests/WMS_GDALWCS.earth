@@ -1,6 +1,6 @@
 <map name="Texas Imagery">
     <WMSImage name="TRNS">
-        <url>https://webservices.tnris.org/arcgis/services/TOP/TOP15_NC_CIR_50cm/ImageServer</url>
+        <url>https://webservices.tnris.org/arcgis/services/TOP/TOP15_NC_CIR_50cm/ImageServer/WMSServer</url>
         <format>png</format>
         <layers>0</layers>
         <tile_size>256</tile_size>
@@ -10,7 +10,7 @@
         <altitude>20000</altitude>
     </WMSImage>
     <GDALElevation name="USGS Elevation">
-        <url>.\GDAL_WCS_Coverage.xml</url>
+        <url>c:\Earthfiles\GDAL_WCS_Production_Coverage.xml</url>
     </GDALElevation>
     <viewpoints>
           <viewpoint name="Texas">
