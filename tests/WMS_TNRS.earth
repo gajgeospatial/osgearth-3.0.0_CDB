@@ -1,0 +1,23 @@
+<map name="Texas Imagery">
+    <WMSImage name="TRNS">
+        <url>https://webservices.tnris.org/arcgis/services/TOP/TOP15_NC_CIR_50cm/ImageServer/WMSServer</url>
+        <format>png</format>
+        <layers>0</layers>
+        <tile_size>256</tile_size>
+        <srs>EPSG:4326</srs>
+        <transparent>true</transparent>
+        <cache_policy usage="no_cache"/>
+        <altitude>20000</altitude>
+    </WMSImage>
+    <viewpoints>
+          <viewpoint name="Texas">
+              <heading>0.0</heading>
+              <height>0.0</height>
+              <lat>31.0722285</lat>
+              <long>-100.1549645</long>
+              <pitch>-90.0</pitch>
+              <range>200000.0</range>
+          </viewpoint>
+      </viewpoints>
+</map>
+
