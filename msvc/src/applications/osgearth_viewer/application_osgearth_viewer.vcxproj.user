@@ -5,7 +5,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2019_Debug|x64'">
-    <LocalDebuggerCommandArguments>--verbose --window 50 50 900 900 --sky --coords --dd  "C:\Development\op3d_active\osgEarth-3.0.0\tests\WMS_TNRS.earth"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--verbose --window 50 50 900 900 --sky --coords --dd  "D:\Repositories\Dev_Base\RTM_UnRealGen-0.5\SimBlocks_GeoSpatial_Data\Test_Images\simple_gpkg_with_models.earth" </LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">
@@ -13,7 +13,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2019_Release|x64'">
-    <LocalDebuggerCommandArguments>--verbose --window 50 50 900 900 --sky --coords --dd  "C:\Development\op3d_active\osgEarth-3.0.0\tests\simple_cdb.earth"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--verbose --window 50 50 900 900 --sky --coords --dd  "D:\Repositories\Dev_Base\RTM_UnRealGen-0.5\SimBlocks_GeoSpatial_Data\Test_Images\simple_gpkg.earth" </LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
