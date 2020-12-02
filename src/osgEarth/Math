@@ -110,6 +110,8 @@ namespace osgEarth
             double cross = base.x() * (p.y() - _a.y()) - base.y() * (p.x() - _a.x());
             return cross / base.length();
         }
+        double squaredDistanceTo(const osg::Vec3d& point) const;
+        osg::Vec3d closestPointTo(const osg::Vec3d& point) const;
     };
 
     struct OSGEARTH_EXPORT Segment3d
@@ -305,6 +307,17 @@ namespace osgEarth
     T align(T x, T multiple) {
         T isPositive = (T)(x >= 0);
         return ((x + isPositive * (multiple - 1)) / multiple) * multiple;
+    }
+
+    inline int nextPowerOf2(int x)
+    {
+        --x;
+        x |= x >> 1;
+        x |= x >> 2;
+        x |= x >> 4;
+        x |= x >> 8;
+        x |= x >> 16;
+        return x + 1;
     }
 }
 #endif

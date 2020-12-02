@@ -2,7 +2,7 @@
 
 set(source_dir      "../../../src/osgEarthSplat")
 set(bin_dir         "./")
-set(glsl_files      "Splat.types.glsl;Splat.Noise.glsl;Splat.vert.model.glsl;Splat.vert.view.glsl;Splat.frag.glsl;Splat.util.glsl;Grass.VS.glsl;GroundCover.VS.glsl;GroundCover.TCS.glsl;GroundCover.TES.glsl;GroundCover.GS.glsl;GroundCover.CS.glsl;GroundCover.FS.glsl")
+set(glsl_files      "Splat.types.glsl;Splat.Noise.glsl;Splat.vert.model.glsl;Splat.vert.view.glsl;Splat.frag.glsl;Splat.util.glsl;grass.glsl;groundCover.Billboard.glsl;groundCover.Model.glsl;groundCover.CS.glsl;")
 set(template_file   "SplatShaders.cpp.in")
 set(output_cpp_file "./AutoGenShaders.cpp")
 

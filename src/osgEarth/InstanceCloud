@@ -23,9 +23,13 @@
 #define OSGEARTH_INSTANCE_CLOUD 1
 
 #include <osgEarth/Common>
+#include <osgEarth/Containers>
+#include <osgEarth/GLUtils>
 
 #include <osg/Geometry>
 #include <osg/GL>
+#include <osg/Texture2DArray>
+#include <osg/NodeVisitor>
 
 namespace osgEarth
 {
@@ -47,11 +51,12 @@ namespace osgEarth
 
         struct InstancingData
         {
+            unsigned contextID;
             mutable DrawElementsIndirectCommand* commands;
-            GLuint commandBuffer;
+            mutable osg::ref_ptr<GLBuffer> commandBuffer;
             GLsizei commandBufferSize;
             GLuint pointsBuffer;
-            GLuint renderBuffer;
+            mutable osg::ref_ptr<GLBuffer> renderBuffer;
             GLint renderBufferTileSize;
             osg::Vec4Array* points;
             unsigned numX, numY;
@@ -113,6 +118,38 @@ namespace osgEarth
             InstancingData* _data;
             osg::ref_ptr<Renderer> _callback;
         };
+
+        //! Visitor that transforms a model into a single draw call.
+        struct OSGEARTH_EXPORT ModelCruncher : public osg::NodeVisitor
+        {
+            ModelCruncher();
+
+            void add(osg::Node*);
+
+            osg::Node* getNode() const { return _geom.get(); }
+            osg::Texture* getAtlas() const { return _atlas.get(); }
+
+            void apply(osg::Node& node);
+            void apply(osg::Geometry& geom);
+            bool pushStateSet(osg::Node&);
+            void popStateSet();
+            void addTextureToAtlas(osg::Texture*);
+            void finalize();
+
+            osg::ref_ptr<osg::Geometry> _geom;
+            osg::ref_ptr<osg::Texture2DArray> _atlas;
+            osg::fast_back_stack<osg::Texture*> _textureStack;
+            typedef Util::UnorderedMap<osg::Texture*, int> AtlasIndexLUT;
+            AtlasIndexLUT _atlasLUT;
+            std::vector<osg::ref_ptr<osg::Image> > _imagesToAdd;
+
+            osg::DrawElementsUShort* _primset;
+            osg::Vec3Array* _verts;
+            osg::Vec4Array* _colors;
+            osg::Vec3Array* _normals;
+            osg::Vec3Array* _texcoords;
+        };
+
     };
 }
 

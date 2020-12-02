@@ -11,6 +11,7 @@
 #include <osgEarth/VirtualProgram>
 #include <osgEarth/BillboardSymbol>
 #include <osgEarth/Registry>
+#include <osgEarth/Math>
 
 #include <osg/Texture2DArray>
 
@@ -153,6 +154,21 @@ GroundCover::getTotalNumObjects() const
     for(int i=0; i<_biomes.size(); ++i)
     {
         count += _biomes[i]->getObjects().size();
+    }
+    return count;
+}
+int
+GroundCover::getTotalNumModels() const
+{
+    int count = 0;
+    for(int i=0; i<_biomes.size(); ++i)
+    {
+        for(int j=0; j<_biomes[i]->getObjects().size(); ++j)
+        {
+            const GroundCoverObject* obj = _biomes[i]->getObjects()[j].get();
+            if (obj->getType() == GroundCoverObject::TYPE_MODEL)
+                ++count;
+        }
     }
     return count;
 }
@@ -472,19 +488,6 @@ GroundCover::createPredicateShader(LandCoverDictionary* landCoverDict, LandCover
     return shader;
 }
 
-namespace
-{
-    int nextPowerOf2(int x) {
-        --x;
-        x |= x >> 1;
-        x |= x >> 2;
-        x |= x >> 4;
-        x |= x >> 8;
-        x |= x >> 16;
-        return x+1;
-    }
-}
-
 osg::Texture*
 GroundCover::createTexture() const
 {
@@ -680,7 +683,16 @@ GroundCoverBiome::configure(const ConfigOptions& conf, const osgDB::Options* dbo
             {
                 getObjects().push_back( new GroundCoverBillboard(sideImage.get(), topImage.get(), bs) );
             }
+
+            continue;
         } 
+
+        const ModelSymbol* model = dynamic_cast<const ModelSymbol*>(i->get());
+        if (model)
+        {
+            osg::ref_ptr<osg::Node> node = URI(model->url()->evalURI()).getNode(dbo);
+            getObjects().push_back(new GroundCoverModel(node.release()));
+        }
     }
 
     if ( getObjects().size() == 0 )

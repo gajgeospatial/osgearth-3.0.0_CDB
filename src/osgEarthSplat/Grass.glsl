@@ -38,7 +38,7 @@ vec3 oe_UpVectorView;
 
 uniform float osg_FrameTime; // OSG frame time (seconds) used for wind animation
 //uniform float oe_GroundCover_wind;  // wind strength
-uniform float oe_GroundCover_maxDistance; // distance at which flora disappears
+uniform vec3 oe_VisibleLayer_ranges; // distance at which flora disappears
 
 #pragma import_defines(OE_WIND_TEX, OE_WIND_TEX_MATRIX)
 #ifdef OE_WIND_TEX
@@ -81,6 +81,9 @@ void oe_Grass_VS(inout vec4 vertex)
 
     vertex = gl_ModelViewMatrix * render[gl_InstanceID].vertex;
 
+    vp_Normal = vec3(0,0,1);
+    oe_UpVectorView = gl_NormalMatrix * vp_Normal;
+
     oe_layer_tilec = vec4(render[gl_InstanceID].tilec, 0, 1);
 
     // Sample our noise texture
@@ -88,7 +91,7 @@ void oe_Grass_VS(inout vec4 vertex)
     vec4 oe_noise_wide = textureLod(oe_GroundCover_noiseTex, oe_layer_tilec.st/16.0, 0);
 
     // Calculate the normalized camera range (oe_Camera.z = LOD Scale)
-    float maxRange = oe_GroundCover_maxDistance / oe_Camera.z;
+    float maxRange = oe_VisibleLayer_ranges[1] / oe_Camera.z;
     float zv = vertex.z;
     float nRange = clamp(-zv/maxRange, 0.0, 1.0);
 

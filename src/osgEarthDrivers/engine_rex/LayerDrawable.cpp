@@ -100,20 +100,19 @@ namespace
 void
 LayerDrawable::drawTiles(osg::RenderInfo& ri) const
 {
-    PerProgramState& ds = _drawState->getPPS(ri);
-    osg::GLExtensions* ext = ri.getState()->get<osg::GLExtensions>();
+    PerProgramState& pps = _drawState->getPPS(ri);
+    pps.refresh(ri, _drawState->_bindings);
 
-    ds.refresh(ri, _drawState->_bindings);
-
-    if (ds._layerUidUL >= 0)
+    if (pps._layerUidUL >= 0)
     {
+        osg::GLExtensions* ext = ri.getState()->get<osg::GLExtensions>();
         GLint uid = _layer ? (GLint)_layer->getUID() : (GLint)-1;
-        ext->glUniform1i(ds._layerUidUL, uid);
+        ext->glUniform1i(pps._layerUidUL, uid);
     }
 
     for (DrawTileCommands::const_iterator tile = _tiles.begin(); tile != _tiles.end(); ++tile)
     {
-        _drawState->getPPS(ri).refresh(ri, _drawState->_bindings);
+        //_drawState->getPPS(ri).refresh(ri, _drawState->_bindings);
         tile->draw(ri, *_drawState, NULL);
     }
 }
@@ -125,7 +124,6 @@ LayerDrawable::drawImplementation(osg::RenderInfo& ri) const
     char buf[64];
     sprintf(buf, "%.36s (%zd tiles)", _layer ? _layer->getName().c_str() : "unknown layer", _tiles.size());
     OE_PROFILING_ZONE_TEXT(buf);
-    //OE_INFO << LC << (_layer ? _layer->getName() : "[empty]") << " tiles=" << _tiles.size() << std::endl;
 
     if (_patchLayer && _patchLayer->getDrawCallback())
     {        
@@ -159,5 +157,21 @@ LayerDrawable::drawImplementation(osg::RenderInfo& ri) const
         // (light clip planes and lights) to immediately be reapplied under the
         // current MVM, which will by definition be wrong!)
         //ri.getState()->apply();
+    }
+}
+
+void LayerDrawable::accept(osg::PrimitiveFunctor& functor) const
+{
+    for (DrawTileCommands::const_iterator itr = _tiles.begin(); itr != _tiles.end(); ++itr)
+    {
+        itr->accept(functor);
+    }
+}
+
+void LayerDrawable::accept(osg::PrimitiveIndexFunctor& functor) const
+{
+    for (DrawTileCommands::const_iterator itr = _tiles.begin(); itr != _tiles.end(); ++itr)
+    {
+        itr->accept(functor);
     }
 }

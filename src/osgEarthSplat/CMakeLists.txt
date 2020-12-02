@@ -18,12 +18,9 @@ set(TARGET_GLSL
     Splat.frag.glsl
     Splat.util.glsl
     GroundCover.CS.glsl
-    Grass.VS.glsl
-    GroundCover.VS.glsl
-    GroundCover.TCS.glsl
-    GroundCover.TES.glsl
-    GroundCover.GS.glsl
-    GroundCover.FS.glsl )
+    GroundCover.Billboard.glsl
+    GroundCover.Model.glsl
+    Grass.glsl)
 
 set(SHADERS_CPP "${CMAKE_CURRENT_BINARY_DIR}/AutoGenShaders.cpp")
 
@@ -36,9 +33,8 @@ set(TARGET_IN
     SplatShaders.cpp.in)
 
 set(TARGET_SRC
-    Coverage.cpp
+    Biome.cpp
     GrassLayer.cpp
-    GroundCover.cpp
     GroundCoverFeatureGenerator.cpp
     GroundCoverFeatureSource.cpp
     GroundCoverLayer.cpp
@@ -46,24 +42,20 @@ set(TARGET_SRC
     RoadSurfaceLayer.cpp
 	SplatCatalog.cpp
     SplatLayer.cpp
-	SplatCoverageLegend.cpp
     Surface.cpp
     Zone.cpp
     ${SHADERS_CPP})
 	
 set(LIB_PUBLIC_HEADERS
-    Coverage
+    Biome
 	Export
     GrassLayer
-    GroundCover
     GroundCoverFeatureGenerator
     GroundCoverFeatureSource
     GroundCoverLayer
     NoiseTextureFactory
     RoadSurfaceLayer
-	SplatCoverageLegend
 	SplatCatalog
-	SplatOptions
     SplatShaders
     SplatLayer
     Surface

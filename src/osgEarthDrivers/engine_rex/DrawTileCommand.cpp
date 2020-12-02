@@ -128,9 +128,6 @@ DrawTileCommand::draw(osg::RenderInfo& ri, DrawState& dsMaster, osg::Referenced*
         PatchLayer::DrawContext tileData;
 
         tileData._key = _key;
-        //tile._range = _range;
-        //tile._geom = _provider;
-        //tile._geom = _geom.get();
         tileData._geomBBox = &_geom->getBoundingBox();
         tileData._tileBBox = &_tile->getBoundingBox();
         _drawCallback->drawTile(ri, tileData);
@@ -143,4 +140,20 @@ DrawTileCommand::draw(osg::RenderInfo& ri, DrawState& dsMaster, osg::Referenced*
         _geom->_ptype[ri.getContextID()] = _drawPatch ? GL_PATCHES : _geom->getDrawElements()->getMode();
         _geom->draw(ri);
     }    
+}
+
+void DrawTileCommand::accept(osg::PrimitiveFunctor& functor) const
+{
+    if (_geom.valid() && _geom->supports(functor))
+    {
+        _geom->accept(functor);
+    }
+}
+
+void DrawTileCommand::accept(osg::PrimitiveIndexFunctor& functor) const
+{
+    if (_geom.valid() && _geom->supports(functor))
+    {
+        _geom->accept(functor);
+    }
 }

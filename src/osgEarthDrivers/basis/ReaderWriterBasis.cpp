@@ -25,6 +25,7 @@
 #include <osgDB/FileNameUtils>
 #include <osgDB/FileUtils>
 
+//#include <basisu/transcoder/basisu_transcoder.h>
 #include <transcoder/basisu_transcoder.h>
 
 using namespace basisu;

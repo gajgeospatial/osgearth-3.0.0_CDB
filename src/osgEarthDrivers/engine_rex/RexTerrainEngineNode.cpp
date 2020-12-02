@@ -32,6 +32,7 @@
 #include <osgEarth/Utils>
 #include <osgEarth/ObjectIndex>
 #include <osgEarth/Metrics>
+#include <osgEarth/ElevationConstraintLayer>
 
 #include <osg/Version>
 #include <osg/BlendFunc>
@@ -128,7 +129,6 @@ RexTerrainEngineNode::RexTerrainEngineNode() :
     _refreshRequired      ( false ),
     _stateUpdateRequired  ( false ),
     _renderModelUpdateRequired( false ),
-    _rasterizer(0L),
     _morphTerrainSupported(true),
     _frameLastUpdated(0u)
 {
@@ -312,8 +312,7 @@ RexTerrainEngineNode::setMap(const Map* map, const TerrainOptions& inOptions)
     this->addChild( _unloader.get() );
 
     // Tile rasterizer in case we need one
-    _rasterizer = new TileRasterizer();
-    this->addChild( _rasterizer );
+    //_rasterizer = new TileRasterizer();
 
     // Initialize the core render bindings.
     setupRenderBindings();
@@ -337,7 +336,6 @@ RexTerrainEngineNode::setMap(const Map* map, const TerrainOptions& inOptions)
         this, // engine
         _geometryPool.get(),
         _loader.get(),
-        _rasterizer,
         _liveTiles.get(),
         _renderBindings,
         options(),
@@ -767,9 +765,6 @@ RexTerrainEngineNode::cull_traverse(osg::NodeVisitor& nv)
     _loader->accept(nv);
     _unloader->accept(nv);
     _releaser->accept(nv);
-
-    if (_rasterizer)
-        _rasterizer->accept(nv);
 }
 
 void
@@ -1039,11 +1034,31 @@ RexTerrainEngineNode::addTileLayer(Layer* tileLayer)
                     if (newBinding.isActive())
                     {
                         osg::StateSet* terrainSS = _terrain->getOrCreateStateSet();
-                        osg::ref_ptr<osg::Texture> tex = new osg::Texture2D(ImageUtils::createEmptyImage(1,1));
+                        osg::ref_ptr<osg::Texture> tex;
+                        if (osg::Image* emptyImage = imageLayer->getEmptyImage())
+                        {
+                            if (emptyImage->r() > 1)
+                            {
+                                tex = ImageUtils::makeTexture2DArray(emptyImage);
+                            }
+                            else
+                            {
+                                tex = new osg::Texture2D(emptyImage);
+                            }
+                        }
+                        else
+                        {
+                            tex = new osg::Texture2D(ImageUtils::createEmptyImage(1,1));
+                        }
                         tex->setUnRefImageDataAfterApply(Registry::instance()->unRefImageDataAfterApply().get());
                         terrainSS->addUniform(new osg::Uniform(newBinding.samplerName().c_str(), newBinding.unit()));
                         terrainSS->setTextureAttribute(newBinding.unit(), tex.get(), 1);
                         OE_INFO << LC << "Bound shared sampler " << newBinding.samplerName() << " to unit " << newBinding.unit() << std::endl;
+                        if (dynamic_cast<ElevationConstraintLayer*>(imageLayer))
+                        {
+                            terrainSS->setDefine("OE_ELEVATION_CONSTRAINT_TEX", newBinding.samplerName());
+                            terrainSS->setDefine("OE_ELEVATION_CONSTRAINT_TEX_MATRIX", newBinding.matrixName());
+                        }
                     }
                 }
             }

@@ -1,6 +1,6 @@
 /* -*-c++-*- */
 /* osgEarth - Geospatial SDK for OpenSceneGraph
- * Copyright 2018 Pelican Mapping
+ * Copyright 2020 Pelican Mapping
  * http://osgearth.org
  *
  * osgEarth is free software; you can redistribute it and/or modify
@@ -54,21 +54,43 @@ namespace osgEarth {
 
             bool isComplete;
             std::string uri;
+            std::string layer;
+            std::string type;
             std::string status;
             osg::Timer_t startTime;
             osg::Timer_t endTime;
         };
 
+        struct ScopedRequestLayer
+        {
+            ScopedRequestLayer(const std::string& layer) :
+                _layer(layer)
+            {
+                NetworkMonitor::setRequestLayer(_layer);
+            }
+
+            ~ScopedRequestLayer()
+            {
+                NetworkMonitor::setRequestLayer("");
+            }
+            std::string _layer;
+        };
+
         typedef std::map<unsigned long, Request> Requests;
 
-        static unsigned long begin(const std::string& uri, const std::string& status);
+        static unsigned long begin(const std::string& uri, const std::string& status, const std::string& type = "");
         static void end(unsigned long handle, const std::string& status);
         static void getRequests(Requests& out);
         static bool getEnabled();
         static void setEnabled(bool enabled);
         static void clear();
+        static void saveCSV(Requests& requests, const std::string& filename);
 
+        static void setRequestLayer(const std::string& name);
+        static std::string getRequestLayer();
     };
+
+
 
 }
 

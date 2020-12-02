@@ -34,7 +34,8 @@ uniform sampler2D oe_GroundCover_noiseTex;
 #define NOISE_CLUMPY   3
 
 uniform float oe_GroundCover_wind; // wind blowing the foliage
-uniform float oe_GroundCover_maxDistance;     // distance at which flora disappears
+//uniform float oe_GroundCover_maxDistance;     // distance at which flora disappears
+uniform vec3 oe_VisibleLayer_ranges;
 
 uniform vec3 oe_Camera;  // (vp width, vp height, lodscale)
 
@@ -94,17 +95,18 @@ void oe_GroundCover_VS(inout vec4 vertex_view)
 
     vec4 noise = textureLod(oe_GroundCover_noiseTex, oe_layer_tilec.st, 0);  
 
-    vp_Color = vec4(1);
+    vp_Color = vec4(1,1,1,0);
     vp_Normal = vec3(0,0,1);
+    oe_UpVectorView = gl_NormalMatrix * vp_Normal;
 
     // Calculate the normalized camera range (oe_Camera.z = LOD Scale)
-    float maxRange = oe_GroundCover_maxDistance / oe_Camera.z;
+    float maxRange = oe_VisibleLayer_ranges[1] / oe_Camera.z;
     float nRange = clamp(-vertex_view.z/maxRange, 0.0, 1.0);
 
     // cull verts that are out of range. Sadly we can't do this in COMPUTE.
     if (nRange >= 0.99)
         return;
-
+    
     oe_GroundCover_atlasIndex = float(render[gl_InstanceID].sideIndex);
 
     // push the falloff closer to the max distance.
@@ -130,6 +132,7 @@ void oe_GroundCover_VS(inout vec4 vertex_view)
     {
         // second quad
         tangentVector = gl_NormalMatrix * vec3(0,1,0);
+        which -= 4;
     }
 
     vec3 halfWidthTangentVector = cross(tangentVector, oe_UpVectorView) * 0.5 * width;
@@ -186,7 +189,6 @@ void oe_GroundCover_VS(inout vec4 vertex_view)
                 which == 0 || which == 2? mix(-tangentVector, faceNormalVector, blend) :
                 mix( tangentVector, faceNormalVector, blend);
 
-            //oe_GroundCover_atlasIndex = float(billboard.atlasIndexSide);
             oe_GroundCover_atlasIndex = float(render[gl_InstanceID].sideIndex);
         }
     }
@@ -228,4 +230,43 @@ void oe_GroundCover_VS(inout vec4 vertex_view)
         which == 1 || which == 5? vec2(1, 0) :
         which == 2 || which == 6? vec2(0, 1) :
         vec2(1, 1);
+}
+
+
+[break]
+#version $GLSL_VERSION_STR
+#pragma vp_name       Land cover billboard texture application
+#pragma vp_entryPoint oe_GroundCover_FS
+#pragma vp_location   fragment_coloring
+
+#pragma import_defines(OE_IS_SHADOW_CAMERA)
+
+uniform sampler2DArray oe_GroundCover_billboardTex;
+uniform float oe_GroundCover_maxAlpha;
+uniform int oe_GroundCover_A2C;
+
+in vec2 oe_GroundCover_texCoord;
+flat in float oe_GroundCover_atlasIndex;
+
+void oe_GroundCover_FS(inout vec4 color)
+{
+    if (oe_GroundCover_atlasIndex < 0.0)
+    {
+        discard;
+    }
+
+    // modulate the texture
+    color *= texture(oe_GroundCover_billboardTex, vec3(oe_GroundCover_texCoord, oe_GroundCover_atlasIndex));
+
+#ifdef OE_IS_SHADOW_CAMERA
+    if (color.a < oe_GroundCover_maxAlpha)
+    {
+        discard;
+    }
+#else
+    if (oe_GroundCover_A2C == 0 && color.a < oe_GroundCover_maxAlpha)
+    {
+        discard;
+    }
+#endif
 }

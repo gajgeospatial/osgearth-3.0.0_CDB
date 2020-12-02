@@ -153,7 +153,7 @@ FeatureSourceIndexNode::setFIDMap(const FeatureSourceIndexNode::FIDMap& fids)
 
 namespace
 {
-    /** Visitor that finds FeatureSourceIndexNodes, assigns their index, and 
+    /** Visitor that finds FeatureSourceIndexNodes, assigns their index, and
      *  reconstitutes their object ID maps. */
     struct Reconstitute : public osg::NodeVisitor
     {
@@ -284,7 +284,7 @@ namespace osgEarth { namespace Serializers { namespace FeatureSourceIndexNodeCla
             for (FeatureSourceIndexNode::FIDMap::const_iterator i = fids.begin(); i != fids.end(); ++i)
             {
                 const RefIDPair* idPair = i->second.get();
-                os << idPair->_fid << idPair->_oid;
+                os << (double)idPair->_fid << idPair->_oid;
             }
         }
         os << os.END_BRACKET << std::endl;
@@ -295,7 +295,8 @@ namespace osgEarth { namespace Serializers { namespace FeatureSourceIndexNodeCla
     bool readFIDMap(osgDB::InputStream& is, FeatureSourceIndexNode& node)
     {
         FeatureSourceIndexNode::FIDMap fids;
-        FeatureID fid;
+        //FeatureID fid;
+        double fid;
         ObjectID oid;
 
         unsigned size = is.readSize();
@@ -329,14 +330,14 @@ namespace osgEarth { namespace Serializers { namespace FeatureSourceIndexNodeCla
 #undef  LC
 #define LC "[FeatureSourceIndex] "
 
-FeatureSourceIndex::FeatureSourceIndex(FeatureSource* featureSource, 
+FeatureSourceIndex::FeatureSourceIndex(FeatureSource* featureSource,
                                        ObjectIndex*  index,
                                        const FeatureSourceIndexOptions& options) :
-_featureSource  ( featureSource ), 
+_featureSource  ( featureSource ),
 _masterIndex    ( index ),
 _options        ( options )
 {
-    _embed = 
+    _embed =
         _options.embedFeatures() == true ||
         featureSource == 0L ||
         featureSource->supportsGetFeature() == false;
@@ -361,7 +362,7 @@ FeatureSourceIndex::tagDrawable(osg::Drawable* drawable, Feature* feature)
     if ( !feature ) return 0L;
 
     Threading::ScopedMutexLock lock(_mutex);
-    
+
     RefIDPair* p = 0L;
     FeatureID fid = feature->getFID();
 
@@ -378,7 +379,7 @@ FeatureSourceIndex::tagDrawable(osg::Drawable* drawable, Feature* feature)
         p = new RefIDPair( fid, oid );
         _fids[fid] = p;
         _oids[oid] = fid;
-    
+
         if ( _embed )
         {
             _embeddedFeatures[fid] = feature;
@@ -394,7 +395,7 @@ FeatureSourceIndex::tagAllDrawables(osg::Node* node, Feature* feature)
     if ( !feature ) return 0L;
 
     Threading::ScopedMutexLock lock(_mutex);
-    
+
     RefIDPair* p = 0L;
     FeatureID fid = feature->getFID();
 
@@ -411,7 +412,7 @@ FeatureSourceIndex::tagAllDrawables(osg::Node* node, Feature* feature)
         p = new RefIDPair( fid, oid );
         _fids[fid] = p;
         _oids[oid] = fid;
-    
+
         if ( _embed )
         {
             _embeddedFeatures[fid] = feature;
@@ -427,7 +428,7 @@ FeatureSourceIndex::tagNode(osg::Node* node, Feature* feature)
     if ( !feature ) return 0L;
 
     Threading::ScopedMutexLock lock(_mutex);
-    
+
     RefIDPair* p = 0L;
     FeatureID fid = feature->getFID();
     ObjectID oid;
@@ -445,7 +446,7 @@ FeatureSourceIndex::tagNode(osg::Node* node, Feature* feature)
         p = new RefIDPair( fid, oid );
         _fids[fid] = p;
         _oids[oid] = fid;
-    
+
         if ( _embed )
         {
             _embeddedFeatures[fid] = feature;
@@ -491,7 +492,7 @@ FeatureSourceIndex::getObjectID(FeatureID fid) const
         return OSGEARTH_OBJECTID_EMPTY;
 }
 
-// When Feature index data is deserialized, the old serialized ObjectIDs are 
+// When Feature index data is deserialized, the old serialized ObjectIDs are
 // no longer valid. This method will re-install the mappings in the master index
 // and write new local mappings with new ObjectIDs.
 void
@@ -521,7 +522,7 @@ FeatureSourceIndex::update(osg::Drawable* drawable, std::map<ObjectID,ObjectID>&
     }
 }
 
-// When Feature index data is deserialized, the old serialized ObjectIDs are 
+// When Feature index data is deserialized, the old serialized ObjectIDs are
 // no longer valid. This method will re-install the mappings in the master index
 // and write new local mappings with new ObjectIDs.
 void
