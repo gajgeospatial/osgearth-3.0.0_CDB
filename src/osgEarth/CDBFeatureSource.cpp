@@ -627,7 +627,6 @@ bool CDBFeatureSource::getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const 
 	}
 	bool done = false;
 	bool zabsindex_set = false;
-	int zabsindex = -1;
 	while (!done)
 	{
 		OGRFeature * feat_handle;
@@ -644,15 +643,11 @@ bool CDBFeatureSource::getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const 
 		}
 		if (!Model_in_Archive)
 			valid_model = false;
-		if (!zabsindex_set)
-		{
-			zabsindex = feat_handle->GetFieldIndex("AHGT");
-			zabsindex_set = true;
-		}
+
+		CDB_Model_Runtime_Class FeatureClass = mainTile->Current_Feature_Class_Data();
+
 		double ZoffsetPos = 0.0;
-		int zsetabs = 0;
-		if (zabsindex >= 0)
-			zsetabs = feat_handle->GetFieldAsInteger(zabsindex);
+		int zsetabs = FeatureClass.ahgt;
 		if (!zsetabs)
 		{
 			if (_M_Contains_ABS_Z)
@@ -702,7 +697,6 @@ bool CDBFeatureSource::getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const 
 			else
 				f->set("selection", mainTile->Realsel(sel));
 
-			CDB_Model_Runtime_Class FeatureClass = mainTile->Current_Feature_Class_Data();
 			f->set("bsr", FeatureClass.bsr);
 			f->set("bbw", FeatureClass.bbw);
 			f->set("bbl", FeatureClass.bbl);

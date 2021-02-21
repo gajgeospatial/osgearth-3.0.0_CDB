@@ -2022,12 +2022,14 @@ bool osgEarth::CDBTile::CDB_Tile::Load_Class_Map(OGRLayer * poLayer, CDB_Model_R
 		return false;
 	}
 
+	int ahgt_index = Find_Field_Index(poFDefn, "AHGT", OFTInteger);
+
 	poLayer->ResetReading();
 	OGRFeature* dbf_feature;
 	while ((dbf_feature = poLayer->GetNextFeature()) != NULL)
 	{
 		CDB_Model_Runtime_Class nextEntry;
-		std::string Key = nextEntry.set_class(dbf_feature, cnam_attr_index, name_attr_index, facc_index, fsc_index, bsr_index, bbw_index, bbl_index, bbh_index);
+		std::string Key = nextEntry.set_class(dbf_feature, cnam_attr_index, name_attr_index, facc_index, fsc_index, bsr_index, bbw_index, bbl_index, bbh_index, ahgt_index);
 		clsMap.insert(std::pair<std::string, CDB_Model_Runtime_Class>(Key, nextEntry));
 		OGRFeature::DestroyFeature(dbf_feature);
 	}
@@ -3892,12 +3894,14 @@ bool osgEarth::CDBTile::OGR_File::Load_Class(void)
 		return false;
 	}
 
+	int ahgt_index = Find_Field_Index(poFDefn, "AHGT", OFTInteger);
+
 	m_ClassLayer->ResetReading();
 	OGRFeature* dbf_feature;
 	while ((dbf_feature = m_ClassLayer->GetNextFeature()) != NULL)
 	{
 		CDB_Model_Runtime_Class nextEntry;
-		std::string Key = nextEntry.set_class(dbf_feature, cnam_attr_index, name_attr_index, facc_index, fsc_index, bsr_index, bbw_index, bbl_index, bbh_index);
+		std::string Key = nextEntry.set_class(dbf_feature, cnam_attr_index, name_attr_index, facc_index, fsc_index, bsr_index, bbw_index, bbl_index, bbh_index, ahgt_index);
 		m_GS_ClassMap.insert(std::pair<std::string, CDB_Model_Runtime_Class>(Key, nextEntry));
 		OGRFeature::DestroyFeature(dbf_feature);
 	}
