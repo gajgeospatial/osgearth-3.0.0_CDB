@@ -188,7 +188,7 @@ public:
         // convert OSG to GLTF and write to a buffer:
         GLTFWriter gltfWriter;
         tinygltf::Model model;
-        gltfWriter.convertOSGtoGLTF(node, model);
+        gltfWriter.convertOSGtoGLTF(node, model, location, isBinary);
 
         OETinyGLTF gltfOut;
         std::ostringstream gltfBuf;

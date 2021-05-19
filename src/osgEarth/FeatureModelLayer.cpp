@@ -277,7 +277,23 @@ FeatureModelLayer::create()
 
     //if (_graphDirty)
     {
+#ifdef _DEBUG
+        bool myOpen = isOpen();
+        bool features;
+        if (getFeatureSource())
+            features = true;
+        else
+            features = false;
+        bool stylesheet;
+        if (getStyleSheet())
+            stylesheet = true;
+        else
+            stylesheet = false;
+        bool session = _session.valid();
+        if(myOpen && features && stylesheet && session)
+#else
         if (isOpen() && getFeatureSource() && getStyleSheet() && _session.valid())
+#endif
         {
             _session->setFeatureSource(getFeatureSource());
 

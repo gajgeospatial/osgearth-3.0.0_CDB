@@ -19,6 +19,8 @@
 * You should have received a copy of the GNU Lesser General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
+//#define _TestGLTF
+
 #ifndef OSGEARTH_GLTF_READER_H
 #define OSGEARTH_GLTF_READER_H
 
@@ -95,9 +97,10 @@ public:
         fs.user_data = (void*)&location;
         loader.SetFsCallbacks(fs);
 
+#if 0
         tinygltf::Options opt;
         opt.skip_imagery = readOptions && readOptions->getOptionString().find("gltfSkipImagery") != std::string::npos;
-
+#endif
         if (osgDB::containsServerAddress(location))
         {
             osgEarth::ReadResult rr = osgEarth::URI(location).readString(readOptions);
@@ -110,22 +113,33 @@ public:
 
             if (isBinary)
             {
-                loader.LoadBinaryFromMemory(&model, &err, &warn, (const unsigned char*)mem.data(), mem.size(), location, REQUIRE_VERSION, &opt);
+                loader.LoadBinaryFromMemory(&model, &err, &warn, (const unsigned char*)mem.data(), mem.size(), location, REQUIRE_VERSION);
             }
             else
             {
-                loader.LoadASCIIFromString(&model, &err, &warn, mem.data(), mem.size(), location, REQUIRE_VERSION, &opt);
+                loader.LoadASCIIFromString(&model, &err, &warn, mem.data(), mem.size(), location, REQUIRE_VERSION);
             }
         }
         else
         {
             if (isBinary)
             {
-                loader.LoadBinaryFromFile(&model, &err, &warn, location, REQUIRE_VERSION, &opt);
+                loader.LoadBinaryFromFile(&model, &err, &warn, location, REQUIRE_VERSION);
+#ifdef _TestGLTF
+                std::string OTestName = "D:\\TestOutput\\Paris_4k\\Models\\Direct\\" + osgDB::getSimpleFileName(location);
+                loader.WriteGltfSceneToFile(
+                    &model,
+                    OTestName,
+                    true,           // embedImages
+                    true,           // embedBuffers
+                    true,           // prettyPrint
+                    isBinary);      // writeBinary
+
+#endif
             }
             else
             {
-                loader.LoadASCIIFromFile(&model, &err, &warn, location, REQUIRE_VERSION, &opt);
+                loader.LoadASCIIFromFile(&model, &err, &warn, location, REQUIRE_VERSION);
             }
         }
 
@@ -298,7 +312,7 @@ public:
                     tex->setFilter(osg::Texture::MAG_FILTER, (osg::Texture::FilterMode)osg::Texture::LINEAR); //sampler.magFilter);
                     tex->setWrap(osg::Texture::WRAP_S, (osg::Texture::WrapMode)sampler.wrapS);
                     tex->setWrap(osg::Texture::WRAP_T, (osg::Texture::WrapMode)sampler.wrapT);
-                    tex->setWrap(osg::Texture::WRAP_R, (osg::Texture::WrapMode)sampler.wrapR);
+//                    tex->setWrap(osg::Texture::WRAP_R, (osg::Texture::WrapMode)sampler.wrapR);
                 }
                 else
                 {

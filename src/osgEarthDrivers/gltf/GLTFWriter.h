@@ -48,7 +48,8 @@ private:
     typedef std::vector< osg::ref_ptr< osg::StateSet > > StateSetStack;
 
     std::vector< osg::ref_ptr< osg::Texture > > _textures;
-
+    std::string                                 _BaseLocation;
+    bool                                        _IsBinary;
     tinygltf::Model& _model;
     std::stack<tinygltf::Node*> _gltfNodeStack;
     OsgNodeSequenceMap _osgNodeSeqMap;
@@ -58,11 +59,11 @@ private:
     StateSetStack _ssStack;
 
 public:
-    OSGtoGLTF(tinygltf::Model& model) : _model(model)
+    OSGtoGLTF(tinygltf::Model& model, const std::string &location, bool binary) : _model(model), _BaseLocation(""), _IsBinary(binary)
     {
         setTraversalMode(TRAVERSE_ALL_CHILDREN);
         setNodeMaskOverride(~0);
-
+        _BaseLocation = osgDB::getFilePath(location);
         // default root scene:
         _model.scenes.push_back(tinygltf::Scene());
         tinygltf::Scene& scene = _model.scenes.back();
@@ -189,7 +190,7 @@ public:
         int id = _model.buffers.size() - 1;
         _buffers[data] = id;
 
-        int bytes = getBytesInDataType(type);
+//        int bytes = getBytesInDataType(type);
         buffer.data.resize(data->getTotalDataSize());
 
         //TODO: account for endianess
@@ -320,13 +321,23 @@ public:
                     flipped->flipVertical();
 
                     std::string filename;
-
-                    std::string ext = "png";// osgDB::getFileExtension(osgImage->getFileName());
-
+                    std::string ext;
+                    std::string mime_type;
+                    if (flipped->isImageTranslucent())
+                    {
+                        ext = "png";// osgDB::getFileExtension(osgImage->getFileName());
+                        mime_type = "image/png";
+                    }
+                    else
+                    {
+                        ext = "jpg";
+                        mime_type = "image/jpeg";
+                    }
                     // If the image has a filename try to hash it so we only write out one copy of it.  
                     if (!osgImage->getFileName().empty())
                     {
-                        filename = Stringify() << std::hex << ::Strings::hashString(osgImage->getFileName()) << "." << ext;                        
+//                        filename = Stringify() << std::hex << ::Strings::hashString(osgImage->getFileName()) << "." << ext;                        
+                        filename = _BaseLocation + "\\" + osgDB::getStrippedName(osgImage->getFileName()) + "." + ext;                        
 
                         if (!osgDB::fileExists(filename))
                         {
@@ -340,7 +351,7 @@ public:
                         do
                         {
                             std::stringstream ss;
-                            ss << fileNameInc << "." << ext;
+                            ss << _BaseLocation << "\\" << fileNameInc << "." << ext;
                             filename = ss.str();
                             fileNameInc++;
                         } while (osgDB::fileExists(filename));
@@ -350,10 +361,71 @@ public:
                     // Add the image
                     // TODO:  Find a better way to write out the image url.  Right now it's assuming a ../.. scheme.
                     Image image;
-                    std::stringstream buf;
-                    buf << "../../" << filename;
-                    image.uri = buf.str();//filename;
+//                    std::stringstream buf;
+//                    buf << "../../" << filename;
+//                    image.uri = buf.str();//filename;
+                    if (!_IsBinary)
+                    {
+                        image.uri = osgDB::getSimpleFileName(filename);
+                    }
+                    else
+                    {
+                        image.uri = "";
+                        image.mimeType = mime_type;
+                        int w = flipped->s();
+                        int h = flipped->t();
+                        int bits = flipped->getPixelSizeInBits();
+                        int comp = bits / 8;
+                        int expected = bits / 8;
+                        bits /= expected;
+                    
+                        unsigned char *bdata = stbi_load(filename.c_str(), &w, &h, &comp, expected);
+                        image.width = w;
+                        image.height = h;
+                        image.component = comp;
+                        image.bits = bits;
+                        image.pixel_type = TINYGLTF_COMPONENT_TYPE_UNSIGNED_BYTE;
+                        image.image.resize(w * h * comp * (bits / 8));
+                        std::copy(bdata, bdata + w * h * comp * (bits / 8), image.image.begin());
+                        STBI_FREE(bdata);
+
+                        std::ifstream modelfile(filename.c_str(), std::ios::in | std::ios::binary);
+
+                        modelfile.seekg(0, std::ifstream::end);
+                        size_t size = modelfile.tellg();
+                        modelfile.seekg(0);
+
+                        //read file to buffer
+                        char* data = new char[size];
+                        modelfile.read(data, size);
+
+                        _model.buffers.push_back(tinygltf::Buffer());
+                        tinygltf::Buffer& buffer = _model.buffers.back();
+                        int id = _model.buffers.size() - 1;
+
+                        //        int bytes = getBytesInDataType(type);
+                        buffer.data.resize(size);
+
+                        //TODO: account for endianess
+                        unsigned char* ptr = (unsigned char*) data;
+                        for (int i = 0; i < size; ++i)
+                            buffer.data[i] = *ptr++;
+
+                        _model.bufferViews.push_back(tinygltf::BufferView());
+                        tinygltf::BufferView& bv = _model.bufferViews.back();
+                        int bvid = _model.bufferViews.size() - 1;
+                        bv.buffer = id;
+                        bv.byteLength = size;
+                        bv.byteOffset = 0;
+                        image.bufferView = bvid;
+
+                        delete data;
+                        std::remove(filename.c_str());
+
+                    }
                     _model.images.push_back(image);
+                    image.bits = 8;
+
 
                     // Add the sampler
                     Sampler sampler;
@@ -376,7 +448,7 @@ public:
                     }                    
                     sampler.wrapS = wrapS;
                     sampler.wrapT = wrapT;
-                    sampler.wrapR = wrapR;
+ //                   sampler.wrapR = wrapR;
                     sampler.minFilter = osgTexture->getFilter(osg::Texture::MIN_FILTER);
                     sampler.magFilter = osgTexture->getFilter(osg::Texture::MAG_FILTER);
 
@@ -390,27 +462,24 @@ public:
 
                     // Add the material
                     Material mat;
-                    Parameter textureParam;
-                    textureParam.json_double_value["index"] = index;
-                    textureParam.json_double_value["texCoord"] = 0;
-                    mat.values["baseColorTexture"] = textureParam;
 
-                    Parameter colorFactor;
-                    colorFactor.number_array.push_back(1.0);
-                    colorFactor.number_array.push_back(1.0);
-                    colorFactor.number_array.push_back(1.0);
-                    colorFactor.number_array.push_back(1.0);
+                    TextureInfo textureParam;
+                    textureParam.index = index;
+                    textureParam.texCoord = 0;
+                    mat.pbrMetallicRoughness.baseColorTexture = textureParam;
 
-                    Parameter metallicFactor;
-                    metallicFactor.has_number_value = true;
-                    metallicFactor.number_value = 0.0;
-                    mat.values["metallicFactor"] = metallicFactor;
 
-                    Parameter roughnessFactor;
-                    roughnessFactor.number_value = 1.0;
-                    roughnessFactor.has_number_value = true;
-                    mat.values["roughnessFactor"] = roughnessFactor;
+                    std::vector<double> colorFactor;
+                    colorFactor.push_back(1.0);
+                    colorFactor.push_back(1.0);
+                    colorFactor.push_back(1.0);
+                    colorFactor.push_back(1.0);
 
+                    mat.pbrMetallicRoughness.baseColorFactor = colorFactor;
+
+                    mat.pbrMetallicRoughness.metallicFactor = 0.0;
+
+                    mat.pbrMetallicRoughness.roughnessFactor = 1.0;
                     mat.doubleSided = ((stateSet->getMode(GL_CULL_FACE) & osg::StateAttribute::ON) == 0);
 
                     if (stateSet->getMode(GL_BLEND) & osg::StateAttribute::ON) {
@@ -551,7 +620,7 @@ public:
                                            const osgDB::Options* options) const
     {
         tinygltf::Model model;
-        convertOSGtoGLTF(node, model);
+        convertOSGtoGLTF(node, model, location, isBinary);
 
         tinygltf::TinyGLTF writer;
 
@@ -566,7 +635,7 @@ public:
         return osgDB::ReaderWriter::WriteResult::FILE_SAVED;
     }
 
-    void convertOSGtoGLTF(const osg::Node& node, tinygltf::Model& model) const
+    void convertOSGtoGLTF(const osg::Node& node, tinygltf::Model& model, const std::string &location, bool isBinary) const
     {
         model.asset.version = "2.0";
 
@@ -578,7 +647,7 @@ public:
         transform->setMatrix(osg::Matrixd::rotate(osg::Vec3d(0.0, 0.0, 1.0), osg::Vec3d(0.0, 1.0, 0.0)));
         transform->addChild(&nc_node);
 
-        OSGtoGLTF converter(model);
+        OSGtoGLTF converter(model, location, isBinary);
         transform->accept(converter);
 
         transform->removeChild(&nc_node);
