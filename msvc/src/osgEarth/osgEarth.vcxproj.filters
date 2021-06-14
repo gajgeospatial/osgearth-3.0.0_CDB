@@ -586,9 +586,6 @@
     <ClCompile Include="..\..\..\src\osgEarth\ViewFitter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\osgEarth\AltitudeFilter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\osgEarth\BufferFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -917,6 +914,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\osgEarth\NetworkMonitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\osgEarth\AltitudeFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

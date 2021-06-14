@@ -191,6 +191,7 @@ CDBFeatureSource::openImplementation()
 	// Make sure the root directory is set
 	bool CDB_Limits = true;
 
+	__int64 tileKey = 0;
 	if (options().FileName().isSet())
 	{
 		_FileName = options().FileName().value();
@@ -198,7 +199,6 @@ CDBFeatureSource::openImplementation()
 		CDB_Global * gbls = CDB_Global::getInstance();
 		bool isWFS = (_FileName.find(".xml") != std::string::npos);
 		std::string tileFileName = "";
-		__int64 tileKey = 0;
 		if (isWFS)
 		{
 
@@ -309,10 +309,13 @@ CDBFeatureSource::openImplementation()
 			}
 			else
 			{
-				min_lon = floor(min_lon);
-				min_lat = floor(min_lat);
-				max_lat = ceil(max_lat);
-				max_lon = ceil(max_lon);
+//				if (tileKey != -1)
+				{
+					min_lon = floor(min_lon);
+					min_lat = floor(min_lat);
+					max_lat = ceil(max_lat);
+					max_lon = ceil(max_lon);
+				}
 				tiles_x = 1;
 				tiles_y = 1;
 			}
@@ -553,6 +556,24 @@ CDBFeatureSource::createFeatureCursorImplementation(const Query& query, Progress
 		if (!_UsingFileInput && (Files2check > 0))
 			Registry::instance()->blacklist(base);
 	}
+	else
+	{
+		if (features.size() == 0)
+		{
+			OGRFeatureDefn * poDefn = new OGRFeatureDefn();
+			OGRFeature * feat_handle = OGRFeature::CreateFeature(poDefn);
+			OGRPoint poPoint;
+			poPoint.setX((tileExtent.West + tileExtent.East) * 0.5);
+			poPoint.setY((tileExtent.North + tileExtent.South) * 0.5);
+			feat_handle->SetGeometry(&poPoint);
+			osg::ref_ptr<Feature> f = OgrUtils::createFeature((OGRFeatureH)feat_handle, getFeatureProfile());
+			f->setFID(_s_CDB_FeatureID);
+			++_s_CDB_FeatureID;
+			f->set("osge_ignore", "true");
+			features.push_back(f.release());
+			OGRFeature::DestroyFeature(feat_handle);
+		}
+	}
 
 	delete mainTile;
 
@@ -608,6 +629,11 @@ bool CDBFeatureSource::getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const 
 			if (!have_archive)
 				return false;
 			have_texture_zipfile = mainTile->Model_Texture_Archive(TextureZipFile, sel);
+			if (_UsingFileInput && !have_texture_zipfile)
+			{
+				have_texture_zipfile = !_GTTextureTableName.empty();
+				TextureZipFile = _GTTextureTableName;
+			}
 		}
 		else if (_UsingFileInput)
 		{
@@ -669,13 +695,7 @@ bool CDBFeatureSource::getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const 
 		++_s_CDB_FeatureID;
 
 		f->set("osge_basename", ModelKeyName);
-#ifdef _DEBUG
-		int dbgpos = ModelKeyName.find("Ambulance");
-		if (dbgpos != std::string::npos)
-		{
-			++fubar;
-		}
-#endif
+
 		if (_CDB_Edit_Support)
 		{
 			std::stringstream format_stream;

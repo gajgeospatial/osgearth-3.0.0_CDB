@@ -366,6 +366,9 @@ SubstituteModelFilter::process(const FeatureList&           features,
     for( FeatureList::const_iterator f = features.begin(); f != features.end(); ++f )
     {
         Feature* input = f->get();
+        if (input->hasAttr("osge_ignore"))
+            continue;
+
 		std::string archiveName;
         // Run a feature pre-processing script.
         if ( symbol->script().isSet() )
