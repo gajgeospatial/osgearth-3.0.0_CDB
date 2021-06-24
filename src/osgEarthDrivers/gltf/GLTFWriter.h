@@ -343,7 +343,9 @@ public:
                         if (!osgDB::fileExists(filename))
                         {
                             have_image = osgDB::writeImageFile(*flipped.get(), filename);
-                        }                        
+                        }
+                        else
+                            have_image = true;
                     }
                     else
                     {                      
