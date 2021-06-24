@@ -323,7 +323,7 @@ public:
                     std::string filename;
                     std::string ext;
                     std::string mime_type;
-                    if (flipped->isImageTranslucent())
+                    if (flipped->isImageTranslucent() || (flipped->getPixelFormat() == GL_RGBA))
                     {
                         ext = "png";// osgDB::getFileExtension(osgImage->getFileName());
                         mime_type = "image/png";
@@ -333,7 +333,8 @@ public:
                         ext = "jpg";
                         mime_type = "image/jpeg";
                     }
-                    // If the image has a filename try to hash it so we only write out one copy of it.  
+                    // If the image has a filename try to hash it so we only write out one copy of it.
+                    bool have_image = false;
                     if (!osgImage->getFileName().empty())
                     {
 //                        filename = Stringify() << std::hex << ::Strings::hashString(osgImage->getFileName()) << "." << ext;                        
@@ -341,7 +342,7 @@ public:
 
                         if (!osgDB::fileExists(filename))
                         {
-                            osgDB::writeImageFile(*flipped.get(), filename);
+                            have_image = osgDB::writeImageFile(*flipped.get(), filename);
                         }                        
                     }
                     else
@@ -355,20 +356,21 @@ public:
                             filename = ss.str();
                             fileNameInc++;
                         } while (osgDB::fileExists(filename));
-                        osgDB::writeImageFile(*flipped.get(), filename);
+                        have_image = osgDB::writeImageFile(*flipped.get(), filename);
                     }
                                    
                     // Add the image
                     // TODO:  Find a better way to write out the image url.  Right now it's assuming a ../.. scheme.
                     Image image;
-//                    std::stringstream buf;
-//                    buf << "../../" << filename;
-//                    image.uri = buf.str();//filename;
-                    if (!_IsBinary)
-                    {
-                        image.uri = osgDB::getSimpleFileName(filename);
-                    }
-                    else
+//                  std::stringstream buf;
+//                  buf << "../../" << filename;
+//                  image.uri = buf.str();//filename;
+//                  if (!_IsBinary)
+//                  {
+//                       image.uri = osgDB::getSimpleFileName(filename);
+//                  }
+//                  else
+                    if(have_image)
                     {
                         image.uri = "";
                         image.mimeType = mime_type;
@@ -516,6 +518,7 @@ public:
             osg::Vec3f posMin(FLT_MAX, FLT_MAX, FLT_MAX);
             osg::Vec3f posMax(-FLT_MAX, -FLT_MAX, -FLT_MAX);
             osg::Vec3Array* positions = dynamic_cast<osg::Vec3Array*>(geom->getVertexArray());
+ 
             if (positions)
             {
                 getOrCreateBufferView(positions, GL_FLOAT, GL_ARRAY_BUFFER_ARB);
@@ -538,10 +541,15 @@ public:
             }
 
             osg::Vec4Array* colors = dynamic_cast<osg::Vec4Array*>(geom->getColorArray());
+            bool useColors = true;
             if (colors)
             {
-                getOrCreateBufferView(colors, GL_FLOAT, GL_ARRAY_BUFFER_ARB);
+                useColors = colors->size() == positions->size();
+                if(useColors)
+                    getOrCreateBufferView(colors, GL_FLOAT, GL_ARRAY_BUFFER_ARB);
             }
+            else
+                useColors = false;
 
             osg::ref_ptr< osg::Vec2Array > texCoords = dynamic_cast<osg::Vec2Array*>(geom->getTexCoordArray(0));
             if (!texCoords.valid())
@@ -598,8 +606,9 @@ public:
                 posacc.maxValues.push_back(posMax.z());                
 
                 getOrCreateAccessor(normals, pset, primitive, "NORMAL");
-
-                getOrCreateAccessor(colors, pset, primitive, "COLOR_0");
+                if(useColors)
+                    getOrCreateAccessor(colors, pset, primitive, "COLOR_0");
+//              getOrCreateAccessor(colors, nullptr, primitive, "COLOR_0");
                 getOrCreateAccessor(texCoords.get(), pset, primitive, "TEXCOORD_0");
             }
 
