@@ -1,0 +1,25 @@
+<!-- 
+osgEarth Sample - GDAL
+Demonstrates the simplest possible use of the GDAL layer to load a GeoTIFF image.
+-->
+
+<map>
+    <GDALImage name="GeoPackage Image">
+        <url>J:\CDB_X\1File\SanDiego.gpkg</url>
+        <subdataset>tiles_ImageryMedium</subdataset>
+    </GDALImage>
+    <GDALElevation name="GeoPackage Image">
+        <url>J:\CDB_X\1File\SanDiego.gpkg</url>
+        <subdataset>tiles_Elevation</subdataset>
+    </GDALElevation>
+    <viewpoints>
+          <viewpoint name="SanDiego">
+              <heading>0.0</heading>
+              <height>2462.60273069609</height>
+              <lat>32.696476</lat>
+              <long>-117.172098</long>
+              <pitch>-90.0</pitch>
+              <range>34241.18</range>
+          </viewpoint>
+      </viewpoints>
+</map>
