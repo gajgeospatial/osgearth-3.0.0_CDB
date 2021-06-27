@@ -216,6 +216,7 @@ namespace osgEarth {
 			GDALDataset *		PrimaryTileOgr;
 			GDALDataset *		ClassTileOgr;
 			OGRLayer *			PrimaryLayer;
+			std::string			LodStr;
 			bool				ModelWorkingNameExists;
 			bool				ModelGeometryNameExists;
 			bool				ModelTextureNameExists;
@@ -227,7 +228,7 @@ namespace osgEarth {
 			CDB_ModelFeature_Set DebugFeatureSet;
 #endif
 
-			CDB_Model_Tile_Set() : ModelWorkingName(""), ModelGeometryName(""), ModelTextureName(""), ModelDbfName(""), ModelWorkingNameExists(false),
+			CDB_Model_Tile_Set() : ModelWorkingName(""), ModelGeometryName(""), ModelTextureName(""), ModelDbfName(""), LodStr(""), ModelWorkingNameExists(false),
 				ModelGeometryNameExists(false), ModelTextureNameExists(false), ModelDbfNameExists(false), PrimaryTileOgr(NULL), ClassTileOgr(NULL), PrimaryLayer(NULL)
 			{
 				clsMap.clear();
@@ -525,9 +526,9 @@ namespace osgEarth {
 
 			std::string GeoTypical_FullFileName(std::string &BaseFileName);
 
-			std::string Model_FullFileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName);
+			std::string Model_FullFileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName, int sel = -1);
 
-			std::string Model_FileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName);
+			std::string Model_FileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName, int sel = -1);
 
 			OGRFeature * Next_Valid_Geospecific_Feature(bool inflated, std::string &ModelKeyName, std::string &FullModelName, std::string &ArchiveFileName,
 				bool  &Model_in_Archive, unsigned int pos = 0);

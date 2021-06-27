@@ -191,12 +191,17 @@ CDBFeatureSource::openImplementation()
 	// Make sure the root directory is set
 	bool CDB_Limits = true;
 
+	CDB_Global* gbls = CDB_Global::getInstance();
+	if (_GS_LOD0_FullStack)
+		gbls->Set_LOD0_GS_FullStack(_GS_LOD0_FullStack);
+	if (_GT_LOD0_FullStack)
+		gbls->Set_LOD0_GT_FullStack(_GT_LOD0_FullStack);
+
 	__int64 tileKey = 0;
 	if (options().FileName().isSet())
 	{
 		_FileName = options().FileName().value();
 		_UsingFileInput = true;
-		CDB_Global * gbls = CDB_Global::getInstance();
 		bool isWFS = (_FileName.find(".xml") != std::string::npos);
 		std::string tileFileName = "";
 		if (isWFS)

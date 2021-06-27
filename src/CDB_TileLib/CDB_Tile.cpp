@@ -695,6 +695,7 @@ bool osgEarth::CDBTile::CDB_Tile::Build_GS_Stack(void)
 		ModelSet.ModelDbfNameExists = validate_tile_name(ModelSet.ModelDbfName);
 		ModelSet.ModelGeometryNameExists = validate_tile_name(ModelSet.ModelGeometryName);
 		ModelSet.ModelTextureNameExists = validate_tile_name(ModelSet.ModelTextureName);
+		ModelSet.LodStr = lod_str;
 		if (ModelSet.ModelWorkingNameExists && ModelSet.ModelDbfNameExists)
 		{
 			m_ModelSet.insert(m_ModelSet.begin(), ModelSet);
@@ -1654,7 +1655,7 @@ OGRFeature * osgEarth::CDBTile::CDB_Tile::Next_Valid_Geospecific_Feature(bool in
 				}
 				else
 				{
-					FullModelName = Model_FileName(m_CurFeatureClass.FACC_value, m_CurFeatureClass.FSC_value, m_CurFeatureClass.Model_Base_Name);
+					FullModelName = Model_FileName(m_CurFeatureClass.FACC_value, m_CurFeatureClass.FSC_value, m_CurFeatureClass.Model_Base_Name, pos);
 					ArchiveFileName = archive_validate_modelname(m_ModelSet[pos].archiveFileList, FullModelName);
 					if (ArchiveFileName.empty())
 						Model_in_Archive = false;
@@ -3526,17 +3527,31 @@ std::string osgEarth::CDBTile::CDB_Tile::Set_FileType(std::string Name, std::str
 
 }
 
-std::string osgEarth::CDBTile::CDB_Tile::Model_FullFileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName)
+std::string osgEarth::CDBTile::CDB_Tile::Model_FullFileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName, int sel)
 {
+	std::string lod_str;
+	std::string lo_str = m_lod_str;
+	if (sel >= 0)
+	{
+		if (!m_ModelSet[sel].LodStr.empty())
+		{
+			lod_str = m_ModelSet[sel].LodStr;
+			lo_str = "LC";
+		}
+		else
+			lod_str = m_lod_str;
+	}
+	else
+		lod_str = m_lod_str;
 	std::stringstream modbuf;
 	modbuf << m_cdbRootDir
 		<< "\\Tiles"
 		<< "\\" << m_lat_str
 		<< "\\" << m_lon_str
 		<< "\\300_GSModelGeometry"
-		<< "\\" << m_lod_str
+		<< "\\" << lo_str
 		<< "\\" << m_uref_str
-		<< "\\" << m_lat_str << m_lon_str << "_D300_S001_T001_" << m_lod_str
+		<< "\\" << m_lat_str << m_lon_str << "_D300_S001_T001_" << lod_str
 		<< "_" << m_uref_str << "_" << m_rref_str << "_"
 		<< FACC_value << "_" << FSC_value << "_"
 		<< BaseFileName << ".flt";
@@ -3656,10 +3671,20 @@ std::string osgEarth::CDBTile::CDB_Tile::GeoTypical_FullFileName(std::string &Ba
 	return modbuf.str();
 }
 
-std::string osgEarth::CDBTile::CDB_Tile::Model_FileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName)
+std::string osgEarth::CDBTile::CDB_Tile::Model_FileName(std::string &FACC_value, std::string &FSC_value, std::string &BaseFileName, int sel)
 {
 	std::stringstream modbuf;
-	modbuf << m_lat_str << m_lon_str << "_D300_S001_T001_" << m_lod_str
+	std::string lod_str;
+	if (sel > 0)
+	{
+		if (!m_ModelSet[sel].LodStr.empty())
+			lod_str = m_ModelSet[sel].LodStr;
+		else
+			lod_str = m_lod_str;
+	}
+	else
+		lod_str = m_lod_str;
+	modbuf << m_lat_str << m_lon_str << "_D300_S001_T001_" << lod_str
 		<< "_" << m_uref_str << "_" << m_rref_str << "_"
 		<< FACC_value << "_" << FSC_value << "_"
 		<< BaseFileName << ".flt";
