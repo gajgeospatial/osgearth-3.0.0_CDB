@@ -635,6 +635,8 @@ public:
 
         tinygltf::TinyGLTF writer;
 
+        model.buffers[0].uri.clear();
+
         writer.WriteGltfSceneToFile(
             &model,
             location,
