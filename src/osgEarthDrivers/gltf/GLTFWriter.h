@@ -323,15 +323,18 @@ public:
                     std::string filename;
                     std::string ext;
                     std::string mime_type;
+                    int comp = 0;
                     if (flipped->isImageTranslucent() || (flipped->getPixelFormat() == GL_RGBA))
                     {
                         ext = "png";// osgDB::getFileExtension(osgImage->getFileName());
                         mime_type = "image/png";
+                        comp = 4;
                     }
                     else
                     {
                         ext = "jpg";
                         mime_type = "image/jpeg";
+                        comp = 3;
                     }
                     // If the image has a filename try to hash it so we only write out one copy of it.
                     bool have_image = false;
@@ -378,8 +381,11 @@ public:
                         image.mimeType = mime_type;
                         int w = flipped->s();
                         int h = flipped->t();
-                        int bits = flipped->getPixelSizeInBits();
-                        int comp = bits / 8;
+                        int bits = 0;
+                        if (comp == 3)
+                            bits = 24;
+                        else if (comp == 4)
+                            bits = 32;
                         int expected = bits / 8;
                         bits /= expected;
                     
@@ -389,8 +395,10 @@ public:
                         image.component = comp;
                         image.bits = bits;
                         image.pixel_type = TINYGLTF_COMPONENT_TYPE_UNSIGNED_BYTE;
-                        image.image.resize(w * h * comp * (bits / 8));
-                        std::copy(bdata, bdata + w * h * comp * (bits / 8), image.image.begin());
+//                        image.image.resize(w * h * comp * (bits / 8));
+                        image.image.resize(w * h * comp);
+//                       std::copy(bdata, bdata + w * h * comp * (bits / 8), image.image.begin());
+                        std::copy(bdata, bdata + w * h * comp, image.image.begin());
                         STBI_FREE(bdata);
 
                         std::ifstream modelfile(filename.c_str(), std::ios::in | std::ios::binary);
@@ -635,7 +643,7 @@ public:
 
         tinygltf::TinyGLTF writer;
 
-        model.buffers[0].uri.clear();
+//        model.buffers[0].uri.clear();
 
         writer.WriteGltfSceneToFile(
             &model,

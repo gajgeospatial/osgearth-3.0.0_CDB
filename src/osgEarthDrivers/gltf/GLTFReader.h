@@ -39,7 +39,9 @@
 #include <osgEarth/Registry>
 #include <osgEarth/ShaderUtils>
 #include <osgEarth/InstanceBuilder>
-
+#ifdef _DEBUG
+#include <osgDB/WriteFile>
+#endif
 
 #undef LC
 #define LC "[GLTFWriter] "
@@ -275,6 +277,10 @@ public:
                 unsigned char *imgData = new unsigned char[image.image.size()];
                 memcpy(imgData, &image.image[0], image.image.size());
                 img->setImage(image.width, image.height, 1, texFormat, format, GL_UNSIGNED_BYTE, imgData, osg::Image::AllocationMode::USE_NEW_DELETE);
+#if 0
+                std::string junkName = "J:\\Temp\\verify.png";
+                osgDB::writeImageFile(*img, (const std::string)junkName);
+#endif
             }
 
             else if (!imageEmbedded) // load from URI
