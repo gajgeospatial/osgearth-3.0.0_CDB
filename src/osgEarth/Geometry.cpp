@@ -196,11 +196,11 @@ Geometry::buffer(double distance,
         {
             if (params._singleSided)
             {
-                outGeom = bufBuilder.bufferLineSingleSided(inGeom, distance, params._leftSide);
+                outGeom = bufBuilder.bufferLineSingleSided(inGeom, distance, params._leftSide).get();
             }
             else
             {
-                outGeom = bufBuilder.buffer(inGeom, distance);
+                outGeom = bufBuilder.buffer(inGeom, distance).get();
             }
         }
         catch(const geos::util::GEOSException& ex)

@@ -21,6 +21,7 @@
 #include <osgEarth/GEOS>
 #include <osg/Notify>
 
+#include <geos/version.h>
 #include <geos/geom/PrecisionModel.h>
 #include <geos/geom/GeometryFactory.h>
 #include <geos/geom/Coordinate.h>
@@ -63,7 +64,7 @@ namespace
         {
             coords->push_back( coords->front() );
         }
-        geom::CoordinateSequence* seq = factory->create( coords );
+        geom::CoordinateSequence* seq = factory->create( coords ).get();
 
         return seq;
     }
@@ -141,12 +142,12 @@ namespace
                     if ( shell )
                     {
                         const Polygon* poly = static_cast<const Polygon*>(input);
-                        std::vector<geom::Geometry*>* holes = poly->getHoles().size() > 0 ? new std::vector<geom::Geometry*>() : 0L;
+                        std::vector<geom::LinearRing*>* holes = poly->getHoles().size() > 0 ? new std::vector<geom::LinearRing*>() : 0L;
                         if (holes)
                         {
                             for( RingCollection::const_iterator r = poly->getHoles().begin(); r != poly->getHoles().end(); ++r )
                             {
-                                geom::Geometry* hole = import( r->get(), f );
+                                geom::LinearRing* hole = (geom::LinearRing*)import( r->get(), f );
                                 if (hole)
                                 {
                                     if (hole->getGeometryTypeId() == geos::geom::GEOS_LINEARRING)
@@ -165,7 +166,7 @@ namespace
                                 holes = 0L;
                             }
                         }
-                        output = f->createPolygon( shell, holes );
+                        output = (geom::Polygon*)f->createPolygon( shell, holes );
                     }
                 
                     break;

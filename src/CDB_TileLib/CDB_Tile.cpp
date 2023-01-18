@@ -559,8 +559,8 @@ osgEarth::CDBTile::CDB_Tile::CDB_Tile(std::string cdbRootDir, std::string cdbCac
 		}
 	}
 
-	m_Pixels.degPerPix.X = (m_TileExtent.East - m_TileExtent.West) / (double)(m_Pixels.pixX);
-	m_Pixels.degPerPix.Y = (m_TileExtent.North - m_TileExtent.South) / (double)(m_Pixels.pixY);
+	m_Pixels.degPerPix.Xpos = (m_TileExtent.East - m_TileExtent.West) / (double)(m_Pixels.pixX);
+	m_Pixels.degPerPix.Ypos = (m_TileExtent.North - m_TileExtent.South) / (double)(m_Pixels.pixY);
 
 
 }
@@ -2752,20 +2752,20 @@ osgEarth::CDBTile::Image_Contrib osgEarth::CDBTile::CDB_Tile::Image_Is_Inside_Ti
 {
 	int count = 0;
 	coord2d point;
-	point.X = m_TileExtent.West;
-	point.Y = m_TileExtent.North;
+	point.Xpos = m_TileExtent.West;
+	point.Ypos = m_TileExtent.North;
 	if (Point_is_Inside_Tile(point, TileExtent))
 		++count;
 
-	point.X = m_TileExtent.East;
+	point.Xpos = m_TileExtent.East;
 	if (Point_is_Inside_Tile(point, TileExtent))
 		++count;
 
-	point.Y = m_TileExtent.South;
+	point.Ypos = m_TileExtent.South;
 	if (Point_is_Inside_Tile(point, TileExtent))
 		++count;
 
-	point.X = m_TileExtent.West;
+	point.Xpos = m_TileExtent.West;
 	if (Point_is_Inside_Tile(point, TileExtent))
 		++count;
 
@@ -2777,7 +2777,7 @@ osgEarth::CDBTile::Image_Contrib osgEarth::CDBTile::CDB_Tile::Image_Is_Inside_Ti
 
 bool osgEarth::CDBTile::CDB_Tile::Point_is_Inside_Tile(coord2d &Point, CDB_Tile_Extent &TileExtent)
 {
-	if ((Point.X < TileExtent.East) && (Point.X > TileExtent.West) && (Point.Y > TileExtent.South) && (Point.Y < TileExtent.North))
+	if ((Point.Xpos < TileExtent.East) && (Point.Xpos > TileExtent.West) && (Point.Ypos > TileExtent.South) && (Point.Ypos < TileExtent.North))
 		return true;
 	else
 		return false;
@@ -2807,30 +2807,30 @@ coord2d osgEarth::CDBTile::CDB_Tile::LL2Pix(coord2d LLPoint)
 	coord2d PixCoord;
 	if ((m_Tile_Status == Loaded) || (m_Tile_Status == Opened))
 	{
-		double xRel = LLPoint.X - m_TileExtent.West;
-		double yRel = m_TileExtent.North - LLPoint.Y;
-		PixCoord.X = xRel / m_GDAL.adfGeoTransform[GEOTRSFRM_WE_RES];
-		PixCoord.Y = yRel / abs(m_GDAL.adfGeoTransform[GEOTRSFRM_NS_RES]);
+		double xRel = LLPoint.Xpos - m_TileExtent.West;
+		double yRel = m_TileExtent.North - LLPoint.Ypos;
+		PixCoord.Xpos = xRel / m_GDAL.adfGeoTransform[GEOTRSFRM_WE_RES];
+		PixCoord.Ypos = yRel / abs(m_GDAL.adfGeoTransform[GEOTRSFRM_NS_RES]);
 	}
 	else
 	{
-		PixCoord.X = -1.0;
-		PixCoord.Y = -1.0;
+		PixCoord.Xpos = -1.0;
+		PixCoord.Ypos = -1.0;
 	}
 	return PixCoord;
 }
 
 bool osgEarth::CDBTile::CDB_Tile::Get_Lightmap_Pixel(coord2d ImPix, unsigned char &RedPix, unsigned char &GreenPix, unsigned char &BluePix)
 {
-	int tx = (int)ImPix.X;
-	int ty = (int)ImPix.Y;
+	int tx = (int)ImPix.Xpos;
+	int ty = (int)ImPix.Ypos;
 
 	if ((tx < 0) || (tx > m_Pixels.pixX - 1) || (ty < 0) || (ty > m_Pixels.pixY - 1))
 	{
 		return false;
 	}
 
-	int bpos1 = (((int)ImPix.Y) * m_Pixels.pixX) + (int)ImPix.X;
+	int bpos1 = (((int)ImPix.Ypos) * m_Pixels.pixX) + (int)ImPix.Xpos;
 	int bpos2 = bpos1 + 1;
 	int bpos3 = bpos1 + (int)m_Pixels.pixX;
 	int bpos4 = bpos3 + 1;
@@ -2850,9 +2850,9 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Lightmap_Pixel(coord2d ImPix, unsigned cha
 			bpos4 = bpos2;
 	}
 
-	float rat2 = (float)(ImPix.X - double(tx));
+	float rat2 = (float)(ImPix.Xpos - double(tx));
 	float rat1 = 1.0f - rat2;
-	float rat4 = (float)(ImPix.Y - double(ty));
+	float rat4 = (float)(ImPix.Ypos - double(ty));
 	float rat3 = 1.0f - rat4;
 
 	float p1p = ((float)m_GDAL.lightmapdatar[bpos1] * rat1) + ((float)m_GDAL.lightmapdatar[bpos2] * rat2);
@@ -2880,15 +2880,15 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Lightmap_Pixel(coord2d ImPix, unsigned cha
 
 bool osgEarth::CDBTile::CDB_Tile::Get_Image_Pixel(coord2d ImPix, unsigned char &RedPix, unsigned char &GreenPix, unsigned char &BluePix)
 {
-	int tx = (int)ImPix.X;
-	int ty = (int)ImPix.Y;
+	int tx = (int)ImPix.Xpos;
+	int ty = (int)ImPix.Ypos;
 
 	if ((tx < 0) || (tx > m_Pixels.pixX - 1) || (ty < 0) || (ty > m_Pixels.pixY - 1))
 	{
 		return false;
 	}
 
-	int bpos1 = (((int)ImPix.Y) * m_Pixels.pixX) + (int)ImPix.X;
+	int bpos1 = (((int)ImPix.Ypos) * m_Pixels.pixX) + (int)ImPix.Xpos;
 	int bpos2 = bpos1 + 1;
 	int bpos3 = bpos1 + (int)m_Pixels.pixX;
 	int bpos4 = bpos3 + 1;
@@ -2908,9 +2908,9 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Image_Pixel(coord2d ImPix, unsigned char &
 			bpos4 = bpos2;
 	}
 
-	float rat2 = (float)(ImPix.X - double(tx));
+	float rat2 = (float)(ImPix.Xpos - double(tx));
 	float rat1 = 1.0f - rat2;
-	float rat4 = (float)(ImPix.Y - double(ty));
+	float rat4 = (float)(ImPix.Ypos - double(ty));
 	float rat3 = 1.0f - rat4;
 
 	float p1p = ((float)m_GDAL.reddata[bpos1] * rat1) + ((float)m_GDAL.reddata[bpos2] * rat2);
@@ -2938,15 +2938,15 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Image_Pixel(coord2d ImPix, unsigned char &
 
 bool osgEarth::CDBTile::CDB_Tile::Get_Material_Pixel(coord2d ImPix, unsigned char &MatPix)
 {
-	int tx = (int)ImPix.X;
-	int ty = (int)ImPix.Y;
+	int tx = (int)ImPix.Xpos;
+	int ty = (int)ImPix.Ypos;
 
 	if ((tx < 0) || (tx > m_Pixels.pixX - 1) || (ty < 0) || (ty > m_Pixels.pixY - 1))
 	{
 		return false;
 	}
 
-	int bpos1 = (((int)round(ImPix.Y)) * m_Pixels.pixX) + (int)round(ImPix.X);
+	int bpos1 = (((int)round(ImPix.Ypos)) * m_Pixels.pixX) + (int)round(ImPix.Xpos);
 
 	MatPix = m_GDAL.materialdata[bpos1];
 	return true;
@@ -2954,15 +2954,15 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Material_Pixel(coord2d ImPix, unsigned cha
 
 bool osgEarth::CDBTile::CDB_Tile::Get_Mask_Pixel(coord2d ImPix, unsigned char &MaskPix)
 {
-	int tx = (int)ImPix.X;
-	int ty = (int)ImPix.Y;
+	int tx = (int)ImPix.Xpos;
+	int ty = (int)ImPix.Ypos;
 
 	if ((tx < 0) || (tx > m_Pixels.pixX - 1) || (ty < 0) || (ty > m_Pixels.pixY - 1))
 	{
 		return false;
 	}
 
-	int bpos1 = (((int)round(ImPix.Y)) * m_Pixels.pixX) + (int)round(ImPix.X);
+	int bpos1 = (((int)round(ImPix.Ypos)) * m_Pixels.pixX) + (int)round(ImPix.Xpos);
 
 	MaskPix = m_GDAL.materialmaskdata[bpos1];
 
@@ -2971,15 +2971,15 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Mask_Pixel(coord2d ImPix, unsigned char &M
 
 bool osgEarth::CDBTile::CDB_Tile::Get_Elevation_Pixel(coord2d ImPix, float &ElevationPix)
 {
-	int tx = (int)ImPix.X;
-	int ty = (int)ImPix.Y;
+	int tx = (int)ImPix.Xpos;
+	int ty = (int)ImPix.Ypos;
 
 	if ((tx < 0) || (tx > m_Pixels.pixX - 1) || (ty < 0) || (ty > m_Pixels.pixY - 1))
 	{
 		return false;
 	}
 
-	int bpos1 = (((int)ImPix.Y) * m_Pixels.pixX) + (int)ImPix.X;
+	int bpos1 = (((int)ImPix.Ypos) * m_Pixels.pixX) + (int)ImPix.Xpos;
 	int bpos2 = bpos1 + 1;
 	int bpos3 = bpos1 + (int)m_Pixels.pixX;
 	int bpos4 = bpos3 + 1;
@@ -2999,9 +2999,9 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Elevation_Pixel(coord2d ImPix, float &Elev
 			bpos4 = bpos2;
 	}
 
-	float rat2 = (float)(ImPix.X - double(tx));
+	float rat2 = (float)(ImPix.Xpos - double(tx));
 	float rat1 = 1.0f - rat2;
-	float rat4 = (float)(ImPix.Y - double(ty));
+	float rat4 = (float)(ImPix.Ypos - double(ty));
 	float rat3 = 1.0f - rat4;
 
 	float e1p = (m_GDAL.elevationdata[bpos1] * rat1) + (m_GDAL.elevationdata[bpos2] * rat2);
@@ -3014,15 +3014,15 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Elevation_Pixel(coord2d ImPix, float &Elev
 
 bool osgEarth::CDBTile::CDB_Tile::Get_Subordinate_Elevation_Pixel(coord2d ImPix, float &ElevationPix)
 {
-	int tx = (int)ImPix.X;
-	int ty = (int)ImPix.Y;
+	int tx = (int)ImPix.Xpos;
+	int ty = (int)ImPix.Ypos;
 
 	if ((tx < 0) || (tx > m_Pixels.pixX - 1) || (ty < 0) || (ty > m_Pixels.pixY - 1))
 	{
 		return false;
 	}
 
-	int bpos1 = (((int)ImPix.Y) * m_Pixels.pixX) + (int)ImPix.X;
+	int bpos1 = (((int)ImPix.Ypos) * m_Pixels.pixX) + (int)ImPix.Xpos;
 	int bpos2 = bpos1 + 1;
 	int bpos3 = bpos1 + (int)m_Pixels.pixX;
 	int bpos4 = bpos3 + 1;
@@ -3042,9 +3042,9 @@ bool osgEarth::CDBTile::CDB_Tile::Get_Subordinate_Elevation_Pixel(coord2d ImPix,
 			bpos4 = bpos2;
 	}
 
-	float rat2 = (float)(ImPix.X - double(tx));
+	float rat2 = (float)(ImPix.Xpos - double(tx));
 	float rat1 = 1.0f - rat2;
-	float rat4 = (float)(ImPix.Y - double(ty));
+	float rat4 = (float)(ImPix.Ypos - double(ty));
 	float rat3 = 1.0f - rat4;
 
 	float e1p = (m_GDAL.subord_elevationdata[bpos1] * rat1) + (m_GDAL.subord_elevationdata[bpos2] * rat2);
@@ -3139,7 +3139,7 @@ void osgEarth::CDBTile::CDB_Tile::Build_From_Tiles(CDB_TilePV *Tiles, bool from_
 				double srowlat = m_TileExtent.North - ((double)sy *  YRes);
 				int buffloc = 0;
 				coord2d clatlon;
-				clatlon.Y = srowlat;
+				clatlon.Ypos = srowlat;
 				bool proces_subordinate = m_Subordinate_Tile && tile->Subordinate_Exists();
 				if (m_Subordinate2_Exists)
 					if (tile->Has_Mask_Data())
@@ -3147,7 +3147,7 @@ void osgEarth::CDBTile::CDB_Tile::Build_From_Tiles(CDB_TilePV *Tiles, bool from_
 				for (int iy = sy; iy <= ey; ++iy)
 				{
 					buffloc = (iy * m_Pixels.pixX) + sx;
-					clatlon.X = srowlon;
+					clatlon.Xpos = srowlon;
 					for (int ix = sx; ix <= ex; ++ix)
 					{
 						coord2d impix = tile->LL2Pix(clatlon);
@@ -3197,9 +3197,9 @@ void osgEarth::CDBTile::CDB_Tile::Build_From_Tiles(CDB_TilePV *Tiles, bool from_
 								tile->Get_Subordinate_Elevation_Pixel(impix, m_GDAL.subord_elevationdata[buffloc]);
 						}
 						++buffloc;
-						clatlon.X += XRes;
+						clatlon.Xpos += XRes;
 					}
-					clatlon.Y -= YRes;
+					clatlon.Ypos -= YRes;
 				}
 			}
 			tile->Free_Resources();
