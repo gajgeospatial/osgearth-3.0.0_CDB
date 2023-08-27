@@ -21,3 +21,9 @@ IN THE SOFTWARE.
 
 You should have received a copy of the GNU Lesser General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
+
+This repository of osgEarth has been modified to allow utilization / visualization of Open Geospatial Consortium (OGC) CDB.
+These CDB modifications are also dependant on the OpenSceneGraph version 3.7.0 repository provided on this site.(Note: At the time of this writting
+this is a modified version of the github osg master repository) The CDB capablity
+was developed by GAJ Geospatial Enterprises LLC and VATC and is distributed under the same LGPL license as osgEarth.
+
