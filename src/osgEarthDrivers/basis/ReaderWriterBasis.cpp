@@ -25,7 +25,6 @@
 #include <osgDB/FileNameUtils>
 #include <osgDB/FileUtils>
 
-//#include <basisu/transcoder/basisu_transcoder.h>
 #include <transcoder/basisu_transcoder.h>
 
 using namespace basisu;
@@ -39,7 +38,6 @@ public:
 
         // one-time initialization at startup
         basist::basisu_transcoder_init();
-        sel_codebook = basist::etc1_global_selector_codebook(basist::g_global_selector_cb_size, basist::g_global_selector_cb);
     }
 
     virtual const char* className() const { return "Basis Universal Image Reader/Writer"; }
@@ -63,7 +61,7 @@ public:
         char* data = new char[length];
         fin.read(data, length);
 
-        basist::basisu_transcoder transcoder(&sel_codebook);
+        basist::basisu_transcoder transcoder;
 
         unsigned int numImages = transcoder.get_total_images(data, length);
 
@@ -117,9 +115,8 @@ public:
                 basist::basisu_image_level_info level_info;
                 transcoder.get_image_level_info(data, length, level_info, 0, levelIndex);
 
-//				unsigned int bytesPerBlock = basist::basis_get_bytes_per_block(transcoder_texture_format);
-				unsigned int bytesPerBlock = basist::basis_get_bytes_per_block_or_pixel(transcoder_texture_format);
-				unsigned int levelSize = bytesPerBlock * level_info.m_total_blocks;
+                unsigned int bytesPerBlock = basist::basis_get_bytes_per_block_or_pixel(transcoder_texture_format);
+                unsigned int levelSize = bytesPerBlock * level_info.m_total_blocks;
                 totalSize += levelSize;
             }
 
@@ -170,7 +167,7 @@ public:
     }
 
 private:
-    basist::etc1_global_selector_codebook sel_codebook;
+
 };
 
 REGISTER_OSGPLUGIN(basis, ReaderWriterBasis)

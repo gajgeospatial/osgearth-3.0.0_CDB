@@ -9,7 +9,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2022_Debug|x64'">
-    <LocalDebuggerCommandArguments>--verbose --window 50 50 900 900 --sky --coords --dd  "D:\Repositories\Dev_Base\RTM_UnRealGen-0.5\SimBlocks_GeoSpatial_Data\Test_Images\Bing.earth" </LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--verbose --window 50 50 900 900 --sky --coords --dd  "N:\EarthFiles_30\Austin_CDB.earth"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='vs2017_Release|x64'">
