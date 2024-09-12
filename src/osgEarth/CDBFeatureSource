@@ -54,6 +54,7 @@ namespace osgEarth
 			OE_OPTION(bool, Verbose);
 			OE_OPTION(bool, Enable_Subord_Material);
 			OE_OPTION(bool, ABS_Z_in_M);
+			OE_OPTION(bool, Use_GPKG_For_Features)
 			virtual Config getConfig() const;
         private:
             void fromConfig(const Config& conf);
@@ -120,6 +121,9 @@ namespace osgEarth
 		void setABS_Z_in_M(const bool& value);
 		const bool& getABS_Z_in_M() const;
 
+		void setUse_GPKG_For_Features(const bool &value);
+		const bool & getUse_GPKG_For_Features(const bool& value);
+
 	public: // Layer
 
         virtual Status openImplementation();
@@ -149,6 +153,7 @@ namespace osgEarth
 		bool							_GT_LOD0_FullStack;
 		bool							_BE_Verbose;
 		bool							_M_Contains_ABS_Z;
+		bool							_Use_GPKG_For_Features;
 		bool							_UsingFileInput;
 		int								_CDBLodNum;
 		std::string						_rootString;

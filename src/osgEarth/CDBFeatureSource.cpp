@@ -182,12 +182,31 @@ CDBFeatureSource::openImplementation()
 		if (verbose)
 			_BE_Verbose = true;
 	}
+
+	if(_BE_Verbose)
+	{
+		osgEarth::CDBTile::CDB_Tile::Set_Verbose(true);
+	}
+
 	if (options().ABS_Z_in_M().isSet())
 	{
 		bool z_in_m = options().ABS_Z_in_M().value();
 		if (z_in_m)
 			_M_Contains_ABS_Z = true;
 	}
+
+	if(options().Use_GPKG_For_Features().isSet())
+	{
+		bool Use_GPKG_Features = options().Use_GPKG_For_Features().value();
+		if(Use_GPKG_Features)
+			_Use_GPKG_For_Features = true;
+	}
+
+	if(_Use_GPKG_For_Features)
+	{
+		osgEarth::CDBTile::CDB_Tile::Set_Use_Gpkg_For_Features(true);
+	}
+
 	// Make sure the root directory is set
 	bool CDB_Limits = true;
 
@@ -393,6 +412,7 @@ CDBFeatureSource::init()
 	_GT_LOD0_FullStack = false;
 	_BE_Verbose = false;
 	_M_Contains_ABS_Z = false;
+	_Use_GPKG_For_Features = false;
 	_UsingFileInput = false;
 	_CDBLodNum = 0;
 	_rootString = "";
