@@ -477,23 +477,27 @@ CDBImageLayer::openImplementation()
 			if ((max_lon > min_lon) && (max_lat > min_lat))	   //is specified in the limits section of the earth file.
 			{
 				unsigned tiles_x = (unsigned)(max_lon - min_lon);
-				int modx = tiles_x % subfact;
-				if (modx != 0)
+				if(_UseCache)
 				{
-					tiles_x = ((tiles_x + subfact) / subfact) * subfact;
-					max_lon = min_lon + (double)tiles_x;
+					int modx = tiles_x % subfact;
+					if (modx != 0)
+					{
+						tiles_x = ((tiles_x + subfact) / subfact) * subfact;
+						max_lon = min_lon + (double)tiles_x;
+					}
+					tiles_x /= subfact;
 				}
-				tiles_x /= subfact;
-
 				unsigned tiles_y = (unsigned)(max_lat - min_lat);
-				int mody = tiles_y % subfact;
-				if (mody != 0)
+				if(_UseCache)
 				{
-					tiles_y = ((tiles_y + subfact) / subfact) * subfact;
-					max_lat = min_lat + (double)tiles_y;
+					int mody = tiles_y % subfact;
+					if (mody != 0)
+					{
+						tiles_y = ((tiles_y + subfact) / subfact) * subfact;
+						max_lat = min_lat + (double)tiles_y;
+					}
+					tiles_y /= subfact;
 				}
-				tiles_y /= subfact;
-
 				//Create the Profile with the calculated limitations
 				osg::ref_ptr<const SpatialReference> src_srs;
 				src_srs = SpatialReference::create("EPSG:4326");

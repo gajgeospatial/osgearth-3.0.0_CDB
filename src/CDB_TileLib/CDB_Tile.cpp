@@ -1,7 +1,7 @@
-// 2019-2024 GAJ Geospatial Enterprises, Orlando FL
 // This file is based on the Common Database (CDB) Specification for USSOCOM
 // Version 3.0 – October 2008 and OGC CDB standard 1.0 - 1.2
 //
+// Copyright (c) 2019-2025 GAJ Geospatial Enterprises, Orlando FL
 // Copyright (c) 2016-2017 Visual Awareness Technologies and Consulting Inc, St Petersburg FL
 
 // CDB_Tile is free software: you can redistribute it and/or modify
@@ -105,8 +105,9 @@ osgEarth::CDBTile::CDB_Tile::CDB_Tile(std::string cdbRootDir, std::string cdbCac
 
 	CDB_Data_Dictionary* datDict = CDB_Data_Dictionary::GetInstance();
 	if (datDict->Init_Feature_Data_Dictionary(m_cdbRootDir))
-		m_HaveDataDictionary = true;
-	
+	{
+		m_HaveDataDictionary = datDict->Have_Data_Dictionary();
+	}
 
 	if (m_TileType == Elevation)
 	{
@@ -3812,13 +3813,20 @@ bool osgEarth::CDBTile::CDB_Tile::validate_tile_name(std::string &filename)
 	DWORD ftyp = ::GetFileAttributes(filename.c_str());
 	if (ftyp == INVALID_FILE_ATTRIBUTES)
 	{
-		DWORD error = ::GetLastError();
-		if (error == ERROR_FILE_NOT_FOUND || error == ERROR_PATH_NOT_FOUND)
+		if(CDB_Data_Dictionary::GetInstance()->Is_Multi_Version())
 		{
-			return false;
+			return CDB_Data_Dictionary::GetInstance()->validate_tile_name(filename);
 		}
 		else
-			return false;
+		{
+			DWORD error = ::GetLastError();
+			if (error == ERROR_FILE_NOT_FOUND || error == ERROR_PATH_NOT_FOUND)
+			{
+				return false;
+			}
+			else
+				return false;
+			}
 	}
 	return true;
 #else
@@ -3829,7 +3837,12 @@ bool osgEarth::CDBTile::CDB_Tile::validate_tile_name(std::string &filename)
 	}
 	else
 	{
-		return false;
+		if (CDB_Data_Dictionary::GetInstance()->Is_Multi_Version())
+		{
+			return CDB_Data_Dictionary::GetInstance()->validate_tile_name(filename);
+		}
+		else
+			return false;
 	}
 #endif
 }
@@ -4490,7 +4503,7 @@ OGRFeature * osgEarth::CDBTile::OGR_File::Next_Valid_Feature(std::string &ModelK
 	return f;
 }
 
-osgEarth::CDBTile::CDB_Data_Dictionary::CDB_Data_Dictionary() :  m_dataDictDoc(NULL), m_dataDictData(NULL), m_IsInitialized(false)
+osgEarth::CDBTile::CDB_Data_Dictionary::CDB_Data_Dictionary() : m_dataDictDoc(NULL), m_dataDictData(NULL), m_IsInitialized(false), m_hasCategories(false), m_IsMultiVolume(false)
 {
 
 }
@@ -4504,15 +4517,80 @@ bool osgEarth::CDBTile::CDB_Data_Dictionary::Init_Feature_Data_Dictionary(std::s
 		m_dataDictData = m_dataDictDoc->load(xmlFileName);
 		if (m_dataDictData)
 		{
-			bool hasCategories;
-			hasCategories = Get_Model_Base_Catagory_List(m_BaseCategories);
-			m_IsInitialized = hasCategories;
+			m_hasCategories = Get_Model_Base_Catagory_List(m_BaseCategories);
 		}
-	}	
+		m_CDBRoodDirs.clear();
+		m_CDBRoodDirs.push_back(CDB_Root_Dir);
+		m_IsInitialized = Get_Version_Chain(CDB_Root_Dir);
+		m_IsMultiVolume = m_CDBRoodDirs.size() > 1;
+	}
 	return m_IsInitialized;
 }
 
-bool osgEarth::CDBTile::CDB_Data_Dictionary::Get_Model_Base_Catagory_List(std::vector<CDB_Model_Code_Struct> &cats)
+bool osgEarth::CDBTile::CDB_Data_Dictionary::Have_Data_Dictionary(void)
+{
+	return m_hasCategories;
+}
+
+bool osgEarth::CDBTile::CDB_Data_Dictionary::Is_Multi_Version(void)
+{
+	return m_IsMultiVolume;
+}
+
+bool osgEarth::CDBTile::CDB_Data_Dictionary::validate_tile_name(std::string &filename)
+{
+	int nsearch = m_CDBRoodDirs.size();
+	int curRoot = 1; //We already tried the first root last root path in CDBTile
+	while (curRoot < nsearch)
+	{
+		std::string oldRoot = m_CDBRoodDirs[curRoot-1];
+		size_t oldlength = oldRoot.length();
+		std::string nextRoot = m_CDBRoodDirs[curRoot];
+		filename = filename.replace(0, oldlength, nextRoot);
+#ifdef _WIN32
+		DWORD ftyp = ::GetFileAttributes(filename.c_str());
+		if (ftyp != INVALID_FILE_ATTRIBUTES)
+		{
+			return true;
+		}
+#else
+		int ftyp = ::access(filename.c_str(), F_OK);
+		if (ftyp == 0)
+		{
+			return  true;
+		}
+#endif
+		++curRoot;
+	}
+	return false;
+}
+
+bool osgEarth::CDBTile::CDB_Data_Dictionary::Get_Version_Chain(std::string CDBRootDir)
+{
+	std::string xmlFileName = CDBRootDir + "\\Metadata\\Version.xml";
+	osgEarth::XmlDocument * CDBVersionDoc = new osgEarth::XmlDocument();
+	bool FoundFirstVersion = false;
+	osgEarth::XmlDocument * CDBVersionData = CDBVersionDoc->load(xmlFileName);
+	if (CDBVersionData)
+	{
+		FoundFirstVersion = true;
+		osgEarth::XmlElement * element = (osgEarth::XmlElement *)CDBVersionData->findElement("PreviousIncrementalRootDirectory");
+		if (element)
+		{
+			std::string PrevVersion = element->getAttr("name");
+			if (PrevVersion != "")
+			{
+				m_CDBRoodDirs.push_back(PrevVersion);
+				Get_Version_Chain(PrevVersion);
+			}
+		}
+		delete CDBVersionData;
+	}
+	delete CDBVersionDoc;
+	return FoundFirstVersion;
+}
+
+bool osgEarth::CDBTile::CDB_Data_Dictionary::Get_Model_Base_Catagory_List(std::vector<CDB_Model_Code_Struct>& cats)
 {
 	osgEarth::XmlElement * mainNode = m_dataDictData->getSubElement("Feature_Data_Dictionary");
 	for (osgEarth::XmlNodeList::const_iterator i = mainNode->getChildren().begin(); i != mainNode->getChildren().end(); i++)

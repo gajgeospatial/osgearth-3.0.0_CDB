@@ -1,5 +1,6 @@
 #pragma once
 // 2019-2024 GAJ Geospatial Enterprises, Orlando FL
+// Copyright (c) 2016-2017 Visual Awareness Technologies and Consulting Inc, St Petersburg FL
 // This file is based on the Common Database (CDB) Specification for USSOCOM
 // Version 3.0 – October 2008 and OGC CDB standard 1.0 - 1.2
 //
@@ -604,8 +605,10 @@ namespace osgEarth {
 			virtual ~CDB_Data_Dictionary(void);
 			bool Init_Feature_Data_Dictionary(std::string CDB_Root_Dir);
 			bool Is_Initialized(void);
+			bool Have_Data_Dictionary(void);
+			bool Is_Multi_Version(void);
 			bool SelectFACC(std::string FACC, std::string & CategoryLabel, std::string & SubCodeLabel, std::string & FeatureTypeLabel);
-
+			bool validate_tile_name(std::string &filename);
 
 			static CDB_Data_Dictionary *	  GetInstance(void);
 
@@ -615,7 +618,11 @@ namespace osgEarth {
 			osgEarth::XmlDocument * m_dataDictData;
 			std::vector<CDB_Model_Code_Struct> m_BaseCategories;
 			bool m_IsInitialized;
+			bool m_hasCategories;
+			bool m_IsMultiVolume;
+			std::vector<std::string> m_CDBRoodDirs;
 
+			bool Get_Version_Chain(std::string CDBRootDir);
 			bool Get_Model_Base_Catagory_List(std::vector<CDB_Model_Code_Struct> &files);
 
 			bool Get_Model_Sub_Catagory_List(osgEarth::XmlElement * catElement, CDB_Model_Code_Struct& subCats);
