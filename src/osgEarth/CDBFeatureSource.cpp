@@ -590,6 +590,43 @@ CDBFeatureSource::createFeatureCursorImplementation(const Query& query, Progress
 					have_a_file = true;
 				}
 
+				bool Have_AF_Lights = false;
+				bool Have_Env_Lights = false;
+				if (!_CDB_geoTypical && _LoadLights)
+				{
+					if (_CDBLodNum == _LightsLOD)
+					{
+						if (mainTile->AF_Lights_Exist(FilesChecked))
+						{
+							if (mainTile->Have_AF_Lights(FilesChecked))
+							{
+								int inNumAfLights = _cur_AFLight_Cnt;
+								Have_AF_Lights = getAFLightFeatures(mainTile, base, features, FilesChecked);
+								int NumLightsThisTile = _cur_AFLight_Cnt - inNumAfLights;
+								if (NumLightsThisTile > 0)
+									Have_AF_Lights = true;
+								if (_BE_Verbose)
+								{
+									OSG_WARN << "File " << mainTile->FileName(FilesChecked) << " found " << NumLightsThisTile << " Airfield Lights" << std::endl;
+								}
+							}
+						}
+						if (mainTile->ENV_Lights_Exist(FilesChecked))
+						{
+							int inNumEnvLights = _cur_EnvLight_Cnt;
+							if (mainTile->Have_ENV_Lights(FilesChecked))
+							{
+								Have_Env_Lights = getEnvLightFeatures(mainTile, base, features, FilesChecked);
+							}
+							int NumLightsThisTile = _cur_EnvLight_Cnt - inNumEnvLights;
+							if (_BE_Verbose)
+							{
+								OSG_WARN << "File " << mainTile->FileName(FilesChecked) << " found " << NumLightsThisTile << " Airfield Lights" << std::endl;
+							}
+						}
+					}
+				}
+
 				if (fileOk)
 					dataOK = true;
 				else
