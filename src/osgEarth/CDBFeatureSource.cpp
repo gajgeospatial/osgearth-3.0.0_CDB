@@ -82,6 +82,9 @@ CDBFeatureSource::Options::getConfig() const
 	conf.set("verbose", _Verbose);
 	conf.set("materials", _Enable_Subord_Material);
 	conf.set("abszinm", _ABS_Z_in_M);
+	conf.set("featruesgpkg", _Use_GPKG_For_Features);
+	conf.set("lights", _Lights);
+	conf.set("lights_lod", _LightLOD);
 	return conf;
 }
 
@@ -109,6 +112,9 @@ CDBFeatureSource::Options::fromConfig(const Config& conf)
 	conf.get("verbose", _Verbose);
 	conf.get("materials", _Enable_Subord_Material);
 	conf.get("abszinm", _ABS_Z_in_M);
+	conf.get("featruesgpkg", _Use_GPKG_For_Features);
+	conf.get("lights", _Lights);
+	conf.get("lights_lod", _LightLOD);
 }
 
 //........................................................................
@@ -135,6 +141,10 @@ OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, GS_LOD0_FullStack, GS_LOD0_FullSt
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, Verbose, Verbose);
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, Enable_Subord_Material, Enable_Subord_Material);
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, ABS_Z_in_M, ABS_Z_in_M);
+OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, Use_GPKG_For_Features, Use_GPKG_For_Features);
+OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, Lights, Lights);
+OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, int,  LightLOD, LightLOD);
+
 
 
 Status
@@ -200,6 +210,18 @@ CDBFeatureSource::openImplementation()
 		bool Use_GPKG_Features = options().Use_GPKG_For_Features().value();
 		if(Use_GPKG_Features)
 			_Use_GPKG_For_Features = true;
+	}
+
+	if(options().Lights().isSet())
+	{
+		if(options().Lights().value())
+		{
+			_LoadLights = true;
+			if(options().LightLOD().isSet())
+			{
+				_LightsLOD = options().LightLOD().value();
+			}
+		}
 	}
 
 	if(_Use_GPKG_For_Features)
@@ -412,6 +434,8 @@ CDBFeatureSource::init()
 	_GT_LOD0_FullStack = false;
 	_BE_Verbose = false;
 	_M_Contains_ABS_Z = false;
+	_LoadLights = false;
+	_LightsLOD = 0;
 	_Use_GPKG_For_Features = false;
 	_UsingFileInput = false;
 	_CDBLodNum = 0;
@@ -422,6 +446,8 @@ CDBFeatureSource::init()
 	_GTGeomemtryTableName = "";
 	_GTTextureTableName = "";
 	_cur_Feature_Cnt = 0;
+	_cur_AFLight_Cnt = 0;
+	_cur_EnvLight_Cnt = 0;
 	_Materials = false;
 	_HaveEditLimits = false;
 }
@@ -975,6 +1001,203 @@ bool CDBFeatureSource::getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const 
 				}
 			}
 		}
+	}
+	return true;
+}
+
+bool CDBFeatureSource::getAFLightFeatures(osgEarth::CDBTile::CDB_Tile* mainTile, const std::string& buffer, FeatureList& features, int sel)
+{
+	// find the right driver for the given mime type
+	OGR_SCOPED_LOCK;
+#ifdef _DEBUG
+	int fubar = 0;
+#endif
+	std::string TileNameStr;
+	if (_CDB_Edit_Support)
+	{
+		TileNameStr = osgDB::getSimpleFileName(buffer);
+		TileNameStr = osgDB::getNameLessExtension(TileNameStr);
+	}
+
+
+//	osg::ref_ptr<osgDB::Options> localoptions = _dbOptions->cloneOptions();
+
+	bool done = false;
+	while (!done)
+	{
+		OGRFeature* feat_handle;
+		bool valid_model = true;
+		feat_handle = mainTile->Next_Valid_AFLight_Feature(sel);
+		if (feat_handle == NULL)
+		{
+			done = true;
+			break;
+		}
+
+		double ZoffsetPos = 0.0;
+		CDB_AP_Light_Class FeatureClass = mainTile->Current_AF_Light_Class_Data();
+		int zsetabs = FeatureClass.ahgt;
+		if (!zsetabs)
+		{
+			if (_M_Contains_ABS_Z)
+			{
+				OGRGeometry* geo = feat_handle->GetGeometryRef();
+				if (wkbFlatten(geo->getGeometryType()) == wkbPoint)
+				{
+					OGRPoint* poPoint = (OGRPoint*)geo;
+					double Mpos = poPoint->getM();
+					ZoffsetPos = poPoint->getZ(); //Used as altitude offset
+					poPoint->setZ(Mpos + ZoffsetPos);
+
+				}
+			}
+		}
+
+		osg::ref_ptr<Feature> f = OgrUtils::createFeature((OGRFeatureH)feat_handle, getFeatureProfile());
+
+		f->setFID(_s_CDB_FeatureID);
+		++_s_CDB_FeatureID;
+
+
+		if (_CDB_Edit_Support)
+		{
+			std::stringstream format_stream;
+			format_stream << TileNameStr << "_" << std::setfill('0')
+				<< std::setw(5) << abs(_cur_Feature_Cnt);
+
+			f->set("name", "AirField Light");
+			std::string transformName = "xform_" + format_stream.str();
+			f->set("transformname", transformName);
+			std::string mtypevalue;
+			mtypevalue = "geospecific";
+			f->set("modeltype", mtypevalue);
+			f->set("tilename", buffer);
+			f->set("selection", sel);
+			f->set("zoffset", ZoffsetPos);
+
+		}
+		f->set("osge_lighttype", "AirField Light");
+
+		++_cur_AFLight_Cnt;
+
+		if (valid_model)
+		{
+			//Ok we have everthing needed to load this model at this lod
+			//Set the atribution to tell osgearth to load the model
+			int cdbLtype = FeatureClass.ltyp;
+
+			//Set osg light parameters for f based on cdbLtype
+			//Implimented code must have final instancing in SubstitudeModelFilter
+		}
+
+		if (f.valid() && !isBlacklisted(f->getFID()))
+		{
+			if (valid_model)
+			{
+				features.push_back(f.release());
+			}
+			else
+				f.release();
+		}
+		mainTile->DestroyCurrentAFLightFeature(sel);
+	}
+	return true;
+}
+
+bool CDBFeatureSource::getEnvLightFeatures(osgEarth::CDBTile::CDB_Tile* mainTile, const std::string& buffer, FeatureList& features, int sel)
+{
+	// find the right driver for the given mime type
+	OGR_SCOPED_LOCK;
+#ifdef _DEBUG
+	int fubar = 0;
+#endif
+	std::string TileNameStr;
+	if (_CDB_Edit_Support)
+	{
+		TileNameStr = osgDB::getSimpleFileName(buffer);
+		TileNameStr = osgDB::getNameLessExtension(TileNameStr);
+	}
+
+
+//	osg::ref_ptr<osgDB::Options> localoptions = _dbOptions->cloneOptions();
+
+	bool done = false;
+	while (!done)
+	{
+		OGRFeature* feat_handle;
+		bool valid_model = true;
+		feat_handle = mainTile->Next_Valid_EnvLight_Feature(sel);
+		if (feat_handle == NULL)
+		{
+			done = true;
+			break;
+		}
+
+		double ZoffsetPos = 0.0;
+		CDB_Env_Light_Class FeatureClass = mainTile->Current_Env_Light_Class_Data();
+		int zsetabs = FeatureClass.ahgt;
+		if (!zsetabs)
+		{
+			if (_M_Contains_ABS_Z)
+			{
+				OGRGeometry* geo = feat_handle->GetGeometryRef();
+				if (wkbFlatten(geo->getGeometryType()) == wkbPoint)
+				{
+					OGRPoint* poPoint = (OGRPoint*)geo;
+					double Mpos = poPoint->getM();
+					ZoffsetPos = poPoint->getZ(); //Used as altitude offset
+					poPoint->setZ(Mpos + ZoffsetPos);
+
+				}
+			}
+		}
+
+		osg::ref_ptr<Feature> f = OgrUtils::createFeature((OGRFeatureH)feat_handle, getFeatureProfile());
+
+		f->setFID(_s_CDB_FeatureID);
+		++_s_CDB_FeatureID;
+
+
+		if (_CDB_Edit_Support)
+		{
+			std::stringstream format_stream;
+			format_stream << TileNameStr << "_" << std::setfill('0')
+				<< std::setw(5) << abs(_cur_Feature_Cnt);
+
+			f->set("name", "Environment Light");
+			std::string transformName = "xform_" + format_stream.str();
+			f->set("transformname", transformName);
+			std::string mtypevalue;
+			mtypevalue = "geospecific";
+			f->set("modeltype", mtypevalue);
+			f->set("tilename", buffer);
+			f->set("selection", sel);
+			f->set("zoffset", ZoffsetPos);
+
+		}
+		++_cur_EnvLight_Cnt;
+		f->set("osge_lighttype", "Environment Light");
+
+		if (valid_model)
+		{
+			//Ok we have everthing needed to load this model at this lod
+			//Set the atribution to tell osgearth to load the model
+			int cdbLtype = FeatureClass.ltyp;
+
+			//Set osg light parameters for f based on cdbLtype
+			//Implimented code must have final instancing in SubstitudeModelFilter
+		}
+
+		if (f.valid() && !isBlacklisted(f->getFID()))
+		{
+			if (valid_model)
+			{
+				features.push_back(f.release());
+			}
+			else
+				f.release();
+		}
+		mainTile->DestroyCurrentAFLightFeature(sel);
 	}
 	return true;
 }

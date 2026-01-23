@@ -373,6 +373,88 @@ osgEarth::CDBTile::CDB_Tile::CDB_Tile(std::string cdbRootDir, std::string cdbCac
 		clslaybuf << "100_GTFeature_S" << std::setfill('0') << std::setw(3) << abs(i) << "_T"
 			<< std::setfill('0') << std::setw(3) << abs(Tnum + 1) << "_Cls";
 		ModelSet.ClassLayerName = clslaybuf.str();
+
+		dataset2str = "_D100_S004_T001_";
+		filetype2str = ".dbf";
+		std::stringstream aflbuf;
+		if (!m_DataFromGlobal)
+		{
+			aflbuf << cdbRootDir
+				<< "\\Tiles"
+				<< "\\" << m_lat_str
+				<< "\\" << m_lon_str
+				<< "\\" << m_LayerName
+				<< "\\" << m_lod_str
+				<< "\\" << m_uref_str
+				<< "\\" << m_lat_str << m_lon_str << dataset2str << m_lod_str
+				<< "_" << m_uref_str << "_" << m_rref_str << filetype;
+		}
+		else
+		{
+			aflbuf << m_LayerName << dataset2str.substr(5) << "Pnt_" << m_lod_str;
+		}
+		ModelSet.APLightsName = aflbuf.str();
+
+		dataset2str = "_D100_S004_T002_";
+		std::stringstream aflcbuf;
+		if (!m_DataFromGlobal)
+		{
+			aflcbuf << cdbRootDir
+				<< "\\Tiles"
+				<< "\\" << m_lat_str
+				<< "\\" << m_lon_str
+				<< "\\" << m_LayerName
+				<< "\\" << m_lod_str
+				<< "\\" << m_uref_str
+				<< "\\" << m_lat_str << m_lon_str << dataset2str << m_lod_str
+				<< "_" << m_uref_str << "_" << m_rref_str << filetype2str;
+		}
+		else
+		{
+			aflcbuf << m_LayerName << dataset2str.substr(5) << "Cls_" << m_lod_str;
+		}
+		ModelSet.APLightsDbfName = aflcbuf.str();
+
+		dataset2str = "_D100_S005_T001_";
+		std::stringstream envlbuf;
+		if (!m_DataFromGlobal)
+		{
+			envlbuf << cdbRootDir
+				<< "\\Tiles"
+				<< "\\" << m_lat_str
+				<< "\\" << m_lon_str
+				<< "\\" << m_LayerName
+				<< "\\" << m_lod_str
+				<< "\\" << m_uref_str
+				<< "\\" << m_lat_str << m_lon_str << dataset2str << m_lod_str
+				<< "_" << m_uref_str << "_" << m_rref_str << filetype;
+		}
+		else
+		{
+			envlbuf << m_LayerName << dataset2str.substr(5) << "Pnt_" << m_lod_str;
+		}
+		ModelSet.EnvLightsName = envlbuf.str();
+
+		dataset2str = "_D100_S005_T002_";
+		std::stringstream envlcbuf;
+		if (!m_DataFromGlobal)
+		{
+			envlcbuf << cdbRootDir
+				<< "\\Tiles"
+				<< "\\" << m_lat_str
+				<< "\\" << m_lon_str
+				<< "\\" << m_LayerName
+				<< "\\" << m_lod_str
+				<< "\\" << m_uref_str
+				<< "\\" << m_lat_str << m_lon_str << dataset2str << m_lod_str
+				<< "_" << m_uref_str << "_" << m_rref_str << filetype2str;
+		}
+		else
+		{
+			envlcbuf << m_LayerName << dataset2str.substr(5) << "Cls_" << m_lod_str;
+		}
+		ModelSet.EnvLightsDbfName = envlcbuf.str();
+
 		m_ModelSet.push_back(ModelSet);
 	}
 	else if (m_TileType == GeoTypicalModel)
@@ -460,7 +542,7 @@ osgEarth::CDBTile::CDB_Tile::CDB_Tile(std::string cdbRootDir, std::string cdbCac
 //				t.ClassExists = gbls->Has_Layer(t.TileSecondaryShapeName);
 			}
 			t.RealSel = i - 1;
-			if (t.PrimaryExists && t.ClassExists)
+			if (t.PrimaryExists && (t.ClassExists || gbls->Get_Use_GeoPackage_Features()))
 				m_GTModelSet.push_back(t);
 		}
 	}
@@ -493,6 +575,16 @@ osgEarth::CDBTile::CDB_Tile::CDB_Tile(std::string cdbRootDir, std::string cdbCac
 			}
 			m_ModelSet[0].ModelGeometryNameExists = validate_tile_name(m_ModelSet[0].ModelGeometryName);
 			m_ModelSet[0].ModelTextureNameExists = validate_tile_name(m_ModelSet[0].ModelTextureName);
+			if (gbls->Get_Use_GeoPackage_Features())
+			{
+				m_ModelSet[0].APLightsExists = validate_tile_name(m_ModelSet[0].APLightsName);
+				m_ModelSet[0].EnvLightsExists = validate_tile_name(m_ModelSet[0].EnvLightsName);
+			}
+			else
+			{
+				m_ModelSet[0].APLightsExists = validate_tile_name(m_ModelSet[0].APLightsName) && validate_tile_name(m_ModelSet[0].APLightsDbfName);
+				m_ModelSet[0].EnvLightsExists = validate_tile_name(m_ModelSet[0].EnvLightsName) && validate_tile_name(m_ModelSet[0].EnvLightsDbfName);
+			}
 		}
 		else
 		{
@@ -512,6 +604,7 @@ osgEarth::CDBTile::CDB_Tile::CDB_Tile(std::string cdbRootDir, std::string cdbCac
 			temp = "gpkg:" + m_ModelSet[0].ModelTextureName + ":" + m_uref_str + ":" + m_rref_str + ".zip";
 			m_ModelSet[0].ModelTextureName = temp;
 			m_ModelSet[0].ModelTextureNameExists = gbls->Load_Media(m_ModelSet[0].ModelTextureName, tileKey);
+			//Add lights here after implimenting in gbls
 		}
 		m_ModelSet[0].ModelWorkingName = m_FileName;
 		m_ModelSet[0].ModelWorkingNameExists = m_FileExists;
@@ -619,7 +712,7 @@ bool osgEarth::CDBTile::CDB_Tile::DataFromGlobal(void)
 bool osgEarth::CDBTile::CDB_Tile::Build_GS_Stack(void)
 {
 	CDB_Global * gbls = CDB_Global::getInstance();
-
+	//Note: Skipping AF and Env Lights as only need one LOD for them
 	for (int nlod = 1; nlod <= 10; ++nlod)
 	{
 		int cdbLod = nlod * -1;
@@ -1354,10 +1447,9 @@ bool osgEarth::CDBTile::CDB_Tile::Open_GS_Model_Tile(void)
 			{
 				if(m_ModelSet[i].ModelWorkingNameExists)
 				{
-					char* drivers[2];
-					drivers[0] = "GPKG";
-					drivers[1] = NULL;
-					m_ModelSet[i].PrimaryTileOgr = (GDALDataset*)GDALOpenEx(m_ModelSet[i].ModelWorkingName.c_str(), GDAL_OF_VECTOR | GA_ReadOnly | GDAL_OF_SHARED, drivers, NULL, NULL);
+					GDALOpenInfo oOpenInfoP(m_ModelSet[i].ModelWorkingName.c_str(), GDAL_OF_VECTOR | GA_ReadOnly | GDAL_OF_SHARED);
+					m_ModelSet[i].PrimaryTileOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoP);
+
 					if (!m_ModelSet[i].PrimaryTileOgr)
 					{
 						valid_set = false;
@@ -1429,48 +1521,238 @@ bool osgEarth::CDBTile::CDB_Tile::Open_GS_Model_Tile(void)
 	}
 	if(Have_a_Valid_set)
 		m_Tile_Status = Opened;
+	Open_AF_Lights();
+	Open_ENV_Lights();
+	return Have_a_Valid_set;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::Open_AF_Lights()
+{
+	bool Have_a_Valid_set = false;
+	for (unsigned int i = 0; i < m_ModelSet.size(); ++i)
+	{
+		bool valid_set = true;
+		if (!m_DataFromGlobal)
+		{
+			if(m_ModelSet[i].APLightsExists)
+			{
+				CDB_Global* gbls = CDB_Global::getInstance();
+				if (gbls->Get_Use_GeoPackage_Features())
+				{
+					GDALOpenInfo oOpenInfoP(m_ModelSet[i].APLightsName.c_str(), GDAL_OF_VECTOR | GA_ReadOnly | GDAL_OF_SHARED);
+					m_ModelSet[i].APLightsPrimaryOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoP);
+
+					if (!m_ModelSet[i].APLightsPrimaryOgr)
+					{
+						valid_set = false;
+						continue;
+					}
+				}
+				else
+				{
+					GDALOpenInfo oOpenInfoP(m_ModelSet[i].APLightsName.c_str(), GA_ReadOnly);
+					m_ModelSet[i].APLightsPrimaryOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoP);
+					if (!m_ModelSet[i].APLightsPrimaryOgr)
+					{
+						valid_set = false;
+						continue;
+					}
+
+					GDALOpenInfo oOpenInfoC(m_ModelSet[i].APLightsDbfName.c_str(), GA_ReadOnly);
+					m_ModelSet[i].APLightsClassOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoC);
+					if (!m_ModelSet[i].APLightsClassOgr)
+					{
+						//Check for junk files clogging up the works
+						std::string shx = Set_FileType(m_ModelSet[i].APLightsDbfName, ".shx");
+						if (validate_tile_name(shx))
+						{
+							if (::DeleteFile(shx.c_str()) == 0)
+							{
+								return false;
+							}
+						}
+						std::string shp = Set_FileType(m_ModelSet[i].APLightsDbfName, ".shp");
+						if (validate_tile_name(shp))
+						{
+							if (::DeleteFile(shp.c_str()) == 0)
+							{
+								return false;
+							}
+						}
+						m_ModelSet[i].APLightsClassOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoC);
+						if (!m_ModelSet[i].APLightsClassOgr)
+						{
+							valid_set = false;
+							if (m_ModelSet[i].APLightsPrimaryOgr)
+							{
+								GDALClose(m_ModelSet[i].APLightsPrimaryOgr);
+								m_ModelSet[i].APLightsPrimaryOgr = NULL;
+							}
+							continue;
+						}
+					}
+				}
+			}
+			else
+				valid_set = false;
+			if (valid_set)
+				Have_a_Valid_set = true;
+		}
+		else
+		{
+			if (m_ModelSet[i].APLightsExists)
+				valid_set = true;
+			if (valid_set)
+				Have_a_Valid_set = true;
+		}
+	}
+	return Have_a_Valid_set;
+
+}
+
+bool osgEarth::CDBTile::CDB_Tile::Open_ENV_Lights()
+{
+
+	bool Have_a_Valid_set = false;
+	for (unsigned int i = 0; i < m_ModelSet.size(); ++i)
+	{
+		bool valid_set = true;
+		if (!m_DataFromGlobal)
+		{
+			if (m_ModelSet[i].EnvLightsExists)
+			{
+				CDB_Global* gbls = CDB_Global::getInstance();
+				if (gbls->Get_Use_GeoPackage_Features())
+				{
+					GDALOpenInfo oOpenInfoP(m_ModelSet[i].EnvLightsName.c_str(), GDAL_OF_VECTOR | GA_ReadOnly | GDAL_OF_SHARED);
+					m_ModelSet[i].EnvLightsPrimaryOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoP);
+
+					if (!m_ModelSet[i].EnvLightsPrimaryOgr)
+					{
+						valid_set = false;
+						continue;
+					}
+				}
+				else
+				{
+					GDALOpenInfo oOpenInfoP(m_ModelSet[i].EnvLightsName.c_str(), GA_ReadOnly);
+					m_ModelSet[i].EnvLightsPrimaryOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoP);
+					if (!m_ModelSet[i].EnvLightsPrimaryOgr)
+					{
+						valid_set = false;
+						continue;
+					}
+
+					GDALOpenInfo oOpenInfoC(m_ModelSet[i].EnvLightsDbfName.c_str(), GA_ReadOnly);
+					m_ModelSet[i].EnvLightsClassOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoC);
+					if (!m_ModelSet[i].EnvLightsClassOgr)
+					{
+						//Check for junk files clogging up the works
+						std::string shx = Set_FileType(m_ModelSet[i].EnvLightsDbfName, ".shx");
+						if (validate_tile_name(shx))
+						{
+							if (::DeleteFile(shx.c_str()) == 0)
+							{
+								return false;
+							}
+						}
+						std::string shp = Set_FileType(m_ModelSet[i].EnvLightsDbfName, ".shp");
+						if (validate_tile_name(shp))
+						{
+							if (::DeleteFile(shp.c_str()) == 0)
+							{
+								return false;
+							}
+						}
+						m_ModelSet[i].EnvLightsClassOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoC);
+						if (!m_ModelSet[i].EnvLightsClassOgr)
+						{
+							valid_set = false;
+							if (m_ModelSet[i].EnvLightsPrimaryOgr)
+							{
+								GDALClose(m_ModelSet[i].EnvLightsPrimaryOgr);
+								m_ModelSet[i].EnvLightsPrimaryOgr = NULL;
+							}
+							continue;
+						}
+					}
+				}
+			}
+			else
+				valid_set = false;
+			if (valid_set)
+				Have_a_Valid_set = true;
+		}
+		else
+		{
+			if (m_ModelSet[i].EnvLightsExists)
+				valid_set = true;
+			if (valid_set)
+				Have_a_Valid_set = true;
+		}
+	}
 	return Have_a_Valid_set;
 }
 
 bool osgEarth::CDBTile::CDB_Tile::Open_GT_Model_Tile(void)
 {
 	bool have_an_opening = false;
+	CDB_Global* gbls = CDB_Global::getInstance();
 	for (size_t i = 0; i < m_GTModelSet.size(); ++i)
 	{
 		if (!m_DataFromGlobal)
 		{
-			if (m_GTModelSet[i].PrimaryExists && m_GTModelSet[i].ClassExists)
+			if (m_GTModelSet[i].PrimaryExists && (m_GTModelSet[i].ClassExists || gbls->Get_Use_GeoPackage_Features()))
 			{
-				GDALOpenInfo oOpenInfoP(m_GTModelSet[i].TilePrimaryShapeName.c_str(), GA_ReadOnly);
-				m_GTModelSet[i].PrimaryTileOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoP);
+				if(gbls->Get_Use_GeoPackage_Features())
+				{
+#if 1
+					GDALOpenInfo oOpenInfoP(m_GTModelSet[i].TilePrimaryShapeName.c_str(), GDAL_OF_VECTOR | GA_ReadOnly | GDAL_OF_SHARED);
+					m_GTModelSet[i].PrimaryTileOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoP);
+#else
+
+					char* drivers[2];
+					drivers[0] = "GPKG";
+					drivers[1] = NULL;
+					m_GTModelSet[i].PrimaryTileOgr = (GDALDataset*)GDALOpenEx(m_GTModelSet[i].TilePrimaryShapeName.c_str(), GDAL_OF_VECTOR | GA_ReadOnly | GDAL_OF_SHARED, drivers, NULL, NULL);
+#endif
+				}
+				else
+				{
+					GDALOpenInfo oOpenInfoP(m_GTModelSet[i].TilePrimaryShapeName.c_str(), GA_ReadOnly);
+					m_GTModelSet[i].PrimaryTileOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoP);
+				}
 				if (!m_GTModelSet[i].PrimaryTileOgr)
 					continue;
-				GDALOpenInfo oOpenInfoC(m_GTModelSet[i].TileSecondaryShapeName.c_str(), GA_ReadOnly);
-				m_GTModelSet[i].ClassTileOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoC);
-				if (!m_GTModelSet[i].ClassTileOgr)
+				if(!gbls->Get_Use_GeoPackage_Features())
 				{
-					//Check for junk files clogging up the works
-					std::string shx = Set_FileType(m_GTModelSet[i].TileSecondaryShapeName, ".shx");
-					if (validate_tile_name(shx))
-					{
-						if (::DeleteFile(shx.c_str()) == 0)
-						{
-							continue;
-						}
-					}
-					std::string shp = Set_FileType(m_GTModelSet[i].TileSecondaryShapeName, ".shp");
-					if (validate_tile_name(shp))
-					{
-						if (::DeleteFile(shp.c_str()) == 0)
-						{
-							continue;
-						}
-					}
+					GDALOpenInfo oOpenInfoC(m_GTModelSet[i].TileSecondaryShapeName.c_str(), GA_ReadOnly);
 					m_GTModelSet[i].ClassTileOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoC);
 					if (!m_GTModelSet[i].ClassTileOgr)
-						continue;
+					{
+						//Check for junk files clogging up the works
+						std::string shx = Set_FileType(m_GTModelSet[i].TileSecondaryShapeName, ".shx");
+						if (validate_tile_name(shx))
+						{
+							if (::DeleteFile(shx.c_str()) == 0)
+							{
+								continue;
+							}
+						}
+						std::string shp = Set_FileType(m_GTModelSet[i].TileSecondaryShapeName, ".shp");
+						if (validate_tile_name(shp))
+						{
+							if (::DeleteFile(shp.c_str()) == 0)
+							{
+								continue;
+							}
+						}
+						m_GTModelSet[i].ClassTileOgr = m_GDAL.poDriver->pfnOpen(&oOpenInfoC);
+						if (!m_GTModelSet[i].ClassTileOgr)
+							continue;
+					}
 				}
-				if (m_GTModelSet[i].PrimaryTileOgr && m_GTModelSet[i].ClassTileOgr)
+				if (m_GTModelSet[i].PrimaryTileOgr && (m_GTModelSet[i].ClassTileOgr || gbls->Get_Use_GeoPackage_Features()))
 					have_an_opening = true;
 			}
 		}
@@ -1633,6 +1915,19 @@ bool osgEarth::CDBTile::CDB_Tile::DestroyCurrentFeature(int sel)
 		return DestroyCurrent_GeoTypical_Feature(sel);
 }
 
+bool osgEarth::CDBTile::CDB_Tile::DestroyCurrentAFLightFeature(int sel)
+{
+	if (m_TileType == GeoSpecificModel)
+		return DestroyCurrent_AFLight(sel);
+	return false;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::DestroyCurrentEnvLightFeature(int sel)
+{
+	if (m_TileType == GeoSpecificModel)
+		return DestroyCurrent_EnvLight(sel);
+	return false;
+}
 bool osgEarth::CDBTile::CDB_Tile::DestroyCurrent_Geospecific_Feature(int sel)
 {
 	m_ModelSet[sel].FeatureSet.DestroyCurFeature();
@@ -1642,6 +1937,18 @@ bool osgEarth::CDBTile::CDB_Tile::DestroyCurrent_Geospecific_Feature(int sel)
 bool osgEarth::CDBTile::CDB_Tile::DestroyCurrent_GeoTypical_Feature(int sel)
 {
 	m_GTModelSet[sel].FeatureSet.DestroyCurFeature();
+	return true;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::DestroyCurrent_AFLight(int sel)
+{
+	m_ModelSet[sel].AP_Lights_FeatureSet.DestroyCurFeature();
+	return true;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::DestroyCurrent_EnvLight(int sel)
+{
+	m_ModelSet[sel].Env_Lights_FeatureSet.DestroyCurFeature();
 	return true;
 }
 
@@ -1822,9 +2129,153 @@ OGRFeature * osgEarth::CDBTile::CDB_Tile::Next_Valid_GeoTypical_Feature(int sel,
 	return f;
 }
 
+OGRFeature * osgEarth::CDBTile::CDB_Tile::Next_Valid_AFLight_Feature(unsigned int pos)
+{
+	bool valid = false;
+	bool done = false;
+	OGRFeature * f = NULL;
+	CDB_APLights_RuntimeMap * clsmap = nullptr;
+	CDB_Global* gbls = CDB_Global::getInstance();
+
+	if (m_DataFromGlobal)
+		clsmap = NULL; // m_GlobalTile->GetGSClassMap(m_CDB_LOD_Num);
+	else
+	{
+		if (gbls->Get_Use_GeoPackage_Features())
+			clsmap = NULL;
+		else
+			clsmap = &m_ModelSet[pos].APLightsMap;
+	}
+
+	while (!valid && !done)
+	{
+		f = m_ModelSet[pos].AP_Lights_FeatureSet.GetNextFeature();
+		if (!f)
+		{
+			done = true;
+			break;
+		}
+		valid = true;
+#if 0
+		if (m_Use_Spatial_Rect)
+		{
+			OGRPoint* poPoint = (OGRPoint*)f->GetGeometryRef();
+			if (!m_SpatialRectExtent.Contains(poPoint->getX(), poPoint->getY()))
+				valid = false;
+		}
+#endif
+		std::string cnam = f->GetFieldAsString("CNAM");
+		if (!cnam.empty() || gbls->Get_Use_GeoPackage_Features())
+		{
+			if (clsmap)
+			{
+				CDB_APLights_RuntimeMap::iterator mi = clsmap->find(cnam);
+				if (mi == clsmap->end())
+					valid = false;
+				else
+				{
+					m_CurAfLightClass = (*clsmap)[cnam];
+				}
+			}
+			else
+			{
+				std::string myCNAM = m_CurAfLightClass.set_class(f);
+				if (myCNAM.empty() && !gbls->Get_Use_GeoPackage_Features())
+					valid = false;
+			}
+		}
+		else
+		{
+			valid = false;
+		}
+		if (!valid)
+		{
+			m_ModelSet[pos].AP_Lights_FeatureSet.DestroyCurFeature();
+		}
+	}
+	return f;
+}
+
+OGRFeature * osgEarth::CDBTile::CDB_Tile::Next_Valid_EnvLight_Feature(unsigned int pos)
+{
+	bool valid = false;
+	bool done = false;
+	OGRFeature* f = NULL;
+	CDB_EnvLights_RuntimeMap * clsmap = nullptr;
+	CDB_Global* gbls = CDB_Global::getInstance();
+
+	if (m_DataFromGlobal)
+		clsmap = NULL; // m_GlobalTile->GetGSClassMap(m_CDB_LOD_Num);
+	else
+	{
+		if (gbls->Get_Use_GeoPackage_Features())
+			clsmap = NULL;
+		else
+			clsmap = &m_ModelSet[pos].EnvLightMap;
+	}
+
+	while (!valid && !done)
+	{
+		f = m_ModelSet[pos].Env_Lights_FeatureSet.GetNextFeature();
+		if (!f)
+		{
+			done = true;
+			break;
+		}
+		valid = true;
+#if 0
+		if (m_Use_Spatial_Rect)
+		{
+			OGRPoint* poPoint = (OGRPoint*)f->GetGeometryRef();
+			if (!m_SpatialRectExtent.Contains(poPoint->getX(), poPoint->getY()))
+				valid = false;
+		}
+#endif
+		std::string cnam = f->GetFieldAsString("CNAM");
+		if (!cnam.empty() || gbls->Get_Use_GeoPackage_Features())
+		{
+			if (clsmap)
+			{
+				CDB_EnvLights_RuntimeMap::iterator mi = clsmap->find(cnam);
+				if (mi == clsmap->end())
+					valid = false;
+				else
+				{
+					m_CurEnvLightClass = (*clsmap)[cnam];
+				}
+			}
+			else
+			{
+				std::string myCNAM = m_CurEnvLightClass.set_class(f);
+				if (myCNAM.empty() && !gbls->Get_Use_GeoPackage_Features())
+					valid = false;
+			}
+		}
+		else
+		{
+			valid = false;
+		}
+		if (!valid)
+		{
+			m_ModelSet[pos].Env_Lights_FeatureSet.DestroyCurFeature();
+		}
+	}
+	return f;
+}
+
 CDB_Model_Runtime_Class osgEarth::CDBTile::CDB_Tile::Current_Feature_Class_Data(void)
 {
 	return m_CurFeatureClass;
+}
+
+CDB_AP_Light_Class  osgEarth::CDBTile::CDB_Tile::Current_AF_Light_Class_Data(void)
+{
+	return m_CurAfLightClass;
+}
+
+CDB_Env_Light_Class  osgEarth::CDBTile::CDB_Tile::Current_Env_Light_Class_Data(void)
+{
+	return m_CurEnvLightClass;
 }
 
 std::string osgEarth::CDBTile::CDB_Tile::Model_KeyName(std::string &FACC_value, std::string &FSC_Value, std::string &BaseFileName)
@@ -1848,7 +2299,12 @@ bool osgEarth::CDBTile::CDB_Tile::Init_GS_Model_Tile(unsigned int pos)
 			if (!m_ModelSet[pos].ClassTileOgr)
 				return false;
 		}
-		m_ModelSet[pos].PrimaryLayer = m_ModelSet[pos].PrimaryTileOgr->GetLayer(0);
+
+		if(m_ModelSet[pos].PrimaryTileOgr)
+			m_ModelSet[pos].PrimaryLayer = m_ModelSet[pos].PrimaryTileOgr->GetLayer(0);
+		else
+			m_ModelSet[pos].PrimaryLayer = nullptr;
+
 		if (!m_ModelSet[pos].PrimaryLayer)
 			return false;
 		if (m_Use_Spatial_Rect)
@@ -1923,7 +2379,111 @@ bool osgEarth::CDBTile::CDB_Tile::Init_GS_Model_Tile(unsigned int pos)
 			have_class = Load_Class_Map(poLayer, m_ModelSet[pos].clsMap);
 	}
 	bool have_archive = Load_Archive(m_ModelSet[pos].ModelGeometryName, m_ModelSet[pos].archiveFileList);
+	if(m_ModelSet[pos].APLightsExists)
+	{
+		Load_AF_Lights(pos);
+	}
+	if(m_ModelSet[pos].EnvLightsExists)
+	{
+		Load_ENV_Lights(pos);
+	}
 	return (have_class && have_archive);
+}
+
+bool osgEarth::CDBTile::CDB_Tile::Load_AF_Lights(int sel)
+{
+	bool features_Loaded = false;
+	CDB_Global* gbls = CDB_Global::getInstance();
+	bool have_class = false;
+	bool have_inst = false;
+	if(!m_DataFromGlobal)
+	{
+		if(m_ModelSet[sel].APLightsPrimaryOgr)
+		{
+			OGRLayer * poLayer = m_ModelSet[sel].APLightsPrimaryOgr->GetLayer(0);
+			if(poLayer)
+			{
+				m_ModelSet[sel].AP_Lights_FeatureSet.LoadFeatureSet(poLayer);
+				have_inst = m_ModelSet[sel].AP_Lights_FeatureSet.Size() > 0;
+			}
+			if(!gbls->Get_Use_GeoPackage_Features())
+			{
+				poLayer = m_ModelSet[sel].APLightsClassOgr->GetLayer(0);
+				have_class = Load_AFL_Class_Map(poLayer, m_ModelSet[sel].APLightsMap);
+			}
+			else
+				have_class = true;
+		}
+	}
+	//else
+	//ToDo Impliment from Global
+	return features_Loaded;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::Load_ENV_Lights(int sel)
+{
+	bool features_Loaded = false;
+	CDB_Global* gbls = CDB_Global::getInstance();
+	bool have_class = false;
+	bool have_inst = false;
+	if (!m_DataFromGlobal)
+	{
+		if (m_ModelSet[sel].EnvLightsPrimaryOgr)
+		{
+			OGRLayer* poLayer = m_ModelSet[sel].EnvLightsPrimaryOgr->GetLayer(0);
+			if (poLayer)
+			{
+				m_ModelSet[sel].Env_Lights_FeatureSet.LoadFeatureSet(poLayer);
+				have_inst = m_ModelSet[sel].Env_Lights_FeatureSet.Size() > 0;
+			}
+			if (!gbls->Get_Use_GeoPackage_Features())
+			{
+				poLayer = m_ModelSet[sel].EnvLightsClassOgr->GetLayer(0);
+				have_class = Load_ENVL_Class_Map(poLayer, m_ModelSet[sel].EnvLightMap);
+			}
+			else
+				have_class = true;
+		}
+	}
+	//else
+	//ToDo Impliment from Global
+	return features_Loaded;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::AF_Lights_Exist(int sel)
+{
+	if(m_TileType != GeoSpecificModel)
+		return false;
+	if(sel >= m_ModelSet.size() || (sel < 0))
+		return false;
+	return m_ModelSet[sel].APLightsExists;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::ENV_Lights_Exist(int sel)
+{
+	if (m_TileType != GeoSpecificModel)
+		return false;
+	if (sel >= m_ModelSet.size() || (sel < 0))
+		return false;
+	return m_ModelSet[sel].EnvLightsExists;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::Have_AF_Lights(int sel)
+{
+	if (m_TileType != GeoSpecificModel)
+		return false;
+	if (sel >= m_ModelSet.size() || (sel < 0))
+		return false;
+	return m_ModelSet[sel].AP_Lights_FeatureSet.Size() > 0;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::Have_ENV_Lights(int sel)
+{
+	if (m_TileType != GeoSpecificModel)
+		return false;
+	if (sel >= m_ModelSet.size() || (sel < 0))
+		return false;
+	return m_ModelSet[sel].Env_Lights_FeatureSet.Size() > 0;
 }
 
 bool osgEarth::CDBTile::CDB_Tile::Init_GT_Model_Tile(int sel)
@@ -1931,16 +2491,27 @@ bool osgEarth::CDBTile::CDB_Tile::Init_GT_Model_Tile(int sel)
 #ifdef _DEBUG
 	int fubar = 0;
 #endif
+	CDB_Global* gbls = CDB_Global::getInstance();
+
 	if (!m_DataFromGlobal)
 	{
-		if (!m_GTModelSet[sel].ClassTileOgr)
-			return false;
-		m_GTModelSet[sel].PrimaryLayer = m_GTModelSet[sel].PrimaryTileOgr->GetLayer(0);
-		if (m_Use_Spatial_Rect)
+		if (!gbls->Get_Use_GeoPackage_Features())
 		{
-			m_GTModelSet[sel].PrimaryLayer->SetSpatialFilterRect(m_SpatialRectExtent.West, m_SpatialRectExtent.South, m_SpatialRectExtent.East, m_SpatialRectExtent.North);
+			if (!m_GTModelSet[sel].ClassTileOgr)
+				return false;
 		}
-		m_GTModelSet[sel].FeatureSet.LoadFeatureSet(m_GTModelSet[sel].PrimaryLayer);
+		if(!m_GTModelSet[sel].PrimaryTileOgr)
+			m_GTModelSet[sel].PrimaryLayer = nullptr;
+		else
+		{
+			m_GTModelSet[sel].PrimaryLayer = m_GTModelSet[sel].PrimaryTileOgr->GetLayer(0);
+
+			if (m_Use_Spatial_Rect)
+			{
+				m_GTModelSet[sel].PrimaryLayer->SetSpatialFilterRect(m_SpatialRectExtent.West, m_SpatialRectExtent.South, m_SpatialRectExtent.East, m_SpatialRectExtent.North);
+			}
+			m_GTModelSet[sel].FeatureSet.LoadFeatureSet(m_GTModelSet[sel].PrimaryLayer);
+		}
 	}
 	else
 	{
@@ -1986,7 +2557,7 @@ bool osgEarth::CDBTile::CDB_Tile::Init_GT_Model_Tile(int sel)
 
 	//	m_GTModelSet[sel].PrimaryLayer->ResetReading();
 	OGRLayer *poLayer = NULL;
-	if (!m_DataFromGlobal)
+	if (!m_DataFromGlobal && !gbls->Get_Use_GeoPackage_Features())
 	{
 		poLayer = m_GTModelSet[sel].ClassTileOgr->GetLayer(0);
 	}
@@ -1996,7 +2567,7 @@ bool osgEarth::CDBTile::CDB_Tile::Init_GT_Model_Tile(int sel)
 	//	}
 
 	bool have_class = false;
-	if (m_DataFromGlobal)
+	if (m_DataFromGlobal || gbls->Get_Use_GeoPackage_Features())
 	{
 		//CDB_Model_RuntimeMapP clsMap = m_GlobalTile->GetGTClassMap(m_CDB_LOD_Num, sel);
 		//if (clsMap->size() == 0)
@@ -2016,7 +2587,7 @@ bool osgEarth::CDBTile::CDB_Tile::Init_GT_Model_Tile(int sel)
 	}
 	else
 		have_archive = true;
-	return have_class & have_archive;
+	return have_class && have_archive;
 }
 
 bool osgEarth::CDBTile::CDB_Tile::Load_Archive(std::string ArchiveName, osgDB::Archive::FileNameList &archiveFileList)
@@ -2114,6 +2685,33 @@ bool osgEarth::CDBTile::CDB_Tile::Load_Class_Map(OGRLayer * poLayer, CDB_Model_R
 	return true;
 }
 
+bool osgEarth::CDBTile::CDB_Tile::Load_AFL_Class_Map(OGRLayer* poLayer, CDB_APLights_RuntimeMap &clsMap)
+{
+	poLayer->ResetReading();
+	OGRFeature * dbf_feature;
+	while ((dbf_feature = poLayer->GetNextFeature()) != NULL)
+	{
+		CDB_AP_Light_Class nextEntry;
+		std::string Key = nextEntry.set_class(dbf_feature);
+		clsMap.insert(std::pair<std::string, CDB_AP_Light_Class>(Key, nextEntry));
+		OGRFeature::DestroyFeature(dbf_feature);
+	}
+	return true;
+}
+
+bool osgEarth::CDBTile::CDB_Tile::Load_ENVL_Class_Map(OGRLayer* poLayer, CDB_EnvLights_RuntimeMap &clsMap)
+{
+	poLayer->ResetReading();
+	OGRFeature* dbf_feature;
+	while ((dbf_feature = poLayer->GetNextFeature()) != NULL)
+	{
+		CDB_Env_Light_Class nextEntry;
+		std::string Key = nextEntry.set_class(dbf_feature);
+		clsMap.insert(std::pair<std::string, CDB_Env_Light_Class>(Key, nextEntry));
+		OGRFeature::DestroyFeature(dbf_feature);
+	}
+	return true;
+}
 int osgEarth::CDBTile::CDB_Tile::Find_Field_Index(OGRFeatureDefn *poFDefn, std::string fieldname, OGRFieldType Type)
 {
 	int dbfieldcnt = poFDefn->GetFieldCount();
