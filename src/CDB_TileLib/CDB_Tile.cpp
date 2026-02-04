@@ -5115,12 +5115,34 @@ bool osgEarth::CDBTile::CDB_Data_Dictionary::Init_Feature_Data_Dictionary(std::s
 		m_dataDictData = m_dataDictDoc->load(xmlFileName);
 		if (!m_dataDictData)
 		{
+			bool exists = validate_tile_name(xmlFileName);
+			if (!exists)
+				OSG_WARN << "CDB " << CDB_Root_Dir << " did not find FeatureDataDictionary in MetaData" << std::endl;
+			else
+				OSG_WARN << "CDB " << CDB_Root_Dir << " could not load FeatureDataDictionary " << xmlFileName << std::endl;
+
 			char* dataDirC = getenv("GDAL_DATA");
 			if (dataDirC != nullptr)
 			{
 				std::string dataDir(dataDirC);
-				xmlFileName = dataDir + "\\CDB\\Feature_Data_Dictionary.xml";
+				if (dataDir.substr(dataDir.length() - 1, 1) == "\"") //Windows with spaces in path
+				{
+					xmlFileName = dataDir.substr(1, dataDir.length() - 2) + "\\CDB\\Feature_Data_Dictionary.xml";
+				}
+				else
+				{
+					xmlFileName = dataDir + "\\CDB\\Feature_Data_Dictionary.xml";
+				}
 				m_dataDictData = m_dataDictDoc->load(xmlFileName);
+				if (!m_dataDictData)
+				{
+					exists = validate_tile_name(xmlFileName);
+					if (!exists)
+						OSG_WARN << "CDB " << CDB_Root_Dir << " did not find internal FeatureDataDictionary at " << xmlFileName << std::endl;
+					else
+						OSG_WARN << "CDB " << CDB_Root_Dir << " failed to Load internal FeatureDataDictionary at " << xmlFileName << std::endl;
+
+				}
 			}
 		}
 		if (m_dataDictData)
