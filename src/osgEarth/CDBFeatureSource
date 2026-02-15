@@ -54,6 +54,7 @@ namespace osgEarth
 			OE_OPTION(bool, Verbose);
 			OE_OPTION(bool, Enable_Subord_Material);
 			OE_OPTION(bool, ABS_Z_in_M);
+			OE_OPTION(bool, USE_CDB_Elevation);
 			OE_OPTION(bool, Use_GPKG_For_Features);
 			OE_OPTION(bool, Lights);
 			OE_OPTION(int,  LightLOD);
@@ -123,6 +124,9 @@ namespace osgEarth
 		void setABS_Z_in_M(const bool& value);
 		const bool& getABS_Z_in_M() const;
 
+		void setUSE_CDB_Elevation(const bool& value);
+		const bool& getUSE_CDB_Elevation() const;
+
 		void setUse_GPKG_For_Features(const bool& value);
 		const bool& getUse_GPKG_For_Features() const;
 
@@ -161,6 +165,7 @@ namespace osgEarth
 		bool							_GT_LOD0_FullStack;
 		bool							_BE_Verbose;
 		bool							_M_Contains_ABS_Z;
+		bool							_SettleOnCDB;
 		bool							_LoadLights;
 		int								_LightsLOD;
 		bool							_Use_GPKG_For_Features;
@@ -178,6 +183,7 @@ namespace osgEarth
 		bool							_Materials;
 		bool							_HaveEditLimits;
 		CDB_Tile_Extent					_Edit_Tile_Extent;
+		osgEarth::CDBTile::CDBElevationService *	_CDBElevations;
 
 		bool getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const std::string& buffer, FeatureList& features, int sel);
 		bool getAFLightFeatures(osgEarth::CDBTile::CDB_Tile* mainTile, const std::string& buffer, FeatureList& features, int sel);

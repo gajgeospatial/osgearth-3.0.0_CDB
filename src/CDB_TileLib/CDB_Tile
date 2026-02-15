@@ -1,5 +1,5 @@
 #pragma once
-// 2019-2024 GAJ Geospatial Enterprises, Orlando FL
+// 2019-2026 GAJ Geospatial Enterprises, Orlando FL
 // Copyright (c) 2016-2017 Visual Awareness Technologies and Consulting Inc, St Petersburg FL
 // This file is based on the Common Database (CDB) Specification for USSOCOM
 // Version 3.0 – October 2008 and OGC CDB standard 1.0 - 1.2
@@ -369,6 +369,8 @@ namespace osgEarth {
 
 			bool Load_Tile(void);
 
+			bool Contains(coord2d LLPoint);
+
 			coord2d LL2Pix(coord2d LLPoint);
 
 			bool Get_Image_Pixel(coord2d ImPix, unsigned char &RedPix, unsigned char &GreenPix, unsigned char &BluePix);
@@ -444,6 +446,12 @@ namespace osgEarth {
 			void Set_DataFromGlobal(bool value);
 
 			bool DataFromGlobal(void);
+
+			std::string Get_RootDir(void);
+
+			std::string Get_CacheDir(void);
+
+			CDB_Tile_Type Get_TileType(void);
 
 			static bool Get_BaseMap_Files(std::string rootDir, CDB_Tile_Extent &Extent, std::vector<std::string> &files);
 
@@ -688,5 +696,81 @@ namespace osgEarth {
 			void ClearMaps(void);
 
 		};
+
+		class CDBElevationService;
+
+		class OSGEARTH_EXPORT ElevationProviderTile
+		{
+		public:
+			ElevationProviderTile(ElevationProviderTile* Parent, std::string cdbRootDir, std::string cdbCacheDir, CDB_Tile_Type TileType, std::string dataset,
+				CDB_Tile_Extent* TileExtent, bool lightmap, bool material, bool material_mask, int NLod, bool DataFromGlobal);
+
+			virtual ~ElevationProviderTile();
+
+			bool GeneratePyramid();
+			CDB_Tile* Get_Tile();
+			bool Tile_Exists(void);
+			bool Contains(coord2d LLPoint);
+			ElevationProviderTile* GetEndChildContaining(coord2d LLPoint);
+			bool Get_Elevation(CDBElevationService* Service, coord2d LLPoint, float& elevation);
+
+		private:
+
+
+			CDB_Tile* m_ElevationTile;
+			std::string m_dataset;
+			bool m_DataFromGlobal;
+			CDB_Tile_Extent m_TileExtent;
+
+			ElevationProviderTile* m_Parent;
+			std::vector<ElevationProviderTile*> m_Children;
+
+			bool m_lightmap;
+			bool m_material;
+			bool m_material_mask;
+			int m_NLod;
+			bool m_is_Registered;
+			bool m_LogService;
+
+
+			ElevationProviderTile* New_Child(CDB_Tile_Extent* Extent);
+			void Add_Child(ElevationProviderTile* child);
+			bool Have_Children();
+			bool GenerateChildren();
+		};
+
+		class OSGEARTH_EXPORT CDBElevationService
+		{
+		public:
+
+			CDBElevationService();
+			virtual ~CDBElevationService();
+
+			bool StartElevationService(std::string cdbRootDir, std::string cdbCacheDir, bool DataFromGlobal);
+
+			bool InitElevationTile(CDB_Tile_Extent* tile_extent);
+
+			bool RegisterServiceTile(std::string FileName, ElevationProviderTile* Tile);
+
+			bool Get_Elevation(coord2d Point, float& elevation);
+
+			void ClearResources();
+
+			static CDBElevationService* getInstance();
+
+		private:
+			std::string m_cdbRootDir = "";
+			std::string m_cdbCacheDir = "";
+			bool m_DataFromGlobal;
+			bool m_have_init_data = false;
+			ElevationProviderTile* m_LastTop = nullptr;
+			ElevationProviderTile* m_LastServiceTile = nullptr;
+			bool m_LogService = false;
+			std::map<std::string, ElevationProviderTile*> m_TopLevelTiles;
+
+			std::map<std::string, ElevationProviderTile*> m_ServiceTiles;
+
+		};
+
 	}
 }

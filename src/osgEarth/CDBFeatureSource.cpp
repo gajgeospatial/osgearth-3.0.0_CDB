@@ -141,6 +141,7 @@ OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, GS_LOD0_FullStack, GS_LOD0_FullSt
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, Verbose, Verbose);
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, Enable_Subord_Material, Enable_Subord_Material);
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, ABS_Z_in_M, ABS_Z_in_M);
+OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, USE_CDB_Elevation, USE_CDB_Elevation);
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, Use_GPKG_For_Features, Use_GPKG_For_Features);
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, bool, Lights, Lights);
 OE_LAYER_PROPERTY_IMPL(CDBFeatureSource, int,  LightLOD, LightLOD);
@@ -205,6 +206,13 @@ CDBFeatureSource::openImplementation()
 			_M_Contains_ABS_Z = true;
 	}
 
+	if (options().USE_CDB_Elevation().isSet())
+	{
+		bool onCDB = options().USE_CDB_Elevation().value();
+		if (onCDB)
+			_SettleOnCDB = true;
+	}
+
 	if(options().Use_GPKG_For_Features().isSet())
 	{
 		bool Use_GPKG_Features = options().Use_GPKG_For_Features().value();
@@ -227,6 +235,12 @@ CDBFeatureSource::openImplementation()
 	if(_Use_GPKG_For_Features)
 	{
 		osgEarth::CDBTile::CDB_Tile::Set_Use_Gpkg_For_Features(true);
+	}
+
+	if (_SettleOnCDB)
+	{
+		_CDBElevations = osgEarth::CDBTile::CDBElevationService::getInstance();
+		_CDBElevations->StartElevationService(_rootString, "", _UsingFileInput);
 	}
 
 	// Make sure the root directory is set
@@ -434,6 +448,7 @@ CDBFeatureSource::init()
 	_GT_LOD0_FullStack = false;
 	_BE_Verbose = false;
 	_M_Contains_ABS_Z = false;
+	_SettleOnCDB = false;
 	_LoadLights = false;
 	_LightsLOD = 0;
 	_Use_GPKG_For_Features = false;
@@ -450,6 +465,7 @@ CDBFeatureSource::init()
 	_cur_EnvLight_Cnt = 0;
 	_Materials = false;
 	_HaveEditLimits = false;
+	_CDBElevations = nullptr;
 }
 
 
@@ -519,6 +535,25 @@ CDBFeatureSource::createFeatureCursorImplementation(const Query& query, Progress
 		mainTile->Set_SpatialFilter_Extent(tileExtent);
 
 	int Files2check = mainTile->Model_Sel_Count();
+
+	if (_SettleOnCDB)
+	{
+		if (_CDBLodNum == 0)
+		{
+			if (_BE_Verbose)
+			{
+				OSG_WARN << "Initialize Elevation Tile for " << mainTile->FileName(Files2check - 1) << std::endl;
+			}
+
+			_CDBElevations->InitElevationTile(&tileExtent);
+
+			if (_BE_Verbose)
+			{
+				OSG_WARN << "Initialization Complete fo4 Elevation Tile for " << mainTile->FileName(Files2check - 1) << std::endl;
+			}
+		}
+	}
+
 	std::string base;
 	int FilesChecked = 0;
 	bool dataOK = false;
@@ -776,6 +811,22 @@ bool CDBFeatureSource::getFeatures(osgEarth::CDBTile::CDB_Tile *mainTile, const 
 
 				}
 			}
+			else if (_SettleOnCDB)
+			{
+				OGRGeometry* geo = feat_handle->GetGeometryRef();
+				if (wkbFlatten(geo->getGeometryType()) == wkbPoint)
+				{
+					OGRPoint* poPoint = (OGRPoint*)geo;
+					coord2d Qpoint(poPoint->getX(), poPoint->getY());
+					ZoffsetPos = poPoint->getZ(); //Used as altitude offset
+					float Elevation;
+					if (_CDBElevations->Get_Elevation(Qpoint, Elevation))
+					{
+						poPoint->setZ((double)Elevation + ZoffsetPos);
+					}
+				}
+			}
+
 		}
 
 		osg::ref_ptr<Feature> f = OgrUtils::createFeature((OGRFeatureH)feat_handle, getFeatureProfile());
@@ -1088,6 +1139,21 @@ bool CDBFeatureSource::getAFLightFeatures(osgEarth::CDBTile::CDB_Tile* mainTile,
 
 				}
 			}
+			else if (_SettleOnCDB)
+			{
+				OGRGeometry* geo = feat_handle->GetGeometryRef();
+				if (wkbFlatten(geo->getGeometryType()) == wkbPoint)
+				{
+					OGRPoint* poPoint = (OGRPoint*)geo;
+					coord2d Qpoint(poPoint->getX(), poPoint->getY());
+					ZoffsetPos = poPoint->getZ(); //Used as altitude offset
+					float Elevation;
+					if (_CDBElevations->Get_Elevation(Qpoint, Elevation))
+					{
+						poPoint->setZ((double)Elevation + ZoffsetPos);
+					}
+				}
+			}
 		}
 
 		osg::ref_ptr<Feature> f = OgrUtils::createFeature((OGRFeatureH)feat_handle, getFeatureProfile());
@@ -1185,6 +1251,21 @@ bool CDBFeatureSource::getEnvLightFeatures(osgEarth::CDBTile::CDB_Tile* mainTile
 					ZoffsetPos = poPoint->getZ(); //Used as altitude offset
 					poPoint->setZ(Mpos + ZoffsetPos);
 
+				}
+			}
+			else if (_SettleOnCDB)
+			{
+				OGRGeometry* geo = feat_handle->GetGeometryRef();
+				if (wkbFlatten(geo->getGeometryType()) == wkbPoint)
+				{
+					OGRPoint* poPoint = (OGRPoint*)geo;
+					coord2d Qpoint(poPoint->getX(), poPoint->getY());
+					ZoffsetPos = poPoint->getZ(); //Used as altitude offset
+					float Elevation;
+					if (_CDBElevations->Get_Elevation(Qpoint, Elevation))
+					{
+						poPoint->setZ((double)Elevation + ZoffsetPos);
+					}
 				}
 			}
 		}
