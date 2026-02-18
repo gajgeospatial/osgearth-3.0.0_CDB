@@ -91,10 +91,19 @@ namespace osgEarth { namespace Util
 		 */
 		void setStyle(const Style& style);
 
+		void InitForTile(FilterContext& context);
+
 		/**
 		 * Pushes a list of features through the filter.
 		 */
 		osg::Node* push(FeatureList& input, FilterContext& context);
+
+		/**
+		* Process a single Feature
+		*/
+		osg::Node* ExtrudeFeature(Feature* input, FilterContext& context);
+
+		osg::Node* ConstructFeature(Feature* input, FilterContext& context);
 
 	public: // properties
 
@@ -147,6 +156,43 @@ namespace osgEarth { namespace Util
 		};
 		typedef std::vector<Face> Faces;
 
+		struct GeoPoint
+		{
+			osg::Vec3d  pLoc;
+			float       TexU;
+			float       TexV;
+			GeoPoint() : pLoc(0.0, 0.0, 0.0), TexU(0.0f), TexV(0.0f)
+			{
+			}
+			GeoPoint(osg::Vec3d loc) : pLoc(loc), TexU(0.0f), TexV(0.0f)
+			{
+			}
+		};
+		typedef std::vector<GeoPoint> GeoPoints;
+
+		struct GeoFace
+		{
+			GeoPoints   Points;
+			osg::Vec4d  PlanerC;
+			unsigned int getNumPoints() const
+			{
+				return Points.size();
+			}
+
+			Bounds getBounds() const
+			{
+				Bounds bounds;
+				for (GeoPoints::const_iterator i = Points.begin(); i != Points.end(); ++i)
+				{
+					bounds.expandBy(i->pLoc.x(), i->pLoc.y(), i->pLoc.z());
+				}
+				return bounds;
+			}
+		};
+		typedef std::vector<GeoFace> GeoFaces;
+		typedef std::vector<GeoFaces> GeoFacesVec;
+
+
 		// An Elevation is a series of related Faces.
 		struct Elevation
 		{
@@ -175,6 +221,23 @@ namespace osgEarth { namespace Util
 				return c;
 			}
 		};
+
+		struct GeoStructure
+		{
+			GeoFaces            Roofs;
+			GeoFaces            Walls;
+			bool                isPolygon;
+			osg::Vec3d          baseCentroid;
+			float               verticalOffset;
+			bool                makeECEF;
+			SpatialReference* srs;
+			SpatialReference* mapSRS;
+
+			GeoStructure() : isPolygon(false), baseCentroid(0.0, 0.0, 0.0), verticalOffset(0.0f), makeECEF(false), srs(nullptr), mapSRS(nullptr)
+			{
+			}
+		};
+
 
 		// a set of geodes indexed by stateset pointer, for pre-sorting geodes based on 
 		// their texture usage
@@ -232,11 +295,31 @@ namespace osgEarth { namespace Util
 			std::string				roof_mat_index_name,
 			ExtrudeGeomGDALHelper * RoofHelper);
 
+		bool LoadStructure(Geometry* multiinput,
+			double                  height,
+			bool                    flatten,
+			float                   verticalOffset,
+			const SkinResource* wallSkin,
+			const SkinResource* roofSkin,
+			GeoStructure& structure,
+			FilterContext& cx,
+			bool					   have_roof_image,
+			std::string			   roof_image_name,
+			bool					   roof_image_has_mat_index,
+			std::string			   roof_mat_index_name,
+			ExtrudeGeomGDALHelper* RoofHelper);
+
 		bool buildWallGeometry(const Structure&     structure,
 			osg::Geometry*       walls,
 			const osg::Vec4&     wallColor,
 			const osg::Vec4&     wallBaseColor,
 			const SkinResource*  wallSkin);
+
+		bool FormWallGeometry(GeoStructure& structure,
+			osg::Geometry* walls,
+			const osg::Vec4& wallColor,
+			const osg::Vec4& wallBaseColor,
+			const SkinResource* wallSkin);
 
 		bool buildRoofGeometry(const Structure&     structure,
 			osg::Geometry*       roof,
@@ -245,7 +328,23 @@ namespace osgEarth { namespace Util
 			const bool			have_roof_image,
 			const bool			have_roof_mat_index);
 
+		bool FormRoofGeometry(GeoStructure& structure,
+			osg::Geometry* roof,
+			const osg::Vec4& roofColor,
+			const SkinResource* roofSkin,
+			const bool have_roof_image,
+			const bool have_roof_mat_index);
+
 		osg::Drawable* buildOutlineGeometry(const Structure&  structure);
+
+		bool ExtrudeAFeature(Feature* input, FilterContext& context);
+
+		bool ConstructAFeature(Feature* input, FilterContext& context);
+
+		bool SetLocalizationForFeature(FilterContext& cx, Feature* f, GeoStructure& structure);
+
+		osg::Vec4d PlanerConstants(osg::Vec3d& P0, osg::Vec3d& P1, osg::Vec3d& P2, osg::Vec3d& Norm);
+
     };
 } }
 

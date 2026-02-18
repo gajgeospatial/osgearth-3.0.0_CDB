@@ -188,7 +188,9 @@ namespace osgEarth { namespace Util
 
         // computes the matricies required to localizer/delocalize double-precision coords
         void computeLocalizers( const FilterContext& context );
+        void computeLocalizers(osg::Vec3d centroid, const FilterContext& context);
         void computeLocalizers( const FilterContext& context, const osgEarth::GeoExtent &extent, osg::Matrixd &out_w2l, osg::Matrixd &out_l2w );
+        void computeLocalizers(const FilterContext& context, osg::Vec3d centroid, osg::Matrixd& out_w2l, osg::Matrixd& out_l2w);
 
         /** Parents the node with a localizer group if necessary */
         osg::Node*  delocalize( osg::Node* node ) const;

@@ -139,6 +139,8 @@ namespace osgEarth
         /** Copy contructor */
         Feature( const Feature& rhs, const osg::CopyOp& copyop =osg::CopyOp::DEEP_COPY_ALL );
 
+        virtual ~Feature();
+
         META_Object( osgEarth, Feature );
 
     public:
@@ -262,8 +264,6 @@ namespace osgEarth
 
         Feature();
         Feature( FeatureID fid );
-
-        virtual ~Feature();
 
         FeatureID                            _fid;
         osg::ref_ptr<Geometry>               _geom;

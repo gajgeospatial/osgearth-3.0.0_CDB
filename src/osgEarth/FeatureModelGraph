@@ -62,6 +62,8 @@ namespace osgEarth { namespace Util
         void setNodeFactory(FeatureNodeFactory* factory);
         FeatureNodeFactory* getNodeFactory() const { return _factory.get(); }
 
+        osg::ref_ptr<FeatureSourceIndex> getFeatureIndex() { return _featureIndex; }
+
         //! Sets the style sheet to use to render features 
         void setStyleSheet(StyleSheet* styles);
 
