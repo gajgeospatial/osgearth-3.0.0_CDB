@@ -919,6 +919,9 @@
     <ClCompile Include="..\..\..\src\osgEarth\AltitudeFilter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\osgEarth\CDBVectorFeatureSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\osgEarth\AGG.h">
@@ -1994,6 +1997,9 @@
       <Filter>Headers</Filter>
     </None>
     <None Include="..\..\..\src\osgEarth\XYZFeatureSource">
+      <Filter>Headers</Filter>
+    </None>
+    <None Include="..\..\..\src\osgEarth\CDBVectorFeatureSource">
       <Filter>Headers</Filter>
     </None>
   </ItemGroup>

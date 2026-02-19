@@ -16,6 +16,8 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
+ // 2016-2026 GAJ Geospatial Enterprises, Orlando FL
+ // Created CDB for Incorporation of Common Database (CDB) support within osgEarth
 #include "CDB"
 #include <osgEarth/Registry>
 #include <osgEarth/FileUtils>

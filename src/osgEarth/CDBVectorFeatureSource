@@ -1,0 +1,198 @@
+/* -*-c++-*- */
+/* osgEarth - Geospatial SDK for OpenSceneGraph
+ * Copyright 2020 Pelican Mapping
+ * http://osgearth.org
+ *
+ * osgEarth is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ */
+ // 2016-2026 GAJ Geospatial Enterprises, Orlando FL
+ // Created FeatureSourceCDBVector for Incorporation of Common Database (CDB) support within osgEarth
+#ifndef OSGEARTH_FEATURES_CDBVECTOR_FEATURESOURCE_LAYER
+#define OSGEARTH_FEATURES_CDBVECTOR_FEATURESOURCE_LAYER
+
+#include <osgEarth/FeatureSource>
+#include <CDB_TileLib/CDB_Tile>
+#include <ogc/ogc_IE>
+#include <queue>
+
+namespace osgEarth
+{
+
+    class OSGEARTH_EXPORT FeatureCursorCDBV : public FeatureCursor
+    {
+    public:
+        /**
+         * Creates a new feature cursor that iterates over an OGR layer.
+         *
+         * @param source
+         *      Feature source that created this cursor
+         * @param dsHandle
+         *      Handle on the OGR data source to which the results layer belongs
+         * @param layerHandle
+         *      Handle to the OGR layer containing the features
+         * @param profile
+         *      Profile of the feature layer corresponding to the feature data
+         * @param query
+         *      The the query from which this cursor was created.
+         */
+        FeatureCursorCDBV(
+            OGRDataSourceH           dsHandle,
+            OGRLayerH                layerHandle,
+            const FeatureSource *    source,
+            const FeatureProfile *   profile,
+            const osgEarth::Query    &query,
+            const osgEarth::FeatureFilterChain &filters,
+            ProgressCallback *       progress,
+            bool			         use_spatial_rect,
+            CDB_Tile_ExtentP	     rect_extent);
+        void Add_Layer_to_Cursor(OGRDataSourceH dsHandle, OGRLayerH layerHandle);
+
+    public: // FeatureCursor
+
+        bool hasMore() const;
+        Feature* nextFeature();
+
+    protected:
+        virtual ~FeatureCursorCDBV();
+
+
+    private:
+        OGRDataSourceH                      _dsHandle;
+        OGRLayerH                           _layerHandle;
+        OGRLayerH                           _resultSetHandle;
+        OGRGeometryH                        _spatialFilter;
+        osgEarth::Query                     _query;
+        unsigned                            _chunkSize;
+        OGRFeatureH                         _nextHandleToQueue;
+        osg::ref_ptr<const FeatureSource>   _source;
+        osg::ref_ptr<const FeatureProfile>  _profile;
+        std::queue< osg::ref_ptr<Feature> > _queue;
+        osg::ref_ptr<Feature>               _lastFeatureReturned;
+        const FeatureFilterChain            &_filters;
+        bool				                _use_Spatial_Rect;
+        CDB_Tile_ExtentP			        _Spatial_Rect;
+    private:
+        void readChunk();
+        void Set_And_Read_Data(void);
+        void Read_Data_Directly(void);
+    };
+
+    /**
+     * FeatureSource that reads feature tiles from a parameterized "XYZ" source.
+     */
+    class OSGEARTH_EXPORT CDBVectorFeatureSource : public FeatureSource
+    {
+    public:
+        class OSGEARTH_EXPORT Options : public FeatureSource::Options {
+        public:
+            META_LayerOptions(osgEarth, Options, FeatureSource::Options);
+			OE_OPTION(std::string, ogrDriver);
+			OE_OPTION(Config, geometryConf);
+			OE_OPTION(std::string, geometryUrl);
+			OE_OPTION(std::string, layer);
+			OE_OPTION(std::string, rootDir);
+			OE_OPTION(std::string, Limits);
+			OE_OPTION(int, minLod);
+			OE_OPTION(int, maxLod);
+			OE_OPTION(bool, Edit_Support);
+			OE_OPTION(bool, Verbose);
+			virtual Config getConfig() const;
+        private:
+            void fromConfig(const Config& conf);
+        };
+
+    public:
+        META_Layer(osgEarth, CDBVectorFeatureSource, Options, FeatureSource, CDBVectorFeatures);
+
+        //! Location of the resource
+		void setogrDriver(const std::string& value);
+		const std::string& getogrDriver() const;
+
+		void setgeometryUrl(const std::string& value);
+		const std::string& getgeometryUrl() const;
+		
+		void setlayer(const std::string& value);
+		const std::string& getlayer() const;
+
+		void setrootDir(const std::string& value);
+        const std::string& getrootDir() const;
+
+		void setLimits(const std::string& value);
+		const std::string& getLimits() const;
+
+		//! Minimum level of detail to access
+        void setminLod(const int& value);
+        const int& getminLod() const;
+
+        //! Maximum level of detail to access
+        void setmaxLod(const int& value);
+        const int& getmaxLod() const;
+
+		void setEdit_Support(const bool& value);
+		const bool& getEdit_Support() const;
+
+		void setVerbose(const bool& value);
+		const bool& getVerbose() const;
+
+	public: // Layer
+
+        virtual Status openImplementation();
+
+    protected:
+
+        virtual void init();
+
+    public: // FeatureLayer
+
+        virtual FeatureCursor* createFeatureCursorImplementation(const Query& query, ProgressCallback* progress);
+        
+        virtual const FeatureSchema& getSchema() const { return _schema; }
+
+    protected:
+
+        virtual ~CDBVectorFeatureSource() { }
+
+    private:
+		OGRDataSourceH					_dsHandle;
+		OGRLayerH						_layerHandle;
+		OGRSFDriverH					_ogrDriverHandle;
+		int								_featureCount;
+		bool							_needsSync;
+		bool							_writable;
+		FeatureSchema					_schema;
+		Geometry::Type					_geometryType;
+		bool							_CDB_Edit_Support;
+		osg::ref_ptr<CacheBin>          _cacheBin;
+		osg::ref_ptr<osgDB::Options>    _dbOptions;
+		int								_CDBLodNum;
+		std::string						_rootString;
+		std::string						_cacheDir;
+		std::string						_dataSet;
+		std::string						_lat_string;
+		std::string						_lon_string;
+		std::string						_uref_string;
+		std::string						_rref_string;
+		std::string						_lod_string;
+		std::string						_LayerName;
+		int								_cur_Feature_Cnt;
+		bool							_Be_Verbose;
+
+		OGRLayerH openLayer(OGRDataSourceH ds, const std::string& layer);
+
+	};
+} // namespace osgEarth
+
+OSGEARTH_SPECIALIZE_CONFIG(osgEarth::CDBVectorFeatureSource::Options);
+
+#endif // OSGEARTH_FEATURES_CDB_FEATURESOURCE_LAYER

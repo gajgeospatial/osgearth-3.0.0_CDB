@@ -1451,6 +1451,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <None Include="..\..\..\src\ogc\ogc_IE" />
     <None Include="..\..\..\src\osgEarth\CDB" />
     <None Include="..\..\..\src\osgEarth\CDBFeatureSource" />
+    <None Include="..\..\..\src\osgEarth\CDBVectorFeatureSource" />
     <None Include="..\..\..\src\osgEarth\GlobalModelManager" />
     <None Include="..\..\..\src\osgEarth\InstanceBuilder" />
     <None Include="..\..\..\src\osgEarth\NetworkMonitor" />
@@ -1699,6 +1700,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\..\src\CDB_TileLib\CDB_Tile.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\CDB.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\CDBFeatureSource.cpp" />
+    <ClCompile Include="..\..\..\src\osgEarth\CDBVectorFeatureSource.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\GlobalModelManager.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\InstanceBuilder.cpp" />
     <ClCompile Include="..\..\..\src\osgEarth\InstanceCloud.cpp" />

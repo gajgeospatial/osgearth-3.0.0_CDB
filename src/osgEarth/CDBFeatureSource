@@ -16,6 +16,8 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
+ // 2016-2026 GAJ Geospatial Enterprises, Orlando FL
+ // Created FeatureSourceCDB for Incorporation of Common Database (CDB) support within osgEarth
 #ifndef OSGEARTH_FEATURES_CDB_FEATURESOURCE_LAYER
 #define OSGEARTH_FEATURES_CDB_FEATURESOURCE_LAYER
 
@@ -64,7 +66,7 @@ namespace osgEarth
         };
 
     public:
-        META_Layer(osgEarth, CDBFeatureSource, Options, FeatureSource, cdbfeatures);
+        META_Layer(osgEarth, CDBFeatureSource, Options, FeatureSource, CDBFeatures);
 
         //! Location of the resource
         void setrootDir(const std::string& value);
