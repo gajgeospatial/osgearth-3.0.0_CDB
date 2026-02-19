@@ -1,6 +1,6 @@
 <!-- 
 osgEarth Sample - CDB
-Demonstrates the simplest possible use of the GDAL layer to load a GeoTIFF image.
+Demonstrates the loadng a CDB with imagery, elevation, GeoSpecific features, and GeoTypical Features.
 -->
 
 <map>
@@ -39,7 +39,7 @@ Demonstrates the simplest possible use of the GDAL layer to load a GeoTIFF image
         <styles>
             <style type="text/css">
               GeoSpecific {
-              model: "C:\ProgramData\Visual Awareness Technologies and Consulting Inc\vatc-geospatial-data\red_flag.osg.25.scale";
+              model: "red_flag.osg.25.scale";
               altitude-clamping:  none;
               render-depth-test:  true;
               }
@@ -67,7 +67,7 @@ Demonstrates the simplest possible use of the GDAL layer to load a GeoTIFF image
         <styles>
             <style type="text/css">
               GeoTypical {
-              model: "C:\ProgramData\Visual Awareness Technologies and Consulting Inc\vatc-geospatial-data\red_flag.osg.25.scale";
+              model: "red_flag.osg.25.scale";
               altitude-clamping:  none;
               render-depth-test:  true;
               }
