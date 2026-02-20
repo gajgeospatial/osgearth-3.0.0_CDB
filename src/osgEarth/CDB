@@ -182,7 +182,7 @@ namespace osgEarth
 
     public: // Layer
         
-        //! Establishes a connection to the TMS repository
+        //! Establishes a connection to the CDB repository
         virtual Status openImplementation();
 
         //! Creates a raster image for the given tile key
@@ -214,7 +214,7 @@ namespace osgEarth
 
 
     /**
-     * Elevation layer connected to a TMS (Tile Map Service) facility
+     * Elevation layer connected to a CDB facility
      */
     class OSGEARTH_EXPORT CDBElevationLayer : public ElevationLayer
     {
@@ -255,7 +255,7 @@ namespace osgEarth
 
     public: // Layer
         
-        //! Establishes a connection to the TMS repository
+        //! Establishes a connection to the CDB repository
         virtual Status openImplementation();
 
         //! Creates a heightfield for the given tile key

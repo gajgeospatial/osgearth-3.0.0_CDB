@@ -223,7 +223,7 @@ namespace osgEarth
         //! Called by the constructor
         virtual void init();
 
-        //! Establishes a connection to the TMS repository
+        //! Establishes a connection to the repository
         virtual Status openImplementation();
 
         //! Closes down any GDAL connections
